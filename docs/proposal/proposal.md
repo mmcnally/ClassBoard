@@ -78,19 +78,19 @@ I’m a junior computer science major. Ultimately my goal in life is to never ha
 
 #### Carter
 
-> Sir Master Chef Frontend Developer
+> Frontend Developer
 
 #### Austin
 
-> Chief Jack of all Trades
+> Jack of all Trades
 
 #### Matt
 
-> Chief Functionality Specialist
+> Functionality Specialist
 
 #### Andrew
 
-> Lord of Cheerleading
+> Backend Developer
 
 #### Michael
 
