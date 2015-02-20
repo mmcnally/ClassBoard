@@ -10,12 +10,12 @@ ClassBoard
 >121, 187, 220, 240, 250
 
 ##### Non-Computer Science Courses
->American Foreign Policy, Marxian Economics
+>Introduction to Psychology, Marxian Economics
 
-PUT INFORMATION ABOUT COURSES HERE
+While my main focus at UMass is to learn computer science and get a glimpse into some of its numerous applications, I'm also fascinated by people. The courses I've taken outside of the computer science major have mostly been socially themed. I enjoy learning about how people behave and feel and how these things are affected by one's environment. I've learned from Introduction to Psychology that people can be intimidated by asking questions when they get lost in class for fear of how others will percieve them, especially if they assume that everyone else understands it. Taking Marxian Economics helped me realize the importance of doing things as a community. That's why we plan on allowing students to communicate any questions/issues in a low-stress, non disruptive manner. If other people have similar confusion, then it will be easier to solve the issue as a classroom community.  
 
 #### Biography
-I am currently a junior at UMass. I am interested in various aspects of computing from AI to game design to data analysis. I have been mesmerized by computers for my entire life, starting with my first brute force endeavor of learning how to navigate the Windows installer before I had learned how to read. I love thinking abstractly and coming up with unique approaches to problems.
+I am currently a junior at UMass. I am interested in various aspects of computing from AI to game design to data analysis. I have been mesmerized by computers for my entire life, starting with my first brute force endeavor of learning how to navigate the Windows installer before I had learned how to read. Now I am trying to broaden my horizons and learn numerous languages so I can have an entire palette of tools to implement my ideas. I love thinking abstractly and coming up with unique approaches to problems.
 
 
 ### Carter Tiernan
@@ -180,5 +180,5 @@ ClassBoard will also support drag and drop configuration of
 ##Budget
 ---
 
-<table> <tr> <td> Hardware </td> <td> <ul> <li> Server: <i>Free (Amazon Elastic Computing)</i> <li> New Computers: <i>5 new computers at $1,500: $6,000 one time fee</i> <li> Office Supplies: <i>$50 a month</i> </ul> </td> </tr> <tr> <td> Advertising </td> <td> <ul> <li><i>$250 a month</i> </ul> </td> </tr> <tr> <td> Developement </td> <td> <ul> <li>Five developers for 40 hours a week at $40 a hour:<i> $32,000 a month</i> </ul> </td> </tr> <tr> <td> Legal </td> <td> <ul> <li>Domain:<i> $1,000 one time payment to purchase, $20 monthly fee</i> </ul> </td> </tr> <tr> <td> Unexpected </td> <td> <ul> <li><i> $2,500 for things like hardware repair, travel etc.</i> </ul> </td> </tr> <tr> <td> <b>Total</b> (3 months) </td> <td> <ul> <li><b>$106,460</b></li> <ul> <li><i>$6,000 + $150 + $750 + $96,000 + $1,000 + $60 + $2,500</i></li> </ul> </ul> </td> </tr> </table>
+<table> <tr> <td> Hardware </td> <td> <ul> <li> Server: <i>Free (Amazon Elastic Computing)</i> <li> New Computers: <i>5 new computers at $1,500: $7,500 one time fee</i> <li> Office Supplies: <i>$50 a month</i> </ul> </td> </tr> <tr> <td> Advertising </td> <td> <ul> <li><i>$250 a month</i> </ul> </td> </tr> <tr> <td> Developement </td> <td> <ul> <li>Five developers for 40 hours a week at $40 a hour:<i> $32,000 a month</i> </ul> </td> </tr> <tr> <td> Legal </td> <td> <ul> <li>Domain:<i> $1,000 one time payment to purchase, $20 monthly fee</i> </ul> </td> </tr> <tr> <td> Unexpected </td> <td> <ul> <li><i> $2,500 for things like hardware repair, travel etc.</i> </ul> </td> </tr> <tr> <td> <b>Total</b> (3 months) </td> <td> <ul> <li><b>$107,960</b></li> <ul> <li><i>$7,500 + $150 + $750 + $96,000 + $1,000 + $60 + $2,500</i></li> </ul> </ul> </td> </tr> </table>
 
