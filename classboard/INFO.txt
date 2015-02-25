@@ -1,0 +1,8 @@
+To start db... open terminal cd to this folder
+$ mongod --smallfiles
+
+to start server... open terminal tab cd to this folder
+$ grunt
+
+to visit the running page visit:
+http://classboard.agsheppa.c9.io
