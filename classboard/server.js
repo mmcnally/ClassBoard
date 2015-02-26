@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
 	chalk = require('chalk');
 
-var port = process.env.PORT; //for c9 set to process.env.PORT
+var port = process.env.PORT || 3000; //for c9 set to process.env.PORT
 
 // Bootstrap db connection
 var db = mongoose.connect('mongodb://localhost/mean-dev', {user : '', pass : ''}, function(err) {
