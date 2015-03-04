@@ -104,3 +104,47 @@ UserSchema.methods.authenticate = function(password) {
 
 
 mongoose.model('User', UserSchema);
+
+
+
+
+
+/**
+ * ClassRoom Schema
+ */
+var ClassRoomSchema = new Schema({
+  className: {
+    type: String,
+    trim: true,
+    required: true,
+    validate: [validateNonempty, 'Please fill in the class name']
+  },
+  schoolId: {
+    type: String,
+    trim: true,
+    required: true,
+    validate: [validateNonempty, 'Please fill in the schoolId']
+  },
+  teachers: {
+    type: [UserSchema],
+    required: true,
+    validate: [validateNonempty, 'Please fill in the teachers']
+  },
+  students: {
+    type: [UserSchema],
+    required: true,
+    validate: [validateNonempty, 'Please fill in students']
+  },
+  salt: {
+    type: String
+  },
+  updated: {
+    type: Date
+  },
+  created: {
+    type: Date,
+    default: Date.now
+  },
+});
+
+mongoose.model('ClassRoom', ClassRoomSchema);
