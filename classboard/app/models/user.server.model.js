@@ -125,21 +125,18 @@ var ClassRoomSchema = new Schema({
     required: true,
     validate: [validateNonempty, 'Please fill in the schoolId']
   },
-  teachers: {
+  teachers: [{
     type: Schema.ObjectId,
     ref: 'User',
     required: true,
     validate: [validateNonempty, 'Please fill in the teachers']
-  },
-  students: {
+  }],
+  students: [{
     type: Schema.ObjectId,
     ref: 'User',
     required: true,
     validate: [validateNonempty, 'Please fill in students']
-  },
-  salt: {
-    type: String
-  },
+  }],
   updated: {
     type: Date
   },
