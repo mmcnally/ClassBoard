@@ -2,6 +2,7 @@
 
 ClassBoard
 ======
+> Bringing the Classroom Together
 
 The Vision
 --------------
