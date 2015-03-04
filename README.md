@@ -1,9 +1,14 @@
 ![Team Logo](/docs/proposal/logo.png)
 
+
+##Note to Grader
+---
+We decided to change out idea after the first project, so the app the we will work on is ClassBoard, not out previous TeamUp.
+
+Additionally, we updated out profile.md file to reflect these changes, and implemented the changes that your requested.
+
 # Project Overview
 ---
-
-
 
 ClassBoard is a configurable dashboard for classroom-related widgets. Our goal is to integrate as many classroom interactions as possible into the browser, allowing for a more streamlined and efficient classroom experience. Classrooms will become paperless when using ClassBoard, as it will keep all class documents stored in one place and organized. Other class activities such as splitting the class into groups or giving a timed quiz will also be performed by Classboard. There will be many widgets performing different functionalities, we will only highlight a few in this overview.
 
