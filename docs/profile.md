@@ -1,11 +1,15 @@
 ![Team Logo](/docs/proposal/logo.png)
 
+######Collaboration
+Our entire group worked on this document collaboratively in a google doc, so each section was a group effort.  We all went through and edited each section as it was being written.
+
 ClassBoard
 ======
 > Bringing the Classroom Together
 
 The Vision
 --------------
+
 
 ClassBoard will be a configurable dashboard for classroom-related widgets. Our goal is to integrate as many classroom interactions as possible into the browser, allowing for a more streamlined and efficient classroom experience. Classrooms will become paperless when using ClassBoard, as it will keep all class documents stored in one place and organized. Other class activities such as splitting the class into groups or giving a timed quiz will also be performed by Classboard. There will be many widgets performing different functionalities, we will only highlight a few in this overview. 
 
