@@ -66,9 +66,9 @@ I’m a Junior computer science major at UMass Amherst. I’ve been into compute
 >121, 187, 220, 230, 240, 250
 
 ##### Non-Computer Science Courses
-> World Religions, Intro to Political Theory
+> Statistics 515, Intro to Psychology
 
-Many of the courses I have taken were pretty useless. I learned how to code in CS 121/187. I feel that I haven’t learned many relevant things since, so I have been working on independent projects which have greatly strengthened my skills as a programmer as well as giving me invaluable experience in product design, user experience engineering and graphic design which are skill I would have never been able to learn in a classroom.
+One my favorite things about computer science is that it can be applied to almost any subject, problem or field in order to calculate, automate or improve efficiency. CS is awesome because being able to program naturally enhances your abilitys in almost any subject. I am personally very interested in psychology and statistics, and CS definitely enhances my ability to work in these subjects as it gives me the ability to analyze and process huge amounts of data.
 
 #### Biography
 I’m a junior computer science major. Ultimately my goal in life is to never have to work for someone ever again. I’m really interested in business and would hopefully like to start my own one day. I am pretty much always working on some personal programming project in my spare time with the hopes that one may turn into a business. I have made two mobile app games so far, Dumb Balloons and Swapify, both of which are on iOS and Android. My latest project is a web app called Zesty which is an attempt to make a better version of Reddit.com, I am excited to take this course so that I can hopefully learn some new tricks.
