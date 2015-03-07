@@ -16,6 +16,9 @@ I liked your bios, but I would have liked to hear a little bit more about your l
 
 **Overall grade: Thumbs down. Please rewrite with my edits and I will revise your grade.**
 
+
+
+
 #Project One: Profile (revision)
 
 ## Overall:
@@ -31,6 +34,9 @@ Thanks for clarifying which idea you are planning on using!
 Good work with your revision! You now have a really good structure that all of your bios are applied to and I like that you have those two different sections, one that describes your compsci skills and one that describes your interests outside of compsci.
 
 **Overall grade: Strong thumbs up! Good work!**
+
+
+
 
 #Project Two
 
