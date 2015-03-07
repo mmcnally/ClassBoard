@@ -1,4 +1,4 @@
-OB# Project One: Profile
+# Project One: Profile
 
 ## Overall:
 
@@ -16,4 +16,46 @@ I liked your bios, but I would have liked to hear a little bit more about your l
 
 **Overall grade: Thumbs down. Please rewrite with my edits and I will revise your grade.**
 
+#Project One: Profile (revision)
 
+## Overall:
+
+You should still include when each section was updated most recently. This document will change and evolve throughout the course, so you are going to want to provide when the most recent revision was made.
+
+## Idea:
+
+Thanks for clarifying which idea you are planning on using!
+
+## Bios:
+
+Good work with your revision! You now have a really good structure that all of your bios are applied to and I like that you have those two different sections, one that describes your compsci skills and one that describes your interests outside of compsci.
+
+**Overall grade: Strong thumbs up! Good work!**
+
+#Project Two
+
+##Overall:
+
+The structure is good and it has everything it needs to have. However, you do want to clarify the last time this was updated.
+
+##Bios:
+
+Good! It looks just like the profile bios, which were really good following the second revision.
+
+##Problem Statement:
+
+This is really interesting and useful, but you really should mention two explicit classes and how your experience in them shaped this problem.
+
+##Product Description:
+
+Looks fantastic! I have no problem with this!
+
+##Timeline:
+
+This timeline is really ambitious. Make sure to consistently update this as the class goes on and mention whatever roadblocks you run into.
+
+##Budget:
+
+Good. You've done your homework on what would be good for a server, etc. Although, you might be able to go into what *explicitly* you are going to use the advertising for.
+
+**Overall grade: Thumbs up! Great work, guys!**
