@@ -9,7 +9,7 @@ ClassBoard
 
 The Vision
 --------------
-
+(Last edited: 3-3-2015)
 
 ClassBoard will be a configurable dashboard for classroom-related widgets. Our goal is to integrate as many classroom interactions as possible into the browser, allowing for a more streamlined and efficient classroom experience. Classrooms will become paperless when using ClassBoard, as it will keep all class documents stored in one place and organized. Other class activities such as splitting the class into groups or giving a timed quiz will also be performed by Classboard. There will be many widgets performing different functionalities, we will only highlight a few in this overview. 
 
@@ -17,6 +17,7 @@ An attendance widget will perform the task of taking attendance, allowing the pr
 
 The Team
 --------------
+(Last edited: 3-3-2015)
 
 ### Andrew Gora
 #### Courses
