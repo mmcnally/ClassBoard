@@ -1,8 +1,19 @@
 ![Team Logo](/docs/proposal/logo.png)
 
 
+
+#Functional Specifications
+---
+Here are the files that we've added on the subject of functional specifications:
+* flowchart of User Interface (fspec/flowchart.pdf)
+* functional specification write up (fspec/functional_specification.md)
+* functional specification slides (fspec/functional_specification_slides.pdf)
+
+
+
 ##Note to Grader
 ---
+(OLD)
 We decided to change out idea after the first project, so the app the we will work on is ClassBoard, not out previous TeamUp.
 
 Additionally, we updated out profile.md file to reflect these changes, and implemented the changes that your requested.
