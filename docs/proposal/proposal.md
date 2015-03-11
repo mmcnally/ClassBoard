@@ -9,6 +9,8 @@ ClassBoard
 
 ##Our Team
 ---
+(Last edited: 3-3-2015)
+
 ### Andrew Gora
 #### Courses
 ##### Computer Science Courses
@@ -80,6 +82,7 @@ I’m a junior computer science major. Ultimately my goal in life is to never ha
 
 ## Roles
 ---
+(Last edited: 3-3-2015)
 
 #### Carter
 
@@ -104,6 +107,7 @@ I’m a junior computer science major. Ultimately my goal in life is to never ha
 
 ##Problem Statement
 ---
+(Last edited: 3-3-2015)
 
 As the use of computers becomes increasingly ubiquitous, computers and mobile devices are becoming an integral component of many parts of daily life. While computer use is rare and sometimes even discouraged in the classroom, it is only a matter of time before teachers and administrators realize the true potential of using computers as a supplement to the class. Our goal is to create an intuitive platform that solves many of the existing problems that plague the contemporary classroom.
 
@@ -118,6 +122,7 @@ We aren’t only aiming to make the lives of teachers easier. As students oursel
 
 ##Product Description
 ---
+(Last edited: 3-3-2015)
 
 
 ClassBoard is going to be a platform that supports a configurable set of widgets and features. Visually the application will resemble a dashboard that allows students and their teachers to interact in real time. The dashboard will display a classes set of widgets. ClassBoard itself will serve to take care of administrative tasks such as attendance and distributing assignments, handouts and in-class quizzes. One distinguishing feature of ClassBoard will be our real-time notification system. When an event occurs that requires immediate attention, such as when the teacher asks the class a question, the event will show up on everyone’s screen in real-time.
@@ -145,9 +150,7 @@ ClassBoard will also support drag and drop configuration of
 
 ##Timeline
 ---
-
-
-
+(Last edited: 3-3-2015)
 
 #####3/2 Research
 * Find useful Libraries and APIs
@@ -185,5 +188,6 @@ ClassBoard will also support drag and drop configuration of
 
 ##Budget
 ---
+(Last edited: 3-3-2015)
 
 <table> <tr> <td> Hardware </td> <td> <ul> <li> Server: <i>Free (Amazon Elastic Computing)</i> <li> New Computers: <i>5 new computers at $1,500: $7,500 one time fee</i> <li> Office Supplies: <i>$50 a month</i> </ul> </td> </tr> <tr> <td> Advertising </td> <td> <ul> <li><i>$250 a month</i> </ul> </td> </tr> <tr> <td> Developement </td> <td> <ul> <li>Five developers for 40 hours a week at $40 a hour:<i> $32,000 a month</i> </ul> </td> </tr> <tr> <td> Legal </td> <td> <ul> <li>Domain:<i> $1,000 one time payment to purchase, $20 monthly fee</i> </ul> </td> </tr> <tr> <td> Unexpected </td> <td> <ul> <li><i> $2,500 for things like hardware repair, travel etc.</i> </ul> </td> </tr> <tr> <td> <b>Total</b> (3 months) </td> <td> <ul> <li><b>$107,960</b></li> <ul> <li><i>$7,500 + $150 + $750 + $96,000 + $1,000 + $60 + $2,500</i></li> </ul> </ul> </td> </tr> </table>
