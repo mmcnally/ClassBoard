@@ -3,6 +3,7 @@
 
 ##Project Overview
 ---
+
 (Last edited: 3-10-2015)
 
 ClassBoard is a configurable dashboard for classroom-related widgets. Our goal is to integrate as many classroom interactions as possible into the browser, allowing for a more streamlined and efficient classroom experience. Classrooms will become paperless when using ClassBoard, as it will keep all class documents stored in one place and organized. Other class activities such as splitting the class into groups or giving a timed quiz will also be performed by Classboard. There will be many widgets performing different functionalities, we will only highlight a few in this overview.
@@ -11,6 +12,7 @@ An attendance widget will perform the task of taking attendance, allowing the pr
 
 ##Views
 ---
+
 (Last edited: 3-10-2015)
 
 ####Login View
@@ -50,6 +52,7 @@ The widgets will have functionality that relates specifically to the widget itse
 
 ##Integrative Experience
 ---
+
 (Last edited: 3-10-2015)
 
 Classboard will be useful for general education courses in numerous ways. For example, the introductory biology class uses iClickers excessively, but in a way that adds much more work for the professor.  After each class, the professor has to go back into his powerpoint and update each iclicker question to show the correct answers.  This allows students to study the questions at a later date, but at the expense of the professor’s time.  That problem will be completely eliminated in Classboard.  The professor can open a multiple choice question on classboard, and give it a simple name or number so that students can later match it with the powerpoint.  The professor can even put the questions only in classboard instead of their powerpoint if they find that to be preferable.  After a questions is closed by the professor, the professor can simply mark the correct answer with the click of a button, and that answer will be saved for the students to view at any time.  Additionally, attendance can be taken within seconds, instead of wasting time going through a roll call.
@@ -58,6 +61,7 @@ Classboard will also apply concepts from psychology in its design to reduce comm
 
 ##Use Cases
 ---
+
 (Last edited: 3-10-2015)
 
 All of the real functionality of the Classboard is going to be contained in widgets, so each of the following is going to be a separate widget, which may or may not be used.
@@ -73,6 +77,7 @@ All of the real functionality of the Classboard is going to be contained in widg
 
 ##Non-goals 
 ---
+
 (Last edited: 3-10-2015)
 
 1. Advanced flowchart functionality for graphing life happiness
@@ -94,6 +99,7 @@ All of the real functionality of the Classboard is going to be contained in widg
 
 ##Revision History
 ---
+
 (Last edited: 3-10-2015)
 
 3/10/15 - First version completed.
