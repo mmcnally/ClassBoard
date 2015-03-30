@@ -65,3 +65,31 @@ This timeline is really ambitious. Make sure to consistently update this as the 
 Good. You've done your homework on what would be good for a server, etc. Although, you might be able to go into what *explicitly* you are going to use the advertising for.
 
 **Overall grade: Thumbs up! Great work, guys!**
+
+#Project Three
+
+##Overall:
+
+You do not include a pdf version of the fspec document or include the images within the fspec. These are vital. When you describe each individual view, I want to be able to see it and see exactly what you are talking about. It was explicitly mentioned in the requirements for the project to have the views embedded into the document. Also, the Use Cases needed to be different. They aren't just lists of individual components but actual *stories* with actual names of users and so on. Take a look at the example texts.
+
+##Idea:
+
+Good. I have nothing to add or say here.
+
+##Views
+
+Again, I need to have the images. There are also some minor grammatical mistakes. Not that big of a deal, but you guys might want to read it out loud to make sure everything sounds good.
+
+##Integrative Experience
+
+Good. But capitalize "introductory biology".
+
+##Use Cases
+
+Another major problem. Again, these are stories not just descriptions of components. You have to revise this so that they resemble the stories described in previous examples.
+
+##Non Goals
+
+Again, take a look at previous versions. A bulleted list is not okay. You want to go through the explicit non-goals so that I can understand them. Most of these are jokes and I find them funny, but what you might want to do is have a pargraph where you go through the explicit non-goals (such as Wolphram Alpha integration) and then at the end of that paragraph say, "Here are some other goals we don't plan on meeting: global cooling, etc.". Just a suggestion.
+
+**Overall grade: Thumbs down! Revise within two days and I'll change your grade.**
