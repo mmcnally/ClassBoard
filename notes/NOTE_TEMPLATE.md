@@ -1,5 +1,3 @@
-name of file: month-day-year.md
-
 ####Date and Time:
 
 * Date: month/date/year
@@ -24,23 +22,7 @@ name of file: month-day-year.md
 
 ####Tasks Assigned:
 
-Andrew Gora:
-* Assignment
+* task 1
+* task 2
+* task 3
 
-Matt McNally:
-* Assignment
-
-Austin Sheppard:
-* Assignment
-
-Michael Lankenau:
-* Assignment
-
-Carter Tiernan:
-* Assignment
-
-
-####Issues (and plan for solutions)
-
-* Issue 1, Solution A
-* Issue 2, Solution B
