@@ -27,7 +27,7 @@ router.get('/login', function(req, res){
   }
   else {
     // Render the login view if this is a new login.
-    res.render('login', { title   : 'ClassBoard Login',
+    res.render('login', { title   : 'ClassBoard',
                           message : authmessage });
   }
 });
@@ -87,19 +87,27 @@ router.get('/logout', function(req, res) {
 
 router.get('/signUp', function(req, res) {
   var user = req.session.user;
-  // if (user === undefined || online[user.uid] === undefined) {
-  //   req.flash('auth', 'Not logged in!');
-  //   res.redirect('/user/login');
-  // }
-  // else {
-    var authmessage = req.flash('auth') || '';
-    
-    res.render('signUp', { title    : 'Create New User',
-                            subtitle : 'Create New User Below',
-                            message  :  authmessage });
-   
-  // }
+  var authmessage = req.flash('auth') || '';
+  
+  res.render('signUp', { title     : 'Create New User',
+                         subtitle  : 'Create New User Below',
+                         message   :  authmessage });
 });  
+
+
+router.get('/settings', function(req, res) {
+  if (user === undefined || online[user.uid] === undefined) {
+    req.flash('auth', 'Not logged in!');
+    res.redirect('/user/login');
+  }
+  else {
+    var user = req.session.user;
+    var authmessage = req.flash('auth') || '';
+    res.render('settings', { title    : 'Settings',
+                             subtitle : 'nobody likes subtitles',
+                             message  : authmessage });
+  }
+});
   
   
 // called from signUp.ejs when creating class
