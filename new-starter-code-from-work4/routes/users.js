@@ -102,33 +102,30 @@ router.get('/signUp', function(req, res) {
 });  
   
   
+// called from signUp.ejs when creating class
+// adds user to 
 router.post('/createUser', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
   var role     = req.body.role || '';
   
-  // if(username === undefined || password === undefined) {
-  //   req.flash('auth', 'username and password fields must be filled');
-  //   res.redirect('/signUp');
-  // }
-  // else {
-    userlib.adduser(username, password, role, function(error, user) {
-      if (error) {
-        req.flash('auth', error);
+  userlib.adduser(username, password, role, function(error, user) {
+    if (error) {
+      req.flash('auth', error);
+      res.redirect('/user/signUp');
+    }
+    else {
+      if(user !== undefined) {
+        req.flash('auth', 'User Successfully Added! YAY HIGH FIVE ^_^/');
         res.redirect('/user/signUp');
       }
       else {
-        if(user !== undefined) {
-          req.flash('auth', 'User Successfully Added! YAY HIGH FIVE ^_^/');
-          res.redirect('/user/signUp');
-        }
-        else {
-          // something done messed up
-          req.flash('auth', 'you did something terrible, go sit in a corner and repent');
-          res.redirect('/user/signUp');
-        }
+        // something done messed up
+        req.flash('auth', 'you did something terrible, go sit in a corner and repent');
+        res.redirect('/user/signUp');
       }
-    });
+    }
+  });
   // }
 });
 

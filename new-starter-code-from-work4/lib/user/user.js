@@ -15,6 +15,25 @@ var userdb = [
   new User('caleb', 'belac', 3)
 ];
 
+
+
+
+// add new user
+// callback of signature cb(error, user)
+exports.adduser = function(username, password, role, cb) {
+  var len = userdb.length;
+  for (var i = 0; i < len; i++) {
+    var u = userdb[i];
+    if (u.username === username) {
+      cb('username already exists', undefined);
+    }
+  }
+  var newUser = new User(username, password, userdb.length + 1, role);
+  userdb.push(newUser);
+  cb(undefined, newUser);
+};
+
+
 //
 // ## lookup function
 // locates a user by `name` if it exists. Invokes callback `cb` with the
@@ -36,4 +55,3 @@ exports.lookup = function(username, password, cb) {
   }
   cb('user not found');
 };
-
