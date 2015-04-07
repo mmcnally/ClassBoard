@@ -1,0 +1,18 @@
+int main(){
+int gryffindor(char* harry) {
+
+  char* potter = harry;
+
+  while (*potter != ‘\0’) {
+
+    char LOL = *potter;
+
+    if (LOL >= 0x61 && LOL <= 0x7A)
+
+      *potter = *potter – 0x20;
+
+    potter++;
+
+  }
+
+}}
