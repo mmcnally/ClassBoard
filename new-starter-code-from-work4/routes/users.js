@@ -107,7 +107,7 @@ router.get('/signUp', function(req, res) {
 router.post('/createUser', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
-  var role     = req.body.role || '';
+  var role     = '';
   
   userlib.adduser(username, password, role, function(error, user) {
     if (error) {
