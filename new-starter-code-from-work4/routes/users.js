@@ -84,6 +84,54 @@ router.get('/logout', function(req, res) {
   res.redirect('/user/login');
 });
 
+
+router.get('/signUp', function(req, res) {
+  var user = req.session.user;
+  // if (user === undefined || online[user.uid] === undefined) {
+  //   req.flash('auth', 'Not logged in!');
+  //   res.redirect('/user/login');
+  // }
+  // else {
+    var authmessage = req.flash('auth') || '';
+    
+    res.render('signUp', { title    : 'Create New User',
+                            subtitle : 'Create New User Below',
+                            message  :  authmessage });
+   
+  // }
+});  
+  
+  
+router.post('/createUser', function(req, res) {
+  var username = req.body.username;
+  var password = req.body.password;
+  var role     = req.body.role || '';
+  
+  // if(username === undefined || password === undefined) {
+  //   req.flash('auth', 'username and password fields must be filled');
+  //   res.redirect('/signUp');
+  // }
+  // else {
+    userlib.adduser(username, password, role, function(error, user) {
+      if (error) {
+        req.flash('auth', error);
+        res.redirect('/user/signUp');
+      }
+      else {
+        if(user !== undefined) {
+          req.flash('auth', 'User Successfully Added! YAY HIGH FIVE ^_^/');
+          res.redirect('/user/signUp');
+        }
+        else {
+          // something done messed up
+          req.flash('auth', 'you did something terrible, go sit in a corner and repent');
+          res.redirect('/user/signUp');
+        }
+      }
+    });
+  // }
+});
+
 // ## main
 // The main user view.
 router.get('/main', function(req, res) {

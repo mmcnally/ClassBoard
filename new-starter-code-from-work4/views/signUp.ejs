@@ -6,15 +6,16 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p><%= subtitle %></p>
 
     <div><%= message %></div><br>
 
-    <form method="post" action="/user/auth">
+    <form method="post" action="/user/createUser">
       User Name: <input type="text" name="username"> <br>
       Password:  <input type="password" name="password"> <br>
+      Role (admin/normal):  <input type="text" name="role"> <br>
       <button>Login</button>
-      <button><a href="/user/signUp">Sign Up por favor</a></button>
     </form>
+    <p><a href="/user/main">Back to Main</a></p>
   </body>
 </html>
