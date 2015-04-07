@@ -207,7 +207,7 @@ exports.signup = function(req, res) {
 	// Add missing user fields
 	user.displayName = user.firstName + ' ' + user.lastName;
 
-	// Then save the user 
+	// Then save the user
 	user.save(function(err) {
 		if (err) {
 			return res.status(400).send({
