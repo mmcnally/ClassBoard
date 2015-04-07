@@ -96,13 +96,15 @@ router.get('/signUp', function(req, res) {
 
 
 router.get('/settings', function(req, res) {
+  var user = req.session.user;
+  
   if (user === undefined || online[user.uid] === undefined) {
     req.flash('auth', 'Not logged in!');
     res.redirect('/user/login');
   }
   else {
-    var user = req.session.user;
     var authmessage = req.flash('auth') || '';
+    
     res.render('settings', { title    : 'Settings',
                              subtitle : 'nobody likes subtitles',
                              message  : authmessage });
