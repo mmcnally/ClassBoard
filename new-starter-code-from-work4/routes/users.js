@@ -95,6 +95,33 @@ router.get('/signUp', function(req, res) {
 });  
 
 
+// called when update button pressed in settings view
+router.post('/updateSettings', function(req, res) {
+  var user = req.session.user;
+  if (user === undefined || online[user.uid] === undefined) {
+    req.flash('auth', 'Not logged in!');
+    res.redirect('/user/login');
+  }
+  console.log('partway through');
+  
+  var username = user.username || 'you done messed up';
+  var newRole = req.body.role || 'get dat role';
+  
+  userlib.changeRole(user, newRole, function(error, newUser) {
+    if(error) {
+      req.flash('auth', error);
+      res.redirect('/user/settings');
+    }
+    else {
+      req.flash('auth', 'role changed super well, be impressed');
+      res.redirect('/user/settings');
+    }
+  });
+  
+});
+
+
+// load settings view
 router.get('/settings', function(req, res) {
   var user = req.session.user;
   
@@ -107,6 +134,7 @@ router.get('/settings', function(req, res) {
     
     res.render('settings', { title    : 'Settings',
                              subtitle : 'nobody likes subtitles',
+                             role     : user.role || 'no role',
                              message  : authmessage });
   }
 });
