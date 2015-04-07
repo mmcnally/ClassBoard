@@ -5,15 +5,15 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
+    <h1><%= SETTANGS: (title) %></h1>
     <p><%= subtitle %></p>
 
     <div><%= message %></div><br>
 
     <form method="post" action="/user/createUser">
-      User Name: <input type="text" name="username"> <br>
-      Password:  <input type="password" name="password"> <br>
-      <button>Create User</button>
+      Setting 1: <input type="text" name="setting1"> <br>
+      Setting 2:  <input type="text" name="setting2"> <br>
+      <button>Update dem settangs</button>
     </form>
     <p><a href="/user/main">Back to Login</a></p>
   </body>
