@@ -12,7 +12,7 @@ An attendance widget will perform the task of taking attendance, allowing the pr
 ##Views
 ---
 
-(Last edited: 3-10-2015)
+(Last edited: 4-8-2015)
 
 ####Login View
 ![Login View](/docs/proposal/logo.png)
