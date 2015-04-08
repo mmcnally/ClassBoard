@@ -35,11 +35,10 @@ exports.changeUserSettings = function(user, newRole, newPassword, newUid, cb) {
           userdb[i].password = newPassword;   // change password
         }
         if(newUid !== '' && newUid !== undefined && !isNaN(parseInt(newUid))) {
-          console.log(parseInt(newUid));
-          userdb[i].uid = parseInt(newUid);
+          userdb[i].uid = parseInt(newUid);   // change uid
         }
         found = true;
-        cb(undefined, u);
+        cb(undefined, userdb[i]);
       }
     }
     
