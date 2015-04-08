@@ -102,21 +102,27 @@ router.post('/updateSettings', function(req, res) {
     req.flash('auth', 'Not logged in!');
     res.redirect('/user/login');
   }
-  console.log('partway through');
-  
-  var username = user.username || 'you done messed up';
-  var newRole = req.body.role || 'get dat role';
-  
-  userlib.changeRole(user, newRole, function(error, newUser) {
-    if(error) {
-      req.flash('auth', error);
-      res.redirect('/user/settings');
-    }
-    else {
-      req.flash('auth', 'role changed super well, be impressed');
-      res.redirect('/user/settings');
-    }
-  });
+  else {
+    var username = user.username || '';
+    var newRole = req.body.role || '';
+    var newPassword = req.body.password || '';
+    var newUid = req.body.uid || '';
+    
+    userlib.changeUserSettings(user, newRole, newPassword, newUid, function(error, newUser) {
+      if(error) {
+        req.flash('auth', error);
+        res.redirect('/user/settings');
+      }
+      else {
+        req.flash('auth', 'role changed super well, be impressed');
+        // update user information
+        delete online[user.uid];
+        online[newUser.uid] = newUser;
+        req.session.user = newUser;
+        res.redirect('/user/settings');
+      }
+    });
+  }
   
 });
 
@@ -132,9 +138,15 @@ router.get('/settings', function(req, res) {
   else {
     var authmessage = req.flash('auth') || '';
     
+    var role = user.role || 'normal'
+    var password = user.password || 'no password';
+    var uid = user.uid || '';
+    
     res.render('settings', { title    : 'Settings',
                              subtitle : 'nobody likes subtitles',
-                             role     : user.role || 'no role',
+                             role     : role,
+                             password : password,
+                             uid      : uid,
                              message  : authmessage });
   }
 });

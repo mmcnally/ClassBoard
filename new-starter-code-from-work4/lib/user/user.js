@@ -16,31 +16,35 @@ var userdb = [
 ];
 
 
-// changes role to inputted role
+// changes settings for given user
 // used in settings view
 // callback signature: cb(error, user)
-exports.changeRole = function(user, newRole, cb) {
+exports.changeUserSettings = function(user, newRole, newPassword, newUid, cb) {
     var len = userdb.length;
     var username = user.username;
-    var changed = false;
+    var found = false;
     for (var i = 0; i < len; i++) {
       var u = userdb[i];
+      
       if (u.username === username) {
-        u.role = newRole;
-        userdb[i] = u;
-        changed = true;
-        cb(undefined, u);
+        // found user
+        if(newRole !== '' && newRole !== undefined) {
+          userdb[i].role = newRole;           // change role
+        }
+        if(newPassword !== '' && newPassword !== undefined) {
+          userdb[i].password = newPassword;   // change password
+        }
+        if(newUid !== '' && newUid !== undefined && !isNaN(parseInt(newUid))) {
+          userdb[i].uid = parseInt(newUid);   // change uid
+        }
+        found = true;
+        cb(undefined, userdb[i]);
       }
     }
     
-    if(changed === false) {
-      cb('no user or error', undefined);
-    }
-    else {
+    if(found === false) {
       cb('hell froze over, invest in space heaters', undefined);
-    }
-    
-      
+    }  
 }
 
 
