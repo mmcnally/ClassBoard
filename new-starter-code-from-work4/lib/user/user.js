@@ -27,20 +27,15 @@ exports.changeRole = function(user, newRole, cb) {
       var u = userdb[i];
       if (u.username === username) {
         u.role = newRole;
-        userdb[i] = u;
+        userdb[i].role = newRole;
         changed = true;
         cb(undefined, u);
       }
     }
     
     if(changed === false) {
-      cb('no user or error', undefined);
-    }
-    else {
       cb('hell froze over, invest in space heaters', undefined);
-    }
-    
-      
+    }  
 }
 
 
