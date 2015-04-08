@@ -66,7 +66,7 @@ Classboard will also apply concepts from psychology in its design to reduce comm
 ##Use Cases
 ---
 
-(Last edited: 3-10-2015)
+(Last edited: 4-8-2015)
 
 Marvin is professor who teaches Introductory Biology at the undergraduate level. Since material is covered very quickly during class, he tries to ask several multiple choice questions to the class after covering each topic. Marvin uses ClassBoard to speed up this process by easily sending a question to each student's computer. He can then see the results, and show them to the class with the click of a button. ClassBoard helps to relieve some stree from Marvin's life, which leads him to win 14 Nobel Prizes in Biology. He praises ClassBoard on a daily basis.
 
@@ -88,7 +88,7 @@ Tanya Pickles is an instructor at University of Narnia. She wants to bring her l
 ##Non-goals 
 ---
 
-(Last edited: 3-10-2015)
+(Last edited: 4-8-2015)
 
 Classboard is intended to be a web-based app for use on laptops. As such, we do not plan on implementing any sort of layout changes or optimization for mobile browsers. Our app will not involve any integration with social media such as facebook logins, as the main prerequisite for making an account is to have a .edu email address. We won't be supporting third party widgets because we don't want to allow the creation of widgets that could be detrimental to learning, such as a Wolfram Alpha widget that would facilitate students getting answers without solving problems themselves. We will not have pages for user profiles, nor any sort of machine learning.
 
@@ -101,9 +101,7 @@ Classboard is intended to be a web-based app for use on laptops. As such, we do 
 6. 3rd party widgets or plugins. This would be a cool feature but is not currently worth implementing.
 7. Classboard will not have profile pages for either classes or users. That is there is no page you can visit that shows a user’s past activity or personal information.
 8. Support/optimization for mobile browsers
-
 9. An offensive chat bot
-
 10. A self destruct button that downloads a virus and deletes every file on your computer
 11. A fully function Civilization V widget
 11. A complete mapping of the human brain
@@ -118,4 +116,4 @@ Classboard is intended to be a web-based app for use on laptops. As such, we do 
 (Last edited: 3-10-2015)
 
 3/10/15 - First version completed.
-
+4/8/15 - Changed use cases into award winning stories, updated and re-organized non-goals, added pictures of views
