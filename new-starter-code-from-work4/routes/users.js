@@ -106,14 +106,18 @@ router.post('/updateSettings', function(req, res) {
     var username = user.username || '';
     var newRole = req.body.role || '';
     var newPassword = req.body.password || '';
+    var newUid = req.body.uid || '';
     
-    userlib.changeUserSettings(user, newRole, newPassword, function(error, newUser) {
+    userlib.changeUserSettings(user, newRole, newPassword, newUid, function(error, newUser) {
       if(error) {
         req.flash('auth', error);
         res.redirect('/user/settings');
       }
       else {
         req.flash('auth', 'role changed super well, be impressed');
+        // update user information
+        delete online[user.uid];
+        online[newUser.uid] = newUser;
         req.session.user = newUser;
         res.redirect('/user/settings');
       }
@@ -136,11 +140,13 @@ router.get('/settings', function(req, res) {
     
     var role = user.role || 'normal'
     var password = user.password || 'no password';
+    var uid = user.uid || '';
     
     res.render('settings', { title    : 'Settings',
                              subtitle : 'nobody likes subtitles',
                              role     : role,
                              password : password,
+                             uid      : uid,
                              message  : authmessage });
   }
 });

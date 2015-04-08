@@ -19,7 +19,7 @@ var userdb = [
 // changes settings for given user
 // used in settings view
 // callback signature: cb(error, user)
-exports.changeUserSettings = function(user, newRole, newPassword, cb) {
+exports.changeUserSettings = function(user, newRole, newPassword, newUid, cb) {
     var len = userdb.length;
     var username = user.username;
     var found = false;
@@ -28,11 +28,15 @@ exports.changeUserSettings = function(user, newRole, newPassword, cb) {
       
       if (u.username === username) {
         // found user
-        if(newRole !== '' && newRole !== undefined){
+        if(newRole !== '' && newRole !== undefined) {
           userdb[i].role = newRole;           // change role
         }
         if(newPassword !== '' && newPassword !== undefined) {
           userdb[i].password = newPassword;   // change password
+        }
+        if(newUid !== '' && newUid !== undefined && !isNaN(parseInt(newUid))) {
+          console.log(parseInt(newUid));
+          userdb[i].uid = parseInt(newUid);
         }
         found = true;
         cb(undefined, u);
