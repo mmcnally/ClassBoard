@@ -103,10 +103,11 @@ router.post('/updateSettings', function(req, res) {
     res.redirect('/user/login');
   }
   else {
-    var username = user.username || 'you done messed up';
-    var newRole = req.body.role || 'get dat role';
+    var username = user.username || '';
+    var newRole = req.body.role || '';
+    var newPassword = req.body.password || '';
     
-    userlib.changeRole(user, newRole, function(error, newUser) {
+    userlib.changeUserSettings(user, newRole, newPassword, function(error, newUser) {
       if(error) {
         req.flash('auth', error);
         res.redirect('/user/settings');
@@ -132,10 +133,14 @@ router.get('/settings', function(req, res) {
   }
   else {
     var authmessage = req.flash('auth') || '';
+    
     var role = user.role || 'normal'
+    var password = user.password || 'no password';
+    
     res.render('settings', { title    : 'Settings',
                              subtitle : 'nobody likes subtitles',
-                             role     : 'role: ' + role,
+                             role     : role,
+                             password : password,
                              message  : authmessage });
   }
 });
