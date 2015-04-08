@@ -25,13 +25,13 @@ New users will simply have to click the Sign Up button to be sent to the Sign Up
 Additionally, there will be a small Forgot Your Password? button under the Password text field and above the Sign Up button.  This will send an email to the email address in the Email text field.  If the Email text field is empty, the user will be notified to enter their Email, and if the email entered is not linked to an account, the user will be notified that there is no account connected to their email.
 
 ####Sign Up View
-![Sign Up View](/docs/proposal/logo.png)
+![Sign Up View](/docs/fspec/views/signup.png)
 This view will be somewhat similar to the Login view.  There will be a centered text field for each of the following: First Name, Last Name, Email, Password, Student ID.  Each of them will be required fields. There will also be a drop down menu for the user to choose their school, which will also be required.
 	
 Underneath these text fields will be a Sign Up button, which will log the user in and send them to the Dashboard view if there are no issues in the sign up fields. If the user forgot to enter any information, they will stay on the Sign Up view and the incorrectly filled text fields will be highlighted in red.  At this point, the user will be able to fix their errors and click the sign up button again in order to be signed in and taken to the Dashboard View.
 
 ####Dashboard View
-![Dashboard View](/docs/proposal/logo.png)
+![Dashboard View](/docs/fspec/views/dashboardview.png)
 The Dashboard will have a header at the top with four important elements within it: our logo, a button to select what class dashboard to display, the currently selected classes information, and an account settings button. Our logo will be placed in the top left corner of the header and will have no function when clicked. Directly to the right of our logo there will be a button that when clicked will display a dropdown menu containing all the classes that the user is currently enrolled in that utilize Class Board, when a class is selected the dashboard will update to show the widgets that that specific class has associated with it. Next to the drop down button there will be a text field describing the class’ information such as its name, the lecture number and the topic of the day’s lecture. Finally, on the top right of the header there will be an account settings button, that when clicked will open a view where users can edit their personal information such as username, password, enrolled classes etc.
 
 Beneath the header will be a dynamic grid of rectangular, interactive widgets. The widgets will automatically reposition themselves based on their current relevance, for example, an attendance widget might only be visible during the first 10 minutes of class time, and when a teacher asks the class a question, a widget allowing students to respond might appear at the top of the dashboard, shifting other widgets down. Additionally, if the user is a teacher or class administrator there will be a widget settings button that allows them to enable or disable widgets for the entire class as well as set widget positions. Each widget will also have a settings button that will allow the user to specify widget specific settings such as when to display the widget and what information it should display etc. 
@@ -39,16 +39,16 @@ Beneath the header will be a dynamic grid of rectangular, interactive widgets. T
 There will be a Plus button in the lower right corner of the app, which, when clicked,  will show a list of widgets that the user can select and add to the dashboard.  This list can be restricted by the teacher using the widget settings button addressed above.
 
 ####Account Settings View
-![Account Settings View](/docs/proposal/logo.png)
+![Account Settings View](/docs/fspec/views/settingsview.png)
 The account settings view will be a box that appears on top of the dashboard when made visible, darkening the dashboard itself so the settings themselves are the most prominent element on the screen. The settings view will allow a user to change their personal information such as name, email address and password. Additionally, the ability to enroll in classes will be provided within this settings menu. If the user is a teacher or class administrator, the settings menu will provide additional functionality allowing them to modify class settings such as the class name, or add and remove students from the class.
 
 At the bottom of the Settings View, there will be a Save button, a Cancel button, and a Reset to Defaults button.  The Save button will save the changes and send the user back to the DashboardView, the Cancel button send the user back to the Dashboard view without saving, and the Reset to Defaults button will change all setting back to their default value and then send the user back to the Dashboard view.
 
 ####Widget Settings View
-![Widget Settings View](/docs/proposal/logo.png)
 The widget settings view will be another box, much line the account settings view, but it will be placed on the bottom of the screen so it does not cover any of the widgets or the spaces widgets can be placed. This placement is necessary because in this view a button with an ‘x’ will be placed on the top right of every widget, when this button is pressed it will remove its associated widget from the dashboard. Within this view, teacher or class administrators can select which widgets are available to the class, and drag and drop the class’s default widgets to their initial positions on the dashboard.
 
 ####Widgets
+![Account Settings View](/docs/fspec/views/widgetview.png)
 The widgets will have functionality that relates specifically to the widget itself, this information can be found by the teacher or class administrator by clicking on the settings button on each widget. This button will by default only be shown to the teacher but if a widget has user preferences such as measurement units or time format the settings button will be visible to every user. Additionally, each widget will have multiple states, one will be its default state in which users interact with the widget and its default functions, second will be the edit state where widgets can be dragged on and off the dashboard. Widgets on the dashboard will have a button to remove them from the dashboard, and widgets within the widget settings box will have a button to allow and disallow them to be added to the dashboard. Lastly, when a widget is being dragged onto the dashboard it will be in another state where it is following the mouse.
 
 
