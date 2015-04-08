@@ -68,20 +68,17 @@ Classboard will also apply concepts from psychology in its design to reduce comm
 
 (Last edited: 3-10-2015)
 
-All of the real functionality of the Classboard is going to be contained in widgets, so each of the following is going to be a separate widget, which may or may not be used.
-
 Marvin is professor who teaches Introductory Biology at the undergraduate level. Since material is covered very quickly during class, he tries to ask several multiple choice questions to the class after covering each topic. Marvin uses ClassBoard to speed up this process by easily sending a question to each student's computer. He can then see the results, and show them to the class with the click of a button. ClassBoard helps to relieve some stree from Marvin's life, which leads him to win 14 Nobel Prizes in Biology. He praises ClassBoard on a daily basis.
 
 
+Bovine Joni enjoys technology, but doesn't like being forced to use unconnected applications. Thoughout his teaching career, he has searched for an applications that has all the features he needs in one place. Fortunately, one of Joni's colleagues emails him a link to ClassBoard. When Joni reads the feature list and see's that it will allow him to ask questions, take attendence, share files, and more in a single application, he is intrigued and tries to use it in his next class. Now that He can avoid a long and boring roll call at the beginning of each class, he is able to use that classtime at the end to answer questions and clear up confusing topics. After using ClassBoard with great success during the next several weeks, Joni excitedly informs his colleagues of the great features that ClassBoard can offer.
 
-1. __Attendance__: Take class attendance
-2. __Quiz__: Teacher can give students a quick timed quiz to be graded or just to gauge how well students are following the lecture. The questions can be given in a variety of formats including multiple choice, true or false, numeric or open response. When the quiz is over users can see a graph showing the spread of answers. 
-3. __File Sharing__: Pass out handouts or assignments electronically.
-4. __Question Box__: Students can ask questions using either their real name or anonymously. Their questions can be upvoted by other students and can be answered by the instructor, a TA, or other students. The questions widget is extremely useful not only as an online class forum, but also as an efficient replacement for the ancient practice of raising your hand to ask a question. Students can ask questions and upvote questions during class, allowing the professor to answer questions that the most students are confused about first. It will also give TA’s an opportunity to participate without interrupting class flow by answering questions through the app during class time.
-5. __I’m Confused Button__: Students can press a button to inform the instructor that they are confused. The instructor can see in real time the number of students who have pressed the confused button in the last minute. This allows the instructor to continuously gauge whether or not the class is following their lecture, and gives them the opportunity to re-explain things when a certain threshold of students are confused. A professor can also pause during the lecture, and ask the students to click the I’m Confused Button if they’re confused.
-6. __Assign Homework__: The teacher can assign homework for students to either submit digitally or physically hand in. Once the student submits the assignment it can be graded and/or passed back to the student with comments.
-7. __Gradebook__: The instructor can also use Classboard as a gradebook. It will allow the instructor to assign weights to different assignments. It can also be configured to automatically grade attendance taken though Classboard or any quizzes or homeworks assigned through Classboard.
-8. __Lecture Slides__: The instructor can choose to put their lecture slides into Classboard so that students can follow along with the lecture. Students will be given the option to add notes to the bottom of each slide.
+
+Eugene Lumberjack likes to share the powerpoint for the class with his students, but doesn't always have time to go through the complicated process of uploading it to his website before each class. His website is clunky and difficult to manage. As a result, Lumberjack tries using ClassBoard, since he heard that it allowed easy file sharing capabilities with students. Now Lumberjack simply drags his powerpoint file into ClassBoard at the beginning of class, and it is sent to each student. 
+
+
+Bronco Bambam is a sophomore at the University of Maryland University College. He is enrolled in an Introductory Psychology course, and he's struggling to keep up with the material. Fortunately, Bambam's professor uses ClassBoard, so Bambam is able to simply click the I'm Confused button when he's struggling to keep us as a new topic is introduced.  This allows Bambam to voice his confusion without the having to feel bad about raising his hand and asking a question. Bronco Bambam finds that he can now keep up with the material, and he earns an A in the class. Using the knowledge that he learning in that class, Bronco Bambam goes on to become the best psychologist in the world, all thanks to ClassBoard.
+
 
 ##Non-goals 
 ---
