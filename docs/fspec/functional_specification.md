@@ -85,23 +85,24 @@ Bronco Bambam is a sophomore at the University of Maryland University College. H
 
 (Last edited: 3-10-2015)
 
-1. Notebook widget
-2. Wolfram Alpha integration
-3. Calculator Widget
-4. Dashboard appearance customization in Settings
-5. Neural network based machine learning
+1. Notebook widget - A simple notebook widget would be a great feature, but it isn't integral to a simple version of ClassBoard. Therefore, we focus on implementing more important widgets, and leave this one for a later date.
+2. Wolfram Alpha integration - A Wolfram Alpha widget would be a fantastic resource for many subjects, such as Math, Chemistry, Biology, and Computer Science. It would allow the user to enter information to be evaluated by Wolfram Alpha, without being forced to leave ClassBoard.  However, this widget would be very complicated to the success of the initial release of ClassBoard, so we will not implement the Wolfram Alpha widget at this time.
+3. Calculator Widget - A calculator widget would be very handy for quick calculations, especially if some students don't have calculators with them at the time. However, this is not an essential feature, so we will not be implementing it at this time.
+4. Dashboard appearance customization in Settings - Adding more customization options would help users feel more at home within ClassBoard, but it more of an accessory feature, so we will not implement it for our first release.
 5. Integration 3rd party platform such as Facebook or Moodle.
 6. 3rd party widgets or plugins. This would be a cool feature but is not currently worth implementing.
 7. Classboard will not have profile pages for either classes or users. That is there is no page you can visit that shows a user’s past activity or personal information.
 8. Support/optimization for mobile browsers
 
 9. An offensive chat bot
+
 10. A self destruct button that downloads a virus and deletes every file on your computer
 11. A fully function Civilization V widget
 11. A complete mapping of the human brain
 12. Global cooling
 13. World peace
 14. Advanced flowchart functionality for graphing life happiness
+15. Neural network based machine learning
 
 ##Revision History
 ---
