@@ -113,7 +113,7 @@ Classboard is intended to be a web-based app for use on laptops. As such, we do 
 ##Revision History
 ---
 
-(Last edited: 3-10-2015)
+(Last edited: 4-8-2015)
 
 3/10/15 - First version completed.
 4/8/15 - Changed use cases into award winning stories, updated and re-organized non-goals, added pictures of views
