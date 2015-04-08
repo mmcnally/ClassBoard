@@ -1,6 +1,5 @@
 #Functional Specification
 
-
 ##Project Overview
 ---
 
@@ -16,6 +15,7 @@ An attendance widget will perform the task of taking attendance, allowing the pr
 (Last edited: 3-10-2015)
 
 ####Login View
+![Login View](/docs/proposal/logo.png)
 The login view will have a text field to enter your Email and a text field to enter your Password in the center of the screen.  Underneath those fields, also centered, will be a Login button, and a Sign Up button. 
 
 If the user has already made an account, they can type in their Email and password, click the Login button, and be sent to the Dashboard View.
