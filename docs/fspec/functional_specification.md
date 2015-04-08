@@ -59,7 +59,7 @@ The widgets will have functionality that relates specifically to the widget itse
 
 (Last edited: 3-10-2015)
 
-Classboard will be useful for general education courses in numerous ways. For example, the introductory biology class uses iClickers excessively, but in a way that adds much more work for the professor.  After each class, the professor has to go back into his powerpoint and update each iclicker question to show the correct answers.  This allows students to study the questions at a later date, but at the expense of the professor’s time.  That problem will be completely eliminated in Classboard.  The professor can open a multiple choice question on classboard, and give it a simple name or number so that students can later match it with the powerpoint.  The professor can even put the questions only in classboard instead of their powerpoint if they find that to be preferable.  After a questions is closed by the professor, the professor can simply mark the correct answer with the click of a button, and that answer will be saved for the students to view at any time.  Additionally, attendance can be taken within seconds, instead of wasting time going through a roll call.
+Classboard will be useful for general education courses in numerous ways. For example, the Introductory Biology class uses iClickers excessively, but in a way that adds much more work for the professor.  After each class, the professor has to go back into his powerpoint and update each iclicker question to show the correct answers.  This allows students to study the questions at a later date, but at the expense of the professor’s time.  That problem will be completely eliminated in Classboard.  The professor can open a multiple choice question on classboard, and give it a simple name or number so that students can later match it with the powerpoint.  The professor can even put the questions only in classboard instead of their powerpoint if they find that to be preferable.  After a questions is closed by the professor, the professor can simply mark the correct answer with the click of a button, and that answer will be saved for the students to view at any time.  Additionally, attendance can be taken within seconds, instead of wasting time going through a roll call.
 
 Classboard will also apply concepts from psychology in its design to reduce common stressors. It provides a compact interface that puts control in the hands of the professor, improving organization by reducing the amount of clutter in the student’s browser, eliminating distractions. The “I’m Confused” button eliminates fear of how others may perceive them as the primary obstacle for confused students seeking help. 
 
@@ -69,6 +69,10 @@ Classboard will also apply concepts from psychology in its design to reduce comm
 (Last edited: 3-10-2015)
 
 All of the real functionality of the Classboard is going to be contained in widgets, so each of the following is going to be a separate widget, which may or may not be used.
+
+Marvin is professor who teaches Introductory Biology at the undergraduate level. Since material is covered very quickly during class, he tries to ask several multiple choice questions to the class after covering each topic. Marvin uses ClassBoard to speed up this process by easily sending a question to each student's computer. He can then see the results, and show them to the class with the click of a button. ClassBoard helps to relieve some stree from Marvin's life, which leads him to win 14 Nobel Prizes in Biology. He praises ClassBoard on a daily basis.
+
+
 
 1. __Attendance__: Take class attendance
 2. __Quiz__: Teacher can give students a quick timed quiz to be graded or just to gauge how well students are following the lecture. The questions can be given in a variety of formats including multiple choice, true or false, numeric or open response. When the quiz is over users can see a graph showing the spread of answers. 
@@ -84,22 +88,23 @@ All of the real functionality of the Classboard is going to be contained in widg
 
 (Last edited: 3-10-2015)
 
-1. Advanced flowchart functionality for graphing life happiness
+1. Notebook widget
 2. Wolfram Alpha integration
 3. Calculator Widget
-4. Notebook widget
+4. Dashboard appearance customization in Settings
 5. Neural network based machine learning
-6. An offensive chat bot
-7. A self destruct button that downloads a virus and deletes every file on your computer
-8. A fully function Civilization V widget
-9. Dashboard appearance customization in Settings
-10. A complete mapping of the human brain
-11. Global cooling
-12. World peace
-13. Integration 3rd party platform such as Facebook or Moodle.
-14. 3rd party widgets or plugins. This would be a cool feature but is not currently worth implementing.
-15. Classboard will not have profile pages for either classes or users. That is there is no page you can visit that shows a user’s past activity or personal information.
-16. Support/optimization for mobile browsers
+5. Integration 3rd party platform such as Facebook or Moodle.
+6. 3rd party widgets or plugins. This would be a cool feature but is not currently worth implementing.
+7. Classboard will not have profile pages for either classes or users. That is there is no page you can visit that shows a user’s past activity or personal information.
+8. Support/optimization for mobile browsers
+
+9. An offensive chat bot
+10. A self destruct button that downloads a virus and deletes every file on your computer
+11. A fully function Civilization V widget
+11. A complete mapping of the human brain
+12. Global cooling
+13. World peace
+14. Advanced flowchart functionality for graphing life happiness
 
 ##Revision History
 ---
