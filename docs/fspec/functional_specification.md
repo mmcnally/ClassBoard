@@ -79,11 +79,19 @@ Eugene Lumberjack likes to share the powerpoint for the class with his students,
 
 Bronco Bambam is a sophomore at the University of Maryland University College. He is enrolled in an Introductory Psychology course, and he's struggling to keep up with the material. Fortunately, Bambam's professor uses ClassBoard, so Bambam is able to simply click the I'm Confused button when he's struggling to keep us as a new topic is introduced.  This allows Bambam to voice his confusion without the having to feel bad about raising his hand and asking a question. Bronco Bambam finds that he can now keep up with the material, and he earns an A in the class. Using the knowledge that he learning in that class, Bronco Bambam goes on to become the best psychologist in the world, all thanks to ClassBoard.
 
+Timmy Jones is a computer science student at University of Massachusetts Amherst. He enjoys playing video games and long walks on the beach, but is not fond of large groups of people, as he is very shy. Normally if Timmy gets confused in a lecture, he will just resign himself to being lost for the rest of the class because he is too embarrassed to raise his hand and admit he’s confused. With Classboard, Timmy can let the teacher know he’s confused anonymously, avoiding any anxiety about what his peers may think.
+
+
+Tanya Pickles is an instructor at University of Narnia. She wants to bring her lectures up to date with modern technology, but she's always worried about getting her identity stolen. As a precaution, she always uses a different password for every website she makes an account on. The problem with this is that there are too many different websites for her to keep track of for functionality such as recording grades, taking attendance, giving quizzes, and other tasks she would like to perform. Because Classboard centralizes these things, she only has to remember a single password: the one for her Classboard account. 
+
 
 ##Non-goals 
 ---
 
 (Last edited: 3-10-2015)
+
+Classboard is intended to be a web-based app for use on laptops. As such, we do not plan on implementing any sort of layout changes or optimization for mobile browsers. Our app will not involve any integration with social media such as facebook logins, as the main prerequisite for making an account is to have a .edu email address. We won't be supporting third party widgets because we don't want to allow the creation of widgets that could be detrimental to learning, such as a Wolfram Alpha widget that would facilitate students getting answers without solving problems themselves. We will not have pages for user profiles, nor any sort of machine learning.
+
 
 1. Notebook widget - A simple notebook widget would be a great feature, but it isn't integral to a simple version of ClassBoard. Therefore, we focus on implementing more important widgets, and leave this one for a later date.
 2. Wolfram Alpha integration - A Wolfram Alpha widget would be a fantastic resource for many subjects, such as Math, Chemistry, Biology, and Computer Science. It would allow the user to enter information to be evaluated by Wolfram Alpha, without being forced to leave ClassBoard.  However, this widget would be very complicated to the success of the initial release of ClassBoard, so we will not implement the Wolfram Alpha widget at this time.
