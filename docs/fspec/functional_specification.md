@@ -1,18 +1,19 @@
+
 #Functional Specification
 
 ##Project Overview
----
+<small>(Last edited: 3-10-2015)</small>
 
-(Last edited: 3-10-2015)
+---
 
 ClassBoard is a configurable dashboard for classroom-related widgets. Our goal is to integrate as many classroom interactions as possible into the browser, allowing for a more streamlined and efficient classroom experience. Classrooms will become paperless when using ClassBoard, as it will keep all class documents stored in one place and organized. Other class activities such as splitting the class into groups or giving a timed quiz will also be performed by Classboard. There will be many widgets performing different functionalities, we will only highlight a few in this overview.
 
 An attendance widget will perform the task of taking attendance, allowing the professor to no longer be concerned about which students will be marked present, as it will be done automatically when each student logs on to their room’s ClassBoard. Handouts will be easier than ever with simple drag and drop file sharing widgets. Students can utilize a widget to post questions to the dashboard that others can view and upvote or comment on. This will allow the professor to focus on answering the questions that the greatest number of students would like answered. 
 
 ##Views
----
+<small>(Last edited: 4-10-2015)</small>
 
-(Last edited: 4-8-2015)
+---
 
 ####Login View
 ![Login View](/docs/fspec/views/loginview.png)
@@ -55,18 +56,20 @@ The widgets will have functionality that relates specifically to the widget itse
 
 
 ##Integrative Experience
+<small>(Last edited: 3-10-2015)</small>
+
 ---
 
-(Last edited: 3-10-2015)
 
 Classboard will be useful for general education courses in numerous ways. For example, the Introductory Biology class uses iClickers excessively, but in a way that adds much more work for the professor.  After each class, the professor has to go back into his powerpoint and update each iclicker question to show the correct answers.  This allows students to study the questions at a later date, but at the expense of the professor’s time.  That problem will be completely eliminated in Classboard.  The professor can open a multiple choice question on classboard, and give it a simple name or number so that students can later match it with the powerpoint.  The professor can even put the questions only in classboard instead of their powerpoint if they find that to be preferable.  After a questions is closed by the professor, the professor can simply mark the correct answer with the click of a button, and that answer will be saved for the students to view at any time.  Additionally, attendance can be taken within seconds, instead of wasting time going through a roll call.
 
 Classboard will also apply concepts from psychology in its design to reduce common stressors. It provides a compact interface that puts control in the hands of the professor, improving organization by reducing the amount of clutter in the student’s browser, eliminating distractions. The “I’m Confused” button eliminates fear of how others may perceive them as the primary obstacle for confused students seeking help. 
 
 ##Use Cases
+<small>(Last edited: 4-10-2015)</small>
+
 ---
 
-(Last edited: 4-8-2015)
 
 Marvin is professor who teaches Introductory Biology at the undergraduate level. Since material is covered very quickly during class, he tries to ask several multiple choice questions to the class after covering each topic. Marvin uses ClassBoard to speed up this process by easily sending a question to each student's computer. He can then see the results, and show them to the class with the click of a button. ClassBoard helps to relieve some stree from Marvin's life, which leads him to win 14 Nobel Prizes in Biology. He praises ClassBoard on a daily basis.
 
@@ -86,9 +89,10 @@ Tanya Pickles is an instructor at University of Narnia. She wants to bring her l
 
 
 ##Non-goals 
+<small>(Last edited: 4-10-2015)</small>
+
 ---
 
-(Last edited: 4-8-2015)
 
 Classboard is intended to be a web-based app for use on laptops. As such, we do not plan on implementing any sort of layout changes or optimization for mobile browsers. Our app will not involve any integration with social media such as facebook logins, as the main prerequisite for making an account is to have a .edu email address. We won't be supporting third party widgets because we don't want to allow the creation of widgets that could be detrimental to learning, such as a Wolfram Alpha widget that would facilitate students getting answers without solving problems themselves. We will not have pages for user profiles, nor any sort of machine learning.
 
@@ -111,9 +115,11 @@ Classboard is intended to be a web-based app for use on laptops. As such, we do 
 15. Neural network based machine learning
 
 ##Revision History
+<small>(Last edited: 4-10-2015)</small>
+
 ---
 
-(Last edited: 4-8-2015)
 
 3/10/15 - First version completed.
 4/8/15 - Changed use cases into award winning stories, updated and re-organized non-goals, added pictures of views
+4/10/15 - Slight markdown format poslishing
