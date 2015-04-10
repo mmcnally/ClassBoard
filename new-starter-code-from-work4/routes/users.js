@@ -88,11 +88,11 @@ router.get('/logout', function(req, res) {
 router.get('/signUp', function(req, res) {
   var user = req.session.user;
   var authmessage = req.flash('auth') || '';
-  
-  res.render('signUp', { title     : 'Create New User',
-                         subtitle  : 'Create New User Below',
+
+  res.render('signUp', { title     : 'Sign Up',
+                         subtitle  : 'Enter your information below',
                          message   :  authmessage });
-});  
+});
 
 
 // called when update button pressed in settings view
@@ -107,7 +107,7 @@ router.post('/updateSettings', function(req, res) {
     var newRole = req.body.role || '';
     var newPassword = req.body.password || '';
     var newUid = req.body.uid || '';
-    
+
     userlib.changeUserSettings(user, newRole, newPassword, newUid, function(error, newUser) {
       if(error) {
         req.flash('auth', error);
@@ -123,25 +123,25 @@ router.post('/updateSettings', function(req, res) {
       }
     });
   }
-  
+
 });
 
 
 // load settings view
 router.get('/settings', function(req, res) {
   var user = req.session.user;
-  
+
   if (user === undefined || online[user.uid] === undefined) {
     req.flash('auth', 'Not logged in!');
     res.redirect('/user/login');
   }
   else {
     var authmessage = req.flash('auth') || '';
-    
+
     var role = user.role || 'normal'
     var password = user.password || 'no password';
     var uid = user.uid || '';
-    
+
     res.render('settings', { title    : 'Settings',
                              subtitle : 'nobody likes subtitles',
                              role     : role,
@@ -150,15 +150,15 @@ router.get('/settings', function(req, res) {
                              message  : authmessage });
   }
 });
-  
-  
+
+
 // called from signUp.ejs when creating class
-// adds user to 
+// adds user to
 router.post('/createUser', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
   var role     = '';
-  
+
   userlib.adduser(username, password, role, function(error, user) {
     if (error) {
       req.flash('auth', error);
