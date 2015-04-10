@@ -14,36 +14,34 @@ Users begin by creating either an account with one of two roles-- Student or Ins
 
 Widgets will be the main component of our application. ClassBoard will have widgets for attendance, quizzes, file sharing, questions, homework, grades, lecture slides, and an “I’m confused” button that students can press when they are feeling lost or confused during a lecture. The modularity of the widgets allows for customization and optimization for each individual class and student. Additionally the widgets provide students and professors every piece of information they need during class on their own screen. The widgets also facilitate a more interactive classroom environment.
 
-<br>
-<strong>Revision History</strong>
 
+> #####Revision History
 1. First version of document was created
 
 
 
 ##External Libraries:
 <small>
-- <b>Last edited</b> 4-10-2015
+-<b>Last edited</b> 4-10-2015
 <br>
-- <b>author(s)</b> Matt, Micheal, Andrew, Carter
+-<b>author(s)</b> Matt, Micheal, Andrew, Carter
 </small>
 
 ---
 
 - <b>Express.js</b> We’re using Express.js because don’t want to spend all of our time working on implementing basic http functionality. Express includes a lot of optimization and has extra functionality for HTTP and other things.
-- <b>[database]</b> Self explanatory; we need a database to be able to store information like registered users, etc. even while the server is not running. 
+- <b>[database]</b> Self explanatory; we need a database to be able to store information like registered users, etc. even while the server is not running.
 - <b>jQuery</b> jQuery facilitates DOM manipulation and event handling and will save us a lot of time.
 - <b>Socket.io</b> Allows for fast event-based communication between client and server through websockets rather than ajax. This is vital for our app as we need to update content without reloading the page for fluid dashboard functionality.
-- <b>Bootstrap</b> Gives a very good baseline css library and allows for easy manipulation and placement of DOM elements
-- <b>AngularJs</b> Allows for simple and very expandable javascript injection into the DOM element for responsive and dynamically created pages.
-- <b>D</b>
-- <b>EJS</b> Used for creating html templates with javascript logic embedded
+-<b>Bootstrap</b> Gives a very good baseline css library and allows for easy manipulation and placement of DOM elements
+-<b>AngularJs</b> Allows for simple and very expandable javascript injection into the DOM element for responsive and dynamically created pages.
+-<b>EJS</b> Used for creating html templates with javascript logic embedded
 
 ##Birds-Eye view
 <small>
-- <b>updated</b> 4-10-2015
+-<b>updated</b> 4-10-2015
 <br>
-- <b>author(s)</b> Matt, Micheal, Andrew, Carter
+-<b>author(s)</b> Matt, Micheal, Andrew, Carter
 </small>
 
 ---
@@ -52,9 +50,9 @@ When a user first loads Classboard they are presented with the login page-- the 
 
 ##Component-By-Component Breakdown
 <small>
-- <b>updated</b> 4-8-2015
+-<b>updated</b> 4-10-2015
 <br>
-- <b>author(s)</b> Matt, Micheal, Andrew
+-<b>author(s)</b> Matt, Micheal, Andrew, Austin, Carter
 <br>
 </small>
 
@@ -62,11 +60,11 @@ When a user first loads Classboard they are presented with the login page-- the 
 
 ###Authentication
 <small>
-- <b>updated</b> 4-8-2015
+-<b>updated</b> 4-8-2015
 <br>
-- <b>author(s)</b> Matt, Micheal, Andrew
+-<b>author(s)</b> Matt, Micheal, Andrew
 <br>
-- <b>developer(s)</b> Matt, Austin
+-<b>developer(s)</b> Matt, Austin
 </small>
 
 
@@ -75,23 +73,23 @@ The authentication module handles creating accounts, authenticating users, stori
 
 ###Dashboard
 <small>
-- <b>updated</b> 4-10-2015
+-<b>updated</b> 4-10-2015
 <br>
-- <b>author(s)</b> Matt, Micheal, Andrew, Carter
+-<b>author(s)</b> Matt, Micheal, Andrew, Carter
 <br>
-- <b>developer(s)</b> Carter, Micheal: <i>UI, drag-and-drop</i>; Andrew, Matt, Austin: <i>backend and database functionaliy</i>
+-<b>developer(s)</b> Carter, Micheal: <i>UI, drag-and-drop</i>; Andrew, Matt, Austin: <i>backend and database functionaliy</i>
 </small>
 
 
-The dashboard is our application’s primary page. The dashboard page is the page that displays each of the widgets for a selected class. The user will have a separate dashboard for each class that they are enrolled in, and if the user is not enrolled in any classes, they will be prompted to enroll before being able to create and customize their dashboard. If the user is already enrolled in a class, they will be brought to the dashboard of whatever class is scheduled next for the student (aka the next class they will attend). Here, users will be able to view and interact with each of the widgets that are available to their class. The user will be able to customize the look of their dashboard by dragging and dropping the widget modules to a desired location on their dashboard screen. We will implement this interactivity with the Sockets.io library. The page will be closely linked with the users database in order to keep track of both the courses the user is enrolled in, and the saved dashboard layout for each class. 
+The dashboard is our application’s primary page. The dashboard page is the page that displays each of the widgets for a selected class. The user will have a separate dashboard for each class that they are enrolled in, and if the user is not enrolled in any classes, they will be prompted to enroll before being able to create and customize their dashboard. If the user is already enrolled in a class, they will be brought to the dashboard of whatever class is scheduled next for the student (aka the next class they will attend). Here, users will be able to view and interact with each of the widgets that are available to their class. The user will be able to customize the look of their dashboard by dragging and dropping the widget modules to a desired location on their dashboard screen. We will implement this interactivity with the Sockets.io library. The page will be closely linked with the users database in order to keep track of both the courses the user is enrolled in, and the saved dashboard layout for each class.
 
 ###Widgets
 <small>
-- <b>updated</b> 4-10-2015
+-<b>updated</b> 4-10-2015
 <br>
-- <b>authors</b> Matt, Micheal, Andrew, Carter
+-<b>author(s)</b> Matt, Micheal, Andrew, Carter
 <br>
-- <b>developer(s)</b> Carter, Micheal: <i>UI, displaying data in database</i>; Andrew, Matt, Austin: <i>storing widget information/preferencecs</i>
+-<b>developer(s)</b> Carter, Micheal: <i>UI, displaying data in database</i>; Andrew, Matt, Austin: <i>storing widget information/preferencecs</i>
 </small>
 
 
@@ -101,27 +99,27 @@ All widgets share some basic functionality. All widgets have a settings page tha
 
 ####Attendance widget
 <small>
-- <b>updated</b> 4-8-2015
+-<b>updated</b> 4-8-2015
 <br>
-- <b>developer(s)</b>: <i></i>
+-<b>developer(s)</b> Carter, Michael
 </small>
 
 The attendance widget will allow students to mark themselves as present and will allow administrators to view the results of the attendance. This will help save time at the beginning of class, and replace the more traditional, and time consuming, roll call strategy for taking attendance.
 
 ####Quiz widget
 <small>
-- <b>updated</b> 4-8-2015
+-<b>updated</b> 4-8-2015
 <br>
-- <b>developer(s)</b> 
+-<b>developer(s)</b> Matt, Andrew
 </small>
 
 The quiz widget will allow professor to quickly ask the class multiple choice questions.  The instructor will be able to close the quiz when everyone is finished, and it will be graded automatically in real time.  The instructor will then be shown a chart displaying the breakdown of student answers, and will be given the option to share the chart with the class.
 
 ####I’m Confused Button widget
 <small>
-- <b>updated</b> 4-10-2015
+-<b>updated</b> 4-10-2015
 <br>
-- <b>developer(s)</b> 
+-<b>developer(s)</b> Austin, Matt
 </small>
 
 The "I’m confused" button widget will simply be a large button available to student users. Students will be able to click the button when they get lost, and need to instructor to slow down or repeat what he or she just covered.  This will help to eliminate the pressure that students feel when they have to raise their hand and ask for the instructor to explain a topic again. The "I’m confused button" will be an anonymous way that students can ask for help without feeling pressured or awkward.
