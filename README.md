@@ -1,5 +1,11 @@
 ![Team Logo](/docs/proposal/logo.png)
 
+#Design Specification
+---
+Here are the files relevant to our design specification:
+* design specification slides (dspec/slides.pdf)
+* design specification document PDF (dspec/dspec.pdf)
+* design specification markdown document (dspec/dspec.md)
 
 
 #Functional Specifications
@@ -13,6 +19,8 @@ Here are the files that we've added on the subject of functional specifications:
 
 ##Note to Grader
 ---
+We've included in our fspec folder a pdf version of our functional specification document with the required fixes.
+
 (OLD)
 We decided to change out idea after the first project, so the app the we will work on is ClassBoard, not out previous TeamUp.
 
