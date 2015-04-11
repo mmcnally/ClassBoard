@@ -3,7 +3,7 @@
 <small>
 -<b>Updated:</b> 4-10-2015
 <br>
--<b>Author(s):</b> Matt, Micheal, Andrew, Carter
+-<b>Author(s):</b> Matt, Michael, Andrew, Carter
 </small>
 
 ---
@@ -24,7 +24,7 @@ Widgets will be the main component of our application. ClassBoard will have widg
 <small>
 -<b>Updated:</b> 4-10-2015
 <br>
--<b>Author(s):</b> Matt, Micheal, Andrew, Carter
+-<b>Author(s):</b> Matt, Michael, Andrew, Carter
 </small>
 
 ---
@@ -43,7 +43,7 @@ Widgets will be the main component of our application. ClassBoard will have widg
 <small>
 -<b>Updated:</b> 4-10-2015
 <br>
--<b>Author(s):</b> Matt, Micheal, Andrew, Carter
+-<b>Author(s):</b> Matt, Michael, Andrew, Carter
 </small>
 
 ---
@@ -54,7 +54,7 @@ When a user first loads Classboard they are presented with the login page-- the 
 <small>
 -<b>Updated:</b> 4-10-2015
 <br>
--<b>Author(s):</b> Matt, Micheal, Andrew, Austin, Carter
+-<b>Author(s):</b> Matt, Michael, Andrew, Austin, Carter
 <br>
 </small>
 
@@ -64,7 +64,7 @@ When a user first loads Classboard they are presented with the login page-- the 
 <small>
 -<b>Updated:</b> 4-8-2015
 <br>
--<b>Author(s):</b> Matt, Micheal, Andrew
+-<b>Author(s):</b> Matt, Michael, Andrew
 <br>
 -<b>Developer(s):</b> Matt, Austin
 </small>
@@ -77,9 +77,9 @@ The authentication module handles creating accounts, authenticating users, stori
 <small>
 -<b>Updated:</b> 4-10-2015
 <br>
--<b>Author(s):</b> Matt, Micheal, Andrew, Carter
+-<b>Author(s):</b> Matt, Michael, Andrew, Carter
 <br>
--<b>Developer(s):</b> Carter, Micheal: <i>UI, drag-and-drop</i>; Andrew, Matt, Austin: <i>backend and database functionaliy</i>
+-<b>Developer(s):</b> Carter, Michael: <i>UI, drag-and-drop</i>; Andrew, Matt, Austin: <i>backend and database functionaliy</i>
 </small>
 
 
@@ -89,9 +89,9 @@ The dashboard is our application’s primary page. The dashboard page is the pag
 <small>
 -<b>Updated:</b> 4-10-2015
 <br>
--<b>Author(s):</b> Matt, Micheal, Andrew, Carter
+-<b>Author(s):</b> Matt, Michael, Andrew, Carter
 <br>
--<b>Developer(s):</b> Carter, Micheal: <i>UI, displaying data in database</i>; Andrew, Matt, Austin: <i>storing widget information/preferencecs</i>
+-<b>Developer(s):</b> Carter, Michael: <i>UI, displaying data in database</i>; Andrew, Matt, Austin: <i>storing widget information/preferencecs</i>
 </small>
 
 
