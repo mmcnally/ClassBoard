@@ -70,11 +70,7 @@ var UserSchema = new Schema({
 		type: String
 	},
 	roles: {
-		type: [{
-			type: String,
-			enum: ['student', 'teacher']
-		}],
-		default: ['student']
+		type: String
 	},
 	updated: {
 		type: Date
