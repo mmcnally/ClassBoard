@@ -51,9 +51,9 @@ var UserSchema = new Schema({
 	uid: {
 		type: String,
 		trim: true,
-		//required: true,
+		required: true,
 		unique: true,
-		//validate: [validateNonempty, 'Please fill in your last name']
+		validate: [validateNonempty, 'Please fill in your last name']
 	},
 	school: {
 		type: String,
