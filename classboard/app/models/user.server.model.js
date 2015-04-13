@@ -45,12 +45,19 @@ var UserSchema = new Schema({
 		type: String,
 		trim: true,
 		required: true,
-		unique:true,
+		unique: true,
 		match: [/.+\@.+\..+/, 'Please fill a valid email address']
+	},
+	uid: {
+		type: String,
+		trim: true,
+		required: true,
+		uid: true,
+		validate: [validateNonempty, 'Please fill in your last name']
 	},
 	password: {
 		type: String,
-		required:true,
+		required: true,
 		validate: [validatePassword, 'Password should be longer']
 	},
 	salt: {
