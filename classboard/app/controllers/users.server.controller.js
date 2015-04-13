@@ -61,6 +61,7 @@ exports.update = function(req, res) {
  */
 exports.me = function(req, res) {
 	res.json(req.user || null);
+	console.log(req.user || null);
 };
 
 
@@ -202,6 +203,7 @@ exports.signup = function(req, res) {
 
 	// Init Variables
 	var user = new User(req.body);
+	console.log(user);
 	var message = null;
 
 	// Add missing user fields
