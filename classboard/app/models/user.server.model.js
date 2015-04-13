@@ -51,15 +51,15 @@ var UserSchema = new Schema({
 	uid: {
 		type: String,
 		trim: true,
-		required: true,
+		//required: true,
 		unique: true,
-		validate: [validateNonempty, 'Please fill in your last name']
+		//validate: [validateNonempty, 'Please fill in your last name']
 	},
 	school: {
 		type: String,
-		required: true,
+		//required: true,
 		trim: true,
-		validate: [validatePassword, 'Password should be longer']
+		//validate: [validatePassword, 'Password should be longer']
 	},
 	password: {
 		type: String,
