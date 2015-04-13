@@ -57,9 +57,9 @@ var UserSchema = new Schema({
 	},
 	school: {
 		type: String,
-		//required: true,
+		required: true,
 		trim: true,
-		//validate: [validatePassword, 'Password should be longer']
+		validate: [validatePassword, 'Password should be longer']
 	},
 	password: {
 		type: String,
