@@ -8,10 +8,15 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 
 		// Home state routing
 		$stateProvider.
-		// state('home', {
-		// 	url: '/',
-		// 	templateUrl: 'modules/core/views/home.client.view.html'
 		state('home', {
+			url: '/',
+			templateUrl: 'modules/core/views/home.client.view.html'
+		}).
+		state('signup', {
+			url: '/signup',
+			templateUrl: 'modules/users/views/authentication/signup.client.view.html'
+		}).
+		state('signin', {
 			url: '/signin',
 			templateUrl: 'modules/users/views/authentication/signin.client.view.html'
 		});

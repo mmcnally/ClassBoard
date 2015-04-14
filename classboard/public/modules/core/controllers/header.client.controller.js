@@ -7,7 +7,7 @@ angular.module('core').controller('HeaderController', ['$scope', '$http', '$loca
 		$scope.logOut = function() {
 			$http.get('/auth/signout').success(function(response){
 				$scope.authentication.user = null;
-				$location.path('/');
+				$location.path('/signin');
 			});
 		};
 
