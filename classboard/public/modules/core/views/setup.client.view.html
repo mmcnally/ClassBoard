@@ -1,5 +1,4 @@
 <section class="row" data-ng-controller="SetupController">
-  <p> heyyyyyy </p>
 	<!-------- Title -------->
 	<!--<h3 class="col-md-12 text-center">Sign In to ClassBoard</h3>-->
 <div style="height:75px;"></div>
@@ -14,25 +13,13 @@
 		<form data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
 			<fieldset>
 				<div class="form-group">
-					<label for="firstName">First Name</label>
-					<input type="text" required name="firstName" class="form-control" data-ng-model="SignUp.firstName" placeholder="First Name">
+					<label for="title">Title</label>
+					<input type="text" required name="title" class="form-control" data-ng-model="SignUp.title" placeholder="Title">
 				</div>
 				<div class="form-group">
-					<label for="lastName">Last Name</label>
-					<input type="text" name="lastName" class="form-control" data-ng-model="SignUp.lastName" placeholder="Last Name">
-				</div>
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input type="email" name="email" class="form-control" data-ng-model="SignUp.email" placeholder="Email">
-				</div>
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" name="password" class="form-control" data-ng-model="SignUp.password" placeholder="Password">
-				</div>
-				<div class="text-center form-group">
-					<button type="submit" class="btn btn-large btn-primary">Sign up</button>
-				</div>
-				
+					<label for="code">Class Code</label>
+					<input type="text" name="code" class="form-control" data-ng-model="SignUp.code" placeholder="Class Code">
+				</div>		
 				<div data-ng-show="SignUp.error" class="text-center text-danger">
 					<strong data-ng-bind="SignUp.error"></strong>
 				</div>
@@ -46,23 +33,18 @@
 			<h3 class="col-md-12 text-center">Create Class</h3>
 		</div>
 		<hr>
-		<form data-ng-submit="signin()" class="signin form-horizontal" autocomplete="off">
+		<form data-ng-submit="signUpClass()" class="signin form-horizontal" autocomplete="off">
 			<fieldset>
 				<div class="form-group">
 					<label for="title">Title</label>
-					<input type="text" name="title" class="form-control" data-ng-model="Create-Class.title" placeholder="Title">
+					<input type="text" name="title" class="form-control" data-ng-model="CreateClass.title" placeholder="Title">
 				</div>
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" name="password" class="form-control" data-ng-model="SignIn.password" placeholder="Password">
-				</div>
-				<div class="text-center form-group">
-					<button type="submit" class="btn btn-primary">Sign in</button>
+					<button type="submit" class="btn btn-primary">Create</button>
 					&nbsp; or&nbsp;
-					<a href="/#/password/forgot">Forgot password?</a>
+					<!--<a href="/#/password/forgot">Forgot password?</a>-->
 				</div>
-				<div data-ng-show="SignIn.error" class="text-center text-danger">
-					<strong data-ng-bind="SignIn.error"></strong>
+				<div data-ng-show="CreateClass.error" class="text-center text-danger">
+					<strong data-ng-bind="CreateClass.error"></strong>
 				</div>
 			</fieldset>
 		</form>
