@@ -9,13 +9,5 @@ angular.module('core').controller('SetupController', ['$scope', 'Authentication'
 		if (!Authentication.user) {
 				$location.path('/signin');
 		}
-    // send user to normal dashboard if they already have classes
-    if (Authentication.user.classes.length === 0) {
-        $location.path('/home');
-    }
-    
-    
-    
-    
 	}
 ]);

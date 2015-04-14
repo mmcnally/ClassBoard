@@ -58,6 +58,7 @@ var UserSchema = new Schema({
 	},
 	classes: {
 		type: [Schema.ObjectId],
+		default: [],
 		ref: 'Class'
 	},
 	salt: {

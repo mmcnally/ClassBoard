@@ -1,0 +1,73 @@
+<section class="row" data-ng-controller="SetupController">
+
+	<!-------- Title -------->
+	<!--<h3 class="col-md-12 text-center">Sign In to ClassBoard</h3>-->
+<div style="height:75px;"></div>
+<div  class="col-xs-12 col-md-12">
+
+	<!-------- SignUp -------->
+	<div class="col-xs-5 col-md-5">
+		<div class="row">
+			<h3 class="col-md-12 text-center">Sign Up for Class</h3>
+		</div>
+		<hr>
+		<form data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
+			<fieldset>
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" required name="firstName" class="form-control" data-ng-model="SignUp.firstName" placeholder="First Name">
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input type="text" name="lastName" class="form-control" data-ng-model="SignUp.lastName" placeholder="Last Name">
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" name="email" class="form-control" data-ng-model="SignUp.email" placeholder="Email">
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" name="password" class="form-control" data-ng-model="SignUp.password" placeholder="Password">
+				</div>
+				<div class="text-center form-group">
+					<button type="submit" class="btn btn-large btn-primary">Sign up</button>
+				</div>
+				
+				<div data-ng-show="SignUp.error" class="text-center text-danger">
+					<strong data-ng-bind="SignUp.error"></strong>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+	<!-------- Create Class -------->
+	<div class="col-xs-offset-2 col-xs-5 col-md-offset-2 col-md-5">
+		<div class="row">
+			<h3 class="col-md-12 text-center">Create Class</h3>
+		</div>
+		<hr>
+		<form data-ng-submit="signin()" class="signin form-horizontal" autocomplete="off">
+			<fieldset>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="text" name="email" class="form-control" data-ng-model="SignIn.email" placeholder="Email">
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" name="password" class="form-control" data-ng-model="SignIn.password" placeholder="Password">
+				</div>
+				<div class="text-center form-group">
+					<button type="submit" class="btn btn-primary">Sign in</button>
+					&nbsp; or&nbsp;
+					<a href="/#/password/forgot">Forgot password?</a>
+				</div>
+				<div data-ng-show="SignIn.error" class="text-center text-danger">
+					<strong data-ng-bind="SignIn.error"></strong>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+</div>
+
+</section>

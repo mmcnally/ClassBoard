@@ -6,7 +6,10 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.authentication = Authentication;
 		
 		if (!Authentication.user) {
-				$location.path('/signin');
+			$location.path('/signin');
+		}
+		else if (Authentication.user.classes.length == 0) {
+			$location.path('/setup');
 		}
 	}
 ]);
