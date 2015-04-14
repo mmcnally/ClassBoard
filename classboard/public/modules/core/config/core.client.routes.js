@@ -22,7 +22,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		}).
 		state('setup', {
 			url: '/setup',
-			tempateUrl: 'modules/core/views/setup.client.view.html'
+			templateUrl: 'modules/core/views/setup.client.view.html'
 		});
 	}
 ]);
