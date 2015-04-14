@@ -9,10 +9,6 @@ var _ = require('lodash'),
 	passport = require('passport'),
 	User = mongoose.model('User');
 
-var _ = require('lodash'),
-	mongoose = require('mongoose'),
-	User = mongoose.model('User');
-
 /*********************************************************************************
  *	Profile Stuff
  *********************************************************************************/
@@ -32,7 +28,7 @@ exports.update = function(req, res) {
 		// Merge existing user
 		user = _.extend(user, req.body);
 		user.updated = Date.now();
-		user.displayName = user.firstName + ' ' + user.lastName;
+		// user.displayName = user.firstName + ' ' + user.lastName;
 
 		user.save(function(err) {
 			if (err) {
@@ -69,8 +65,6 @@ exports.me = function(req, res) {
  * Password Stuff
  ******************************************************************************************/
 
-
-User = mongoose.model('User');
 
 /**
  * Change Password
@@ -185,6 +179,11 @@ exports.hasAuthorization = function(roles) {
 		});
 	};
 };
+
+
+
+
+
 
 
 /******************************************************************************************
