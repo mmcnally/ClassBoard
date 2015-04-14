@@ -40,6 +40,11 @@ var ClassRoomSchema = new Schema({
     required: true,
     validate: [validateNonempty, 'Please fill in students']
   },
+	code: {
+		type: Number,
+		required: true,
+		validate: [validateNonempty, 'retreat immediately, hell froze over']
+	}
   capacity: {
     type: Number
   },
