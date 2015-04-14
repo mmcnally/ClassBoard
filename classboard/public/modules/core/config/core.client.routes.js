@@ -20,5 +20,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			url: '/signin',
 			templateUrl: 'modules/users/views/authentication/signin.client.view.html'
 		});
+		state('setup', {
+			url: '/setup',
+			tempateUrl: 'modules/core/views/setup.client.view.html'
+		}
 	}
 ]);
