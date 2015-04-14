@@ -21,7 +21,7 @@ exports.signUpClass = function(req, res) {
 	//delete req.body.roles;
 
 	// Init Variables
-  console.log('hi there');
+  //console.log('hi there');
   var randCode = Math.floor(Math.random() * 100000);
 	req.body.code = randCode || 12;
 	
@@ -43,13 +43,13 @@ exports.signUpClass = function(req, res) {
 			// course.password = undefined;
 			// course.salt = undefined;
 
-			req.login(course, function(err) {
-				if (err) {
-					res.status(400).send(err);
-				} else {
-					res.json(course);
-				}
-			});
+			// req.login(course, function(err) {
+			// 	if (err) {
+			// 		res.status(400).send(err);
+			// 	} else {
+			// 		res.json(course);
+			// 	}
+			// });
 		}
 	});
 };
