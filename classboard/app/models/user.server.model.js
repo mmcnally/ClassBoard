@@ -46,30 +46,18 @@ var UserSchema = new Schema({
 		trim: true,
 		required: true,
 		unique: true,
-		match: [/.+\@.+\..+/, 'Please fill a valid email address']
-	},
-	uid: {
-		type: String,
-		trim: true,
-		required: true,
-		unique: true,
-		validate: [validateNonempty, 'Please fill in your last name']
-	},
-	school: {
-		type: String,
-		required: true,
-		trim: true,
-		validate: [validatePassword, 'Password should be longer']
+		match: [/.+\@.+\.edu.+/, 'Please fill a valid email address']
 	},
 	password: {
 		type: String,
 		required: true,
 		validate: [validatePassword, 'Password should be longer']
 	},
+	classes: {
+		type: [Schema.ObjectId],
+		ref: 'Class'
+	}
 	salt: {
-		type: String
-	},
-	roles: {
 		type: String
 	},
 	updated: {
