@@ -37,8 +37,6 @@ var CourseSchema = new Schema({
   students: {
     type: [Schema.ObjectId],
     ref: 'User',
-    required: true,
-    validate: [validateNonempty, 'Please fill in students']
   },
 	code: {
 		type: Number,
