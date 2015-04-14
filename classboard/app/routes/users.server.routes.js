@@ -8,6 +8,7 @@ var passport = require('passport');
 module.exports = function(app) {
 	// User Routes
 	var users = require('../../app/controllers/users.server.controller');
+	var course = require('../../app/controllers/course.server.controller');
 
 	// Setting up the users profile api
 	app.route('/users/me').get(users.me);
@@ -21,6 +22,9 @@ module.exports = function(app) {
 	app.route('/auth/signup').post(users.signup);
 	app.route('/auth/signin').post(users.signin);
 	app.route('/auth/signout').get(users.signout);
+	
+	// NEW CLASS ROUTING
+	app.route('/course/signUpClass').post(course.signUpClass);
 
 	// Finish by binding the user middleware
 	app.param('userId', users.userByID);

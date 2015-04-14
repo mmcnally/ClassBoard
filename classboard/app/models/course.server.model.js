@@ -21,7 +21,7 @@ var validateNonempty = function(property) {
 /**
  * ClassRoom Schema
  */
-var ClassRoomSchema = new Schema({
+var CourseSchema = new Schema({
   title: {
     type: String,
     trim: true,
@@ -58,4 +58,4 @@ var ClassRoomSchema = new Schema({
   },
 });
 
-mongoose.model('Class', ClassRoomSchema);
+mongoose.model('Course', CourseSchema);
