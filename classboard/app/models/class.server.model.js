@@ -44,7 +44,7 @@ var ClassRoomSchema = new Schema({
 		type: Number,
 		required: true,
 		validate: [validateNonempty, 'retreat immediately, hell froze over']
-	}
+	},
   capacity: {
     type: Number
   },
