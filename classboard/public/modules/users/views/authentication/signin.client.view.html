@@ -1,4 +1,4 @@
-<section class="row" data-ng-controller="AuthenticationController"rs>
+<section class="row" data-ng-controller="AuthenticationController">
 
 	<!-------- Title -------->
 	<!--<h3 class="col-md-12 text-center">Sign In to ClassBoard</h3>-->
@@ -11,40 +11,28 @@
 			<h3 class="col-md-12 text-center">Sign Up for ClassBoard</h3>
 		</div>
 		<hr>
-		<form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
+		<form data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
 			<fieldset>
 				<div class="form-group">
 					<label for="firstName">First Name</label>
-					<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="First Name">
+					<input type="text" required name="firstName" class="form-control" data-ng-model="SignUp.firstName" placeholder="First Name">
 				</div>
 				<div class="form-group">
 					<label for="lastName">Last Name</label>
-					<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Last Name">
+					<input type="text" name="lastName" class="form-control" data-ng-model="SignUp.lastName" placeholder="Last Name">
 				</div>
 				<div class="form-group">
 					<label for="email">Email</label>
-					<input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="Email">
+					<input type="email" name="email" class="form-control" data-ng-model="SignUp.email" placeholder="Email">
 				</div>
-
-				<div class="form-group">
-					<label for="uid">UID</label>
-					<input type="text" id="uid" name="uid" class="form-control" data-ng-model="credentials.uid" placeholder="cry in a corner">
-				</div>
-
-				<div class="form-group">
-					<label for="school">School</label>
-					<input type="text" id="school" name="school" class="form-control" data-ng-model="credentials.school" placeholder="elementary school doesn't count">
-				</div>
-
 				<div class="form-group">
 					<label for="password">Password</label>
-					<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
+					<input type="password" name="password" class="form-control" data-ng-model="SignUp.password" placeholder="Password">
 				</div>
 				<div class="text-center form-group">
 					<button type="submit" class="btn btn-large btn-primary">Sign up</button>
-					<!--&nbsp; or&nbsp;
-					<a href="/#/signin" class="show-signup">Sign in</a>-->
 				</div>
+				
 				<div data-ng-show="error" class="text-center text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>
@@ -62,22 +50,17 @@
 			<fieldset>
 				<div class="form-group">
 					<label for="email">Email</label>
-					<input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="Email">
+					<input type="text" name="email" class="form-control" data-ng-model="SignIn.email" placeholder="Email">
 				</div>
 				<div class="form-group">
 					<label for="password">Password</label>
-					<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
+					<input type="password" name="password" class="form-control" data-ng-model="SignIn.password" placeholder="Password">
 				</div>
 				<div class="text-center form-group">
 					<button type="submit" class="btn btn-primary">Sign in</button>
 					&nbsp; or&nbsp;
 					<a href="/#/password/forgot">Forgot password?</a>
-					<!--&nbsp; or&nbsp;
-					<a href="/#/signup">Sign up</a>-->
 				</div>
-				<!--<div class="forgot-password">
-					<a href="/#/password/forgot">Forgot your password?</a>
-				</div>-->
 				<div data-ng-show="error" class="text-center text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>
