@@ -8,7 +8,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		if (!Authentication.user) {
 			$location.path('/signin');
 		}
-		else if (Authentication.user.classes.length == 0) {
+		else if (Authentication.user.classes && Authentication.user.classes.length === 0) {
 			$location.path('/setup');
 		}
 	}
