@@ -8,6 +8,12 @@ var mongoose = require('mongoose'),
 	
 
 
+  /**
+   * A Validation function for local strategy properties
+   */
+  var validateNonempty = function(property) {
+  	return (property.length);
+  };
 
 /**
  * ClassRoom Schema
@@ -19,7 +25,7 @@ var ClassRoomSchema = new Schema({
     required: true,
     validate: [validateNonempty, 'Please fill in the class name']
   },
-  teachers: {
+  admins: {
     type: [Schema.ObjectId],
     ref: 'User',
     required: true,
@@ -31,8 +37,12 @@ var ClassRoomSchema = new Schema({
     required: true,
     validate: [validateNonempty, 'Please fill in students']
   },
-  updated: {
-    type: Date
+  capacity: {
+    type: Number
+  },
+  widgets: {
+    type: [String],
+    default: ['Attendance', 'Quiz', 'Confused']
   },
   created: {
     type: Date,
