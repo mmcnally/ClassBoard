@@ -8,12 +8,15 @@ var mongoose = require('mongoose'),
 	
 
 
-  /**
-   * A Validation function for local strategy properties
-   */
-  var validateNonempty = function(property) {
-  	return (property.length);
-  };
+/**
+ * A Validation function for local strategy properties
+ */
+var validateNonempty = function(property) {
+	if(property) {
+		return (property.length);
+	}
+	return false;	
+};
 
 /**
  * ClassRoom Schema

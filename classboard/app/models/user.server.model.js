@@ -11,14 +11,17 @@ var mongoose = require('mongoose'),
  * A Validation function for local strategy properties
  */
 var validateNonempty = function(property) {
-	return (property.length);
+	if(property) {
+		return (property.length);
+	}
+	return false;	
 };
 
 /**
  * A Validation function for local strategy password
  */
 var validatePassword = function(password) {
-	return (this.provider !== 'local' || (password && password.length > 6));
+	return ((password && password.length > 6));
 };
 
 /**
@@ -28,13 +31,13 @@ var UserSchema = new Schema({
 	firstName: {
 		type: String,
 		trim: true,
-		required: true,
+		required: [true, 'Please enter First Name, preferably yours'],
 		validate: [validateNonempty, 'Please fill in your first name']
 	},
 	lastName: {
 		type: String,
 		trim: true,
-		required: true,
+		required: [true, 'Please enter Last Name, preferably yours'],
 		validate: [validateNonempty, 'Please fill in your last name']
 	},
 	displayName: {
@@ -44,13 +47,13 @@ var UserSchema = new Schema({
 	email: {
 		type: String,
 		trim: true,
-		required: true,
+		required: [true, 'Please enter an email'],
 		unique: true,
-		match: [/.+\@.+\.edu.+/, 'Please fill a valid email address']
+		match: [/.+\@.*.edu/, 'Please fill a valid .edu email']
 	},
 	password: {
 		type: String,
-		required: true,
+		required: [true, 'Please enter a Password'],
 		validate: [validatePassword, 'Password should be longer']
 	},
 	classes: {
