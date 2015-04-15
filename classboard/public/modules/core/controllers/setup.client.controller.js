@@ -12,14 +12,14 @@ angular.module('core').controller('SetupController', ['$scope', '$http', 'Authen
 		
 		
 		$scope.SignUp = {};
-		$scope.CreateClass = {admins: [Authentication.user._id], students: []};
+		$scope.CreateClass = {admins: [Authentication.user._id], students: [], user: Authentication.user};
 	
 	
 		$scope.signUpClass = function() {
 			$http.post('/course/signUpClass', $scope.CreateClass).success(function(response) {
 				// If successful we assign the response to the global user model
 				$scope.authentication.user = response;
-
+				
 				// And redirect to the index page
 				$location.path('/');
 			}).error(function(response) {
