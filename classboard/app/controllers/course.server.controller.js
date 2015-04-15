@@ -12,7 +12,38 @@ var _ = require('lodash'),
 	User = mongoose.model('User');
 
 
+	exports.courseByID = function(req, res, next, id) {
+		Course.findById(id).exec(function(err, course) {
+			if (err) return next(err);
+			if (!course) return next(new Error('Failed to load Course ' + id));
+			req.profile = course;
+			next();
+		});
+	};
 
+	exports.courseNameByID = function(req, res) {
+		User.findById(req.body.user._id, function(err, user){
+			if(!err && user) {
+				Course.findById(req.body.user.classes[0], function(err, course){
+					if(!err && course){
+						console.log('current course: ' + course.title);
+						res.send({
+							message: 'course'
+						});
+					}
+					else {
+							res.status(400).send({
+								message: 'Course is not found'
+							});
+					}
+				});
+			} else {
+				res.status(400).send({
+					message: 'User is not found'
+				});
+			}
+		});
+	};
 /******************************************************************************************
  * Class Stuff
  ******************************************************************************************/
@@ -23,18 +54,18 @@ exports.signUpClass = function(req, res) {
 	// Init Variables
   var randCode = Math.floor(Math.random() * 100000);
 	req.body.code = randCode || 12;
-	
-	
+
+
 	User.findById(req.body.user._id, function(err, user) {
 		if (!err && user) {
-					
+
 					// delete user, since we have the real one now
 					delete req.body.user;
-					
+
 					var course = new Course(req.body);
 					console.log(course);
 					var message = null;
-					
+
 					// add class to user
 					if(user.classes && user.classes.length > 0) {
 						// user already has some classes
@@ -43,8 +74,8 @@ exports.signUpClass = function(req, res) {
 					else {
 						user.classes = [course._id];
 					}
-					
-					
+
+
 					// Then save the course
 					course.save(function(err) {
 						if (err) {
@@ -53,8 +84,8 @@ exports.signUpClass = function(req, res) {
 							});
 						}
 					});
-					
-				
+
+
 					User.update({_id: user._id}, {
     				classes: user.classes
 					}, function(err, numberAffected, rawResponse) {
@@ -62,16 +93,16 @@ exports.signUpClass = function(req, res) {
 								console.log(err);
 						}
 					});
-					
-					
+
+
 					res.json(user);
-					
+
 					// res.status(400).send({
 					// 	message: 'New Class Yayy Happiness'
 					// });
-					
+
 					//req.user = user;
-					
+
 					// user = _.extend(user, req.body);
 					// user.save(function(err) {
 					// 	if (err) {
@@ -80,9 +111,9 @@ exports.signUpClass = function(req, res) {
 					// 		});
 					// 	}
 					// });
-					// 
-					
-					
+					//
+
+
 					// user.save(function(err) {
 					// 	if (err) {
 					// 		return res.status(400).send({
@@ -106,10 +137,5 @@ exports.signUpClass = function(req, res) {
 			});
 		}
 	});
-	
+
 };
-	
-	
-	
-	
-	

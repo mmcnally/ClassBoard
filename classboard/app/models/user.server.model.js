@@ -14,7 +14,7 @@ var validateNonempty = function(property) {
 	if(property) {
 		return (property.length);
 	}
-	return false;	
+	return false;
 };
 
 /**
@@ -59,7 +59,7 @@ var UserSchema = new Schema({
 	classes: {
 		type: [Schema.ObjectId],
 		default: [],
-		ref: 'Class'
+		ref: 'Course'
 	},
 	salt: {
 		type: String
