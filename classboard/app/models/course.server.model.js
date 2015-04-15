@@ -5,7 +5,7 @@
  */
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
-	
+
 
 
 /**
@@ -15,7 +15,7 @@ var validateNonempty = function(property) {
 	if(property) {
 		return (property.length);
 	}
-	return false;	
+	return false;
 };
 
 /**

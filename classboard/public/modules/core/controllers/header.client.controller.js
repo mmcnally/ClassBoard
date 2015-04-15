@@ -3,7 +3,7 @@
 angular.module('core').controller('HeaderController', ['$scope', '$http', '$location', 'Authentication',
 	function($scope, $http, $location, Authentication) {
 		$scope.authentication = Authentication;
-		
+
 		$scope.logOut = function() {
 			$http.get('/auth/signout').success(function(response){
 				$scope.authentication.user = null;
@@ -11,5 +11,8 @@ angular.module('core').controller('HeaderController', ['$scope', '$http', '$loca
 			});
 		};
 
+		$scope.isActive = function(viewLocation) {
+    	return viewLocation === $location.path();
+		};
 	}
 ]);
