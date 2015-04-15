@@ -28,6 +28,8 @@ module.exports.dependencies = { //order matters for these files.
 		]
 };
 
+module.exports.appName = 'ClassBoard';
+
 module.exports.mailer = {
 		from: process.env.MAILER_FROM || 'classboard.services.forgotpass@gmail.com',
 		options: {

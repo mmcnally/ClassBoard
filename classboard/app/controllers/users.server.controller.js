@@ -110,7 +110,7 @@ exports.forgot = function(req, res, next) {
 		function(token, user, done) {
 			res.render('reset-password-email', {
 				name: user.displayName,
-				appName: 'ClassBoard',
+				appName: config.appName,
 				url: 'http://' + req.headers.host + '/auth/reset/' + token
 			}, function(err, emailHTML) {
 				done(err, emailHTML, user);
@@ -154,8 +154,6 @@ exports.validateResetToken = function(req, res) {
 		}
 	}, function(err, user) {
 		if (!user) {
-			console.log(err);
-			console.log(user);
 			return res.redirect('/#/password/reset/invalid');
 		}
 
@@ -218,7 +216,7 @@ exports.reset = function(req, res, next) {
 		function(user, done) {
 			res.render('reset-password-confirm-email', {
 				name: user.displayName,
-				appName: config.app.title
+				appName: config.appName
 			}, function(err, emailHTML) {
 				done(err, emailHTML, user);
 			});
