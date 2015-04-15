@@ -23,6 +23,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		state('setup', {
 			url: '/setup',
 			templateUrl: 'modules/core/views/setup.client.view.html'
+		}).
+		state('forgotpass', {
+			url: '/password/forgot',
+			templateUrl: 'modules/users/views/password/forgot-password.client.view.html'
 		});
 	}
 ]);
