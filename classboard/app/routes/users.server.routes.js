@@ -22,10 +22,12 @@ module.exports = function(app) {
 	app.route('/auth/signup').post(users.signup);
 	app.route('/auth/signin').post(users.signin);
 	app.route('/auth/signout').get(users.signout);
-	
+
 	// NEW CLASS ROUTING
 	app.route('/course/signUpClass').post(course.signUpClass);
-
+	app.route('/course/courseNameByID').post(course.courseNameByID);
 	// Finish by binding the user middleware
 	app.param('userId', users.userByID);
+	// and course middleware
+	app.param('courseId', course.courseByID);
 };

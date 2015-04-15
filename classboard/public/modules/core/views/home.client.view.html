@@ -2,5 +2,10 @@
 	<div class="jumbotron text-center">
 		<h1>HEYYY</h1>
 		<h1 ng-if="authentication.user">{{authentication.user.displayName}}</h1>
+		<form data-ng-submit="courseNameByID()" class="form-horizontal">
+			<fieldset>
+				<button type="submit" class="btn btn-primary">test</button>
+			</fieldset>
+		</form>
 	</div>
 </section>
