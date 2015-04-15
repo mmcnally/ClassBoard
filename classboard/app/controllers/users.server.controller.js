@@ -234,6 +234,7 @@ exports.signin = function(req, res, next) {
 		if (err || !user) {
 			res.status(400).send(info);
 		} else {
+			console.log(user);
 			// Remove sensitive data before login
 			user.password = undefined;
 			user.salt = undefined;

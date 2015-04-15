@@ -31,14 +31,14 @@ exports.signUpClass = function(req, res) {
 					// delete user, since we have the real one now
 					delete req.body.user;
 					
-					var course = new Course(req.body)
+					var course = new Course(req.body);
 					console.log(course);
 					var message = null;
 					
 					// add class to user
 					if(user.classes && user.classes.length > 0) {
 						// user already has some classes
-						user.classes = req.body.user.classes.push(course._id);
+						user.classes = user.classes.push(course._id);
 					}
 					else {
 						user.classes = [course._id];
@@ -54,24 +54,52 @@ exports.signUpClass = function(req, res) {
 						}
 					});
 					
-					
-					user.save(function(err) {
-						if (err) {
-							return res.status(400).send({
-								message: errorHandler.getErrorMessage(err)
-							});
-						} else {
-							req.login(user, function(err) {
-								if (err) {
-									res.status(400).send(err);
-								} else {
-									res.send({
-										message: 'Password changed successfully'
-									});
-								}
-							});
+				
+					User.update({_id: user._id}, {
+    				classes: user.classes
+					}, function(err, numberAffected, rawResponse) {
+   					if(err) {
+								console.log(err);
 						}
 					});
+					
+					
+					res.json(user);
+					
+					// res.status(400).send({
+					// 	message: 'New Class Yayy Happiness'
+					// });
+					
+					//req.user = user;
+					
+					// user = _.extend(user, req.body);
+					// user.save(function(err) {
+					// 	if (err) {
+					// 		return res.status(400).send({
+					// 			message: errorHandler.getErrorMessage(err)
+					// 		});
+					// 	}
+					// });
+					// 
+					
+					
+					// user.save(function(err) {
+					// 	if (err) {
+					// 		return res.status(400).send({
+					// 			message: errorHandler.getErrorMessage(err)
+					// 		});
+					// 	} else {
+					// 		req.login(user, function(err) {
+					// 			if (err) {
+					// 				res.status(400).send(err);
+					// 			} else {
+					// 				res.send({
+					// 					message: 'Password changed successfully'
+					// 				});
+					// 			}
+					// 		});
+					// 	}
+					// });
 		} else {
 			res.status(400).send({
 				message: 'User is not found'
