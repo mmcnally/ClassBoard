@@ -22,17 +22,24 @@ var _ = require('lodash'),
 	};
 
 	exports.courseNameByID = function(req, res) {
-		User.findById(req.body.user._id, function(err){
-			if(!err) {
-				console.log('user: ' + User.findById(req.body.user._id));
-				var course = Course.findById(req.body.user.classes);
-				console.log('current course: ' + course);
-				res.send({
-					message: 'course'
+		User.findById(req.body.user._id, function(err, user){
+			if(!err && user) {
+				Course.findById(req.body.user.classes[0], function(err, course){
+					if(!err && course){
+						console.log('current course: ' + course.title);
+						res.send({
+							message: 'course'
+						});
+					}
+					else {
+							res.status(400).send({
+								message: 'Course is not found'
+							});
+					}
 				});
 			} else {
 				res.status(400).send({
-					message: 'Course is not found'
+					message: 'User is not found'
 				});
 			}
 		});

@@ -14,7 +14,7 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 		}
 		$scope.courseNameByID = function() {
 			$http.post('/course/courseNameByID', $scope.UserInfo).success(function(response) {
-				console.log('we did it!');
+				console.log($scope.UserInfo);
 			}).error(function(response) {
 				console.log('we didnt do it :(');
 				$scope.SignUp.error = response.message;
