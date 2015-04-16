@@ -31,7 +31,7 @@ var _ = require('lodash'),
  * 2. Adds current user as admin of new course
  * 3. Adds course to current user's list of courses
  */
-exports.signUpClass = function(req, res) {
+exports.createClass = function(req, res) {
 
 	// Init Variables
   var randCode = Math.floor(Math.random() * 100000);

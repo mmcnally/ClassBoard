@@ -26,7 +26,7 @@ module.exports = function(app) {
 	app.route('/auth/signout').get(users.signout);
 
 	// NEW CLASS ROUTING
-	app.route('/course/signUpClass').post(course.signUpClass);
+	app.route('/course/createClass').post(course.createClass);
 	/*****app.route('/course/courseNameByID').post(course.courseNameByID);*****/
 	app.route('/course/courseByID').post(course.courseByID);
 	// Finish by binding the user middleware

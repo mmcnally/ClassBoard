@@ -11,20 +11,24 @@ angular.module('core').controller('SetupController', ['$scope', '$http', 'Authen
 		}
 		
 		
-		$scope.SignUp = {};
+		$scope.Enroll = {};
 		$scope.CreateClass = {admins: [Authentication.user._id], students: [], user: Authentication.user};
 	
 	
-		$scope.signUpClass = function() {
-			$http.post('/course/signUpClass', $scope.CreateClass).success(function(response) {
+		// creates a class, adds user as admin, and adds class to user's list of classes
+		$scope.createClass = function() {
+			$http.post('/course/createClass', $scope.CreateClass).success(function(response) {
 				// If successful we assign the response to the global user model
 				$scope.authentication.user = response;
 				
 				// And redirect to the index page
 				$location.path('/');
 			}).error(function(response) {
-				$scope.SignUp.error = response.message;
+				$scope.CreateClass.error = response.message;
 			});
 		};
+		
+		
+		
 	}
 ]);
