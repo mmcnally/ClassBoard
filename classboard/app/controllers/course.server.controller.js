@@ -35,13 +35,11 @@ exports.createClass = function(req, res) {
 
 	// add class to user
 	if(user.classes && user.classes.length > 0) {
-		// user already has some classes
 		user.classes = user.classes.push(course._id);
 	}
 	else {
 		user.classes = [course._id];
 	}
-
 
 	// save the course
 	course.save(function(err) {
@@ -78,7 +76,6 @@ exports.enroll = function(req, res) {
 	if(!req.body.title || !req.body.code) {
 		res.status(400).send({
 			message: 'All fields are required'
-			//message: errorHandler.getErrorMessage(err)
 		});
 	}
 	else {
@@ -87,7 +84,6 @@ exports.enroll = function(req, res) {
 				
 				// add class to user's list of classes
 				if(user.classes && req.user.classes.length > 0) {
-					// user already has some classes
 					user.classes = user.classes.push(course._id);
 				}
 				else {
@@ -107,7 +103,6 @@ exports.enroll = function(req, res) {
 				
 				// add student to class's list of classes
 				if(course.students && course.students.length > 0) {
-					// course already has students
 					course.students = course.students.push(user._id);
 				}
 				else {
@@ -129,7 +124,6 @@ exports.enroll = function(req, res) {
 			else {
 				return res.status(400).send({
 					message: 'Course not Found'
-					//message: errorHandler.getErrorMessage(err)
 				});
 			}
 		});
@@ -143,7 +137,6 @@ exports.enroll = function(req, res) {
 
 
 //Find courses by their ID
-
 exports.courseByID = function(req, res) {
 	Course.populate(req.user, 'classes', function (err, user) {
 		if(!err && user){
