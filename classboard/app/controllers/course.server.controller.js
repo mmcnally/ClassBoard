@@ -155,4 +155,4 @@ exports.courseByID = function(req, res) {
 				});
 			}
 	});
-}
+};
