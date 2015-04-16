@@ -25,12 +25,23 @@ var _ = require('lodash'),
 	exports.courseNameByID = function(req, res) {
 
 		User.findById(req.body.user._id, function(err, user){
-			console.log('The user is: ' + user);
-			Course.populate(user, {path: 'classes', model: 'Course'}, function (err, user) {
-				for(var i=0; i<user.classes.length; i++){
-					console.log(user.classes[i].title);
+			if(!err && user){
+				Course.populate(user, {path: 'classes', model: 'Course'}, function (err, user) {
+					if(!err && user){
+						for(var i=0; i<user.classes.length; i++){
+							console.log(user.classes[i].title);
+						}
+					} else {
+						res.status(400).send({
+							message: 'User is not found'
+						});
+						}
+				});
+			} else {
+				res.status(400).send({
+					message: 'User is not found'
+				});
 				}
-			});
 		});
 
 	};
