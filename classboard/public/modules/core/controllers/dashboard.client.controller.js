@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', '$http', 'Authentication', '$location',
+angular.module('core').controller('DashboardController', ['$scope', '$http', 'Authentication', '$location',
 	function($scope, $http, Authentication, $location) {
 
 		if (!Authentication.user) {
@@ -13,8 +13,8 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 		
 		$scope.user = Authentication.user;
 
-		$http.post('/course/courseByID', $scope.authentication).success(function(response) {
-			$scope.authentication.user.classes = response;
+		$http.post('/course/courseByID').success(function(response) {
+			$scope.user.classes = response;
 		}).error(function(response) {
 			$scope.SignUp.error = response.message;
 		});
