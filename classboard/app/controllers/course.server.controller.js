@@ -6,20 +6,8 @@
 var _ = require('lodash'),
 	errorHandler = require('./errors.server.controller'),
 	mongoose = require('mongoose'),
-	passport = require('passport'),
 	Course = mongoose.model('Course'),
-	//User = require('./users.server.controller');
 	User = mongoose.model('User');
-
-/*
-	exports.courseByID = function(req, res, next, id) {
-		Course.findById(id).exec(function(err, course) {
-			if (err) return next(err);
-			if (!course) return next(new Error('Failed to load Course ' + id));
-			req.profile = course;
-			next();
-		});
-	};*/
 
 
 /******************************************************************************************
@@ -34,7 +22,7 @@ var _ = require('lodash'),
 exports.signUpClass = function(req, res) {
 
 	// Init Variables
-  var randCode = Math.floor(Math.random() * 100000);
+  var randCode = Math.floor(Math.random() * 100000) + 10000;
 	req.body.code = randCode || 12;
 
 
