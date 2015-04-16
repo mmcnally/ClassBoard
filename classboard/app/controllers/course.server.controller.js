@@ -26,7 +26,11 @@ var _ = require('lodash'),
  * Class Stuff
  ******************************************************************************************/
 
-
+/* Called when user creates class
+ * 1. Creates new course in database
+ * 2. Adds current user as admin of new course
+ * 3. Adds course to current user's list of courses
+ */
 exports.signUpClass = function(req, res) {
 
 	// Init Variables
