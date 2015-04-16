@@ -21,29 +21,20 @@ var _ = require('lodash'),
 		});
 	};
 
+	/** STILL NEED TO ADD ERROR HANDLING **/
 	exports.courseNameByID = function(req, res) {
+
 		User.findById(req.body.user._id, function(err, user){
-			if(!err && user) {
-				Course.findById(req.body.user.classes[0], function(err, course){
-					if(!err && course){
-						console.log('current course: ' + course.title);
-						res.send({
-							message: 'course'
-						});
-					}
-					else {
-							res.status(400).send({
-								message: 'Course is not found'
-							});
-					}
-				});
-			} else {
-				res.status(400).send({
-					message: 'User is not found'
-				});
-			}
+			console.log('The user is: ' + user);
+			Course.populate(user, {path: 'classes', model: 'Course'}, function (err, user) {
+				for(var i=0; i<user.classes.length; i++){
+					console.log(user.classes[i].title);
+				}
+			});
 		});
+
 	};
+
 /******************************************************************************************
  * Class Stuff
  ******************************************************************************************/
