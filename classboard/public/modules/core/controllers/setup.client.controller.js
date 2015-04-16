@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('core').controller('SetupController', ['$scope', '$http', 'Authentication', '$location',
-	function($scope, $http, Authentication, $location) {
+angular.module('core').controller('SetupController', ['$scope', '$http', 'Authentication', '$location', 'Courses',
+	function($scope, $http, Authentication, $location, Courses) {
 		$scope.authentication = Authentication;
 		
     // send user to signin if not logged in
@@ -15,30 +15,24 @@ angular.module('core').controller('SetupController', ['$scope', '$http', 'Authen
 		$scope.CreateClass = {admins: [Authentication.user._id], students: []};
 	
 	
-		// creates a class, adds user as admin, and adds class to user's list of classes
-		$scope.createClass = function() {
-			$http.post('/course/createClass', $scope.CreateClass).success(function(response) {
-				// If successful we assign the response to the global user model
-				$scope.authentication.user = response;
-				
-				// And redirect to the index page
-				$location.path('/');
-			}).error(function(response) {
-				$scope.CreateClass.error = response.message;
-			});
-		};
 		
+		//call thing in courses service
+		$scope.createClass = function() {
+			Courses.createClass($scope.CreateClass, function (err, res) {
+				if(err) {
+					$scope.CreateClass.error = err;
+				}
+			});
+		}
 		
 		$scope.enroll = function() {
-			$http.post('/course/enroll', $scope.Enroll).success(function(response) {
-				// If successful we assign the response to the global user model
-				$scope.authentication.user = response;
-				
-				// And redirect to the index page
-				$location.path('/');
-			}).error(function(response) {
-				$scope.Enroll.error = response.message;
+			Courses.enroll($scope.Enroll, function (err, res) {
+				if(err) {
+					$scope.Enroll.error = err;
+				}
 			});
-		};
+		}
+		
+		
 	}
 ]);
