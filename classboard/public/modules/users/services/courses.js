@@ -3,12 +3,6 @@
 // Users service used for communicating with the users REST endpoint
 angular.module('users').factory('Courses', ['$http', 'Authentication', '$location',
 	function($http, Authentication, $location) {
-		
-    
-    
-    
-    
-    
     
     // creates a class, adds user as admin, and adds class to user's list of classes
     // callback signature: (err, res)
@@ -21,6 +15,7 @@ angular.module('users').factory('Courses', ['$http', 'Authentication', '$locatio
       });
       
     };
+    
     
     // enrolls user in class
     // callback signature: (err, res)
@@ -35,12 +30,10 @@ angular.module('users').factory('Courses', ['$http', 'Authentication', '$locatio
     
     
     
+    
     return { 
         createClass: createClass,
         enroll: enroll
-    };
-    
-    
-    
+    };  
 	}
 ]);
