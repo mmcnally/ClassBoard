@@ -5,11 +5,20 @@
 				<a href="/#/signin">Sign In<small> (or up)</small></a>
 			</li>
 		</ul>
+		
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="!authentication.user">
 			<li ng-class="{active: $uiRoute}">
 				<a href="/#" ng-click="logOut()">Logout</a>
 			</li>
 		</ul>
+		
+		<ul class="nav navbar-nav navbar-right" data-ng-hide="!authentication.user">
+			<li ng-class="{active: $uiRoute}">
+				<a href="/#/course/settings">Settings</a>
+			</li>
+		</ul>
+		
+		
 		<div class="collapse navbar-collapse" ng-hide="isActive('/signin') || isActive('/setup')">
 			<ul class="nav navbar-nav">
 				<li class="dropdown" dropdown>
