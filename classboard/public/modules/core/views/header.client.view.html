@@ -1,21 +1,25 @@
-<div class="container" data-ng-controller="HeaderController">
+<nav class="container-fluid" data-ng-controller="HeaderController">
 	<a href="/#/" class="navbar-brand">ClassBoard</a>
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-			<!--<li ui-route="/signup" ng-class="{active: $uiRoute}">
-				<a href="/#/signup">Sign Up</a>
-			</li>
-			<li class="divider-vertical"></li>-->
 			<li ui-route="/signin" ng-class="{active: $uiRoute}">
 				<a href="/#/signin">Sign In<small> (or up)</small></a>
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="!authentication.user">
 			<li ui-route="/signin" ng-class="{active: $uiRoute}">
-				<!--<button class="btn btn-primary pull-right" ng-click="logOut()">Logout</button>-->
 			<a href="/#" ng-click="logOut()">Logout</a>
 			</li>
 		</ul>
-		<ul class="nav navbar-nav navbar-right" ng-hide="isActive('/signin') || isActive('/setup')">
-			<p>{{authentication.user.classes}}<p>
-		</ul>
-</div>
+		<div class="collapse navbar-collapse" ng-hide="isActive('/signin') || isActive('/setup')">
+			<ul class="nav navbar-nav">
+				<li class="dropdown" dropdown>
+          <a href="" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">My Classes<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+						<li><a href="#">{{UserInfo.classes.title}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#/setup">Enroll in new class</a></li>
+          </ul>
+        </li>
+			</ul>
+		</div>
+</nav>

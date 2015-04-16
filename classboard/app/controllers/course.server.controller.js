@@ -11,7 +11,7 @@ var _ = require('lodash'),
 	//User = require('./users.server.controller');
 	User = mongoose.model('User');
 
-
+/*
 	exports.courseByID = function(req, res, next, id) {
 		Course.findById(id).exec(function(err, course) {
 			if (err) return next(err);
@@ -19,32 +19,8 @@ var _ = require('lodash'),
 			req.profile = course;
 			next();
 		});
-	};
+	};*/
 
-	/** STILL NEED TO ADD ERROR HANDLING **/
-	exports.courseNameByID = function(req, res) {
-
-		User.findById(req.body.user._id, function(err, user){
-			if(!err && user){
-				Course.populate(user, {path: 'classes', model: 'Course'}, function (err, user) {
-					if(!err && user){
-						for(var i=0; i<user.classes.length; i++){
-							console.log(user.classes[i].title);
-						}
-					} else {
-						res.status(400).send({
-							message: 'User is not found'
-						});
-						}
-				});
-			} else {
-				res.status(400).send({
-					message: 'User is not found'
-				});
-				}
-		});
-
-	};
 
 /******************************************************************************************
  * Class Stuff
@@ -140,4 +116,35 @@ exports.signUpClass = function(req, res) {
 		}
 	});
 
+};
+
+exports.courseNameByID = function(req, res) {
+	User.findById(req.body.user._id, function(err, user){
+		var classTitles = [];
+		var jsonString;
+		if(!err && user){
+			Course.populate(user, {path: 'classes', model: 'Course'}, function (err, user) {
+				if(!err && user){
+					for(var i=0; i<user.classes.length; i++){
+						if(i === 0){
+							classTitles[0] = user.classes[i].title;
+						} else{
+							classTitles.push(user.classes[i].title);
+						}
+					}
+				} else {
+					res.status(400).send({
+						message: 'User is not found'
+						});
+					}
+
+				jsonString = JSON.stringify({title : classTitles});
+				res.json(jsonString);
+			});
+		} else {
+			res.status(400).send({
+				message: 'User is not found'
+			});
+			}
+	});
 };
