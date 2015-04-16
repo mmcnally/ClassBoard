@@ -3,12 +3,11 @@
 angular.module('core').controller('HeaderController', ['$scope', '$http', '$location', 'Authentication',
 	function($scope, $http, $location, Authentication) {
 		$scope.authentication = Authentication;
-		$scope.UserInfo = {user: Authentication.user, classes: []};
 		if(Authentication.user.classes!==0){
-				$http.post('/course/courseNameByID', $scope.UserInfo).success(function(response) {
-					$scope.authentication.user.classes.title = response;
-					$scope.UserInfo.classes = $scope.authentication.user.classes.title;
-					console.log($scope.UserInfo.classes);
+				$http.post('/course/courseByID', $scope.authentication).success(function(response) {
+					// set the global user.classes to the response containing course objects
+					$scope.authentication.user.classes = response;
+					console.log($scope.authentication.user.classes);
 				}).error(function(response) {
 					$scope.SignUp.error = response.message;
 				});

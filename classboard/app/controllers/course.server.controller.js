@@ -118,28 +118,21 @@ exports.signUpClass = function(req, res) {
 
 };
 
-exports.courseNameByID = function(req, res) {
+//Find courses by their ID
+
+exports.courseByID = function(req, res) {
 	User.findById(req.body.user._id, function(err, user){
-		var classTitles = [];
-		var jsonString;
 		if(!err && user){
+			// if the user is found, populate the classes field with Course objects
 			Course.populate(user, {path: 'classes', model: 'Course'}, function (err, user) {
 				if(!err && user){
-					for(var i=0; i<user.classes.length; i++){
-						if(i === 0){
-							classTitles[0] = user.classes[i].title;
-						} else{
-							classTitles.push(user.classes[i].title);
-						}
-					}
+					// respond with the Course objects for a user
+					res.json(user.classes);
 				} else {
 					res.status(400).send({
 						message: 'User is not found'
 						});
 					}
-
-				jsonString = JSON.stringify({title : classTitles});
-				res.json(jsonString);
 			});
 		} else {
 			res.status(400).send({

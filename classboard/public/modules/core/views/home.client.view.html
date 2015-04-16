@@ -1,6 +1,6 @@
 <section ng-controller="HomeController">
 	<div class="jumbotron text-center">
-		<h1>{{UserInfo.classes.title[0]}}</h1>
+		<h1>{{authentication.user.classes[0].title}}</h1>
 		<h1 ng-if="authentication.user">{{authentication.user.displayName}}</h1>
 	</div>
 </section>
