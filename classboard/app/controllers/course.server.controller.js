@@ -74,41 +74,6 @@ exports.signUpClass = function(req, res) {
 
 
 					res.json(user);
-
-					// res.status(400).send({
-					// 	message: 'New Class Yayy Happiness'
-					// });
-
-					//req.user = user;
-
-					// user = _.extend(user, req.body);
-					// user.save(function(err) {
-					// 	if (err) {
-					// 		return res.status(400).send({
-					// 			message: errorHandler.getErrorMessage(err)
-					// 		});
-					// 	}
-					// });
-					//
-
-
-					// user.save(function(err) {
-					// 	if (err) {
-					// 		return res.status(400).send({
-					// 			message: errorHandler.getErrorMessage(err)
-					// 		});
-					// 	} else {
-					// 		req.login(user, function(err) {
-					// 			if (err) {
-					// 				res.status(400).send(err);
-					// 			} else {
-					// 				res.send({
-					// 					message: 'Password changed successfully'
-					// 				});
-					// 			}
-					// 		});
-					// 	}
-					// });
 		} else {
 			res.status(400).send({
 				message: 'User is not found'
