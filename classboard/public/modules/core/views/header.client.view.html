@@ -12,9 +12,9 @@
 			</li>
 		</ul>
 		
-		<ul class="nav navbar-nav navbar-right" data-ng-hide="!authentication.user">
+		<ul class="nav navbar-nav navbar-right" data-ng-hide="isActive('/signin') || isActive('/setup')">
 			<li ng-class="{active: $uiRoute}">
-				<a href="/#/course/settings">Settings</a>
+				<a href="/#/course/settings/{{classes._id}}">Settings</a>
 			</li>
 		</ul>
 		
