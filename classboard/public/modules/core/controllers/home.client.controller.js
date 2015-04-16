@@ -20,13 +20,3 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 		});
 	}
 ]);
-/*
-$scope.courseNameByID = function() {
-	$http.post('/course/courseNameByID', $scope.UserInfo).success(function(response) {
-		$scope.authentication.user.classes.title = response;
-		$scope.UserInfo.classes = angular.fromJson($scope.authentication.user.classes.title);
-		console.log($scope.UserInfo.classes.title);
-	}).error(function(response) {
-		$scope.SignUp.error = response.message;
-	});
-};*/

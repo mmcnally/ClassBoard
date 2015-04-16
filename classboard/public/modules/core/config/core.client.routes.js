@@ -39,6 +39,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		state('reset', {
 			url: '/password/reset/:token',
 			templateUrl: 'modules/users/views/password/reset-password.client.view.html'
+		}).
+		state('courseview', {
+			url: '/course/:_id',
+			templateUrl: 'modules/core/views/home.client.view.html'
 		});
 	}
 ]);
