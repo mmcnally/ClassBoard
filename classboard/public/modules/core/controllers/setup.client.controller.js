@@ -12,7 +12,7 @@ angular.module('core').controller('SetupController', ['$scope', '$http', 'Authen
 		
 		
 		$scope.Enroll = {};
-		$scope.CreateClass = {admins: [Authentication.user._id], students: [], user: Authentication.user};
+		$scope.CreateClass = {admins: [Authentication.user._id], students: []};
 	
 	
 		// creates a class, adds user as admin, and adds class to user's list of classes
@@ -29,6 +29,16 @@ angular.module('core').controller('SetupController', ['$scope', '$http', 'Authen
 		};
 		
 		
-		
+		$scope.enroll = function() {
+			$http.post('/course/enroll', $scope.Enroll).success(function(response) {
+				// If successful we assign the response to the global user model
+				$scope.authentication.user = response;
+				
+				// And redirect to the index page
+				$location.path('/');
+			}).error(function(response) {
+				$scope.Enroll.error = response.message;
+			});
+		};
 	}
 ]);
