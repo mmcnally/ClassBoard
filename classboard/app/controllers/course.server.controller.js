@@ -66,7 +66,10 @@ exports.createClass = function(req, res) {
 
 
 
-
+/* Called when user enrolls in class
+ * 1. Adds current user to list of students in class 
+ * 2. Adds course to current user's list of courses
+ */
 exports.enroll = function(req, res) {
 	
 	var user = req.user;	
