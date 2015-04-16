@@ -7,7 +7,11 @@
 	box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.0745098) 0px 1px 5px 0px;
 }
 .widget h3{
+	width: auto;
 	padding: 0;
 	margin: 0;
 
+}
+.widget div{
+	display: block;
 }
