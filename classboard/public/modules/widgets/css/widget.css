@@ -1,0 +1,13 @@
+.widget{
+	padding: 15px;
+	background-color: white;
+	display: inline-block;
+	margin-left: 15px;
+	border-radius: 3px;
+	box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.0745098) 0px 1px 5px 0px;
+}
+.widget h3{
+	padding: 0;
+	margin: 0;
+
+}

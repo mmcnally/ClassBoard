@@ -1,13 +1,14 @@
 .dashboard{
-	border: 1px solid #AAAAAA;
 	height: 100%;
 	display: block;
+	padding: 0;
 }
 
 .content{
 	position: absolute;
-	top:50px;
-	width:100%;
+	top: 50px;
+	width: 100%;
 	height: calc(100% - 50px);
 	padding: 15px;
+	background-color: #CCCCCC;
 }
