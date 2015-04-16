@@ -3,8 +3,6 @@
 
 angular.module('core').controller('HomeController', ['$scope', '$http', 'Authentication', '$location',
 	function($scope, $http, Authentication, $location) {
-		$scope.authentication = Authentication;
-		$scope.UserInfo = {user: Authentication.user, classes: []};
 
 		if (!Authentication.user) {
 			$location.path('/signin');
@@ -12,23 +10,13 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 		else if (Authentication.user.classes && Authentication.user.classes.length === 0) {
 			$location.path('/setup');
 		}
-		// temporary use to see current class page
-		else {
-			$http.post('/course/courseByID', $scope.authentication).success(function(response) {
-				$scope.authentication.user.classes = response;
-			}).error(function(response) {
-				$scope.SignUp.error = response.message;
-			});
-		}
+		
+		$scope.user = Authentication.user;
+
+		$http.post('/course/courseByID', $scope.authentication).success(function(response) {
+			$scope.authentication.user.classes = response;
+		}).error(function(response) {
+			$scope.SignUp.error = response.message;
+		});
 	}
 ]);
-/*
-$scope.courseNameByID = function() {
-	$http.post('/course/courseNameByID', $scope.UserInfo).success(function(response) {
-		$scope.authentication.user.classes.title = response;
-		$scope.UserInfo.classes = angular.fromJson($scope.authentication.user.classes.title);
-		console.log($scope.UserInfo.classes.title);
-	}).error(function(response) {
-		$scope.SignUp.error = response.message;
-	});
-};*/

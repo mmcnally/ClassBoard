@@ -6,20 +6,8 @@
 var _ = require('lodash'),
 	errorHandler = require('./errors.server.controller'),
 	mongoose = require('mongoose'),
-	passport = require('passport'),
 	Course = mongoose.model('Course'),
-	//User = require('./users.server.controller');
 	User = mongoose.model('User');
-
-/*
-	exports.courseByID = function(req, res, next, id) {
-		Course.findById(id).exec(function(err, course) {
-			if (err) return next(err);
-			if (!course) return next(new Error('Failed to load Course ' + id));
-			req.profile = course;
-			next();
-		});
-	};*/
 
 
 /******************************************************************************************
@@ -34,7 +22,7 @@ var _ = require('lodash'),
 exports.createClass = function(req, res) {
 
 	// Init Variables
-  var randCode = Math.floor(Math.random() * 100000);
+  var randCode = Math.floor(Math.random() * 100000) + 10000;
 	req.body.code = randCode || 12;
 	var user = req.user;
 	
@@ -157,23 +145,14 @@ exports.enroll = function(req, res) {
 //Find courses by their ID
 
 exports.courseByID = function(req, res) {
-	User.findById(req.body.user._id, function(err, user){
+	Course.populate(req.user, 'classes', function (err, user) {
 		if(!err && user){
-			// if the user is found, populate the classes field with Course objects
-			Course.populate(user, {path: 'classes', model: 'Course'}, function (err, user) {
-				if(!err && user){
-					// respond with the Course objects for a user
-					res.json(user.classes);
-				} else {
-					res.status(400).send({
-						message: 'User is not found'
-						});
-					}
-			});
+			// respond with the Course objects for a user
+			res.json(user.classes);
 		} else {
 			res.status(400).send({
 				message: 'User is not found'
-			});
+				});
 			}
 	});
-};
+}

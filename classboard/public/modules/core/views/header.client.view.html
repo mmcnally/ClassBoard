@@ -1,13 +1,13 @@
 <nav class="container-fluid" data-ng-controller="HeaderController">
 	<a href="/#/" class="navbar-brand">ClassBoard</a>
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-			<li ui-route="/signin" ng-class="{active: $uiRoute}">
+			<li ng-class="{active: $uiRoute}">
 				<a href="/#/signin">Sign In<small> (or up)</small></a>
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="!authentication.user">
-			<li ui-route="/signin" ng-class="{active: $uiRoute}">
-			<a href="/#" ng-click="logOut()">Logout</a>
+			<li ng-class="{active: $uiRoute}">
+				<a href="/#" ng-click="logOut()">Logout</a>
 			</li>
 		</ul>
 		<div class="collapse navbar-collapse" ng-hide="isActive('/signin') || isActive('/setup')">
@@ -15,9 +15,13 @@
 				<li class="dropdown" dropdown>
           <a href="" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">My Classes<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-						<li ng-repeat="classes in authentication.user.classes"><a href="">{{classes.title}}</a></li>
+				<li ng-repeat="classes in authentication.user.classes">
+					<a ng-href="/#/course/{{classes._id}}">{{classes.title}}</a>
+				</li>
             <li class="divider"></li>
-            <li><a href="#/setup">Enroll in new class</a></li>
+	            <li>
+	            	<a href="#/setup">Enroll in new class</a>
+	            </li>
           </ul>
         </li>
 			</ul>
