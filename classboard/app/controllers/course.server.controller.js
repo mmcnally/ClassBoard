@@ -38,13 +38,17 @@ exports.signUpClass = function(req, res) {
 	req.body.code = randCode || 12;
 
 
+	// find current user
 	User.findById(req.body.user._id, function(err, user) {
 		if (!err && user) {
 
-					// delete user, since we have the real one now
+					// delete user in request, since we have the real one now
 					delete req.body.user;
 
+					// create new course
 					var course = new Course(req.body);
+					
+					// print course for debugging purposes
 					console.log(course);
 					var message = null;
 
@@ -58,7 +62,7 @@ exports.signUpClass = function(req, res) {
 					}
 
 
-					// Then save the course
+					// save the course
 					course.save(function(err) {
 						if (err) {
 							return res.status(400).send({
@@ -67,7 +71,7 @@ exports.signUpClass = function(req, res) {
 						}
 					});
 
-
+					// add course to current user
 					User.update({_id: user._id}, {
     				classes: user.classes
 					}, function(err, numberAffected, rawResponse) {
@@ -76,7 +80,7 @@ exports.signUpClass = function(req, res) {
 						}
 					});
 
-
+					// send user back
 					res.json(user);
 		} else {
 			res.status(400).send({
