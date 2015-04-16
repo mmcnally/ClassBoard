@@ -3,14 +3,14 @@
 // Setting up route
 angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider) {
-		// Redirect to home view when route not found
+		// Redirect to dashboard view when route not found
 		$urlRouterProvider.otherwise('/signin');
 
 		// Home state routing
 		$stateProvider.
-		state('home', {
+		state('dashboard', {
 			url: '/',
-			templateUrl: 'modules/core/views/home.client.view.html'
+			templateUrl: 'modules/core/views/dashboard.client.view.html'
 		}).
 		state('signup', {
 			url: '/signup',
@@ -40,9 +40,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			url: '/password/reset/:token',
 			templateUrl: 'modules/users/views/password/reset-password.client.view.html'
 		}).
-		state('courseview', {
+		state('course', {
 			url: '/course/:_id',
-			templateUrl: 'modules/core/views/home.client.view.html'
+			templateUrl: 'modules/core/views/dashboard.client.view.html'
 		});
 	}
 ]);
