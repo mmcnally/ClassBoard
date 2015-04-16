@@ -43,6 +43,11 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		state('course', {
 			url: '/course/:_id',
 			templateUrl: 'modules/core/views/dashboard.client.view.html'
-		});
+		}).
+		state('settings', {
+			url: '/course/settings',
+			templateUrl: 'modules/core/views/settings.client.view.html'
+		}
+		
 	}
 ]);
