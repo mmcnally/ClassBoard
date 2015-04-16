@@ -23,7 +23,7 @@ angular.module('core').controller('SetupController', ['$scope', '$http', 'Authen
 					$scope.CreateClass.error = err;
 				}
 			});
-		}
+		};
 		
 		$scope.enroll = function() {
 			Courses.enroll($scope.Enroll, function (err, res) {
@@ -31,7 +31,7 @@ angular.module('core').controller('SetupController', ['$scope', '$http', 'Authen
 					$scope.Enroll.error = err;
 				}
 			});
-		}
+		};
 		
 		
 	}
