@@ -44,6 +44,7 @@ exports.createClass = function(req, res) {
 	// save the course
 	course.save(function(err) {
 		if (err) {
+			console.log(err);
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
