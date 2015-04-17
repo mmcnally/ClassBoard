@@ -47,7 +47,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		state('settings', {
 			url: '/course/settings/:_id',
 			templateUrl: 'modules/core/views/settings.client.view.html'
-		}
+		});
 		
 	}
 ]);
