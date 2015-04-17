@@ -6,8 +6,8 @@ var _ = require('lodash'),
 module.exports.dependencies = { //order matters for these files.
 		lib: { //gets read FIRST -- should be used for MODULE files
 			css: [
-				'public/lib/bootstrap/dist/css/bootstrap.css',
-				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+				'public/lib/bootstrap/dist/css/bootstrap.min.css',
+				'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -19,10 +19,13 @@ module.exports.dependencies = { //order matters for these files.
 			]
 		},
 		css: [ //these get read SECOND -- used for our files
-			'public/modules/**/css/*.css'
+			'public/modules/**/css/*.css',
+			'public/lib/css/*.css'
 		],
 		js: [
 			'public/application.js', // first application.js to define main module
+			'public/lib/jquery/dist/jquery.min.js',
+			'public/lib/bootstrap/dist/js/bootstrap.min.js',
 			'public/modules/*/*.js', //next define each submodule
 			'public/modules/**/*.js' // finally submodule js files such as controllers, services etc.
 		]
@@ -54,7 +57,7 @@ module.exports.getGlobbedFiles = function(globPatterns, removeRoot) {
 	// The output array
 	var output = [];
 
-	// If glob pattern is array so we use each pattern in a recursive way, otherwise we use glob 
+	// If glob pattern is array so we use each pattern in a recursive way, otherwise we use glob
 	if (_.isArray(globPatterns)) {
 		globPatterns.forEach(function(globPattern) {
 			output = _.union(output, _this.getGlobbedFiles(globPattern, removeRoot));

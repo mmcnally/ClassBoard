@@ -23,6 +23,12 @@
 	width: 100vw;
 	height: calc(100vh - 50px);
 	padding: 15px;
-	background-color: rgb(190,212,212);
-	/*background-image: url(http://api.thumbr.it/whitenoise-361x370.png?background=bed4d4ff&noise=ffffff&density=0&opacity=0);*/
+/*********************BACKGROUND OPTIONS******************
+  background-color: rgb(190,212,212);
+	background-color: rgb(143,156,161);
+	background-image: url( http://api.thumbr.it/whitenoise-361x370.png?background=8f9ca1ff&noise=626262&density=35&opacity=25);
+
+*/
+	background-image: url(http://api.thumbr.it/whitenoise-361x370.png?background=e6e6e0ff&noise=626262&density=35&opacity=10);
+
 }

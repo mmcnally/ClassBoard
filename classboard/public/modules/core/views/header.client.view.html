@@ -1,10 +1,10 @@
 <nav class="container-fluid" data-ng-controller="HeaderController">
 	<a href="/#/" class="navbar-brand">ClassBoard</a>
-		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+		<!--<ul class="nav navbar-nav navbar-right" data-ng-hide="!authentication.user">
 			<li ng-class="{active: $uiRoute}">
 				<a href="/#/signin">Sign In<small> (or up)</small></a>
 			</li>
-		</ul>
+		</ul>-->
 
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="!authentication.user">
 			<li ng-class="{active: $uiRoute}">
@@ -12,11 +12,11 @@
 			</li>
 		</ul>
 
-		<!-- <ul class="nav navbar-nav navbar-right" data-ng-hide="isActive('/signin') || isActive('/setup')">
+		<ul class="nav navbar-nav navbar-right" data-ng-hide="isActive('/signin') || isActive('/setup')">
 			<li ng-class="{active: $uiRoute}">
-				<a href="/#/course/settings/{{classes._id}}">Settings</a>
+				<a ng-href="/#/course/settings/{{get_class_id_from_url_for_settings()}}">Settings</a>
 			</li>
-		</ul> -->
+		</ul>
 
 		<div class="collapse navbar-collapse" data-ng-hide="isActive('/signin') || isActive('/setup')">
 			<ul class="nav navbar-nav" data-ng-hide="isActive('/signin') || isActive('/setup')">
