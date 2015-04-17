@@ -1,14 +1,27 @@
 .dashboard{
 	height: 100%;
-	display: block;
+	width: 100%;
 	padding: 0;
+	margin: 0;
+}
+.dashboard > div {
+	padding: 0;
+	margin: 0;
+}
+.dashboard > div:first-child {
+	padding: 0 15px 0 0;
+	margin: 0;
+}
+.dashboard > div:last-child {
+	padding: 0 0 0 15px;
+	margin: 0;
 }
 
 .content{
 	position: absolute;
 	top: 50px;
-	width: 100%;
-	height: calc(100% - 50px);
+	width: 100vw;
+	height: calc(100vh - 50px);
 	padding: 15px;
 	background-color: rgb(190,212,212);
 	/*background-image: url(http://api.thumbr.it/whitenoise-361x370.png?background=bed4d4ff&noise=ffffff&density=0&opacity=0);*/
