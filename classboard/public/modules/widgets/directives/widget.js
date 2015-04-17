@@ -5,7 +5,7 @@ angular.module('widgets').directive('widget', [function() {
 	function link($scope, element, attrs) {
 		$scope.toggleSettings = function() {
 			$scope.settings = !$scope.settings;
-		}
+		};
 		$scope.settings = false;
 	}
 
