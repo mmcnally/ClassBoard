@@ -10,5 +10,6 @@
 	width: 100%;
 	height: calc(100% - 50px);
 	padding: 15px;
-	background-color: #CCCCCC;
+	background-color: rgb(190,212,212);
+	/*background-image: url(http://api.thumbr.it/whitenoise-361x370.png?background=bed4d4ff&noise=ffffff&density=0&opacity=0);*/
 }

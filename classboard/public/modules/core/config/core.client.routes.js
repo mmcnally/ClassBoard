@@ -48,6 +48,6 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			url: '/course/settings/:_id',
 			templateUrl: 'modules/core/views/settings.client.view.html'
 		});
-		
+
 	}
 ]);
