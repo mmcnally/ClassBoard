@@ -23,5 +23,12 @@ angular.module('core').controller('HeaderController', ['$scope', '$http', '$loca
 		$scope.isActive = function(viewLocation) {
     	return viewLocation === $location.path();
 		};
+		
+		
+		
+		$scope.get_class_id_from_url_for_settings = function() {
+			//console.log('path: ' + $location.url().split('/')[2]);
+			return 	$location.url().split('/')[2];
+		};
 	}
 ]);
