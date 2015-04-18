@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('core').controller('DashboardController', ['$scope', '$http', 'Authentication', '$location',
-	function($scope, $http, Authentication, $location) {
+angular.module('core').controller('DashboardController', ['$scope', '$http', 'Authentication', '$location', '$modal', '$log',
+	function($scope, $http, Authentication, $location, $modal, $log) {
 
 		if (!Authentication.user) {
 			$location.path('/signin');
@@ -10,7 +10,7 @@ angular.module('core').controller('DashboardController', ['$scope', '$http', 'Au
 		else if (Authentication.user.classes && Authentication.user.classes.length === 0) {
 			$location.path('/setup');
 		}
-		
+
 		$scope.user = Authentication.user;
 
 		$http.post('/course/courseByID').success(function(response) {

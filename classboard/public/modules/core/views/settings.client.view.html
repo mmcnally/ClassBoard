@@ -1,3 +1,22 @@
-<div ng-controller="DashboardController" class="dashboard col-md-12">
-  <p>Do them settings</p>
-</div>
+<section ng-controller="DashboardController">
+    <div class="modal-header">
+      <h3 class="modal-title">Do them settings</h3>
+    </div>
+    <div class="modal-body">
+      <ul>
+        <li>
+          <a>apples</a>
+        </li>
+        <li>
+          <a>apples</a>
+        </li>
+        <li>
+          <a>apples</a>
+        </li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" ng-click="ok()">OK</button>
+      <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</section>
