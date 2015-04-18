@@ -13,24 +13,6 @@ angular.module('core').controller('HeaderController', ['$scope', '$http', '$loca
 				});
 		}
 
-		// Opens a modal window
-		$scope.open = function (size, currentUser) {
-
-	    var modalInstance = $modal.open({
-	      templateUrl: 'modules/core/views/settings.client.view.html',
-	      //controller: function ($scope, $modalInstance, user) {
-				//	$scope.user = user;
-				//},
-	      size: size,
-	      resolve: {
-	        items: function () {
-	          return currentUser;
-	        }
-	      }
-	    });
-		};
-		//templateUrl: 'modules/core/views/settings.client.view.html',
-
 		$scope.logOut = function() {
 			$http.get('/auth/signout').success(function(response){
 				$scope.authentication.user = null;
@@ -47,6 +29,27 @@ angular.module('core').controller('HeaderController', ['$scope', '$http', '$loca
 		$scope.get_class_id_from_url_for_settings = function() {
 			//console.log('path: ' + $location.url().split('/')[2]);
 			return 	$location.url().split('/')[2];
+		};
+
+/**
+* Modal Stuff
+*/
+
+		// Opens a modal window
+		$scope.open = function (size, currentUser) {
+
+			var modalInstance = $modal.open({
+				templateUrl: 'modules/core/views/settings.client.view.html',
+				controller: function ($scope, $modalInstance, user) {
+					$scope.user = user;
+				},
+				size: size,
+				resolve: {
+					user: function () {
+						return currentUser;
+					}
+				}
+			});
 		};
 	}
 ]);

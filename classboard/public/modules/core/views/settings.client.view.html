@@ -1,19 +1,32 @@
-<section ng-controller="DashboardController">
+<section ng-controller="SettingsController">
     <div class="modal-header">
-      <h3 class="modal-title">Do them settings</h3>
+      <h3 class="modal-title">Settings (does not actually update database yet)</h3>
     </div>
     <div class="modal-body">
-      <ul>
-        <li>
-          <a>apples</a>
-        </li>
-        <li>
-          <a>apples</a>
-        </li>
-        <li>
-          <a>apples</a>
-        </li>
-      </ul>
+      <form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
+  			<fieldset>
+  				<div class="form-group">
+  					<label for="firstName">Edit First Name</label>
+  					<input type="text" required id="firstName" name="firstName" class="form-control" value="{{authentication.user.firstName}}">
+  				</div>
+  				<div class="form-group">
+  					<label for="lastName">Edit Last Name</label>
+  					<input type="text" id="lastName" name="lastName" class="form-control" value="{{authentication.user.lastName}}">
+  				</div>
+  				<div class="form-group">
+  					<label for="email">Email</label>
+  						<input type="email" id="email" name="email" class="form-control" value="{{authentication.user.email}}">
+  				</div>
+  				<div class="form-group">
+  					<label for="password">Change Password</label>
+  					<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Old Password">
+  					<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="New Password">
+  				</div>
+  				<div data-ng-show="error" class="text-center text-danger">
+  					<strong data-ng-bind="error"></strong>
+  				</div>
+  			</fieldset>
+  		</form>
     </div>
     <div class="modal-footer">
       <button class="btn btn-primary" ng-click="ok()">OK</button>
