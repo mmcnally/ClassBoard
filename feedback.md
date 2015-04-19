@@ -108,8 +108,8 @@ Good work! You did exactly what I asked. This is a much beter and much more info
 
 This document is really great. It give me a clear vision of what you are attempting, explains all of the widgets really well and easily, and is formatted in an easy-to-read and accessible format. Really good stuff. There are a couple of things that you might want to look at, and I've listed them below, but you've done really good work. **Overall grade: Thumbs up!**
 
-*You only have three widgets. Are there other widgets you wish to include, but haven't? Why are there so few? I feel like some more widget ides (even if not implementing is really feasible in this timeframe) might be useful
-*I would like your justification for external libraries to be more extensive. I understand why you want to use express, but the reason for choosing mongo is **not** self explanatory. Why did you chose mongo over, say, Postgres? Was there a reason? Even if it's something arbitrary ("I feel more comfortable with mongo") I would like to find out why. Check out sockets too. Why use them over ajax?
-*You have two different external slides. Which one do you want to use? They look identical to me...and why does it say "database" in here instead of mongo? Was this something you changed? Please update it in here!
+-You only have three widgets. Are there other widgets you wish to include, but haven't? Why are there so few? I feel like some more widget ides (even if not implementing is really feasible in this timeframe) might be useful
+-I would like your justification for external libraries to be more extensive. I understand why you want to use express, but the reason for choosing mongo is **not** self explanatory. Why did you chose mongo over, say, Postgres? Was there a reason? Even if it's something arbitrary ("I feel more comfortable with mongo") I would like to find out why. Check out sockets too. Why use them over ajax?
+-You have two different external slides. Which one do you want to use? They look identical to me...and why does it say "database" in here instead of mongo? Was this something you changed? Please update it in here!
 
 
