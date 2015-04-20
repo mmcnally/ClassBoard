@@ -14,6 +14,23 @@ var mongoose = require('mongoose'),
 
 exports.create = function(req, res) {
     var question = new Question(req.body);
-    question.save();
-    res.sendStatus(200);
+    question.save(function(err, question) {
+       if (err) {
+           res.status(400).send(err);
+       } 
+       else {
+           res.status(200).send(question);
+       }
+    });
+};
+
+exports.listQuestions = function(req, res) {
+    Question.find({course : req.body.courseId, startTime : null}).exec(function(err, questions) {
+        if (err) {
+            res.status(500).send(err);
+        }
+        else {
+            res.status(200).send(questions);
+        }
+    });
 };

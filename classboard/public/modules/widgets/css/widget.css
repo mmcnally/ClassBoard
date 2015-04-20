@@ -36,3 +36,14 @@ widget textarea {
 widget .input-group {
 	width: 100%;
 }
+widget .btn-group {
+	width:100%;
+}
+widget label {
+	width:100%;
+}
+
+widget .small-scroll {
+	max-height: 30vh;
+	overflow: auto;
+}
