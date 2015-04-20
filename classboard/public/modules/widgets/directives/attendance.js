@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('widgets').directive('attendance', ['$http', function($http) {
+angular.module('widgets').directive('attendance', ['$http', '$scope', function($http, $scope) {
 	
 	function link($scope, element, attrs) {
 		
