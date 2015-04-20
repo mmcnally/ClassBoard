@@ -1,15 +1,16 @@
 <!-- header row -->
 <div class="row">
 	<h3>{{title}}</h3>
-	<button class="pull-right btn btn-xs btn-primary glyphicon glyphicon-cog" ng-click="toggleSettings()">
+	<button class="pull-right btn btn-xs btn-info glyphicon glyphicon-cog" ng-click="toggleSettings()">
 		<!--<i class="glyphicon glyphicon-cog"></i>-->
 	</button>
 </div>
 <!-- content -->
 <div ng-if="!settings">
-	 kgijaeroiga jrwokpbierjf; kwapgjer;ui odgfkl jlkfjderil dgsldoigiaofdjk
+	 <!-- what ng-transclude does is copy whats inside the <widget> in dashboard.client.view.html and copy it here -->
+	 <ng-transclude></ng-transclude>
 </div>
-<div ng-if="settings">
 <!-- settings -->
-	SIFHOIGH ERDGJAERO GIJFBEGRIOFJS HEIUGILJ AEROGJAERGIUHJRG
+<div ng-if="settings">
+	Settings
 </div>
