@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('core').controller('DashboardController', ['$scope', '$http', 'Authentication', '$location', '$modal', '$log',
-	function($scope, $http, Authentication, $location, $modal, $log) {
+angular.module('core').controller('DashboardController', ['$scope', '$http', 'Authentication', '$location', '$modal', '$log', '$state',
+	function($scope, $http, Authentication, $location, $modal, $log, $state) {
 
 		if (!Authentication.user) {
 			$location.path('/signin');
@@ -12,11 +12,21 @@ angular.module('core').controller('DashboardController', ['$scope', '$http', 'Au
 		}
 
 		$scope.user = Authentication.user;
-
-		$http.post('/course/courseByID').success(function(response) {
-			$scope.user.classes = response;
-		}).error(function(response) {
-			$scope.SignUp.error = response.message;
-		});
+		
+		//checks if user is an admin of the currently view class.
+		$scope.isAdmin = function() {
+			var ret = false;
+			Authentication.user.classes.forEach(function(course) {
+				if (course._id === $state.params._id) {
+					course.admins.forEach(function(adminId){
+						if (adminId === Authentication.user._id) {
+							ret = true;
+						}	
+					});
+				}
+			});
+			return ret;
+		};
+		
 	}
 ]);

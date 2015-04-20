@@ -17,9 +17,7 @@ module.exports = function() { //local passport strategy
 
 	// Deserialize sessions
 	passport.deserializeUser(function(id, done) {
-		User.findOne({
-			_id: id
-		}, '-salt -password', function(err, user) {
+		User.findOne({_id: id}, '-salt -password', function(err, user) {
 			done(err, user);
 		});
 	});
@@ -28,7 +26,7 @@ module.exports = function() { //local passport strategy
 			passwordField: 'password'
 		},
 		function(email, password, done) {
-			User.findOne({email: email}, function(err, user) {
+			User.findOne({email: email}).populate('classes').exec(function(err, user) {
 				if (err) {
 					return done(err);
 				}

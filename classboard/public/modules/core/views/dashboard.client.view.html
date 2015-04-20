@@ -1,18 +1,20 @@
 <div ng-controller="DashboardController" class="dashboard row">
-	<div class="col-xs-4">
-		<widget title="Quiz">
-			hellow i am quiz
-		</widget>
+	<div class="dashboard row" ng-if="user.classes[0]._id">
+		<div class="col-xs-4">
+			<widget title="Quiz">
+				<quiz></quiz>
+			</widget>
+		</div>
+		<div class="col-xs-4">
+			<widget title="Attendance">
+				I am attendance
+			</widget>
+		</div>
+		<div class="col-xs-4">
+			<widget title="I'm Confused">
+				I am a confused button
+			</widget>
+		</div>
+		<!--<a ng-click="open()">Modal</a>-->
 	</div>
-	<div class="col-xs-4">
-		<widget title="Attendance">
-			I am attendance
-		</widget>
-	</div>
-	<div class="col-xs-4">
-		<widget title="I'm Confused">
-			I am a confused button
-		</widget>
-	</div>
-	<!--<a ng-click="open()">Modal</a>-->
 </div>
