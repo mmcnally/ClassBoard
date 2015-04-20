@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('widgets').directive('quiz', [ function() {
+angular.module('widgets').directive('quiz', ['$http', function($http) {
 	
 	function link($scope, element, attrs) {
 		$scope.QuestionModel = {mcAnswers : [''], mcAnswer : 'Correct Answer', tfAnswer : '', orAnswer: ''};
@@ -14,7 +14,7 @@ angular.module('widgets').directive('quiz', [ function() {
 		    .error(function(err) {
 		        
 		    });
-		}
+		};
 		
 		$scope.getLetter = function(num) {
 		   var a = 'a'.charCodeAt(0);

@@ -10,6 +10,9 @@ module.exports = function(app) {
     //quiz widget routes
     app.route('/widget/quiz/create')
         .post(users.requiresLogin, course.requiresAuthorization, quiz.create);
-    
-    
+   
+
+    // attendance widget routes
+    // app.route('/widget/attendance/submit').post(users.requiresLogin, );
+
 };

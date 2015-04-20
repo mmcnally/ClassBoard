@@ -17,7 +17,7 @@ var AttendanceSchema = new Schema({
 	students: [{
 		_id: false,
 		user: {type: Schema.ObjectId, ref: 'User'},
-		present: {type: Number, enum [0, 1]}
+		present: {type: Number, enum: [0, 1]}
 	}],
 	courseTime: { // The time the course starts at
 		type: Date
