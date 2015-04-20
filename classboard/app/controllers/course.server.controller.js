@@ -158,16 +158,22 @@ exports.courseByID = function(req, res) {
 exports.requiresAuthorization = function(req, res, next) {
 	Course.findOne({_id : req.body.courseId}).exec(function(err, course) {
 		if (err) {
-			return res.status(500).send('Server error');
+			res.status(500).send('Server error');
 		}
 		if (!course) {
-			return res.status(400).send('Unable to find course');
+			res.status(400).send('Unable to find course');
 		}
+		var isAdmin = false;
 		course.admins.forEach(function(admin){
-			if (admin === req.user._id) {
-				next();
+			if (admin.toString() === req.user._id.toString()) {
+				isAdmin = true;
 			}	
 		});
-		return res.status(401).send('You must be a course admin to do this');
+		if (isAdmin) {
+			next();
+		}
+		else {
+			res.status(401).send('You must be a course admin to do this');
+		}
 	});
 };
