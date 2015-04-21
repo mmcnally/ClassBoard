@@ -1,9 +1,9 @@
 <section ng-controller="SettingsController">
     <div class="modal-header">
-      <h3 class="modal-title">Settings (does not actually update database yet)</h3>
+      <h3 class="modal-title">User Settings (does not actually update database yet)</h3>
     </div>
     <div class="modal-body">
-      <form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
+      <form name="userForm2" data-ng-submit="ok(user)" class="update form-horizontal" novalidate autocomplete="off">
   			<fieldset>
   				<div class="form-group">
   					<label for="firstName">Edit First Name</label>
@@ -15,12 +15,12 @@
   				</div>
   				<div class="form-group">
   					<label for="email">Email</label>
-  						<input type="email" id="email" name="email" class="form-control" value="{{authentication.user.email}}">
+  						<input type="email" id="email" name="email" class="form-control" value="{{user.email}}">
   				</div>
   				<div class="form-group">
   					<label for="password">Change Password</label>
   					<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Old Password">
-  					<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="New Password">
+  					<input type="password" id="newPassword" name="newPassword" class="form-control" data-ng-model="credentials.newPassword" placeholder="New Password">
   				</div>
   				<div data-ng-show="error" class="text-center text-danger">
   					<strong data-ng-bind="error"></strong>
@@ -29,7 +29,7 @@
   		</form>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-primary" ng-click="ok()">OK</button>
+      <button class="btn btn-primary" ng-click="ok(user)">Save & Exit</button>
       <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
     </div>
 </section>
