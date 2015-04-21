@@ -3445,6 +3445,7 @@ tbody.collapse.in {
   border-radius: 0;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  /**Custom Dropdown Animation Code**/
   opacity:.3;
   -webkit-transform-origin: top;
   transform-origin: top;
@@ -3454,6 +3455,7 @@ tbody.collapse.in {
   display: block;
   transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;
+  /**End Of Custom Code**/
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
 }
@@ -3509,7 +3511,8 @@ tbody.collapse.in {
   cursor: not-allowed;
 }
 .open > .dropdown-menu {
-  /*display: block;*/
+  display: block;
+  /**Custom Animation Code**/
   -webkit-transform: scale(1, 1);
   transform: scale(1, 1);
   opacity:1;
