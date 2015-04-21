@@ -17,8 +17,6 @@ angular.module('core').controller('LoadingController', ['$scope', '$http', '$sta
 					$state.go('setup');
 				}
 				else {
-				
-				
 					console.log(Authentication.user.classes);
 					$state.go('course', {_id : $state.params._id || response[0]._id});
 		  	}
