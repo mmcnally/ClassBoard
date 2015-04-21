@@ -13,6 +13,9 @@ module.exports = function(app) {
     app.route('/widget/quiz/questions')
         .post(users.requiresLogin, course.requiresAuthorization, quiz.listQuestions);
    
+
+
+   
     // attendance widget routes
     // app.route('/widget/attendance/submit').post(users.requiresLogin, );
 };

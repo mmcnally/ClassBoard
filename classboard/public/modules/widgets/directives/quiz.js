@@ -12,20 +12,20 @@ angular.module('widgets').directive('quiz', ['$http', '$state', function($http, 
 		    var SubmitModel = {};
 		    switch ($scope.QuestionModel.type) {
 		    	case 'TF':
-		    		SubmitModel.type = "TF";
+		    		SubmitModel.type = 'TF';
 		    		SubmitModel.answer = $scope.QuestionModel.tfAnswer;
 		    		break;
 		    	case 'MC':
 		    		SubmitModel.answer = $scope.QuestionModel.mcAnswer;
 		    		SubmitModel.mcAnswers = $scope.QuestionModel.mcAnswers;
-		    		SubmitModel.type = "MC"
+		    		SubmitModel.type = 'MC';
 		    		break;
 		    	case 'OR':
 		    		SubmitModel.answer = $scope.QuestionModel.orAnswer;
-		    		SubmitModel.type = "OR"
+		    		SubmitModel.type = 'OR';
 		    		break;
 		    	default:
-		    		return $scope.QuestionModel.error = "Must select a type";
+		    		return $scope.QuestionModel.error = 'Must select a type';
 		    }
 		 	SubmitModel.courseId = $state.params._id;
 		    SubmitModel.text = $scope.QuestionModel.text;
