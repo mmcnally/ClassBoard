@@ -3445,9 +3445,23 @@ tbody.collapse.in {
   border-radius: 0;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  opacity:.3;
+  -webkit-transform-origin: top;
+  transform-origin: top;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-transform: scale(1, 0);
+  display: block;
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
 }
+/*
+.container-fixed {
+  margin: 10% auto;
+  max-width: 480px;
+}*/
 .dropdown-menu.pull-right {
   right: 0;
   left: auto;
@@ -3495,7 +3509,10 @@ tbody.collapse.in {
   cursor: not-allowed;
 }
 .open > .dropdown-menu {
-  display: block;
+  /*display: block;*/
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);
+  opacity:1;
 }
 .open > a {
   outline: 0;
