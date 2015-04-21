@@ -6,7 +6,7 @@ var _ = require('lodash'),
 module.exports.dependencies = { //order matters for these files.
 		lib: { //gets read FIRST -- should be used for MODULE files
 			css: [
-				'public/lib/bootstrap/dist/css/bootstrap.min.css',
+				'public/lib/bootstrap/dist/css/bootstrap.css',
 				//'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
 			],
 			js: [

@@ -8,5 +8,9 @@ angular.module('core').controller('SettingsController', ['$scope', '$http', 'Aut
 		if (!Authentication.user) {
 				$location.path('/signin');
 		}
-		}
+		
+		
+	
+		
+	}
 ]);
