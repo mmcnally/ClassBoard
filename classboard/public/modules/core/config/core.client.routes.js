@@ -10,7 +10,8 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		$stateProvider.
 		state('dashboard', {
 			url: '/',
-			templateUrl: 'modules/core/views/dashboard.client.view.html'
+			controller: 'LoadingController',
+			templateUrl: 'modules/core/views/loading.client.view.html'
 		}).
 		state('signup', {
 			url: '/signup',
