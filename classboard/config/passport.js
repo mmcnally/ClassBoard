@@ -26,7 +26,8 @@ module.exports = function() { //local passport strategy
 			passwordField: 'password'
 		},
 		function(email, password, done) {
-			User.findOne({email: email}).populate('classes').exec(function(err, user) {
+			User.findOne({email: email}).exec(function(err, user) {
+				console.log(user);
 				if (err) {
 					return done(err);
 				}
@@ -40,7 +41,7 @@ module.exports = function() { //local passport strategy
 						message: 'Unknown user or invalid password'
 					});
 				}
-
+				
 				return done(null, user);
 			});
 		}
