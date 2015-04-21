@@ -7,9 +7,10 @@ angular.module('users').factory('Courses', ['$http', 'Authentication', '$locatio
     // creates a class, adds user as admin, and adds class to user's list of classes
     // callback signature: (err, res)
     var createClass = function(CreateClass, cb) {
-      $http.post('/course/createClass', CreateClass).success(function(response) {
+      $http.post('/course/createClass', CreateClass).success(function(course) {
         // redirect to the index page
-        $location.path('/');
+        $location.path('/course/' + course._id);
+				//$state.go('course', {_id : $state.params._id || response[0]._id});
       }).error(function(response) {
         cb(response.message, undefined);
       });

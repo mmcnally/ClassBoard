@@ -62,7 +62,7 @@ exports.createClass = function(req, res) {
 
 	// send user back
 	
-	res.json(user);
+	res.json(course);
 };
 
 
