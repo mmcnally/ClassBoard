@@ -3,15 +3,6 @@
 angular.module('core').controller('HeaderController', ['$scope', '$http', '$location', 'Authentication', '$modal', '$log',
 	function($scope, $http, $location, Authentication, $modal, $log) {
 		$scope.authentication = Authentication;
-		if(Authentication.user.classes!==0){
-				$http.post('/course/courseByID', $scope.authentication).success(function(response) {
-					// set the global user.classes to the response containing course objects
-					$scope.authentication.user.classes = response;
-					console.log($scope.authentication.user.classes);
-				}).error(function(response) {
-					$scope.SignUp.error = response.message;
-				});
-		}
 
 		$scope.logOut = function() {
 			$http.get('/auth/signout').success(function(response){
