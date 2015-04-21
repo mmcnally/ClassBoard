@@ -1,38 +1,50 @@
-<nav class="container-fluid" data-ng-controller="HeaderController">
-	<a href="/#/" class="navbar-brand">ClassBoard</a>
-		<!--<ul class="nav navbar-nav navbar-right" data-ng-hide="!authentication.user">
-			<li ng-class="{active: $uiRoute}">
-				<a href="/#/signin">Sign In<small> (or up)</small></a>
-			</li>
-		</ul>-->
 
-		<ul class="nav navbar-nav navbar-right" data-ng-hide="!authentication.user">
-			<li ng-class="{active: $uiRoute}">
-				<a href="/#" ng-click="logOut()">Logout</a>
-			</li>
-		</ul>
+<nav class="navbar navbar-default" data-ng-controller="HeaderController">
+  <div class="container-fluid">
+		<!---- HEADER ---->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBarCollapse">
+        <span class="sr-only">Toggle navigation</span>
+	      <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+			<a class="navbar-brand" href="/#/">ClassBoard</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navBarCollapse">
 
-		<ul class="nav navbar-nav navbar-right" data-ng-hide="isActive('/signin') || isActive('/setup')">
-			<li ng-class="{active: $uiRoute}">
-				<!--<a ng-href="/#/course/settings/{{get_class_id_from_url_for_settings()}}">Settings</a>-->
-				<a ng-click="open('md', authentication.user)">Settings</a>
-			</li>
-		</ul>
-
-		<div class="collapse navbar-collapse" data-ng-hide="isActive('/signin') || isActive('/setup')">
-			<ul class="nav navbar-nav" data-ng-hide="isActive('/signin') || isActive('/setup')">
-				<li class="dropdown" dropdown>
-          <a href="" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">My Classes<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-				<li ng-repeat="classes in authentication.user.classes">
-					<a ng-href="/#/course/{{classes._id}}">{{classes.title}}</a>
-				</li>
-            <li class="divider"></li>
+			<!---- LEFT ALIGNED ELEMENTS ---->
+			<ul class="nav navbar-nav">
+				<!-- My Classes -->
+				<li class="dropdown" data-ng-show="!isActive('/signin')">
+          <a href="" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">My Classes <span class="caret"></span></a>
+          	<ul class="dropdown-menu navDropDown" role="menu">
+							<li ng-repeat="classes in authentication.user.classes">
+								<a ng-href="/#/course/{{classes._id}}">{{classes.title}}</a>
+							</li>
+							<li class="no-classes disabled">
+								<a>No classes</a>
+							</li>
+            	<li class="divider"></li>
 	            <li>
 	            	<a href="#/setup">Enroll in new class</a>
 	            </li>
           </ul>
         </li>
+				<!-- -->
+			</ul>
+
+			<!---- RIGHT ALIGNED ELEMENTS ---->
+			<ul class="nav navbar-nav navbar-right">
+				<!-- Settings -->
+				<li ng-class="{active: $uiRoute}" data-ng-show="!isActive('/signin')">
+					<a ng-click="open('md', authentication.user)">Settings</a>
+				</li>
+				<!-- LogOut -->
+				<li ng-class="{active: $uiRoute}" data-ng-show="authentication.user">
+					<a href="/#" ng-click="logOut()">Logout</a>
+				</li>
 			</ul>
 		</div>
+	</div>
 </nav>
