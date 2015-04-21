@@ -313,7 +313,7 @@ exports.changePassword = function(req, res) {
  * User middleware
  */
 exports.userByID = function(req, res, next, id) {
-	User.findById(id).exec(function(err, user) {
+	User.findById(id, function(err, user) {
 		if (err) return next(err);
 		if (!user) return next(new Error('Failed to load User ' + id));
 		req.profile = user;
@@ -334,25 +334,6 @@ exports.requiresLogin = function(req, res, next) {
 	next();
 };
 
-/**
- * User authorizations routing middleware
- */
-exports.hasAuthorization = function(roles) {
-	var _this = this;
-
-	return function(req, res, next) {
-		_this.requiresLogin(req, res, function() {
-			if (_.intersection(req.user.roles, roles).length) {
-				return next();
-			} else {
-				return res.status(403).send({
-					message: 'User is not authorized'
-				});
-			}
-		});
-	};
-};
-
 
 /******************************************************************************************
  * Authentication Stuff
@@ -364,8 +345,6 @@ exports.hasAuthorization = function(roles) {
  * Signup
  */
 exports.signup = function(req, res) {
-	// For security measurement we remove the roles from the req.body object
-	delete req.body.roles;
 
 	// Init Variables
 	var user = new User(req.body);

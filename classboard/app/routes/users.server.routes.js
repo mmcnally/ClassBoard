@@ -3,7 +3,6 @@
 /**
  * Module dependencies.
  */
-var passport = require('passport');
 
 module.exports = function(app) {
 	// User Routes
@@ -26,13 +25,11 @@ module.exports = function(app) {
 	app.route('/auth/signout').get(users.signout);
 
 
-	// NEW CLASS ROUTING
+	// Course routes
 	app.route('/course/createClass').post(users.requiresLogin, course.createClass);
 	app.route('/course/enroll').post(users.requiresLogin, course.enroll);
-	/*****app.route('/course/courseNameByID').post(course.courseNameByID);*****/
 	app.route('/course/courseByID').post(course.courseByID);
+	
 	// Finish by binding the user middleware
 	app.param('userId', users.userByID);
-	// and course middleware
-	//app.param('courseId', course.courseByID);
 };

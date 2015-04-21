@@ -153,3 +153,27 @@ exports.courseByID = function(req, res) {
 			}
 	});
 };
+
+//authorization middleware that requires a user to be a course admin in order to perform an action
+exports.requiresAuthorization = function(req, res, next) {
+	Course.findOne({_id : req.body.courseId}).exec(function(err, course) {
+		if (err) {
+			res.status(500).send('Server error');
+		}
+		if (!course) {
+			res.status(400).send('Unable to find course');
+		}
+		var isAdmin = false;
+		course.admins.forEach(function(admin){
+			if (admin.toString() === req.user._id.toString()) {
+				isAdmin = true;
+			}	
+		});
+		if (isAdmin) {
+			next();
+		}
+		else {
+			res.status(401).send('You must be a course admin to do this');
+		}
+	});
+};
