@@ -43,6 +43,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		}).
 		state('course', {
 			url: '/course/:_id',
+			controller: 'LoadingController',
 			templateUrl: 'modules/core/views/dashboard.client.view.html'
 		}).
 		state('settings', {
