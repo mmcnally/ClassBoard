@@ -62,7 +62,7 @@ exports.createClass = function(req, res) {
 
 	// send user back
 	
-	res.json(user);
+	res.json(course);
 };
 
 
@@ -124,7 +124,7 @@ exports.enroll = function(req, res) {
 					}
 				});
 				
-				res.json(user);
+				res.json(course);
 			}
 			else {
 				return res.status(400).send({

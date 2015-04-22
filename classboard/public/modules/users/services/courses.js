@@ -7,9 +7,9 @@ angular.module('users').factory('Courses', ['$http', 'Authentication', '$locatio
     // creates a class, adds user as admin, and adds class to user's list of classes
     // callback signature: (err, res)
     var createClass = function(CreateClass, cb) {
-      $http.post('/course/createClass', CreateClass).success(function(response) {
-        // redirect to the index page
-        $location.path('/');
+      $http.post('/course/createClass', CreateClass).success(function(course) {
+        // redirect to new course in dashboard
+        $location.path('/course/' + course._id);
       }).error(function(response) {
         cb(response.message, undefined);
       });
@@ -20,9 +20,9 @@ angular.module('users').factory('Courses', ['$http', 'Authentication', '$locatio
     // enrolls user in class
     // callback signature: (err, res)
     var enroll = function(Enroll, cb) {
-      $http.post('/course/enroll', Enroll).success(function(response) {
-        // redirect to the index page
-        $location.path('/');
+      $http.post('/course/enroll', Enroll).success(function(course) {
+				// redirect to new course in dashboard
+				$location.path('/course/' + course._id);
       }).error(function(response) {
         cb(response.message, undefined);
       });
