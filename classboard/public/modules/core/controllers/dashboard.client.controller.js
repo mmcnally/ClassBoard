@@ -12,7 +12,7 @@ angular.module('core').controller('DashboardController', ['$scope', '$http', 'Au
 		}
 
 		$scope.user = Authentication.user;
-		
+
 		//checks if user is an admin of the currently view class.
 		$scope.isAdmin = function() {
 			var ret = false;
@@ -21,12 +21,12 @@ angular.module('core').controller('DashboardController', ['$scope', '$http', 'Au
 					course.admins.forEach(function(adminId){
 						if (adminId === Authentication.user._id) {
 							ret = true;
-						}	
+						}
 					});
 				}
 			});
 			return ret;
 		};
-		
+
 	}
 ]);

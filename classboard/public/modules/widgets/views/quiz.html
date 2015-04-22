@@ -42,10 +42,10 @@
 		</div>
 		<div ng-if="QuestionModel.type === 'TF'">
     		<div class="radio">
-    		  	<label><input type="radio" name="type" ng-click="QuestionModel.tfAnswer = 'true'">True</label>
+    		  	<label><input type="radio" name="answer" ng-click="QuestionModel.tfAnswer = 'true'">True</label>
     		</div>
     		<div class="radio">
-    		  	<label><input type="radio" name="type" ng-click="QuestionModel.tfAnswer = 'false'">False</label>
+    		  	<label><input type="radio" name="answer" ng-click="QuestionModel.tfAnswer = 'false'">False</label>
     		</div>
 		</div>
 		<div ng-if="QuestionModel.type === 'OR'">

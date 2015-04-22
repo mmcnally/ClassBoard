@@ -1,49 +1,108 @@
 widget {
-	width:100%;
-	position:relative;
-	display: inline-block;
-	padding: 15px;
-	background-color: white;
-	border-radius: 3px;
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);
-	margin: 0 0 15px 0;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  padding: 15px;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  margin: 0 0 15px 0;
 }
 widget .row {
-	width:100%;
+  width: 100%;
 }
 widget > .row {
-	height:32px;
-	border-bottom: 1px solid rgba(0,0,0,0.17);
-	margin:0 0 10px 0;
+  height: 32px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
+  margin: 0 0 10px 0;
 }
-widget h3{
-	font-size: 22px;
-	display: inline-block;
-	padding: 0;
-	margin: 0;
+widget h3 {
+  font-size: 22px;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
 }
-widget div{
-	display: block;
+widget div {
+  display: block;
 }
 widget h5 {
-	font-weight: bold;
-	text-transform: uppercase;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 widget textarea {
-	width: 100%!important;
-	resize: none;
+  width: 100%!important;
+  resize: none;
 }
 widget .input-group {
-	width: 100%;
+  width: 100%;
 }
 widget .btn-group {
-	width:100%;
+  width: 100%;
 }
 widget label {
-	width:100%;
+  width: 100%;
 }
-
 widget .small-scroll {
-	max-height: 30vh;
-	overflow: auto;
+  max-height: 30vh;
+  overflow: auto;
+}
+/**Animation Stuff **/
+.animated {
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+@-webkit-keyframes bounceIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(.3);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.05);
+  }
+  70% {
+    -webkit-transform: scale(.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.bounceIn {
+  -webkit-animation-name: bounceIn;
+  animation-name: bounceIn;
+}
+.bounceIn.one {
+  -webkit-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+.bounceIn.two {
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.bounceIn.three {
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }

@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('widgets').directive('widget', ['Authentication', '$state', function(Authentication, $state) {
-	
+
 	function link($scope, element, attrs) {
 		$scope.toggleSettings = function() {
 			$scope.settings = !$scope.settings;
 		};
 		$scope.settings = false;
-		
+
 		$scope.isAdmin = function() {
 			var ret = false;
 			Authentication.user.classes.forEach(function(course) {
@@ -15,14 +15,14 @@ angular.module('widgets').directive('widget', ['Authentication', '$state', funct
 					course.admins.forEach(function(adminId){
 						if (adminId === Authentication.user._id) {
 							ret = true;
-						}	
+						}
 					});
 				}
 			});
 			return ret;
 		};
-		
-		
+
+
 	}
 
 	return {
