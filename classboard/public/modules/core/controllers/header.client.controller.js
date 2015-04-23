@@ -29,12 +29,29 @@ angular.module('core').controller('HeaderController', ['$scope', '$http', '$loca
 						templateUrl: 'modules/core/views/settings.client.view.html',
 						controller: function ($scope, $modalInstance, user) {
 							$scope.user = user;
+							$scope.SaveAndExit = {};
 
 							$scope.ok = function (updatedUser) {
 								console.log(updatedUser);
 								//$scope.user = updatedUser;
 								//console.log(updatedUser.firstName);
-								$modalInstance.close($scope.user);
+								
+								
+								$http.put('/users', $scope.SaveAndExit).success(function(user) {
+									// redirect to new course in dashboard
+									//Authentication.user = user;
+									console.log(user);
+									$modalInstance.close(user);
+									
+									
+					      }).error(function(err) {
+										console.log(err);
+					          $scope.SaveAndExit.error = err;
+										
+					      });
+								
+								
+								//$modalInstance.close($scope.user);
 							};
 
 							$scope.cancel = function () {
