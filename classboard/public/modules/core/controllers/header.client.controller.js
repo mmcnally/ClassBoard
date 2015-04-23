@@ -37,29 +37,17 @@ angular.module('core').controller('HeaderController', ['$scope', '$http', '$loca
 							$scope.user = user;
 							$scope.SaveAndExit = {};
 
-							$scope.ok = function (updatedUser) {
-								console.log(updatedUser);
-								//$scope.user = updatedUser;
-								//console.log(updatedUser.firstName);
-								
-								
+							$scope.ok = function () {
 								$http.put('/users', $scope.SaveAndExit).success(function(user) {
-									// redirect to new course in dashboard
-									//Authentication.user = user;
-									console.log(user);
+									Authentication.user = user;
 									$modalInstance.close(user);
-									
-									
 					      }).error(function(err) {
 										console.log(err);
 					          $scope.SaveAndExit.error = err;
-										
 					      });
-								
-								
-								//$modalInstance.close($scope.user);
 							};
-
+							
+							
 							$scope.cancel = function () {
 								$modalInstance.dismiss('cancel');
 							};
