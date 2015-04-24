@@ -3,8 +3,16 @@
 angular.module('widgets').directive('widget', ['Authentication', '$state', function(Authentication, $state) {
 
 	function link($scope, element, attrs) {
-		$scope.toggleSettings = function() {
+		$scope.toggleSettings = function(title) {
 			$scope.settings = !$scope.settings;
+			if ($scope.settings){
+				$('widget[title="'+title+'"]')[0].setAttribute('class','widgSettings');
+				$('button[title="'+title+'"]')[0].setAttribute('class','pull-right btn btn-xs btn-info glyphicon glyphicon-ok widgSettingsBtnSettings');
+			}
+			else{
+				$('widget[title="'+title+'"]')[0].setAttribute('class','widgDefault');
+				$('button[title="'+title+'"]')[0].setAttribute('class','pull-right btn btn-xs btn-info glyphicon glyphicon-cog widgSettingsBtnDefault');
+			}
 		};
 		$scope.settings = false;
 

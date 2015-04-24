@@ -1,7 +1,7 @@
 <!-- header row -->
 <div class="row">
 	<h3>{{title}}</h3>
-	<button class="pull-right btn btn-xs btn-info glyphicon glyphicon-cog" ng-click="toggleSettings()">
+	<button title="{{title}}"; class="pull-right btn btn-xs btn-info glyphicon glyphicon-cog widgSettingsBtnDefault" ng-click="toggleSettings(title);">
 		<!--<i class="glyphicon glyphicon-cog"></i>-->
 	</button>
 </div>
@@ -12,5 +12,5 @@
 </div>
 <!-- settings -->
 <div ng-if="settings">
-	Settings
+	Don't think about breathing ;)
 </div>
