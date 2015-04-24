@@ -17,6 +17,33 @@
   background-color:#050505;
   color:#2780e3;
 }
+
+.navbar-class
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top:-12px;
+    text-align: center;
+    margin: auto;
+}
+#className:hover{
+  text-decoration:none;
+  cursor:default;
+}
+/*.navbar-center {
+  float: center !important;
+}
+
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+.navbar.center .navbar-inner .nav {
+    float: none;
+    display:inline-block;
+}
+*/
+
 .dropdown{
   opacity:1.0;
 }

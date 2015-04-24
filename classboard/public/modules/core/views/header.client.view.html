@@ -9,12 +9,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-			<a class="navbar-brand" href="/#/"><strong>ClassBoard</strong></a>
+      <!---- BRAND NAME ---->
+      <a class="navbar-brand" href="/#/"><strong>ClassBoard</strong></a>
+      <!---- ClASS NAME ---->
+			<a id="className" class="navbar-class navbar-text"><h3><strong>{{authentication.course.title}}</h3></strong></a>
 		</div>
+
 		<div class="collapse navbar-collapse" id="navBarCollapse">
 
 			<!---- LEFT ALIGNED ELEMENTS ---->
 			<ul class="nav navbar-nav">
+
 				<!-- My Classes -->
 				<li class="dropdown" data-ng-show="!isActive('/signin')">
           <a href="" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">My Classes <span class="caret"></span></a>
