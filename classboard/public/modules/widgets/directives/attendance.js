@@ -9,11 +9,11 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 		
 		$scope.attend = function() {
 				$scope.clickedAttend = true;			
-		}
+		};
 		
 		$scope.createNewAttendance = function() {
 				
-		}
+		};
 		
 		$scope.submit = function() {
 		    
