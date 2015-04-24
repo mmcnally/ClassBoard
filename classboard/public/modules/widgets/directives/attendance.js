@@ -4,19 +4,23 @@
 angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentication', function($http, $state, Authentication) {
 	
 	function link($scope, element, attrs) {
-		$scope.foo = 'hi';
+		$scope.user = Authentication.user;
 		$scope.clickedAttend = false;
-		//$scope.newAttendance = {course: Authentication.course._id, students: [], };
+		$scope.AttendanceModel = {
+								course: Authentication.course._id,
+							 	students: [],
+								};
 		
 		$scope.attend = function() {
-				$scope.clickedAttend = true;			
+			$scope.clickedAttend = true;
+			var attended = {
+				user: $scope.user._id,
+				present: 1
+			};
+			
 		};
 		
-		$scope.createNewAttendance = function() {
-				
-		};
 		
-		$scope.foo = 'oaheoiwefj';
 		$scope.submit = function() {
 		    
 		    $http.post('/widget/attendance/submit')
