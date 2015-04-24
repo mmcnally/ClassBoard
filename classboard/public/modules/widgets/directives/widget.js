@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('widgets').directive('widget', ['Authentication', '$state', function(Authentication, $state) {
+angular.module('widgets').directive('widget', ['Authentication', '$state', 'Socket', function(Authentication, $state, Socket) {
+	console.log(Socket);
 
 	function link($scope, element, attrs) {
 		$scope.toggleSettings = function(title) {

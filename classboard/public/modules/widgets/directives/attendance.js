@@ -1,25 +1,25 @@
 'use strict';
 
 
-angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentication', function($http, $state, Authentication) {
+angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentication', 'Socket', function($http, $state, Authentication, Socket) {
 	
 	function link($scope, element, attrs) {
-		$scope.foo = 'hi';
+		$scope.user = Authentication.user;
 		$scope.clickedAttend = false;
-		$scope.attendanceDate = Date.now;
-		//console.log($scope.attende
-		
-		//$scope.newAttendance = {course: Authentication.course._id, students: [], courseTime};
+		$scope.AttendanceModel = {
+								course: Authentication.course._id,
+							 	students: [],
+								};
 		
 		$scope.attend = function() {
-				$scope.clickedAttend = true;			
+			$scope.clickedAttend = true;
+			var student = {
+				user: $scope.user._id,
+				present: 1
+			};
 		};
 		
-		$scope.createNewAttendance = function() {
-				
-		};
 		
-		$scope.foo = 'oaheoiwefj';
 		$scope.submit = function() {
 		    
 		    $http.post('/widget/attendance/submit')
