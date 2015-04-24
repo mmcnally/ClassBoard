@@ -37,13 +37,13 @@ exports.attend = function(req, res) {
 
   // add class to user
   //if(user.classes && user.classes.length > 0) {
-    user.classes = user.classes.push(course._id);
-  }
-  else {
-    user.classes = [course._id];
-  }
+    //user.classes = user.classes.push(course._id);
+  //}
+  //else {
+  //  user.classes = [course._id];
+  //}
   
-  
+  var thing = {};
   // add course to current user
   Attendance.update({_id: user._id}, {
     classes: user.classes
@@ -54,15 +54,15 @@ exports.attend = function(req, res) {
   });
 
 
-  // save the course
-  course.save(function(err) {
-    if (err) {
-      console.log(err);
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    }
-  });
+  // // save the course
+  // course.save(function(err) {
+  //   if (err) {
+  //     console.log(err);
+  //     return res.status(400).send({
+  //       message: errorHandler.getErrorMessage(err)
+  //     });
+  //   }
+  // });
 
   // add course to current user
   User.update({_id: user._id}, {
@@ -75,6 +75,6 @@ exports.attend = function(req, res) {
 
   // send user back
   
-  res.json(course);
+  res.json(thing);
 };
   
