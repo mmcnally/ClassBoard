@@ -1,8 +1,6 @@
 'use strict';
 
-var express = require('express'),
-	http = require('http'),
-	socketio = require('socket.io'),
+var express = require('express.io'),
 	morgan = require('morgan'),
 	bodyParser = require('body-parser'),
 	session = require('express-session'),
@@ -127,12 +125,6 @@ module.exports = function(db) {
 		});
 	});
 
-	// Attach Socket.io
-	var server = http.createServer(app);
-	var io = socketio.listen(server);
-	app.set('socketio', io);
-	app.set('server', server);
-
-	// Return Express server instance
+	// Return Express.io server instance
 	return app;
 };
