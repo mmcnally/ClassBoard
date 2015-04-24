@@ -1,10 +1,42 @@
+.navbar-default {
+  background-color:#121212;
+}
+.navbar-default .navbar-nav > li > a{
+  -webkit-transition: color .25s; /* Safari */
+  transition: color .25s;
+}
+.navbar-default .navbar-nav > li > a:hover{
+  background-color:#050505;
+  color:#2780e3;
+}
+.navbar-default .navbar-brand{
+  -webkit-transition: color .25s; /* Safari */
+  transition: color .25s;
+}
+.navbar-default .navbar-brand:hover{
+  background-color:#050505;
+  color:#2780e3;
+}
 .navDropDown{
+  padding-top:0;
+  border-top:0;
+  background-color:#121212;
+  color:white;
   max-height:237px;
   overflow-y:auto;
 }
+.dropdown-menu > li > a {
+  color:white;
+  -webkit-transition: color .25s; /* Safari */
+  transition: color .25s;
+}
+.dropdown-menu > li > a:hover {
+  color:#2780e3;
+  background-color:#090909;
+}
 li.no-classes {
-    display: block;
+  display: block;
 }
 li + li.no-classes {
-    display: none;
+  display: none;
 }

@@ -19,14 +19,14 @@
 				<li class="dropdown" data-ng-show="!isActive('/signin')">
           <a href="" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">My Classes <span class="caret"></span></a>
           	<ul class="dropdown-menu navDropDown" role="menu">
-							<li ng-repeat="classes in authentication.user.classes">
+							<li class="navMenuLi" ng-repeat="classes in authentication.user.classes">
 								<a ng-href="/#/course/{{classes._id}}">{{classes.title}}</a>
 							</li>
 							<li class="no-classes disabled">
 								<a>No classes</a>
 							</li>
             	<li class="divider"></li>
-	            <li>
+	            <li class="navMenuLi">
 	            	<a href="#/setup">Enroll in new class</a>
 	            </li>
           </ul>
@@ -41,12 +41,12 @@
 					<a href="" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp; {{authentication.user.firstName}} {{authentication.user.lastName}}</a>
 						<ul class="dropdown-menu navDropDown" role="menu">
 							<!-- Settings -->
-							<li ng-class="{active: $uiRoute}" data-ng-show="!isActive('/signin')">
+							<li ng-class="{active: $uiRoute} navMenuLi" data-ng-show="!isActive('/signin')">
 								<a href="" ng-click="open('md', authentication.user)">Settings</a>
 							</li>
             	<li class="divider"></li>
 							<!-- LogOut -->
-							<li ng-class="{active: $uiRoute}" data-ng-show="authentication.user">
+							<li ng-class="{active: $uiRoute} navMenuLi" data-ng-show="authentication.user">
 								<a href="/#" ng-click="logOut()">Log Out</a>
 							</li>
 					</ul>
