@@ -5,6 +5,7 @@ angular.module('widgets').directive('widget', ['Authentication', '$state', 'Sock
 
 	function link($scope, element, attrs) {
 		$scope.toggleSettings = function(title) {
+			//shouldn't use jquery here! look up ng-class directive instead
 			$scope.settings = !$scope.settings;
 			if ($scope.settings){
 				$('widget[title="'+title+'"]')[0].setAttribute('class','widgSettings');

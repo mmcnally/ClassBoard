@@ -1,6 +1,8 @@
 'use strict';
 
-var express = require('express.io'),
+var express = require('express'),
+	http = require('http'),
+	socketio = require('socket.io'),
 	morgan = require('morgan'),
 	bodyParser = require('body-parser'),
 	session = require('express-session'),
@@ -15,6 +17,8 @@ var express = require('express.io'),
 	consolidate = require('consolidate'),
 	path = require('path'),
 	assets = require('./assets');
+	
+var port = process.env.PORT || 3000; //for c9 set to process.env.PORT
 
 module.exports = function(db) {
 	// Initialize express app
@@ -124,7 +128,17 @@ module.exports = function(db) {
 			error: 'Not Found'
 		});
 	});
+	
+	// config passport
+	require('../config/passport')();
+	
+	var io = require('socket.io').listen(app.listen(port));
 
-	// Return Express.io server instance
+	// Globbing socket.io files
+	assets.getGlobbedFiles('./app/socket.io/**/*.js').forEach(function(routePath) {
+		require(path.resolve(routePath))(io);
+	});
+	
+	// Return Express server instance
 	return app;
 };
