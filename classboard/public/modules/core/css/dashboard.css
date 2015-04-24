@@ -31,38 +31,3 @@
 */
 	background-image: url(http://api.thumbr.it/whitenoise-361x370.png?background=e6e6e0ff&noise=626262&density=35&opacity=10);
 }
-
-.widgDefault{
-	color:black;
-	background-color:white;
-	-webkit-transition: all 1s; /* Safari */
-	transition: all 1s;
-}
-.widgSettings{
-	color:white;
-	background-color:#9954bb;
-	-webkit-transition: all 1s; /* Safari */
-	transition: all 1s;
-}
-.widgSettingsBtnDefault{
-  color: #ffffff;
-  background-color: #9954bb;
-  border-color: #9954bb;
-	-webkit-transition: all 1s; /* Safari */
-	transition: all 1s;
-}
-.widgSettingsBtnSettings{
-  color: #9954bb;
-  background-color: #ffffff;
-  border-color: #ffffff;
-	-webkit-transition: all 1s; /* Safari */
-	transition: all 1s;
-}
-.widgSettingsBtnSettings:focus{
-	outline: 0;
-  color: #9954bb;
-  background-color: #ffffff;
-  border-color: #ffffff;
-	-webkit-transition: all 1s; /* Safari */
-	transition: all 1s;
-}
