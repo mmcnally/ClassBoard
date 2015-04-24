@@ -1,0 +1,22 @@
+<div ng-if="isAdmin()">
+	 I am an admin and it is greatttt
+   
+   
+   <div ng-if="!clickedAttend">
+     Please Attend Class!
+     <br>
+     <button class="btn btn-lg btn-success" ng-click="attend()">Attend</button>
+   </div>
+   
+   <div ng-if="clickedAttend">
+     You clicked attend! YAY
+     <br>
+     <button class="btn btn-lg btn-success">YAY HAPPY JOY</button>
+   </div>
+</div>
+
+
+
+<div ng-if="!isAdmin()">
+	I am not admin
+</div>
