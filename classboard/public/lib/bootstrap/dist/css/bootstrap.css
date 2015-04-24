@@ -3454,7 +3454,7 @@ tbody.collapse.in {
   -webkit-transform: scale(1, 0);
   display: block;
   transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
+  -webkit-transition: all 0.1s linear;
   /**End Of Custom Code**/
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
