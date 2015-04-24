@@ -107,7 +107,6 @@ widget .small-scroll {
   animation-delay: 0.5s;
 }
 
-
 .widgDefault{
 	color:black;
 	background-color:white;
@@ -120,25 +119,64 @@ widget .small-scroll {
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
 }
+
 .widgSettingsBtnDefault{
+  color: #9954bb;
+  background-color: #ffffff;
+  border-color: #ffffff;
+	-webkit-transition: all 1s; /* Safari */
+	transition: all 1s;
+}
+.widgSettingsBtnDefault:active{
+  color: #9954bb;
+  background-color: #ffffff;
+  border-color: #ffffff;
+	-webkit-transition: all 1s; /* Safari */
+	transition: all 1s;
+}
+.widgSettingsBtnDefault:hover{
+  color: #9954bb;
+  background-color: #ffffff;
+  border-color: #ffffff;
+	-webkit-transition: all 1s; /* Safari */
+	transition: all 1s;
+	outline: 0;
+}
+.widgSettingsBtnDefault:focus{
+  color: #9954bb;
+  background-color: #ffffff;
+  border-color: #ffffff;
+	-webkit-transition: all 1s; /* Safari */
+	transition: all 1s;
+	outline: 0;
+}
+.widgSettingsBtnSettings{
   color: #ffffff;
   background-color: #9954bb;
   border-color: #9954bb;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
 }
-.widgSettingsBtnSettings{
-  color: #9954bb;
-  background-color: #ffffff;
-  border-color: #ffffff;
+.widgSettingsBtnSettings:active{
+  color: #ffffff;
+  background-color: #9954bb;
+  border-color: #9954bb;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
 }
-.widgSettingsBtnSettings:focus{
-	outline: 0;
-  color: #9954bb;
-  background-color: #ffffff;
-  border-color: #ffffff;
+.widgSettingsBtnSettings:hover{
+  color: #ffffff;
+  background-color: #9954bb;
+  border-color: #9954bb;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
+	outline: 0;
+}
+.widgSettingsBtnSettings:focus{
+  color: #ffffff;
+  background-color: #9954bb;
+  border-color: #9954bb;
+	-webkit-transition: all 1s; /* Safari */
+	transition: all 1s;
+	outline: 0;
 }
