@@ -9,7 +9,7 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 		$scope.attendanceDate = Date.now;
 		//console.log($scope.attende
 		
-		$scope.newAttendance = {course: Authentication.course._id, students: [], courseTime};
+		//$scope.newAttendance = {course: Authentication.course._id, students: [], courseTime};
 		
 		$scope.attend = function() {
 				$scope.clickedAttend = true;			
