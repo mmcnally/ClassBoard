@@ -1,32 +1,28 @@
 <section ng-controller="SettingsController">
     <div class="modal-header">
-      <h3 class="modal-title">User Settings (does not actually update database yet)</h3>
+      <h3 class="modal-title">Account Settings</h3>
     </div>
     <div class="modal-body">
       <form name="userForm2" data-ng-submit="ok()" class="update form-horizontal" novalidate autocomplete="off">
   			<fieldset>
   				<div class="form-group">
   					<label for="firstName">Edit First Name</label>
-  					<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="SaveAndExit.firstName" value="{{authentication.user.firstName}}">
+  					<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="SaveAndExit.firstName" placeholder="{{authentication.user.firstName}}">
   				</div>
   				<div class="form-group">
   					<label for="lastName">Edit Last Name</label>
-  					<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="SaveAndExit.lastName" value="{{authentication.user.lastName}}">
+  					<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="SaveAndExit.lastName" placeholder="{{authentication.user.lastName}}">
   				</div>
-  				<!-- <div class="form-group">
-  					<label for="email">Email</label>
-  						<input type="email" id="email" name="email" class="form-control" value="{{user.email}}">
-  				</div> -->
   				<div class="form-group">
   					<label for="password">Change Password</label>
   					<!-- <input type="password" id="password" name="password" class="form-control" data-ng-model="SaveAndExit.oldpassword" placeholder="Old Password"> -->
   					<input type="password" id="newPassword" name="newPassword" class="form-control" data-ng-model="SaveAndExit.password" placeholder="New Password">
   				</div>
-          <div class="text-center form-group">
+          <!-- <div class="text-center form-group">
   					<!-- <button type="Enroll" class="btn btn-primary">Enroll</button> -->
-            <button class="btn btn-primary">Save & Exit</button>
-            <button class="btn btn-warning">Cancel</button>
-  				</div>
+            <!-- <button class="btn btn-primary">Save & Exit</button> -->
+            <!-- <button class="btn btn-warning">Cancel</button> -->
+  				<!-- </div> -->
   				<div data-ng-show="SaveAndExit.error" class="text-center text-danger">
   					<strong data-ng-bind="SaveAndExit.error"></strong>
   				</div>
@@ -34,7 +30,7 @@
   		</form>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-primary" ng-click="ok(SaveAndExit)">Save & Exit</button>
+      <button class="btn btn-primary" ng-click="ok()">Save & Exit</button>
       <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
     </div>
 </section>
