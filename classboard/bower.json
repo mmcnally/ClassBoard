@@ -10,6 +10,8 @@
     "angular-mocks": "latest",
     "angular-bootstrap": "latest",
     "angular-ui-utils": "latest",
-    "angular-ui-router": "latest"
+    "angular-ui-router": "latest",
+    "angular-socket-io": "~0.7.0",
+    "socket.io-client": "~1.3.5"
   }
 }
