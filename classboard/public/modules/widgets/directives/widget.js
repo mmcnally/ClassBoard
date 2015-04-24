@@ -5,6 +5,7 @@ angular.module('widgets').directive('widget', ['Authentication', '$state', funct
 	function link($scope, element, attrs) {
 		$scope.toggleSettings = function() {
 			$scope.settings = !$scope.settings;
+			//widgetElement.setAttribute('class','widgSettings');
 		};
 		$scope.settings = false;
 
