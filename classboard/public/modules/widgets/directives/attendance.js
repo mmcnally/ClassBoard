@@ -1,5 +1,6 @@
 'use strict';
 
+
 angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentication', function($http, $state, Authentication) {
 	
 	function link($scope, element, attrs) {
@@ -18,6 +19,7 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 				
 		};
 		
+		$scope.foo = 'oaheoiwefj';
 		$scope.submit = function() {
 		    
 		    $http.post('/widget/attendance/submit')
