@@ -6,7 +6,7 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 
 
 	function link($scope, element, attrs) {
-		console.log(Authentication.course.code); // enroll as student in a class for debugging
+		console.log(Authentication.course.code); // to enroll as student in a class for testing
 		$scope.user = Authentication.user;
 		$scope.clickedAttend = false;
 		$scope.AttendanceModel = {
@@ -24,9 +24,12 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 		$scope.start = function() {
 			$scope.started = true;
 			Socket.emit('start attendance');
+			$scope.presentCount = 0;
+			console.log($scope.duration);
 			$timeout($scope.submit, $scope.duration * 1000); // submits after duration has passed
 			Socket.on('attend', function(student) {
 				$scope.AttendanceModel.students.push(student);
+				$scope.presentCount += 1;
 			});
 		};
 
@@ -42,12 +45,12 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 		
 		$scope.submit = function() {
 		    console.log('submitting');
-		    $http.post('/widget/attendance/submit')
+		    $http.post('/widget/attendance/submit', $scope.AttendanceModel)
 		    .success(function(res) {
 		        
 		    })
 		    .error(function(err) {
-		        
+		        $scope.AttendanceError = err;
 		    });
 		};
 		
