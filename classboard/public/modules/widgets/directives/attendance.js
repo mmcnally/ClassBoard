@@ -6,17 +6,16 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 
 
 	function link($scope, element, attrs) {
-		console.log(Authentication.course); // to enroll as student in a class for testing
+		console.log(Authentication.course);
 		$scope.user = Authentication.user;
 		$scope.clickedAttend = false;
 		$scope.AttendanceModel = {
 								course: Authentication.course._id,
-							 	students: [],
-							 	duration: 300
+							 	students: []
 								};
 
 		$scope.started = false;
-
+		$scope.students = Authentication.course.students;
 		Socket.on('attendance started', function() {
 			$scope.started = true;
 		});
@@ -29,7 +28,7 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 			Socket.on('attend', function(student) {
 				$scope.AttendanceModel.students.push({user: student, present: 1});
 				$scope.presentCount += 1;
-				Authentication.course.students.forEach(function(id, index, object) { // remove ids as students mark themselves present until only absent are left
+				$scope.students.forEach(function(id, index, object) { // remove ids as students mark themselves present until only absent are left
 					if(id === student) {
 						object.splice(index, 1);
 					}
@@ -44,17 +43,15 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 		
 		
 		$scope.submit = function() {
-			Authentication.course.students.forEach(function(id) { // mark remaining students absent
-				console.log(id);
+			console.log(Authentication.course);
+			$scope.students.forEach(function(id) { // mark remaining students absent
 				$scope.AttendanceModel.students.push({user: id, present: 0});
 			});
 		    var SubmitModel = $scope.AttendanceModel;
-		    console.log('submitting with model:');
-		    console.log(SubmitModel);
-		    SubmitModel.duration = $scope.duration;
+		    SubmitModel.courseId = Authentication.course._id;
 		    $http.post('/widget/attendance/submit', SubmitModel)
 		    .success(function(res) {
-		        
+		    	console.log('success');
 		    })
 		    .error(function(err) {
 		        $scope.AttendanceError = err;

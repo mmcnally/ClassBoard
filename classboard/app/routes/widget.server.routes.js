@@ -18,5 +18,5 @@ module.exports = function(app) {
  
    
     //attendance widget routes
-    app.route('/widget/attendance/submit').post(users.requiresLogin, attendance.create);
+    app.route('/widget/attendance/submit').post(users.requiresLogin, course.requiresAuthorization, attendance.create);
 };
