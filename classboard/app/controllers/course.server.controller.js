@@ -106,7 +106,7 @@ exports.enroll = function(req, res) {
 				});
 				
 				
-				// add student to class's list of classes
+				// add student to class's list of students
 				if(course.students && course.students.length > 0) {
 					course.students = course.students.push(user._id);
 				}

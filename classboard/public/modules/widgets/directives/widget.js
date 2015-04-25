@@ -6,9 +6,6 @@ angular.module('widgets').directive('widget', ['Authentication', '$state', 'Sock
 	function link($scope, element, attrs) {
 		$scope.settings = false;
 
-		$scope.toggleSettings = function() {
-			$scope.settings = !$scope.settings;
-		};
 
 		$scope.isAdmin = function() {
 			var ret = false;

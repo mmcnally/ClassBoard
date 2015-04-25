@@ -12,6 +12,7 @@ var mongoose = require('mongoose'),
     
     
 exports.create = function(req, res) {
+  console.log(req.body);
     var attendance = new Attendance(req.body);
     attendance.save(function(err, attendance) {
        if (err) {

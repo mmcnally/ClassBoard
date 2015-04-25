@@ -1,6 +1,6 @@
 <div ng-if="isAdmin()">
   <div ng-if="!started"> 
-    <textarea class="form-control" rows="1" name="duration" ng-model="duration"></textarea>
+    <input class ="form-control" type="number" placeholder="Duration" ng-model="AttendanceModel.duration" integer/>
     <br/>
     <button class="btn btn-sm btn-info" ng-click="start()">Take Attendance</button>
   </div>

@@ -6,16 +6,15 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 
 
 	function link($scope, element, attrs) {
-		console.log(Authentication.course.code); // to enroll as student in a class for testing
+		console.log(Authentication.course); // to enroll as student in a class for testing
 		$scope.user = Authentication.user;
-		$scope.course = Authentication.course;
 		$scope.clickedAttend = false;
 		$scope.AttendanceModel = {
 								course: Authentication.course._id,
 							 	students: [],
+							 	duration: 300
 								};
 
-		$scope.duration = 300; // how many seconds students have to click attend. will be set by form data 
 		$scope.started = false;
 
 		Socket.on('attendance started', function() {
@@ -26,34 +25,32 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 			$scope.started = true;
 			Socket.emit('start attendance');
 			$scope.presentCount = 0;
-			console.log($scope.duration);
-			$timeout($scope.submit, $scope.duration * 1000); // submits after duration has passed
+			$timeout($scope.submit, $scope.AttendanceModel.duration * 1000); // submits after duration has passed
 			Socket.on('attend', function(student) {
-				$scope.AttendanceModel.students.push(student);
+				$scope.AttendanceModel.students.push({user: student, present: 1});
 				$scope.presentCount += 1;
+				Authentication.course.students.forEach(function(id, index, object) { // remove ids as students mark themselves present until only absent are left
+					if(id === student) {
+						object.splice(index, 1);
+					}
+				});
 			});
 		};
 
 		$scope.attend = function() {
 			$scope.clickedAttend = true;
-			var student = {
-				user: $scope.user._id,
-				present: 1
-			};
-			Socket.emit('clicked attend', student);
+			Socket.emit('clicked attend', $scope.user._id);
 		};
 		
 		
 		$scope.submit = function() {
-			//Find students that are in course but not in present
-			// var absent = Authentication.course.students.filter(function(studentsid) {
-			//     return !$scope.AttendanceModel.students.user.some(function(presentid) {
-			//         return studentsid.value == presentid.value;
-			//     });
-			// });
-
-		    console.log('submitting');
+			Authentication.course.students.forEach(function(id) { // mark remaining students absent
+				console.log(id);
+				$scope.AttendanceModel.students.push({user: id, present: 0});
+			});
 		    var SubmitModel = $scope.AttendanceModel;
+		    console.log('submitting with model:');
+		    console.log(SubmitModel);
 		    SubmitModel.duration = $scope.duration;
 		    $http.post('/widget/attendance/submit', SubmitModel)
 		    .success(function(res) {

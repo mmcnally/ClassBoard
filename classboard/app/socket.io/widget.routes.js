@@ -9,7 +9,7 @@ module.exports = function(io) {
     	});
 
     	socket.on('clicked attend', function(student) {
-    		console.log('attend event');
+    		console.log('attend event:');
     		console.log(student);
     		io.emit('attend', student);
     	});
