@@ -1,22 +1,42 @@
 <div ng-if="isAdmin()">
 	 I am an admin and it is greatttt
-   
-   
-   <div ng-if="!clickedAttend">
-     Please Attend Class!
-     <br>
-     <button class="btn btn-lg btn-success" ng-click="attend()">Attend</button>
-   </div>
-   
-   <div ng-if="clickedAttend">
-     You clicked attend! YAY
-     <br>
-     <button class="btn btn-lg btn-success">YAY HAPPY JOY</button>
-   </div>
+  <div ng-if="!started"> 
+    <textarea class="form-control" rows="1" name="duration" ng-model="duration"></textarea>
+    <br>
+    <button class="btn btn-sm btn-info" ng-click="start()">Start</button>
+  </div>
+
+  <div ng-if="started">
+    <div ng-if="!clickedAttend">
+      Please Attend Class!
+      <br>
+      <button class="btn btn-lg btn-success" ng-click="attend()">Attend</button>
+    </div>
+     
+    <div ng-if="clickedAttend">
+      You clicked attend! YAY
+      <br>
+      <button class="btn btn-lg btn-success">YAY HAPPY JOY</button>
+    </div>
+  </div>
 </div>
 
 
 
 <div ng-if="!isAdmin()">
 	I am not admin
+
+  <div ng-if="started">
+    <div ng-if="!clickedAttend">
+      Please Attend Class!
+      <br>
+      <button class="btn btn-lg btn-success" ng-click="attend()">Attend</button>
+    </div>
+     
+    <div ng-if="clickedAttend">
+      You clicked attend! YAY
+      <br>
+      <button class="btn btn-lg btn-success">YAY HAPPY JOY</button>
+    </div>
+  </div>
 </div>
