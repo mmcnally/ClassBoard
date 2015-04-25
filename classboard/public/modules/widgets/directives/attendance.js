@@ -8,6 +8,7 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 	function link($scope, element, attrs) {
 		console.log(Authentication.course.code); // to enroll as student in a class for testing
 		$scope.user = Authentication.user;
+		$scope.course = Authentication.course;
 		$scope.clickedAttend = false;
 		$scope.AttendanceModel = {
 								course: Authentication.course._id,
@@ -44,8 +45,17 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 		
 		
 		$scope.submit = function() {
+			//Find students that are in course but not in present
+			// var absent = Authentication.course.students.filter(function(studentsid) {
+			//     return !$scope.AttendanceModel.students.user.some(function(presentid) {
+			//         return studentsid.value == presentid.value;
+			//     });
+			// });
+
 		    console.log('submitting');
-		    $http.post('/widget/attendance/submit', $scope.AttendanceModel)
+		    var SubmitModel = $scope.AttendanceModel;
+		    SubmitModel.duration = $scope.duration;
+		    $http.post('/widget/attendance/submit', SubmitModel)
 		    .success(function(res) {
 		        
 		    })
@@ -53,8 +63,6 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 		        $scope.AttendanceError = err;
 		    });
 		};
-		
-
 	}
 
 	return {
