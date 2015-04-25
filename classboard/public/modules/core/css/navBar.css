@@ -27,9 +27,16 @@
     text-align: center;
     margin: auto;
 }
+#className{
+  color:white;
+}
 #className:hover{
+  color:white;
   text-decoration:none;
   cursor:default;
+}
+#className:focus{
+  text-decoration:none;
 }
 /*.navbar-center {
   float: center !important;
@@ -72,4 +79,12 @@ li.no-classes {
 }
 li + li.no-classes {
   display: none;
+}
+
+#classInfoDropDown{
+  position:absolute;
+  width:400px;
+  left:50%;
+  margin-left:-200px;
+  margin-top:10px;
 }

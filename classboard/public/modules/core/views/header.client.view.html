@@ -12,8 +12,35 @@
       <!---- BRAND NAME ---->
       <a class="navbar-brand" href="/#/"><strong>ClassBoard</strong></a>
       <!---- ClASS NAME ---->
-			<a id="className" class="navbar-class navbar-text"><h3><strong>{{authentication.course.title}}</h3></strong></a>
-		</div>
+
+      <!--<button type="button" id="className" class="navbar-class navbar-text btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        {{authentication.course.title}}
+      </button>-->
+
+
+			<!--<a ng-if="Authentication.user.classes.length != 0" id="className" class="navbar-class navbar-text">
+        <h3 id="classInfoPopover" popover="Hello, World! {{authentication.course.title}}" popover-title="Class Information" popover-placement="bottom">
+          <strong>{{authentication.course.title}}</strong>
+        </h3>
+      </a>-->
+      <span class="navbar-class navbar-text">
+          <h3 class="dropdown">
+            <a id="className" ng-if="Authentication.user.classes.length != 0" href="" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">
+              <strong>{{authentication.course.title}}</strong>
+            </a>
+            <dl id="classInfoDropDown" class="dropdown-menu navDropDown dl-horizontal" role="menu">
+              <dt>Class Info</dt>
+              <dd>YAYAYA</dd>
+              <dt>SOMETHING ELSE</dt>
+              <dd>im not sure what goes here...</dd>
+              <dt>Stuff about the class</dt>
+              <dd>prolly</dd>
+              <dt>Matt</dt>
+              <dd>Tell me/your turn</dd>
+            </dl>
+          </h3>
+        </span>
+      </div>
 
 		<div class="collapse navbar-collapse" id="navBarCollapse">
 
@@ -34,7 +61,7 @@
 	            <li>
 	            	<a href="#/setup">Enroll in new class</a>
 	            </li>
-          </ul>
+            </ul>
         </li>
 				<!-- -->
 			</ul>
@@ -58,6 +85,11 @@
 				</li>
 
 			</ul>
+      <!--<div class="collapse" id="collapseClassInfo">
+        <div class="well">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>-->
 		</div>
 	</div>
 </nav>

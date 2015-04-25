@@ -116,12 +116,14 @@
 	background-color:white;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
+  outline:0;
 }
 .widgSettings{
 	color:white;
 	background-color:#9954bb;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
+  outline:0;
 }
 
 .widgSettingsBtnDefault{
@@ -137,6 +139,7 @@
   border-color: #ffffff;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
+	outline: 0;
 }
 .widgSettingsBtnDefault:hover{
   color: #9954bb;
@@ -167,6 +170,7 @@
   border-color: #9954bb;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
+	outline: 0;
 }
 .widgSettingsBtnSettings:hover{
   color: #ffffff;
