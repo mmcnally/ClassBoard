@@ -3,8 +3,6 @@
 var mongoose = require('mongoose'),
 	chalk = require('chalk');
 
-var port = process.env.PORT || 3000; //for c9 set to process.env.PORT
-
 // Bootstrap db connection
 var db = mongoose.connect('mongodb://localhost/mean-dev', {user : '', pass : ''}, function(err) {
 	if (err) {
@@ -20,12 +18,6 @@ mongoose.connection.on('error', function(err) {
 
 // start express server
 var app = require('./config/express')(db);
-
-// config passport
-require('./config/passport')();
-
-// Start the app by listening on <port>
-app.get('server').listen(port);
 
 // Expose app
 exports = module.exports = app;

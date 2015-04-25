@@ -1,9 +1,12 @@
 'use strict';
 
 
-angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentication', 'Socket', function($http, $state, Authentication, Socket) {
+angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentication', 'Socket',  function($http, $state, Authentication, Socket) {
 	
-	console.log(Socket);
+
+	Socket.on('attend', function(student) {
+		console.log(student);
+	});
 
 	function link($scope, element, attrs) {
 		$scope.user = Authentication.user;
@@ -19,6 +22,7 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 				user: $scope.user._id,
 				present: 1
 			};
+			Socket.emit('clicked attend', student);
 		};
 		
 		
