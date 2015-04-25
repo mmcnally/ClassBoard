@@ -3,6 +3,8 @@
 
 angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentication', 'Socket', function($http, $state, Authentication, Socket) {
 	
+	console.log(Socket);
+
 	function link($scope, element, attrs) {
 		$scope.user = Authentication.user;
 		$scope.clickedAttend = false;

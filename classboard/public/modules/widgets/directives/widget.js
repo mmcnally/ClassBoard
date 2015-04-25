@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('widgets').directive('widget', ['Authentication', '$state', 'Socket', function(Authentication, $state, Socket) {
-	console.log(Socket);
 
 	function link($scope, element, attrs) {
 		$scope.toggleSettings = function(title) {
@@ -24,7 +23,7 @@ angular.module('widgets').directive('widget', ['Authentication', '$state', 'Sock
 					course.admins.forEach(function(adminId){
 						if (adminId === Authentication.user._id) {
 							ret = true;
-						}
+						}	
 					});
 				}
 			});
