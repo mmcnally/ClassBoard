@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentication', 'Socket', function($http, $state, Authentication, Socket) {
+angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentication',  function($http, $state, Authentication) {
 	
 	function link($scope, element, attrs) {
 		$scope.user = Authentication.user;
