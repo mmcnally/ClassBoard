@@ -1,7 +1,7 @@
 'use strict';
 
 //Defines the main module and its dependencies.
-angular.module('ClassBoard', ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils']);
+angular.module('ClassBoard', ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils', 'btford.socket-io']);
 
 //start the application
 angular.element(document).ready(function() {
