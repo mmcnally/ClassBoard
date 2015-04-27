@@ -18,6 +18,9 @@ angular.module('widgets').directive('quiz', ['$http', '$state', '$timeout', 'Soc
 			.error(function(err) {
 				console.log(err);
 			});
+			
+			
+			
 		});
 		
 		
