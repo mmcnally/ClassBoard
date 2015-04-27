@@ -1,5 +1,5 @@
 <div ng-if="isAdmin()">
-	<button class="btn btn-sm btn-info" ng-click="toggle()">New Question</button>
+	<button class="btn btn-sm btn-info" ng-click="open('md', authentication.user)">New Question</button>
 	<div class="input-group" ng-if="creatingQuestion">
 		<h5>New Question</h5>
 		<textarea class="form-control" rows="4" name="question" ng-model="QuestionModel.text"></textarea>
