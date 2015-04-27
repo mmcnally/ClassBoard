@@ -21,10 +21,11 @@ angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentic
 		});
 
 		$scope.start = function() {
+			var defaultDuration = 30;
 			$scope.started = true;
 			Socket.emit('start attendance');
 			$scope.presentCount = 0;
-			$timeout($scope.submit, $scope.AttendanceModel.duration * 1000); // submits after duration has passed
+			$timeout($scope.submit, ($scope.AttendanceModel.duration || defaultDuration) * 1000); // submits after duration has passed
 			Socket.on('attend', function(student) {
 				$scope.AttendanceModel.students.push({user: student, present: 1});
 				$scope.presentCount += 1;
