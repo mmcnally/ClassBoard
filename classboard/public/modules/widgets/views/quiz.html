@@ -50,7 +50,7 @@
 		</div>
 		<div ng-if="QuestionModel.type === 'OR'">
 			<label>
-				<input type="text" name="answer" ng-model="orAnswer" placeholder="Answer">
+				<input type="text" name="answer" ng-model="QuestionModel.orAnswer" placeholder="Answer">
 			</label>
 		</div>
 		<br/>
@@ -85,6 +85,30 @@
 		no active questions
 	</div>
 	<div ng-if="activeQuestion">
-		answer things!
+		<p>{{activeQuestion.text}}</p>
+		<div class="input-group">
+			<div ng-if="activeQuestion.type === 'TF'">
+				<div class="radio">
+					<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'true'">True</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'false'">False</label>
+				</div>
+			</div>
+			<div ng-if="activeQuestion.type === 'MC'">
+				<label>
+					<input type="text" name="answer" ng-model="orAnswer" placeholder="Answer">
+				</label>
+			</div>
+			<div ng-if="activeQuestion.type === 'OR'">
+				<div class="radio">
+					<label ng-repeat="mcAnswer in activeQuestion.mcAnswers track by $index">
+						<input type="radio" name="answer" ng-click="activeQuestion.answer = getLetter($index)">
+						{{getLetter($index)}}) {{mcAnswer}}
+					</label>
+				</div>
+			</div>
+			<button class="btn btn-sm btn-success" ng-click="submitAnswer()">Submit</button>
+		</div>
 	</div>
 </div>
