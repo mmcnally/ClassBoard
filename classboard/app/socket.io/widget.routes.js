@@ -23,6 +23,7 @@ module.exports = function(io) {
       });
       
       socket.on('start question', function () {
+        console.log('SERVER RECEIVED QUESTION, EMITTED THINGS');
         io.emit('question active');
       });
       
