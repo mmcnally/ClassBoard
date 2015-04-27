@@ -7,7 +7,8 @@
 }
 .navbar-default .navbar-nav > li > a:hover{
   background-color:#050505;
-  color:#2780e3;
+  color:#2780e3; /* BLUE */
+  /*color: #9954bb;*/ /* PURPLE */
 }
 .navbar-default .navbar-brand{
   -webkit-transition: color .25s; /* Safari */
@@ -15,11 +16,11 @@
 }
 .navbar-default .navbar-brand:hover{
   background-color:#050505;
-  color:#2780e3;
+  color:#2780e3; /* BLUE */
+  /*color: #9954bb;*/ /* PURPLE */
 }
 
-.navbar-class
-{
+.navbar-class{
     position: absolute;
     width: 100%;
     left: 0;
@@ -29,11 +30,16 @@
 }
 #className{
   color:white;
+	-webkit-transition: color .25s; /* Safari */
+	transition: color .25s;
 }
 #className:hover{
-  color:white;
+  color:#2780e3; /* BLUE */
+  /*color: #9954bb;*/ /* PURPLE */
   text-decoration:none;
   cursor:default;
+	-webkit-transition: color .25s; /* Safari */
+	transition: color .25s;
 }
 #className:focus{
   text-decoration:none;
@@ -71,7 +77,8 @@
   transition: color .25s;
 }
 .dropdown-menu > li > a:hover {
-  color:#2780e3;
+  color:#2780e3; /* BLUE */
+  /*color: #9954bb; */ /* PURPLE */
   background-color:#090909;
 }
 li.no-classes {
