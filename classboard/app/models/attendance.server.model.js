@@ -27,7 +27,8 @@ var AttendanceSchema = new Schema({
 		default: 300
 	},
 	current: {
-		type: Boolean
+		type: Boolean,
+		default: true
 	}
 
 });
