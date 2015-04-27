@@ -1,16 +1,17 @@
-<!-- header row -->
-<div class="row">
-	<h3>{{title}}</h3>
-	<button title="{{title}}"; class="pull-right btn btn-xs btn-info glyphicon glyphicon-cog widgSettingsBtnDefault" ng-click="toggleSettings(title);">
-		<!--<i class="glyphicon glyphicon-cog"></i>-->
-	</button>
-</div>
-<!-- content -->
-<div ng-if="!settings">
-	 <!-- what ng-transclude does is copy whats inside the <widget> in dashboard.client.view.html and copy it here -->
-	 <ng-transclude></ng-transclude>
-</div>
-<!-- settings -->
-<div ng-if="settings">
-	Don't think about breathing ;)
+<div class="card" ng-class="settings ? 'widgSettings' : 'widgDefault'"><!-- header row -->
+	<div class="row">
+		<h3>{{title}}</h3>
+		<button title="{{title}}" ng-class="settings ? 'pull-right btn btn-xs btn-info glyphicon glyphicon-ok' : 'pull-right btn btn-xs btn-info glyphicon glyphicon-cog'" ng-click="settings = !settings" ng-class="settings ? 'widgSettingsBtnSettings' : 'widgSettingsBtnDefault'">
+			<!--<i class="glyphicon glyphicon-cog"></i>-->
+		</button>
+	</div>
+	<!-- content -->
+	<div ng-if="!settings">
+		 <!-- what ng-transclude does is copy whats inside the <widget> in dashboard.client.view.html and copy it here -->
+		 <ng-transclude></ng-transclude>
+	</div>
+	<!-- settings -->
+	<div ng-if="settings">
+		Don't think about breathing ;)
+	</div>
 </div>

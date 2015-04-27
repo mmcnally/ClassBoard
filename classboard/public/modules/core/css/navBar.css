@@ -17,6 +17,40 @@
   background-color:#050505;
   color:#2780e3;
 }
+
+.navbar-class
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top:-12px;
+    text-align: center;
+    margin: auto;
+}
+#className{
+  color:white;
+}
+#className:hover{
+  color:white;
+  text-decoration:none;
+  cursor:default;
+}
+#className:focus{
+  text-decoration:none;
+}
+/*.navbar-center {
+  float: center !important;
+}
+
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+.navbar.center .navbar-inner .nav {
+    float: none;
+    display:inline-block;
+}
+*/
+
 .dropdown{
   opacity:1.0;
 }
@@ -45,4 +79,12 @@ li.no-classes {
 }
 li + li.no-classes {
   display: none;
+}
+
+#classInfoDropDown{
+  position:absolute;
+  width:400px;
+  left:50%;
+  margin-left:-200px;
+  margin-top:10px;
 }
