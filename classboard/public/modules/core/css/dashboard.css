@@ -33,3 +33,39 @@
 */
 	background-image: url(http://api.thumbr.it/whitenoise-361x370.png?background=e6e6e0ff&noise=626262&density=35&opacity=10);
 }
+
+
+#widgetLibrary{
+	position:fixed;
+	width:100%;
+	height:125px;
+	left:0;
+	bottom:0;
+	margin:0 0 0 0;
+	color:white;
+	font-size:13px;
+	padding:15px 15px 15px 15px !important;;
+	background-color:#9954BB;
+}
+#widgetLibraryHeader{
+	color:white;
+	font-style:bold;
+	margin-top:0;
+}
+#widgetLibraryBreak{
+	margin-top:0;
+}
+.wdgtRow{
+	cursor:pointer;
+	margin-bottom:5px;
+}
+#widgetBtnLibrary{
+	position:fixed;
+	right:15px;
+	bottom:15px;
+}
+#widgetLibraryBtn{
+	/*position:absolute;
+	right:0;
+	bottom:0;*/
+}

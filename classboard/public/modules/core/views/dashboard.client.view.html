@@ -1,5 +1,6 @@
 <div ng-controller="DashboardController" class="dashboard row">
 
+	<!---- ROW 1 ---->
 	<div class="dashboard row" ng-if="user.classes[0]._id">
 		<div id="quizwidg" class="col-xs-4 animated bounceIn one widg">
 			<widget title="Quiz">
@@ -20,7 +21,7 @@
 		</div>
 	</div>
 
-
+	<!---- ROW 2 ---->
 	<div class="dashboard row" ng-if="user.classes[0]._id">
 		<div id="wolframwidg" class="col-xs-4 animated bounceIn four widg">
 			<widget title="Wolfram|Alpha" class="widgDefault" >
@@ -29,6 +30,69 @@
 				</div>
 			</widget>
 		</div>
-		
 	</div>
+</div>
+
+<div id="widgetLibrary" class="dashboard row">
+	<h3 id="widgetLibraryHeader">Add or Remove Widgets</h3>
+	<hr id="widgetLibraryBreak">
+	<div class="row">
+		<div class="col-md-3 col-md-offset-1">
+			<!---- BTN 1 ---->
+			<div class="row wdgtRow">
+				<div class="row">
+					<div class="col-md-1">
+						<span class="glyphicon glyphicon-unchecked"></span>
+					</div>
+					<div class="col-md-11">
+						Quiz
+					</div>
+				</div>
+			</div>
+			<!---- BTN 4 ---->
+			<div class="row wdgtRow">
+				<div class="row">
+					<div class="col-md-1">
+						<span class="glyphicon glyphicon-unchecked"></span>
+					</div>
+					<div class="col-md-11">
+						Wolfram|Alpha
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<!---- BTN 2 ---->
+			<div class="row wdgtRow">
+				<div class="row">
+					<div class="col-md-1">
+						<span class="glyphicon glyphicon-unchecked"></span>
+					</div>
+					<div class="col-md-11">
+						Attendance
+					</div>
+				</div>
+			</div>
+			<!---- BTN 5 ---->
+
+		</div>
+		<div class="col-md-3">
+			<!---- BTN 3 ---->
+			<div class="row wdgtRow">
+				<div class="row">
+					<div class="col-md-1">
+						<span class="glyphicon glyphicon-unchecked"></span>
+					</div>
+					<div class="col-md-11">
+						I'm Confused
+					</div>
+				</div>
+			</div>
+			<!---- BTN 6 ---->
+
+		</div>
+	</div>
+</div>
+<div id="widgetBtnLibrary">
+	<button class="btn btn btn-info glyphicon glyphicon-plus-sign" id="widgetLibraryBtn"></button>
 </div>
