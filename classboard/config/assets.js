@@ -4,7 +4,7 @@ var _ = require('lodash'),
 	glob = require('glob');
 
 module.exports.dependencies = { //order matters for these files.
-		lib: { //gets read FIRST -- should be used for MODULE files
+		lib: { //gets read FIRST -- should be used for library files
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				//'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
@@ -15,7 +15,12 @@ module.exports.dependencies = { //order matters for these files.
 				'public/lib/angular-animate/angular-animate.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/lib/jquery/dist/jquery.min.js',
+				'public/lib/bootstrap/dist/js/bootstrap.min.js',
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+				'/socket.io/socket.io.js',
+				'public/lib/socket.io-client/socket.io.js',
+				'public/lib/angular-socket-io/socket.js',
 			]
 		},
 		css: [ //these get read SECOND -- used for our files
@@ -24,8 +29,6 @@ module.exports.dependencies = { //order matters for these files.
 		],
 		js: [
 			'public/application.js', // first application.js to define main module
-			'public/lib/jquery/dist/jquery.min.js',
-			'public/lib/bootstrap/dist/js/bootstrap.min.js',
 			'public/modules/*/*.js', //next define each submodule
 			'public/modules/**/*.js' // finally submodule js files such as controllers, services etc.
 		]

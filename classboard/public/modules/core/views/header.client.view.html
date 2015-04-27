@@ -18,20 +18,14 @@
               <strong>{{authentication.course.title}}</strong>
             </a>
             <dl id="classInfoDropDown" class="dropdown-menu navDropDown dl-horizontal" role="menu">
-              <dt>Class Info</dt>
-              <dd>YAYAYA</dd>
-
-              <dt>SOMETHING ELSE</dt>
-              <dd>im not sure what goes here...</dd>
-
-              <dt>Stuff about the class</dt>
-              <dd>prolly</dd>
-
-              <dt>Matt</dt>
-              <dd>Tell me/your turn</dd>
-
-              <dt>This Class</dt>
-              <dd>Is Dope -_-</dd>
+              <dt>Teacher</dt>
+              <dd>We may put the name of each teacher here...</dd>
+              <dt>Students Enrolled</dt>
+              <dd>{{authentication.course.students.length}}</dd>
+              <dt>Class Capacity</dt>
+              <dd>{{authentication.course.capacity || "no capacity set"}} </dd>
+              <dt>Class Code</dt>
+              <dd>{{authentication.course.code}}</dd>
             </dl>
           </h3>
         </span>

@@ -1,80 +1,132 @@
 'use strict';
 
 /**
- * Module dependencies.
- */
- 
+* Module dependencies.
+*/
+
 var mongoose = require('mongoose'),
-    User = mongoose.model('User'),
-    Course = mongoose.model('Course'),
-	  Attendance = mongoose.model('Attendance');
-    
-    
-    
+User = mongoose.model('User'),
+Course = mongoose.model('Course'),
+Attendance = mongoose.model('Attendance');
+
+
+
 exports.create = function(req, res) {
-    var attendance = new Attendance(req.body);
-    attendance.save(function(err, attendance) {
-       if (err) {
-           res.status(400).send(err);
-       } 
-       else {
-           res.status(200).send(attendance);
-       }
-    });
-};
-
-  
-exports.attend = function(req, res) {
-  
-  var user = req.user;
-  
-  // create new course
-  //var course = new Course(req.body);
-  
-  // print course for debugging purposes
-  //console.log(course);
-  //var message = null;
-
-  // add class to user
-  //if(user.classes && user.classes.length > 0) {
-    //user.classes = user.classes.push(course._id);
-  //}
-  //else {
-  //  user.classes = [course._id];
-  //}
-  
-  var thing = {};
-  // add course to current user
-  Attendance.update({_id: user._id}, {
-    classes: user.classes
-  }, function(err, numberAffected, rawResponse) {
-      if(err) {
-        console.log(err);
+  console.log(req.body);
+  req.body.current = true;
+  var attendance = new Attendance(req.body);
+  attendance.save(function(err, attendance) {
+    if (err) {
+      res.status(400).send(err);
+    } 
+    else {
+      console.log('ATTENDANCE WAS SAVED!!! REJOICE');
+      res.status(200).send(attendance);
     }
   });
+};
+
+// 
+// exports.submit = function(req, res) {
+//   console.log(req.body);
+//   req.body.current = true;
+//   var attendance = new Attendance(req.body);
+//   attendance.save(function(err, attendance) {
+//     if (err) {
+//       res.status(400).send(err);
+//     } 
+//     else {
+//       res.status(200).send(attendance);
+//     }
+//   });
+// };
+
+// retrieves attendance object
+exports.getAttendance = function(req, res) {
+  Attendance.findOne({current : true}).exec(function(err, attendance) {
+    if(!err && attendance) {
+      console.log('FOUND THE COURSE YAY');
+      console.log(attendance);
+      res.json(attendance);
+      
+    }
+    else if(err) {
+      console.log('O NOES');
+      res.status(400).send(err);
+      
+    }
+    else {
+      console.log('ATTENDANCE TOTALLY NOT HERE :(');
+      res.status(400).send({
+        message: 'Attendance not found'
+      });
+    }
+  });
+};
 
 
-  // // save the course
-  // course.save(function(err) {
-  //   if (err) {
-  //     console.log(err);
+// updates attendance model
+// can also be used to submit since that's just more updating
+exports.update = function(req, res) {
+  //var attendance = new Attendance(req.body);
+  Attendance.update({current: true}, {
+    students: req.body.students
+  }, function(err, raw) {
+    if(err) {
+      res.status(400).send(err);
+    }
+  });
+  
+  // Attendance.findOne({current : true}).exec(function(err, attendance) {
+  //   if (!err && attendance) {
+  //     
+  //     
+  //     if(req.body.students.length > 0) {
+  //       // make students array if it doesn't exist yet
+  //       if(!attendance.students) {
+  //         attendance.students = [];
+  //       }
+  //       // add new students to list of students  
+  //       for(var s in req.body.students) {
+  //         if(attendance.students.indexOf(s) === -1)  {
+  //           attendance.students.push(s);
+  //         }
+  //       }
+  //       
+  //       
+  //       // update attendance
+  //       Attendance.update({current: true}, {
+  //         students: attendance.students
+  //       }, function(err, raw) {
+  //         if(err) {
+  //           res.status(400).send(err);
+  //         }
+  //       });
+  //       
+  //       res.json(attendance);
+  //     }
+  //     
+  //     
+  //   }
+  //   else {
   //     return res.status(400).send({
-  //       message: errorHandler.getErrorMessage(err)
+  //       message: 'Attendance not Found'
   //     });
   //   }
   // });
+};
 
-  // add course to current user
-  User.update({_id: user._id}, {
-    classes: user.classes
-  }, function(err, numberAffected, rawResponse) {
-      if(err) {
-        console.log(err);
+
+
+
+
+exports.showAttendance = function(req, res) {
+  Attendance.find({course : req.body.courseId}).exec(function(err, attendance) {
+    if (err) {
+      res.status(500).send(err);
+    }
+    else {
+      res.status(200).send(attendance);
     }
   });
-
-  // send user back
-  
-  res.json(thing);
 };
-  
