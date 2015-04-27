@@ -33,8 +33,8 @@
 	</div>
 </div>
 
-<div id="widgetLibrary" class="dashboard row">
-	<h3 id="widgetLibraryHeader">Add or Remove Widgets</h3>
+<div id="widgetLibrary" class="dashboard row" style="display:none;">
+	<h3 id="widgetLibraryHeader">Add or Remove Widgets    <small style="color:white;">(this is not working yet, and will not hide.)</small></h3>
 	<hr id="widgetLibraryBreak">
 	<div class="row">
 		<div class="col-md-3 col-md-offset-1">
@@ -74,7 +74,6 @@
 				</div>
 			</div>
 			<!---- BTN 5 ---->
-
 		</div>
 		<div class="col-md-3">
 			<!---- BTN 3 ---->
@@ -89,10 +88,10 @@
 				</div>
 			</div>
 			<!---- BTN 6 ---->
-
 		</div>
 	</div>
 </div>
+
 <div id="widgetBtnLibrary">
-	<button class="btn btn btn-info glyphicon glyphicon-plus-sign" id="widgetLibraryBtn"></button>
+	<button class="btn btn btn-info glyphicon glyphicon-plus-sign" id="widgetLibraryBtn" onclick="document.getElementById('widgetLibrary').removeAttribute('style');"></button>
 </div>
