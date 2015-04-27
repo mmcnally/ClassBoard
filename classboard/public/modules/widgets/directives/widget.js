@@ -6,7 +6,6 @@ angular.module('widgets').directive('widget', ['Authentication', '$state', 'Sock
 	function link($scope, element, attrs) {
 		$scope.settings = false;
 
-
 		$scope.isAdmin = function() {
 			var ret = false;
 			Authentication.course.admins.forEach(function(adminId) {
@@ -16,7 +15,6 @@ angular.module('widgets').directive('widget', ['Authentication', '$state', 'Sock
 			});
 			return ret;
 		};
-
 
 	}
 

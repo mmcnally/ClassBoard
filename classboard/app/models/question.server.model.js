@@ -25,6 +25,10 @@ var QuestionSchema = new Schema({
       type: Schema.ObjectId,
       ref: 'Course'
     },
+    completed : {
+       type: Boolean,
+       default : false
+    },
     duration : { //number of seconds before question closes
       type: Number,
       default: 120
