@@ -6,7 +6,25 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log) {
 	function link($scope, element, attrs) {
 		$scope.creatingQuestion = false;
 		$scope.questions = [];
+		$scope.activeQuestion = undefined;
 		$scope.QuestionModel = {mcAnswers : [''], mcAnswer : 'Correct Answer', tfAnswer : '', orAnswer: ''};
+		
+		Socket.on('question active', function() {
+			//console.log('IF ADMIN IT SHOULD BE TRUE: ' + isAdmin());
+			$http.get('/widget/quiz/questions/' + $state.params._id)
+			.success(function(question) {
+				$scope.activeQuestion = question;
+				console.log($scope.activeQuestion);
+			})
+			.error(function(err) {
+				console.log(err);
+			});
+			
+			
+			
+		});
+		
+		
 		$scope.submit = function() {
 			$scope.QuestionModel.error = '';
 			var SubmitModel = {};
@@ -62,9 +80,11 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log) {
 		$scope.startQuestion = function(question) {
 			$http.post('/widget/quiz/updateStartTime', {courseId: $state.params._id, questionId: question._id})
 			.success(function(res) {
+				console.log('CLIENT SENDS START QUESTION');
 				Socket.emit('start question');
 			})
 			.error(function(err) {
+				console.log('ERRRRRRRRROORRRRR');
 				$scope.QuestionModel.error = err.message;
 			});
 		};

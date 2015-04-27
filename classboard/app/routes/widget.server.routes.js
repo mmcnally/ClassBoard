@@ -12,7 +12,8 @@ module.exports = function(app) {
     app.route('/widget/quiz/create')
         .post(users.requiresLogin, course.requiresAuthorization, quiz.create);
     app.route('/widget/quiz/questions')
-        .post(users.requiresLogin, course.requiresAuthorization, quiz.listQuestions)
+        .post(users.requiresLogin, course.requiresAuthorization, quiz.listQuestions);
+    app.route('/widget/quiz/questions/:courseId')
         .get(users.requiresLogin, quiz.getActiveQuestion);
     app.route('/widget/quiz/updateStartTime')
             .post(users.requiresLogin, course.requiresAuthorization, quiz.updateStartTime);
