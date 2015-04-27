@@ -46,6 +46,7 @@ exports.getAttendance = function(req, res) {
   Attendance.findOne({current : true}).exec(function(err, attendance) {
     if(!err && attendance) {
       console.log('FOUND THE COURSE YAY');
+      console.log(attendance);
       res.json(attendance);
       
     }
@@ -55,6 +56,7 @@ exports.getAttendance = function(req, res) {
       
     }
     else {
+      console.log('ATTENDANCE TOTALLY NOT HERE :(');
       res.status(400).send({
         message: 'Attendance not found'
       });
