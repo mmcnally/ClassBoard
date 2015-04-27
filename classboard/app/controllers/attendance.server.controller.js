@@ -20,45 +20,53 @@ exports.create = function(req, res) {
       res.status(400).send(err);
     } 
     else {
+      console.log('ATTENDANCE WAS SAVED!!! REJOICE');
       res.status(200).send(attendance);
     }
   });
 };
 
-
-exports.submit = function(req, res) {
-  console.log(req.body);
-  req.body.current = true;
-  var attendance = new Attendance(req.body);
-  attendance.save(function(err, attendance) {
-    if (err) {
-      res.status(400).send(err);
-    } 
-    else {
-      res.status(200).send(attendance);
-    }
-  });
-};
+// 
+// exports.submit = function(req, res) {
+//   console.log(req.body);
+//   req.body.current = true;
+//   var attendance = new Attendance(req.body);
+//   attendance.save(function(err, attendance) {
+//     if (err) {
+//       res.status(400).send(err);
+//     } 
+//     else {
+//       res.status(200).send(attendance);
+//     }
+//   });
+// };
 
 // retrieves attendance object
 exports.getAttendance = function(req, res) {
   Attendance.findOne({current : true}).exec(function(err, attendance) {
     if(!err && attendance) {
+      console.log('FOUND THE COURSE YAY');
       res.json(attendance);
+      
     }
     else if(err) {
+      console.log('O NOES');
       res.status(400).send(err);
+      
     }
     else {
-      res.status.(400).send({
+      res.status(400).send({
         message: 'Attendance not found'
       });
     }
-}
+  });
+};
 
+
+// updates attendance model
+// can also be used to submit since that's just more updating
 exports.update = function(req, res) {
   //var attendance = new Attendance(req.body);
-  
   Attendance.update({current: true}, {
     students: req.body.students
   }, function(err, raw) {
