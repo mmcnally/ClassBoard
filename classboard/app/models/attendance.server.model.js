@@ -25,6 +25,9 @@ var AttendanceSchema = new Schema({
 	duration: { // How long students have to mark themselves present
 		type: Number,
 		default: 300
+	},
+	current: {
+		type: Boolean
 	}
 
 });
