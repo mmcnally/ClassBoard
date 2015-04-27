@@ -13,10 +13,14 @@ module.exports = function(app) {
         .post(users.requiresLogin, course.requiresAuthorization, quiz.create);
     app.route('/widget/quiz/questions')
         .post(users.requiresLogin, course.requiresAuthorization, quiz.listQuestions);
+        .get(users.requiresLogin, quiz.getActiveQuestion);
+    app.route('/widget/quiz/updateStartTime')
+            .post(users.requiresLogin, course.requiresAuthorization, quiz.updateStartTime);
    
- 
- 
    
     //attendance widget routes
-    app.route('/widget/attendance/submit').post(users.requiresLogin, course.requiresAuthorization, attendance.create);
+    //app.route('/widget/attendance/submit').post(users.requiresLogin, course.requiresAuthorization, attendance.update);
+    app.route('/widget/attendance/update').post(users.requiresLogin, attendance.update);
+    app.route('/widget/attendance/create').post(users.requiresLogin, course.requiresAuthorization, attendance.create);
+    app.route('/widget/attendance/getAttendance').post(users.requiresLogin, attendance.getAttendance);
 };
