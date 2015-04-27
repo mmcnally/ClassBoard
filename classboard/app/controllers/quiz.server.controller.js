@@ -53,3 +53,20 @@ exports.listQuestions = function(req, res) {
     }
   });
 };
+
+exports.getActiveQuestion = function(req, res) {
+    Question.findOne({course : req.body.courseId, startTime : {$lt : Date.now()}, completed : false}).lean().exec(function(err, question) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            if (question) {
+                delete question.answer;
+                return res.status(200).send(question);
+            }
+            else {
+                return res.status(400).send('No question currently active');
+            }
+        }
+    });
+};
