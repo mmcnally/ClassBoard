@@ -61,7 +61,7 @@ angular.module('widgets').directive('quiz', ['$http', '$state', '$timeout', 'Soc
 		$scope.startQuestion = function(question) {
 			$http.post('/widget/quiz/updateStartTime', {courseId: $state.params._id, questionId: question._id})
 			.success(function(res) {
-				Soc
+				Socket.emit('start question');
 			})
 			.error(function(err) {
 				$scope.QuestionModel.error = err.message;
