@@ -20,8 +20,12 @@ module.exports = function(io) {
       socket.on('disconnect', function(stuff) {
         console.log('PLEASE PRINT THINGS');
         //console.log(stuff);
-        
       });
+      
+      socket.on('start question', function () {
+        io.emit('question active');
+      });
+      
     });
 
 };
