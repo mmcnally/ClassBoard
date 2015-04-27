@@ -13,6 +13,8 @@ module.exports = function(app) {
         .post(users.requiresLogin, course.requiresAuthorization, quiz.create);
     app.route('/widget/quiz/questions')
         .post(users.requiresLogin, course.requiresAuthorization, quiz.listQuestions);
+    app.route('/widget/quiz/updateStartTime')
+            .post(users.requiresLogin, course.requiresAuthorization, quiz.updateStartTime);
    
  
  
