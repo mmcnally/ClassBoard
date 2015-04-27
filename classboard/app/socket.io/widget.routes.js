@@ -5,12 +5,12 @@ module.exports = function(io) {
     	console.log('socket server received connection');
 
     	socket.on('start attendance', function() {
+        console.log('Attendance started');
     		io.emit('attendance started');
     	});
 
     	socket.on('clicked attend', function(student) {
-    		console.log('attend event:');
-    		console.log(student);
+    		console.log('attend event: ' + student);
     		io.emit('attend', student);
     	});
     });
