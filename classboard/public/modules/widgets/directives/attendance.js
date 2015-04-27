@@ -46,6 +46,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 		
 		
 		$scope.start = function() {
+			var defaultDuration = 30;
 			$scope.started = true;
 			Socket.emit('start attendance');
 			console.log('before starting attendance: ' + $scope.AttendanceModel);
@@ -58,7 +59,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 			// });
 			
 			$scope.presentCount = 0;
-			$timeout($scope.submit, $scope.AttendanceModel.duration * 1000); // submits after duration has passed
+			$timeout($scope.submit, ($scope.AttendanceModel.duration || defaultDuration) * 1000); // submits after duration has passed
 			Socket.on('attend', function(student) {
 				$scope.AttendanceModel.students.push({user: student, present: 1});
 				$scope.presentCount += 1;
