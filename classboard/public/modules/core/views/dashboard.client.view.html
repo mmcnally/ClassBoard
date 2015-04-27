@@ -1,20 +1,33 @@
 <div ng-controller="DashboardController" class="dashboard row">
+
 	<div class="dashboard row" ng-if="user.classes[0]._id">
 		<div id="quizwidg" class="col-xs-4 animated bounceIn one widg">
 			<widget title="Quiz">
 				<quiz></quiz>
 			</widget>
 		</div>
+
 		<div id="attendancewidg" class="col-xs-4 animated bounceIn two widg">
 			<widget title="Attendance">
 				<attendance></attendance>
 			</widget>
 		</div>
+
 		<div id="confusedwidg" class="col-xs-4 animated bounceIn three widg">
 			<widget title="I'm Confused" class="widgDefault" > <!-- ng:class="{true:'widgDefault', false:'widgSettings'}[settings == true]" -->
 				I am a confused button {{!settings == true}}
 			</widget>
 		</div>
-		<!--<a ng-click="open()">Modal</a>-->
+	</div>
+
+
+	<div class="dashboard row" ng-if="user.classes[0]._id">
+		<div id="wolframwidg" class="col-xs-4 animated bounceIn four widg">
+			<widget title="Wolfram|Alpha" class="widgDefault" >
+				<div>
+					<iframe id="wolframIframe" frameborder="0" marginwidth="0" src="http://www.wolframalpha.com/Calculate/embed/medium.jsp"></iframe>
+				</div>
+			</widget>
+		</div>
 	</div>
 </div>

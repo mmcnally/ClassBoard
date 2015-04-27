@@ -57,6 +57,7 @@
 }
 */
 .dropdown-menu {
+  display:none; /* FIRE FOX FIX for dropdowns*/
   opacity:0;
 }
 .navDropDown{

@@ -110,6 +110,16 @@
   -moz-animation-delay: 0.5s;
   animation-delay: 0.5s;
 }
+.bounceIn.four {
+  -webkit-animation-delay: 0.7s;
+  -moz-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+.widg{
+  padding-left:7.5px !important;
+  padding-right:7.5px !important;
+}
 
 .widgDefault{
 	color:black;
@@ -162,4 +172,10 @@
   outline:0;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
+}
+#wolframIframe{
+  display:block;
+  width: 210px;
+  height: 86px;
+  margin: 0 auto;
 }
