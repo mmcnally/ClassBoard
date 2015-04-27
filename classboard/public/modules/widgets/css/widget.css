@@ -126,65 +126,40 @@
   outline:0;
 }
 
-.widgSettingsBtnDefault{
-  color: #9954bb;
-  background-color: #ffffff;
-  border-color: #ffffff;
+.widgetBtnCog{
+  color:#9954bb;
+  background-color:#ffffff;
+  border-color:#ffffff;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
 }
-.widgSettingsBtnDefault:active{
-  color: #9954bb;
-  background-color: #ffffff;
-  border-color: #ffffff;
-	-webkit-transition: all 1s; /* Safari */
-	transition: all 1s;
-	outline: 0;
-}
-.widgSettingsBtnDefault:hover{
-  color: #9954bb;
-  background-color: #ffffff;
-  border-color: #ffffff;
-	-webkit-transition: all 1s; /* Safari */
-	transition: all 1s;
-	outline: 0;
-}
-.widgSettingsBtnDefault:focus{
-  color: #9954bb;
-  background-color: #ffffff;
-  border-color: #ffffff;
-	-webkit-transition: all 1s; /* Safari */
-	transition: all 1s;
-	outline: 0;
-}
-.widgSettingsBtnSettings{
-  color: #ffffff;
-  background-color: #9954bb;
-  border-color: #9954bb;
+.widgetBtnOk{
+  color:#ffffff;
+  background-color:#9954bb;
+  border-color:#9954bb;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
 }
-.widgSettingsBtnSettings:active{
-  color: #ffffff;
-  background-color: #9954bb;
-  border-color: #9954bb;
+.widgetBtnCog:hover{
+  color:#9954bb;
+  background-color:#ffffff;
+  border-color:#ffffff;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
-	outline: 0;
 }
-.widgSettingsBtnSettings:hover{
-  color: #ffffff;
-  background-color: #9954bb;
-  border-color: #9954bb;
+.widgetBtnCog:focus{
+  color:#9954bb;
+  background-color:#ffffff;
+  border-color:#ffffff;
+  outline:0;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
-	outline: 0;
 }
-.widgSettingsBtnSettings:focus{
-  color: #ffffff;
-  background-color: #9954bb;
-  border-color: #9954bb;
+.widgetBtnOk:focus{
+  color:#ffffff;
+  background-color:#9954bb;
+  border-color:#9954bb;
+  outline:0;
 	-webkit-transition: all 1s; /* Safari */
 	transition: all 1s;
-	outline: 0;
 }
