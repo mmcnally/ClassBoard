@@ -40,7 +40,7 @@ module.exports = function(io) {
       socket.on('confused reset', function () {
         console.log('server received confused reset message');
         io.emit('update confused');
-      }
+      });
       
       
       
