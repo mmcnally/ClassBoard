@@ -9,7 +9,6 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log) {
 		$scope.QuestionModel = {};
 
 		Socket.on('question active', function() {
-			//console.log('IF ADMIN IT SHOULD BE TRUE: ' + isAdmin());
 			$http.get('/widget/quiz/questions/' + $state.params._id)
 			.success(function(question) {
 				$scope.activeQuestion = question;
