@@ -29,7 +29,7 @@ module.exports = function(app) {
     
     app.route('/widget/confused/create').post(users.requiresLogin, confused.create);
     app.route('/widget/confused/update').post(users.requiresLogin, confused.update);
-    app.route('/widget/confused/reset').post(users.requiresLogin, course.requiresAuthorization, confused.reset);
+    app.route('/widget/confused/reset').post(users.requiresLogin, confused.reset);
     app.route('/widget/confused/getConfused').post(users.requiresLogin, confused.getConfused);
     
 };
