@@ -47,30 +47,53 @@ exports.update = function(req, res) {
 
 // deletes all confused objects for a course
 exports.reset = function(req, res) {
-  Confused.find({course: req.body.courseId}).exec(function(err, confuseds) {
-    if(!err && confuseds) {
-      for (var c in confuseds) {
-        c.remove();
-      }
-      console.log('reset all confused objects');
-      res.sendStatus(200);
-    }
-    else if(err) {
-      console.log('reset error');
+  Confused.remove({course: req.body.course}, function (err) {
+    if(err) {
+      console.log(err);
       res.status(400).send(err);
     }
     else {
-      console.log('no confused objects to reset');
-      res.sendStatus(400);
+      res.sendStatus(200);
     }
+    
   });
 };
+
+//     exec(function(err, confuseds) {
+//   if(!err && confuseds) {
+//     console.log('confuseds: ' + confuseds);
+//     for (var c in confuseds) {
+//       console.log(c);
+//       c.remove(function (err) {
+//         if(err) {
+//           console.log('REMOVE ERROR');
+//           console.log(err);
+//         }
+//       });
+//     }
+//     console.log('reset all confused objects');
+//     res.sendStatus(200);
+//   }
+//   else if(err) {
+//     console.log('reset error');
+//     res.status(400).send(err);
+//   }
+//   else {
+//     console.log('no confused objects to reset');
+//     res.sendStatus(400);
+//   }
+// });
+
 
 
 
 // retrieves confused object
 exports.getConfused = function(req, res) {
   Confused.findOne({course: req.body.courseId}).exec(function(err, confused) {
+    // if(confused.length !== 1) {
+    //   console.log('number of things!!!! ' + confused.length);
+    //   res.status(400).send('too many thangs');
+    // }
     if(!err && confused) {
       console.log('FOUND IT YAY');
       console.log(confused);
