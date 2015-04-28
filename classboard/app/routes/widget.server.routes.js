@@ -6,6 +6,8 @@ var users = require('../../app/controllers/users.server.controller');
 var course = require('../../app/controllers/course.server.controller');
 var quiz = require('../../app/controllers/quiz.server.controller');
 var attendance = require('../../app/controllers/attendance.server.controller');
+var confused = require('../../app/controllers/confused.server.controller');
+
  
 module.exports = function(app) {
     //quiz widget routes
