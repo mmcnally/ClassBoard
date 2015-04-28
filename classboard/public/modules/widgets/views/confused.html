@@ -1,0 +1,39 @@
+<div ng-if="isAdmin()">
+  <!-- <div ng-if="!started"> 
+    <input class ="form-control" type="number" placeholder="Duration" ng-model="AttendanceModel.duration" integer/>
+    <br/>
+    <button class="btn btn-sm btn-info" ng-click="start()">Take Attendance</button>
+  </div> -->
+  
+  <div ng-if="started">
+    <h4>{{presentCount}} students confused :(</h4>
+    <!-- <div ng-if="!clickedAttend">
+      <br/>
+      <button class="btn btn-lg btn-success" ng-click="attend()">Attend</button>
+    </div> -->
+    
+    <!-- <div ng-if="clickedAttend">
+      <br/>
+      <button class="btn btn-lg btn-success">In Attendance</button>
+    </div> -->
+  </div>
+</div>
+
+
+
+<div ng-if="!isAdmin()">
+  I am not admin :(
+  
+  <div ng-if="started">
+    <div ng-if="!clickedAttend">
+      <br/>
+      <button class="btn btn-lg btn-success" ng-click="attend()">I'm useless</button>
+    </div>
+    
+    <div ng-if="clickedAttend">
+      <br/>
+      <button class="btn btn-lg btn-success">YAY FAILURE</button>
+    </div>
+  </div>
+</div>
+<div ng-if="ConfusedError">{{ConfusedError}}</div>
