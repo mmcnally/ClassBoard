@@ -45,7 +45,7 @@ exports.update = function(req, res) {
 exports.reset = function(req, res) {
   Confused.find({course: req.body.courseId}).exec(function(err, confuseds) {
     if(!err && confuseds) {
-      for (c in confuseds) {
+      for (var c in confuseds) {
         c.remove();
       }
       console.log('reset all confused objects');
