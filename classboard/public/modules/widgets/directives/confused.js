@@ -18,29 +18,24 @@ function($http, $state, Authentication, Socket, $timeout) {
 			console.log('retrieved confused object');
 			$scope.ConfusedModel = confused;
 			$scope.presentCount = attendance.students.length;
+			
+			if(ConfusedModel && ConfusedModel.students.indexOf(user._id) !== -1) {
+				// user already clicked confused button
+				$scope.isConfused = true;
+			}
+			
 		})
 		.error(function(err) {
 			console.log(err);
 			$scope.ConfusedError = err;
 			
 			// make new confused model
-			$http.post('/widget/confused/create', {course: $state.params._id, students: []})
-			.success(function(confused) {
-				console.log('confused object created');
-				$scope.ConfusedModel = confused;
-			})
-			.error(function(err) {
-				$scope.ConfusedError = err;
-			});	
+			$scope.create();
 		});
 		
 		
 		
-		if(ConfusedModel && ConfusedModel.students.indexOf(user._id) !== -1) {
-			// user already clicked confused button
-			$scope.isConfused = true;
-		}
-		
+	
 		
 		
 		
@@ -65,6 +60,17 @@ function($http, $state, Authentication, Socket, $timeout) {
 		});
 		
 		
+		// create new confused object
+		$scope.create = function () {
+			$http.post('/widget/confused/create', {course: $state.params._id, students: []})
+			.success(function(confused) {
+				console.log('confused object created');
+				$scope.ConfusedModel = confused;
+			})
+			.error(function(err) {
+				$scope.ConfusedError = err;
+			});	
+		}
 		
 		
 		// $scope.start = function() {
@@ -109,6 +115,21 @@ function($http, $state, Authentication, Socket, $timeout) {
 			});	
 		};
 		
+		
+		$scope.reset = function () {
+			$http.post('/widget/confused/reset', 
+			{course: $state.params._id})
+			.success(function() {
+				console.log('confused objects reset');
+				
+				// create new confused object
+				$scope.create();
+			})
+			.error(function(err) {
+				console.log(err);
+				$scope.ConfusedError = err;
+			});				
+		}
 		
 		// $scope.submit = function() {
 		// 	console.log(Authentication.course);
