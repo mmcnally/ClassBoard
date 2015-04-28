@@ -70,6 +70,11 @@ function($http, $state, Authentication, Socket, $timeout) {
 		});
 		
 		
+		$scope.confusedCountIsOne = function () {
+			return $scope.confusedCount && $scope.confusedCount === 1;
+		}
+		
+		
 		// create new confused object
 		$scope.create = function () {
 			$http.post('/widget/confused/create', {course: Authentication.course._id, students: []})
