@@ -17,9 +17,9 @@ function($http, $state, Authentication, Socket, $timeout) {
 		.success(function(confused) {
 			console.log('retrieved confused object');
 			$scope.ConfusedModel = confused;
-			$scope.presentCount = attendance.students.length;
+			$scope.presentCount = confused.students.length;
 			
-			if(ConfusedModel && ConfusedModel.students.indexOf(user._id) !== -1) {
+			if($scope.ConfusedModel && $scope.ConfusedModel.students.indexOf($scope.user._id) !== -1) {
 				// user already clicked confused button
 				$scope.isConfused = true;
 			}
@@ -51,7 +51,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 			.success(function(confused) {
 				console.log('retrieved confused object');
 				$scope.ConfusedModel = confused;
-				$scope.presentCount = attendance.students.length;
+				$scope.presentCount = confused.students.length;
 			})
 			.error(function(err) {
 				console.log(err);
@@ -70,7 +70,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 			.error(function(err) {
 				$scope.ConfusedError = err;
 			});	
-		}
+		};
 		
 		
 		// $scope.start = function() {
@@ -129,7 +129,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 				console.log(err);
 				$scope.ConfusedError = err;
 			});				
-		}
+		};
 		
 		// $scope.submit = function() {
 		// 	console.log(Authentication.course);
