@@ -11,6 +11,7 @@ Attendance = mongoose.model('Attendance'),
 Confused = mongoose.model('Confused');
 
 
+// create new confused object
 exports.create = function(req, res) {
   console.log(req.body);
   var confused = new Confused(req.body);
@@ -24,56 +25,61 @@ exports.create = function(req, res) {
     }
   });
 };
-// 
-// 
-// // retrieves attendance object
-// exports.getAttendance = function(req, res) {
-//   Attendance.findOne({current : true}).exec(function(err, attendance) {
-//     if(!err && attendance) {
-//       console.log('FOUND THE COURSE YAY');
-//       console.log(attendance);
-//       res.json(attendance);
-//       
-//     }
-//     else if(err) {
-//       console.log('O NOES');
-//       res.status(400).send(err);
-//       
-//     }
-//     else {
-//       console.log('ATTENDANCE TOTALLY NOT HERE :(');
-//       res.status(400).send({
-//         message: 'Attendance not found'
-//       });
-//     }
-//   });
-// };
-// 
-// 
-// // updates attendance model
-// // can also be used to submit since that's just more updating
-// exports.update = function(req, res) {
-//   //var attendance = new Attendance(req.body);
-//   Attendance.update({current: true}, {
-//     students: req.body.students
-//   }, function(err, raw) {
-//     if(err) {
-//       res.status(400).send(err);
-//     }
-//   });
-// };
-// 
-// 
-// 
-// 
-// 
-// exports.showAttendance = function(req, res) {
-//   Attendance.find({course : req.body.courseId}).exec(function(err, attendance) {
-//     if (err) {
-//       res.status(500).send(err);
-//     }
-//     else {
-//       res.status(200).send(attendance);
-//     }
-//   });
-// };
+
+
+
+// retrieves confused object
+exports.getConfused = function(req, res) {
+  Confused.findOne({course: req.body.courseId}).exec(function(err, confused) {
+    if(!err && confused) {
+      console.log('FOUND IT YAY');
+      console.log(confused);
+      res.json(confused);
+    }
+    else if(err) {
+      console.log('O NOES');
+      res.status(400).send(err);
+    }
+    else {
+      console.log('CONFUSED TOTALLY NOT HERE :(');
+      res.status(400).send({
+        message: 'Confused not found'
+      });
+    }
+  });
+};
+
+
+// deletes all confused objects for a course
+exports.reset = function(req, res) {
+  Confused.find({course: req.body.courseId}).exec(function(err, confuseds) {
+    if(!err && confuseds) {
+      for (c in confuseds) {
+        c.remove();
+      }
+      console.log('reset all confused objects');
+      res.sendStatus(200);
+    }
+    else if(err) {
+      console.log('reset error');
+      res.status(400).send(err);
+    }
+    else {
+      console.log('no confused objects to reset');
+      res.sendStatus(400);
+    }
+  });
+};
+
+
+// updates confused students list
+exports.update = function(req, res) {
+  Attendance.update({current: true}, {
+    students: req.body.students
+  }, function(err, raw) {
+    if(err) {
+      res.status(400).send(err);
+    }
+    res.sendStatus(200);
+  });
+};
