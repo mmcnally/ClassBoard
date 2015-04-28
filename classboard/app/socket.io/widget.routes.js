@@ -34,8 +34,13 @@ module.exports = function(io) {
       // Confused Routes ---------------------------------------------
       socket.on('confused changed', function () {
         console.log('server received confused changed message');
-        io.emi('update confused');
+        io.emit('update confused');
       });
+      
+      socket.on('confused reset', function () {
+        console.log('server received confused reset message');
+        io.emit('update confused');
+      }
       
       
       
