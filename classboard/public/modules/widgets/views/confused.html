@@ -24,14 +24,12 @@
 
 
 <div ng-if="!isAdmin()">
-  I am not admin :(
-  
     <div ng-if="!isConfused">
       <br/>
       <button class="btn btn-lg btn-success" ng-click="addConfused()">I'm useless</button>
     </div>
     
-    <div ng-if="confused">
+    <div ng-if="isConfused">
       <br/>
       <button class="btn btn-lg btn-success">YAY FAILURE</button>
     </div>
