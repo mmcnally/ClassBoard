@@ -4,7 +4,6 @@
 		<!---- ROW 1 ---->
 		<div class="dashboard row" ng-if="user.classes[0]._id">
 			<div ng-if="showQuiz" id="quizwidg" class="col-xs-4 animated bounceIn one widg">
-				{{showAttendance}}
 				<widget title="Quiz">
 					<quiz></quiz>
 				</widget>
@@ -35,8 +34,8 @@
 		</div>
 	</div>
 
-	<div ng-if="showLibrary" id="widgetLibrary" class="dashboard row"> <!-- wtf... this is breaking things -->
-		<h3 id="widgetLibraryHeader">Add or Remove Widgets</h3>
+	<div  id="widgetLibrary" ng-class="showLibrary ? 'dashboard row libShown' : 'dashboard row libClosed'"> <!--  ng-if="showLibrary" wtf... this is breaking things -->
+		<h4 id="widgetLibraryHeader"><b>Add or Remove Widgets</b></h4>
 		<hr id="widgetLibraryBreak">
 		<div class="row">
 			<div class="col-md-3 col-md-offset-1">
@@ -47,7 +46,7 @@
 							<span ng-class="showQuiz ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'"></span>
 						</div>
 						<div class="col-md-11">
-							Quiz
+							Quiz (this will take a while because of the animation)
 						</div>
 					</div>
 				</div>
@@ -71,7 +70,7 @@
 							<span ng-class="showAttendance ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'"></span>
 						</div>
 						<div class="col-md-11">
-							Attendance {{showAttendance}}
+							Attendance
 						</div>
 					</div>
 				</div>
@@ -95,6 +94,6 @@
 	</div>
 
 	<div id="widgetBtnLibrary">
-		<button ng-class="showLibrary ? 'btn btn btn-info glyphicon glyphicon-minus widgLibBtnOpen' : 'btn btn btn-info glyphicon glyphicon-plus widgLibBtnClose'" id="widgetLibraryBtn"ng-click="showLibrary = !showLibrary"></button>
+		<button id="widgetBtn" ng-class="showLibrary ? 'btn btn btn-info glyphicon glyphicon-minus widgLibBtnOpen' : 'btn btn btn-info glyphicon glyphicon-plus widgLibBtnClose'" id="widgetLibraryBtn"ng-click="showLibrary = !showLibrary"></button>
 	</div>
 </span>
