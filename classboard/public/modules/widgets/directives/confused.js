@@ -9,15 +9,16 @@ function($http, $state, Authentication, Socket, $timeout) {
 	function link($scope, element, attrs) {
 		//console.log(Authentication.course);
 		$scope.user = Authentication.user;
-		$scope.presentCount = 0;
+		$scope.confusedCount = 0;
 		$scope.ConfusedModel = undefined;
 		$scope.isConfused = false;
 		
 		$http.post('/widget/confused/getConfused', {courseId: $state.params._id})
 		.success(function(confused) {
 			console.log('retrieved confused object');
+			console.log(confused);
 			$scope.ConfusedModel = confused;
-			$scope.presentCount = confused.students.length;
+			$scope.confusedCount = confused.students.length;
 			
 			if($scope.ConfusedModel && $scope.ConfusedModel.students.indexOf($scope.user._id) !== -1) {
 				// user already clicked confused button
@@ -35,13 +36,6 @@ function($http, $state, Authentication, Socket, $timeout) {
 		
 		
 		
-	
-		
-		
-		
-		
-		
-		
 		
 		
 		
@@ -51,7 +45,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 			.success(function(confused) {
 				console.log('retrieved confused object');
 				$scope.ConfusedModel = confused;
-				$scope.presentCount = confused.students.length;
+				$scope.confusedCount = confused.students.length;
 			})
 			.error(function(err) {
 				console.log(err);
@@ -101,10 +95,17 @@ function($http, $state, Authentication, Socket, $timeout) {
 		// };
 		
 		$scope.addConfused = function() {
-			$scope.isConfused = true;
+			if($scope.ConfusedModel.students) {
+				$scope.ConfusedModel.students.push($scope.user._id);
+			}
+			else {
+				$scope.ConfusedModel.students = [$scope.user_id];
+			}
 			
+			console.log($scope.ConfusedModel);
+			$scope.isConfused = true;
 			$http.post('/widget/confused/update', 
-			{course: $state.params._id, students: $scope.ConfusedModel.students})
+			{course: Authentication.course._id, students: $scope.ConfusedModel.students})
 			.success(function() {
 				console.log('confused object updated');
 				

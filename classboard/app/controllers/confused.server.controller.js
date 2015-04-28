@@ -31,13 +31,15 @@ exports.create = function(req, res) {
 
 // updates confused students list
 exports.update = function(req, res) {
-  Attendance.update({current: true}, {
+  Confused.update({course: req.body.course}, {
     students: req.body.students
   }, function(err, raw) {
     if(err) {
       res.status(400).send(err);
     }
-    res.sendStatus(200);
+    else {
+      res.sendStatus(200);
+    }
   });
 };
 
