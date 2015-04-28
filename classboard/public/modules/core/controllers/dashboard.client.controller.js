@@ -13,6 +13,13 @@ angular.module('core').controller('DashboardController', ['$scope', '$http', 'Au
 
 		$scope.user = Authentication.user;
 
+
+		$scope.showQuiz = true;
+		$scope.showAttendance = true;
+		$scope.showConfused = true;
+		$scope.showWolfram = true;
+		$scope.showLibrary = false;
+
 		//checks if user is an admin of the currently view class.
 		$scope.isAdmin = function() {
 			var ret = false;

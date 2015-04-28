@@ -1,97 +1,100 @@
-<div ng-controller="DashboardController" class="dashboard row">
+<span ng-controller="DashboardController">
+	<div class="dashboard row">
 
-	<!---- ROW 1 ---->
-	<div class="dashboard row" ng-if="user.classes[0]._id">
-		<div id="quizwidg" class="col-xs-4 animated bounceIn one widg">
-			<widget title="Quiz">
-				<quiz></quiz>
-			</widget>
+		<!---- ROW 1 ---->
+		<div class="dashboard row" ng-if="user.classes[0]._id">
+			<div ng-if="showQuiz" id="quizwidg" class="col-xs-4 animated bounceIn one widg">
+				{{showAttendance}}
+				<widget title="Quiz">
+					<quiz></quiz>
+				</widget>
+			</div>
+
+			<div ng-if="showAttendance" id="attendancewidg" class="col-xs-4 animated bounceIn two widg">
+				<widget title="Attendance">
+					<attendance></attendance>
+				</widget>
+			</div>
+
+			<div ng-if="showConfused" id="confusedwidg" class="col-xs-4 animated bounceIn three widg">
+				<widget title="I'm Confused" class="widgDefault" > <!-- ng:class="{true:'widgDefault', false:'widgSettings'}[settings == true]" -->
+					I am a confused button {{!settings == true}}
+				</widget>
+			</div>
 		</div>
 
-		<div id="attendancewidg" class="col-xs-4 animated bounceIn two widg">
-			<widget title="Attendance">
-				<attendance></attendance>
-			</widget>
-		</div>
-
-		<div id="confusedwidg" class="col-xs-4 animated bounceIn three widg">
-			<widget title="I'm Confused" class="widgDefault" > <!-- ng:class="{true:'widgDefault', false:'widgSettings'}[settings == true]" -->
-				I am a confused button {{!settings == true}}
-			</widget>
+		<!---- ROW 2 ---->
+		<div class="dashboard row" ng-if="user.classes[0]._id">
+			<div ng-if="showWolfram" id="wolframwidg" class="col-xs-4 animated bounceIn four widg">
+				<widget title="Wolfram|Alpha" class="widgDefault" >
+					<div>
+						<iframe id="wolframIframe" frameborder="0" marginwidth="0" src="http://www.wolframalpha.com/Calculate/embed/medium.jsp"></iframe>
+					</div>
+				</widget>
+			</div>
 		</div>
 	</div>
 
-	<!---- ROW 2 ---->
-	<div class="dashboard row" ng-if="user.classes[0]._id">
-		<div id="wolframwidg" class="col-xs-4 animated bounceIn four widg">
-			<widget title="Wolfram|Alpha" class="widgDefault" >
-				<div>
-					<iframe id="wolframIframe" frameborder="0" marginwidth="0" src="http://www.wolframalpha.com/Calculate/embed/medium.jsp"></iframe>
+	<div ng-if="showLibrary" id="widgetLibrary" class="dashboard row"> <!-- wtf... this is breaking things -->
+		<h3 id="widgetLibraryHeader">Add or Remove Widgets</h3>
+		<hr id="widgetLibraryBreak">
+		<div class="row">
+			<div class="col-md-3 col-md-offset-1">
+				<!---- BTN 1 ---->
+				<div class="row wdgtRow">
+					<div class="row" ng-click="showQuiz = !showQuiz">
+						<div class="col-md-1">
+							<span ng-class="showQuiz ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'"></span>
+						</div>
+						<div class="col-md-11">
+							Quiz
+						</div>
+					</div>
 				</div>
-			</widget>
+				<!---- BTN 4 ---->
+				<div class="row wdgtRow">
+					<div class="row" ng-click="showWolfram = !showWolfram">
+						<div class="col-md-1">
+							<span ng-class="showWolfram ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'"></span>
+						</div>
+						<div class="col-md-11">
+							Wolfram|Alpha
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<!---- BTN 2 ---->
+				<div class="row wdgtRow">
+					<div class="row" ng-click="showAttendance = !showAttendance">
+						<div class="col-md-1">
+							<span ng-class="showAttendance ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'"></span>
+						</div>
+						<div class="col-md-11">
+							Attendance {{showAttendance}}
+						</div>
+					</div>
+				</div>
+				<!---- BTN 5 ---->
+			</div>
+			<div class="col-md-3">
+				<!---- BTN 3 ---->
+				<div class="row wdgtRow">
+					<div class="row" ng-click="showConfused = !showConfused">
+						<div class="col-md-1">
+							<span ng-class="showConfused ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'"></span>
+						</div>
+						<div class="col-md-11">
+							I'm Confused
+						</div>
+					</div>
+				</div>
+				<!---- BTN 6 ---->
+			</div>
 		</div>
 	</div>
-</div>
 
-<div id="widgetLibrary" class="dashboard row" style="display:none;">
-	<h3 id="widgetLibraryHeader">Add or Remove Widgets    <small style="color:white;">(this is not working yet, and will not hide.)</small></h3>
-	<hr id="widgetLibraryBreak">
-	<div class="row">
-		<div class="col-md-3 col-md-offset-1">
-			<!---- BTN 1 ---->
-			<div class="row wdgtRow">
-				<div class="row">
-					<div class="col-md-1">
-						<span class="glyphicon glyphicon-unchecked"></span>
-					</div>
-					<div class="col-md-11">
-						Quiz
-					</div>
-				</div>
-			</div>
-			<!---- BTN 4 ---->
-			<div class="row wdgtRow">
-				<div class="row">
-					<div class="col-md-1">
-						<span class="glyphicon glyphicon-unchecked"></span>
-					</div>
-					<div class="col-md-11">
-						Wolfram|Alpha
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<!---- BTN 2 ---->
-			<div class="row wdgtRow">
-				<div class="row">
-					<div class="col-md-1">
-						<span class="glyphicon glyphicon-unchecked"></span>
-					</div>
-					<div class="col-md-11">
-						Attendance
-					</div>
-				</div>
-			</div>
-			<!---- BTN 5 ---->
-		</div>
-		<div class="col-md-3">
-			<!---- BTN 3 ---->
-			<div class="row wdgtRow">
-				<div class="row">
-					<div class="col-md-1">
-						<span class="glyphicon glyphicon-unchecked"></span>
-					</div>
-					<div class="col-md-11">
-						I'm Confused
-					</div>
-				</div>
-			</div>
-			<!---- BTN 6 ---->
-		</div>
+	<div id="widgetBtnLibrary">
+		<button ng-class="showLibrary ? 'btn btn btn-info glyphicon glyphicon-minus widgLibBtnOpen' : 'btn btn btn-info glyphicon glyphicon-plus widgLibBtnClose'" id="widgetLibraryBtn"ng-click="showLibrary = !showLibrary"></button>
 	</div>
-</div>
-
-<div id="widgetBtnLibrary">
-	<button class="btn btn btn-info glyphicon glyphicon-plus-sign" id="widgetLibraryBtn" onclick="document.getElementById('widgetLibrary').removeAttribute('style');"></button>
-</div>
+</span>

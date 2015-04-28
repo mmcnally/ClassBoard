@@ -60,13 +60,23 @@
 	cursor:pointer;
 	margin-bottom:5px;
 }
+.wdgtRow:hover{
+	color:#D98CFF;
+	cursor:pointer;
+	margin-bottom:5px;
+}
 #widgetBtnLibrary{
 	position:fixed;
 	right:15px;
 	bottom:15px;
 }
-#widgetLibraryBtn{
-	/*position:absolute;
-	right:0;
-	bottom:0;*/
+#widgLibBtnOpen{
+	color:white;
+	background-color:#9954BB;
+	border:none;
+}
+.widgLibBtnClose{
+	color:#9954BB;
+	background-color:white;
+	border:none;
 }
