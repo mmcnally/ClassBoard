@@ -27,27 +27,18 @@ exports.create = function(req, res) {
 };
 
 
-
-// retrieves confused object
-exports.getConfused = function(req, res) {
-  Confused.findOne({course: req.body.courseId}).exec(function(err, confused) {
-    if(!err && confused) {
-      console.log('FOUND IT YAY');
-      console.log(confused);
-      res.json(confused);
-    }
-    else if(err) {
-      console.log('O NOES');
+// updates confused students list
+exports.update = function(req, res) {
+  Attendance.update({current: true}, {
+    students: req.body.students
+  }, function(err, raw) {
+    if(err) {
       res.status(400).send(err);
     }
-    else {
-      console.log('CONFUSED TOTALLY NOT HERE :(');
-      res.status(400).send({
-        message: 'Confused not found'
-      });
-    }
+    res.sendStatus(200);
   });
 };
+
 
 
 // deletes all confused objects for a course
@@ -72,14 +63,24 @@ exports.reset = function(req, res) {
 };
 
 
-// updates confused students list
-exports.update = function(req, res) {
-  Attendance.update({current: true}, {
-    students: req.body.students
-  }, function(err, raw) {
-    if(err) {
+
+// retrieves confused object
+exports.getConfused = function(req, res) {
+  Confused.findOne({course: req.body.courseId}).exec(function(err, confused) {
+    if(!err && confused) {
+      console.log('FOUND IT YAY');
+      console.log(confused);
+      res.json(confused);
+    }
+    else if(err) {
+      console.log('O NOES');
       res.status(400).send(err);
     }
-    res.sendStatus(200);
+    else {
+      console.log('CONFUSED TOTALLY NOT HERE :(');
+      res.status(400).send({
+        message: 'Confused not found'
+      });
+    }
   });
 };
