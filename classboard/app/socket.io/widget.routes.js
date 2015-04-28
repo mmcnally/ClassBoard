@@ -6,6 +6,7 @@ module.exports = function(io) {
     io.on('connection', function(socket){
     	console.log('socket server received connection');
 
+      // Attendance Routes -------------------------------------------
     	socket.on('start attendance', function() {
         console.log('Attendance started');
         // MAKE OBJECT
@@ -22,10 +23,22 @@ module.exports = function(io) {
         //console.log(stuff);
       });
       
+      
+      // Quiz Routes -------------------------------------------------
       socket.on('start question', function () {
         console.log('SERVER RECEIVED QUESTION, EMITTED THINGS');
         io.emit('question active');
       });
+      
+      
+      // Confused Routes ---------------------------------------------
+      socket.on('confused changed', function () {
+        console.log('server received confused changed message');
+        io.emi('update confused');
+      });
+      
+      
+      
       
     });
 
