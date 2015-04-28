@@ -55,20 +55,21 @@ function($http, $state, Authentication, Socket, $timeout) {
 			})
 			.error(function(err) {
 				console.log(err);
-				$scope.ConfusedError = err;
+				//$scope.ConfusedError = err + '1';
 			});
 		});
 		
 		
 		// create new confused object
 		$scope.create = function () {
-			$http.post('/widget/confused/create', {course: $state.params._id, students: []})
+			$http.post('/widget/confused/create', {course: Authentication.course._id, students: []})
 			.success(function(confused) {
 				console.log('confused object created');
 				$scope.ConfusedModel = confused;
 			})
 			.error(function(err) {
-				$scope.ConfusedError = err;
+				console.log(err);
+				//$scope.ConfusedError = err + '2';
 			});	
 		};
 		
@@ -111,7 +112,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 			})
 			.error(function(err) {
 				console.log(err);
-				$scope.ConfusedError = err;
+				//$scope.ConfusedError = err;
 			});	
 		};
 		
@@ -127,7 +128,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 			})
 			.error(function(err) {
 				console.log(err);
-				$scope.ConfusedError = err;
+				//$scope.ConfusedError = err;
 			});				
 		};
 		

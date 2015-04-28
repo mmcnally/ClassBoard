@@ -14,9 +14,11 @@ Confused = mongoose.model('Confused');
 // create new confused object
 exports.create = function(req, res) {
   console.log(req.body);
+  console.log('HHHHHHIIIIIIIIIIIIII');
   var confused = new Confused(req.body);
   confused.save(function(err, confused) {
     if (err) {
+      console.log('create broke');
       res.status(400).send(err);
     } 
     else {
