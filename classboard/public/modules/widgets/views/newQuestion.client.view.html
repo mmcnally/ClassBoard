@@ -8,63 +8,70 @@
   </div>
   <h4>Type</h4>
   <div class="newQuestionInput">
-  <div class="radio">
-    <label><input type="radio" name="type" ng-click="QuestionModel.type = 'TF'">True/False</label>
-  </div>
-  <div class="radio">
-      <label><input type="radio" name="type" ng-click="QuestionModel.type = 'MC'">Multiple Choice</label>
-  </div>
-  <div class="radio">
-      <label><input type="radio" name="type" ng-click="QuestionModel.type = 'OR'">Open Response</label>
-  </div>
+    <div class="radio">
+      <label><input type="radio" name="type" ng-click="QuestionModel.type = 'TF'">True/False</label>
+    </div>
+    <div class="radio">
+        <label><input type="radio" name="type" ng-click="QuestionModel.type = 'MC'">Multiple Choice</label>
+    </div>
+    <div class="radio">
+        <label><input type="radio" name="type" ng-click="QuestionModel.type = 'OR'">Open Response</label>
+    </div>
   </div>
 
+
+  <h4 ng-if="QuestionModel.type">Answer</h4>
   <div class="newQuestionInput">
-  <h5 ng-if="QuestionModel.type">Answer</h5>
-  <div ng-if="QuestionModel.type === 'MC'">
+    <div ng-if="QuestionModel.type === 'MC'">
+      <div class="row">
+        <div class="col-md-6" ng-repeat="answer in QuestionModel.mcAnswers track by $index">
+            <label>
+                {{getLetter($index)}})&nbsp;
+                <input type="text" name="answer" ng-model="QuestionModel.mcAnswers[$index]">
+                <button class="btn btn-xs btn-primary customXs" ng-click="QuestionModel.mcAnswers.splice($index, 1)"><span class="glyphicon glyphicon-minus"></span></button>
+            </label>
+        </div>
+      </div>
+        <br/>
 
-      <div class="btn-group" ng-repeat="answer in QuestionModel.mcAnswers track by $index">
-          <label>
-              {{getLetter($index)}})&nbsp;
-              <input type="text" name="answer" ng-model="QuestionModel.mcAnswers[$index]">
-              <button class="btn btn-sm btn-primary" ng-click="QuestionModel.mcAnswers.splice($index, 1)">-</button>
-          </label>
+        <div class="row" align="center">
+            <label>
+                <button class="btn btn-sm btn-warning" ng-click="QuestionModel.mcAnswers.push('')">Add Answer</button>
+            </label>
 
-      </div>
-      <br/>
-      <div class="btn-group">
-          <label>
-              Add Answer<button class="btn btn-sm btn-primary" ng-click="QuestionModel.mcAnswers.push('')">+</button>
-          </label>
-      </div>
+            <div class="btn-group" dropdown>
+                  <button type="button" class="btn btn-warning btn-sm dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                       Correct Answer ({{QuestionModel.mcAnswer}}) <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li id="questionAnswerDropDown" ng-repeat="answer in QuestionModel.mcAnswers track by $index" ng-click="QuestionModel.mcAnswer = getLetter($index)">
+                      <a>{{getLetter($index)}}</a>
+                    </li>
+                  </ul>
+                </div>
+        </div>
 
-      <div class="btn-group" dropdown>
-            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                 {{QuestionModel.mcAnswer}} <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li ng-repeat="answer in QuestionModel.mcAnswers track by $index" ng-click="QuestionModel.mcAnswer = getLetter($index)"><a>{{getLetter($index)}}</a></li>
-            </ul>
-          </div>
+
+    </div>
+    <div ng-if="QuestionModel.type === 'TF'">
+        <div class="radio">
+            <label><input type="radio" name="answer" ng-click="QuestionModel.tfAnswer = 'true'">True</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="answer" ng-click="QuestionModel.tfAnswer = 'false'">False</label>
+        </div>
+    </div>
+    <div ng-if="QuestionModel.type === 'OR'">
+        <label>
+            <input type="text" name="answer" ng-model="QuestionModel.orAnswer" placeholder="Answer">
+        </label>
+    </div>
+    <br/>
+    <div ng-if="QuestionModel.error">{{QuestionModel.error}}</QuestionModel></div>
+    <hr>
+    <div class="container-fluid" align="center">
+      <button class="btn btn-primary" ng-click="submitToggle()">Create</button>
+    </div>
   </div>
-  <div ng-if="QuestionModel.type === 'TF'">
-      <div class="radio">
-          <label><input type="radio" name="answer" ng-click="QuestionModel.tfAnswer = 'true'">True</label>
-      </div>
-      <div class="radio">
-          <label><input type="radio" name="answer" ng-click="QuestionModel.tfAnswer = 'false'">False</label>
-      </div>
-  </div>
-  <div ng-if="QuestionModel.type === 'OR'">
-      <label>
-          <input type="text" name="answer" ng-model="QuestionModel.orAnswer" placeholder="Answer">
-      </label>
-  </div>
-  <br/>
-  <div ng-if="QuestionModel.error">{{QuestionModel.error}}</QuestionModel></div>
-  <hr>
-  <div class="container-fluid" align="center">
-    <button class="btn btn-success" ng-click="submitToggle()">Create</button>
-  </div>
-</div>
+
 </div>
