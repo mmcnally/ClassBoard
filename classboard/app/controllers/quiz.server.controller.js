@@ -24,6 +24,16 @@ exports.create = function(req, res) {
   });
 };
 
+var closeQuestion = function(questionId) {
+  Question.update({_id : questionId}, {completed : true}, function(err, raw) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      console.log('worked');
+    }
+  });
+};
 
 exports.updateStartTime = function(req, res) {
   //var attendance = new Attendance(req.body);
@@ -35,13 +45,14 @@ exports.updateStartTime = function(req, res) {
     });
   }
   else {
-    Question.update({_id: req.body.questionId}, {
-      startTime: Date.now()
-    }, function(err, raw) {
+    Question.findOne({_id: req.body.questionId}, function(err, question) {
       if(err) {
         res.status(400).send(err);
       }
       else {
+        question.startTime = Date.now();
+        question.save();
+        setTimeout(closeQuestion, question.duration * 1000, question._id); 
         res.sendStatus(200);
       }
     });
@@ -75,3 +86,40 @@ exports.getActiveQuestion = function(req, res) {
     }
   });
 };
+
+// creates answer document
+exports.createAnswer = function(req, res) {
+  Question.findOne({_id: req.body.question}, function(err, question) {
+    if(err) {
+      res.status(400).send(err);
+    }
+    else if(question.completed){
+      res.status(400).send({
+        message: 'Question is closed'
+      });
+    }
+    else {
+      // question exists ans not closed
+      var answer = new Answer(req.body);
+      answer.user = req.user._id;
+      answer.isCorrect = question.answer === answer.text;
+      answer.isCorrect ? question.correctCount++ : question.incorrectCount++;
+      question.save();
+      answer.save(function(err, answer) {
+        if(err) {
+          res.status(400).send(err);
+        }
+        else {
+          res.status(200).send(answer);
+        }
+      });
+    }
+  });
+};
+
+
+// exports.getAnswers = function(req, res) {
+//   
+//   
+//   
+// }
