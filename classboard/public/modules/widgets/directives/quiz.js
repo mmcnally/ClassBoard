@@ -76,7 +76,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 
 						$scope.creatingQuestion = false;
 						$scope.questions = [];
-						$scope.QuestionModel = {mcAnswers : [''], mcAnswer : 'Correct Answer', tfAnswer : '', orAnswer: ''};
+						$scope.QuestionModel = {mcAnswers : [''], mcAnswer : 'n/a', tfAnswer : '', orAnswer: ''};
 						$scope.submit = function() {
 							$scope.QuestionModel.error = '';
 							var SubmitModel = {};
@@ -114,7 +114,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 							var a = 'a'.charCodeAt(0);
 							return String.fromCharCode(a + num);
 						};
-						
+
 						$scope.submitToggle = function(){
 							$scope.submit();
 							$scope.QuestionModel = {mcAnswers : [''], mcAnswer : 'Correct Answer', tfAnswer : '', orAnswer: ''};
