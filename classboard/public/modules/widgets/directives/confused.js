@@ -32,7 +32,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 		})
 		.error(function(err) {
 			console.log(err);
-			$scope.ConfusedError = err;
+			//$scope.ConfusedError = err;
 			
 			// make new confused model
 			$scope.create();
