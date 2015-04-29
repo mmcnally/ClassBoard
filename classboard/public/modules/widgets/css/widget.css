@@ -186,3 +186,16 @@
   height: 86px;
   margin: 0 auto;
 }
+#questionRow{
+  margin-left:0;
+  max-height:275px;
+  overflow-y:scroll;
+
+}
+#activeQuestionRow{
+  margin-left:0;
+}
+.customXs{
+  margin-bottom:3px;
+  padding: 3px 7px;
+}

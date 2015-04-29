@@ -1,114 +1,77 @@
 <div ng-if="isAdmin()">
-	<button class="btn btn-sm btn-info" ng-click="open('md', authentication.user)">New Question</button>
+	<button class="btn btn-sm btn-info pull-right" ng-click="open('md', authentication.user)">New Question</button>
 	<div class="input-group" ng-if="creatingQuestion">
 		<h5>New Question</h5>
-		<textarea class="form-control" rows="4" name="question" ng-model="QuestionModel.text"></textarea>
-		<h5>Type</h5>
-		<div class="radio">
-			<label><input type="radio" name="type" ng-click="QuestionModel.type = 'TF'">True/False</label>
-		</div>
-		<div class="radio">
-			<label><input type="radio" name="type" ng-click="QuestionModel.type = 'MC'">Multiple Choice</label>
-		</div>
-		<div class="radio">
-			<label><input type="radio" name="type" ng-click="QuestionModel.type = 'OR'">Open Response</label>
-		</div>
-		<h5 ng-if="QuestionModel.type">Answer</h5>
-		<div ng-if="QuestionModel.type === 'MC'">
-
-			<div class="btn-group" ng-repeat="answer in QuestionModel.mcAnswers track by $index">
-				<label>
-					{{getLetter($index)}})&nbsp;
-					<input type="text" name="answer" ng-model="QuestionModel.mcAnswers[$index]">
-					<button class="btn btn-sm btn-primary" ng-click="QuestionModel.mcAnswers.splice($index, 1)">-</button>
-				</label>
-
-			</div>
-			<br/>
-			<div class="btn-group">
-				<label>
-					Add Answer<button class="btn btn-sm btn-primary" ng-click="QuestionModel.mcAnswers.push('')">+</button>
-				</label>
-			</div>
-
-			<div class="btn-group" dropdown>
-				<button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-					{{QuestionModel.mcAnswer}} <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu" role="menu">
-					<li ng-repeat="answer in QuestionModel.mcAnswers track by $index" ng-click="QuestionModel.mcAnswer = getLetter($index)"><a>{{getLetter($index)}}</a></li>
-				</ul>
-			</div>
-		</div>
-		<div ng-if="QuestionModel.type === 'TF'">
-			<div class="radio">
-				<label><input type="radio" name="answer" ng-click="QuestionModel.tfAnswer = 'true'">True</label>
-			</div>
-			<div class="radio">
-				<label><input type="radio" name="answer" ng-click="QuestionModel.tfAnswer = 'false'">False</label>
-			</div>
-		</div>
-		<div ng-if="QuestionModel.type === 'OR'">
-			<label>
-				<input type="text" name="answer" ng-model="QuestionModel.orAnswer" placeholder="Answer">
-			</label>
-		</div>
-		<br/>
-		<div ng-if="QuestionModel.error">{{QuestionModel.error}}</QuestionModel></div>
-		<button class="btn btn-sm btn-success" ng-click="submitToggle()">Submit</button>
 	</div>
 
 	<div ng-if="!creatingQuestion">
-		<h5>Start a Question</h5>
-		<ul class="list-group small-scroll">
-			<li class="list-group-item" ng-repeat="question in questions">
-				{{question.text}}
-				<div>
-					<div ng-if="question.type !== 'MC'">
-						<span class="text-success">{{question.answer}}</span>
+		<h4>Questions</h4>
+
+		<!--<ul id="openQuestions" class="list-group small-scroll">
+			<li class="list-group-item" ng-repeat="question in questions">-->
+			<div id="questionRow" class="row">
+				<div class="col-md-12" ng-repeat="question in questions">
+					<b>{{question.text}}</b>
+					<div style="padding-left:15px;">
+						<div ng-if="question.type !== 'MC'">
+							<span class="text-success">{{question.answer}}</span>
+						</div>
+						<div ng-if="question.type === 'MC'">
+							<span ng-repeat="answer in question.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == question.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
+						</div>
 					</div>
-					<div ng-if="question.type === 'MC'">
-						<span ng-repeat="answer in question.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == question.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
+					<br>
+					<div class="container-fluid" align="center">
+						<input type="number" name="duration" placeholder="Duration" style="padding-top:2px;"></input>
+						<button class="btn btn-xs btn-success customXs" ng-click="startQuestion(question)">Start</button>
 					</div>
+					<hr>
 				</div>
-				<input type="number" name="duration" placeholder="Duration"></input>
-				<button class="btn btn-sm btn-info" ng-click="startQuestion(question)">Start</button>
-			</li>
-		</ul>
-		<h5>Statistics</h5>
+			</div>
+				<!--</li>
+			</ul>-->
+
+			<h4>Statistics</h4>
+		</div>
 	</div>
 </div>
 
 
-<div ng-if="!isAdmin()">
+<div ng-if="isAdmin()">
 	<div ng-if="!activeQuestion">
-		no active questions
+		<b>no active questions</b>
 	</div>
 	<div ng-if="activeQuestion">
-		<p>{{activeQuestion.text}}</p>
-		<div class="input-group">
-			<div ng-if="activeQuestion.type === 'TF'">
-				<div class="radio">
-					<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'true'">True</label>
-				</div>
-				<div class="radio">
-					<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'false'">False</label>
+		<div id="activeQuestionRow" class="row">
+			<div class="col-md-12" ng-repeat="question in questions">
+				<b>{{activeQuestion.text}}</b>
+				<div class="input-group" style="padding-left:15px;">
+					<div ng-if="activeQuestion.type === 'TF'">
+						<div class="radio">
+							<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'true'">True</label>
+						</div>
+						<div class="radio">
+							<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'false'">False</label>
+						</div>
+					</div>
+					<div ng-if="activeQuestion.type === 'MC'">
+						<label>
+							<input type="text" name="answer" ng-model="orAnswer" placeholder="Answer">
+						</label>
+					</div>
+					<div ng-if="activeQuestion.type === 'OR'">
+						<div class="radio">
+							<label ng-repeat="mcAnswer in activeQuestion.mcAnswers track by $index">
+							<input type="radio" name="answer" ng-click="activeQuestion.answer = getLetter($index)">
+								{{getLetter($index)}}) {{mcAnswer}}
+							</label>
+						</div>
+					</div>
+					<div class="container-fluid" align="center">
+						<button class="btn btn-sm btn-success" ng-click="submitAnswer()">Submit</button>
+					</div>
 				</div>
 			</div>
-			<div ng-if="activeQuestion.type === 'MC'">
-				<label>
-					<input type="text" name="answer" ng-model="orAnswer" placeholder="Answer">
-				</label>
-			</div>
-			<div ng-if="activeQuestion.type === 'OR'">
-				<div class="radio">
-					<label ng-repeat="mcAnswer in activeQuestion.mcAnswers track by $index">
-						<input type="radio" name="answer" ng-click="activeQuestion.answer = getLetter($index)">
-						{{getLetter($index)}}) {{mcAnswer}}
-					</label>
-				</div>
-			</div>
-			<button class="btn btn-sm btn-success" ng-click="submitAnswer()">Submit</button>
 		</div>
 	</div>
 </div>

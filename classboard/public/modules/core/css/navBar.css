@@ -11,9 +11,8 @@
 .navbar-default .navbar-nav > li > a:hover{
   background-color:#050505;
   color:#2780e3; /* BLUE */
-  /*color: #9954bb;*/ /* PURPLE */
-    -webkit-transition: color .25s; /* Safari */
-    transition: color .25s;
+  -webkit-transition: color .25s; /* Safari */
+  transition: color .25s;
 }
 .navbar-default .navbar-brand{
   -webkit-transition: color 2s; /* Safari */
@@ -22,18 +21,17 @@
 .navbar-default .navbar-brand:hover{
   background-color:#050505;
   color:#2780e3; /* BLUE */
-  /*color: #9954bb;*/ /* PURPLE */
-    -webkit-transition: color .25s; /* Safari */
-    transition: color .25s;
+  -webkit-transition: color .25s; /* Safari */
+  transition: color .25s;
 }
 
 .navbar-class{
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top:-12px;
-    text-align: center;
-    margin: auto;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top:-12px;
+  text-align: center;
+  margin: auto;
 }
 #className{
   color:white;
@@ -42,7 +40,6 @@
 }
 #className:hover{
   color:#2780e3; /* BLUE */
-  /*color: #9954bb;*/ /* PURPLE */
   text-decoration:none;
   cursor:default;
 	-webkit-transition: color .25s; /* Safari */
@@ -51,18 +48,6 @@
 #className:focus{
   text-decoration:none;
 }
-/*.navbar-center {
-  float: center !important;
-}
-
-.navbar.center .navbar-inner {
-    text-align: center;
-}
-.navbar.center .navbar-inner .nav {
-    float: none;
-    display:inline-block;
-}
-*/
 .dropdown-menu {
   display:none; /* FIRE FOX FIX for dropdowns*/
   opacity:0;
@@ -84,7 +69,6 @@
 }
 .dropdown-menu > li > a:hover {
   color:#2780e3; /* BLUE */
-  /*color: #9954bb; */ /* PURPLE */
   background-color:#090909;
   -webkit-transition: color .25s; /* Safari */
   transition: color .25s;
