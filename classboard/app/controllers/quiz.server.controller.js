@@ -60,7 +60,6 @@ exports.listQuestions = function(req, res) {
 };
 
 exports.getActiveQuestion = function(req, res) {
-  console.log(req.params);
   Question.findOne({course : req.params.courseId, startTime : {$lt : Date.now()}, completed : false}).lean().exec(function(err, question) {
     if (err) {
       console.log(err);
