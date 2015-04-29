@@ -1,23 +1,30 @@
+#navHolder{
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+}
 .navbar-default {
   background-color:#121212;
 }
 .navbar-default .navbar-nav > li > a{
-  -webkit-transition: color .25s; /* Safari */
-  transition: color .25s;
+  -webkit-transition: color 2s; /* Safari */
+  transition: color 2s;
 }
 .navbar-default .navbar-nav > li > a:hover{
   background-color:#050505;
   color:#2780e3; /* BLUE */
   /*color: #9954bb;*/ /* PURPLE */
+    -webkit-transition: color .25s; /* Safari */
+    transition: color .25s;
 }
 .navbar-default .navbar-brand{
-  -webkit-transition: color .25s; /* Safari */
-  transition: color .25s;
+  -webkit-transition: color 2s; /* Safari */
+  transition: color 2s;
 }
 .navbar-default .navbar-brand:hover{
   background-color:#050505;
   color:#2780e3; /* BLUE */
   /*color: #9954bb;*/ /* PURPLE */
+    -webkit-transition: color .25s; /* Safari */
+    transition: color .25s;
 }
 
 .navbar-class{
@@ -30,8 +37,8 @@
 }
 #className{
   color:white;
-	-webkit-transition: color .25s; /* Safari */
-	transition: color .25s;
+	-webkit-transition: color 2s; /* Safari */
+	transition: color 2s;
 }
 #className:hover{
   color:#2780e3; /* BLUE */
@@ -72,13 +79,15 @@
 }
 .dropdown-menu > li > a {
   color:white;
-  -webkit-transition: color .25s; /* Safari */
-  transition: color .25s;
+  -webkit-transition: color 1s; /* Safari */
+  transition: color 1s;
 }
 .dropdown-menu > li > a:hover {
   color:#2780e3; /* BLUE */
   /*color: #9954bb; */ /* PURPLE */
   background-color:#090909;
+  -webkit-transition: color .25s; /* Safari */
+  transition: color .25s;
 }
 li.no-classes {
   display: block;

@@ -1,6 +1,6 @@
 <div class="card" ng-class="settings ? 'widgSettings' : 'widgDefault'"><!-- header row -->
 	<div class="row">
-		<h3>{{title}}</h3>
+		<h3>{{title}}<span ng-if="settings"> Settings</span></h3>
 		<button title="{{title}}" ng-class="settings ? 'pull-right btn btn-xs btn-info glyphicon glyphicon-ok widgetBtnOk' : 'pull-right btn btn-xs btn-info glyphicon glyphicon-cog widgetBtnCog'" ng-click="settings = !settings" ng-class="settings ? 'widgSettingsBtnSettings' : 'widgSettingsBtnDefault'">
 			<!--<i class="glyphicon glyphicon-cog"></i>-->
 		</button>

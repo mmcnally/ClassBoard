@@ -1,0 +1,124 @@
+The following historical commit information, by author, was found in the
+repository:
+
+Author                     Commits    Insertions      Deletions    % of changes
+Andrew Gora                      1             9              0            0.01
+Carter Tiernan                   6          2364              5            2.52
+Matt McNally                   133         76329           4078           85.40
+Michael Lankenau                20           305            176            0.51
+agora94                         30          9938            282           10.85
+agsheppa                        15           427            239            0.71
+
+Below are the number of rows from each author that have survived and are still
+intact in the current revision:
+
+Author                     Rows       % in comments
+Andrew Gora                9748               25.31
+Carter Tiernan             3377                8.79
+Matt McNally              73616               35.52
+Michael Lankenau             92               15.22
+agsheppa                    352                8.81
+
+The following history timeline has been gathered from the repository:
+
+Author                  2015W09    2015W10    2015W14    2015W15    2015W16 
+Andrew Gora                                                    .            
+Carter Tiernan                                         +++++++++          . 
+Matt McNally          +++++++++   -+++++++  ---++++++         -+ ++++++++++ 
+Michael Lankenau                                               .          . 
+agora94                                                                   . 
+agsheppa                                 .                                . 
+Modified Rows:             1028         63        770       3086      74816 
+
+Author                  2015W17    2015W18 
+Carter Tiernan                .          . 
+Matt McNally                 --  --+++++++ 
+Michael Lankenau              .          . 
+agora94               +++++++++            
+agsheppa                      .          . 
+Modified Rows:            13216       1173 
+
+The following files are suspiciously big (in order of severity):
+classboard/public/lib/angular/angular.js (11977 eloc)
+classboard/public/lib/jquery/dist/jquery.js (7718 eloc)
+classboard/public/lib/socket.io-client/socket.io.js (4972 eloc)
+classboard/public/lib/angular-bootstrap/ui-bootstrap-tpls.js (3725 eloc)
+classboard/public/lib/angular-bootstrap/ui-bootstrap.js (3414 eloc)
+classboard/public/lib/bootstrap/dist/js/bootstrap.js (2114 eloc)
+classboard/public/lib/angular-ui-utils/ui-utils.js (2102 eloc)
+classboard/public/lib/angular-ui-router/release/angular-ui-router.js (1986 eloc)
+classboard/public/lib/jquery/src/sizzle/dist/sizzle.js (1661 eloc)
+classboard/public/lib/angular-animate/angular-animate.js (1289 eloc)
+classboard/public/lib/angular-mocks/angular-mocks.js (1203 eloc)
+classboard/public/lib/jquery/src/event.js (760 eloc)
+classboard/public/lib/jquery/src/ajax.js (615 eloc)
+classboard/public/lib/jquery/src/effects.js (589 eloc)
+classboard/public/lib/angular-ui-router/src/urlMatcherFactory.js (564 eloc)
+classboard/public/lib/jquery/src/manipulation.js (523 eloc)
+classboard/public/lib/angular-ui-router/src/state.js (508 eloc)
+
+The following repsonsibilties, by author, were found in the current revision of
+the repository (comments are exluded from the line count, if possible):
+
+Andrew Gora is mostly responsible for:
+  4972 classboard/public/lib/socket.io-client/socket.io.js
+   500 classboard/public/lib/socket.io-client/test/connection.js
+   350 classboard/public/lib/socket.io-client/lib/manager.js
+   264 classboard/public/lib/socket.io-client/lib/socket.js
+   258 classboard/public/lib/angular-socket-io/socket.spec.js
+   147 classboard/app/controllers/users.server.controller.js
+   115 classboard/public/lib/socket.io-client/test/support/server.js
+    93 classboard/public/lib/angular-socket-io/socket.js
+    61 classboard/public/lib/socket.io-client/test/url.js
+    53 classboard/public/modules/widgets/directives/attendance.js
+
+Carter Tiernan is mostly responsible for:
+  1533 classboard/public/lib/bootstrap/dist/js/bootstrap.js
+   381 classboard/public/lib/bootstrap/js/tooltip.js
+   217 classboard/public/lib/bootstrap/js/carousel.js
+   159 classboard/public/lib/bootstrap/js/collapse.js
+   142 classboard/public/lib/bootstrap/js/scrollspy.js
+   138 classboard/public/lib/bootstrap/js/affix.js
+   136 classboard/public/lib/bootstrap/js/tab.js
+    99 classboard/public/lib/bootstrap/js/button.js
+    91 classboard/public/lib/bootstrap/js/popover.js
+    77 classboard/public/lib/bootstrap/js/alert.js
+
+Matt McNally is mostly responsible for:
+ 11872 classboard/public/lib/angular/angular.js
+  7718 classboard/public/lib/jquery/dist/jquery.js
+  3725 classboard/public/lib/angular-bootstrap/ui-bootstrap-tpls.js
+  3414 classboard/public/lib/angular-bootstrap/ui-bootstrap.js
+  2100 classboard/public/lib/angular-ui-utils/ui-utils.js
+  1986 classboard/public/lib/angular-ui-router/release/angular-ui-router.js
+  1661 classboard/public/lib/jquery/src/sizzle/dist/sizzle.js
+  1289 classboard/public/lib/angular-animate/angular-animate.js
+  1188 classboard/public/lib/angular-mocks/angular-mocks.js
+   760 classboard/public/lib/jquery/src/event.js
+
+Michael Lankenau is mostly responsible for:
+    37 classboard/public/modules/widgets/directives/quiz.js
+    26 classboard/public/modules/core/controllers/header.client.controller.js
+     6 classboard/app/controllers/course.server.controller.js
+     3 classboard/public/modules/core/controllers/dashboard.client.controller.js
+     2 classboard/public/modules/core/config/core.client.routes.js
+     1 classboard/config/assets.js
+     1 classboard/app/routes/users.server.routes.js
+     1 classboard/app/models/user.server.model.js
+     1 classboard/app/models/course.server.model.js
+
+agsheppa is mostly responsible for:
+    67 classboard/public/modules/widgets/directives/quiz.js
+    54 classboard/app/models/question.server.model.js
+    49 classboard/app/controllers/quiz.server.controller.js
+    24 classboard/app/models/answer.server.model.js
+    24 classboard/app/controllers/course.server.controller.js
+    18 classboard/public/modules/core/controllers/dashboard.client.controller.js
+    15 classboard/public/modules/core/controllers/loading.controller.js
+    14 classboard/app/routes/widget.server.routes.js
+    13 classboard/config/express.js
+    10 classboard/public/modules/widgets/directives/widget.js
+
+The extensions below were found in the repository history (extensions used
+during statistical analysis are marked):
+md [c] save ts map svg less html [js] json sh js# pdf json~ model txt yml css ejs 

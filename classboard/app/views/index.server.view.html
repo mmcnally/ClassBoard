@@ -46,7 +46,7 @@
 </head>
 
 <body class="ng-cloak">
-	<header data-ng-include="'/modules/core/views/header.client.view.html'"></header>
+	<header id="navHolder" data-ng-include="'/modules/core/views/header.client.view.html'"></header>
 			{% block content %}
 				<section class="content" ui-view style='overflow-y:auto'></section>
 			{% endblock %}
