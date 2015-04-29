@@ -103,6 +103,14 @@
 	background-color:#9954BB;
 }
 
+#questionAnswerDropDown > a{
+	color:black !important;
+}
+#questionAnswerDropDown:hover > a{
+	color:black;
+	background-color:#2780e3;
+}
+
 .newQuestionInput{
 	padding-left:15px;
 	padding-right:15px;

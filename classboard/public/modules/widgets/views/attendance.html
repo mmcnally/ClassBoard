@@ -1,8 +1,12 @@
 <div ng-if="isAdmin()">
   <div ng-if="!started" align="center">
-    <input class ="form-control" type="number" placeholder="Duration" ng-model="AttendanceModel.duration" integer/>
-    <div style="height:8px;"></div>
-    <button class="btn btn-sm btn-info" ng-click="start()">Take Attendance</button></div>
+      <div class="col-md-7">
+        <input class ="form-control input-sm" type="number" placeholder="Duration" ng-model="AttendanceModel.duration" integer/>
+      </div>
+      <div class="col-md-2 col-md-offset-1">
+        <button class="btn btn-sm btn-info" ng-click="start()">Take Attendance</button></div>
+      </div>
+    </div>
   <div ng-if="started">
     <h4>{{presentCount}} students present</h4>
   </div>
