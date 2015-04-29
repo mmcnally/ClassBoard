@@ -2,8 +2,12 @@
   <h3 class="modal-title">New Question</h3>
 </div>
 <div class="modal-body">
-  <textarea class="form-control" rows="4" name="question" ng-model="QuestionModel.text" placeholder="Enter a question"></textarea>
-  <h5>Type</h5>
+  <h4>Question</h4>
+  <div class="newQuestionInput">
+    <textarea class="form-control" rows="4" name="question" ng-model="QuestionModel.text" placeholder="Enter a question"></textarea>
+  </div>
+  <h4>Type</h4>
+  <div class="newQuestionInput">
   <div class="radio">
     <label><input type="radio" name="type" ng-click="QuestionModel.type = 'TF'">True/False</label>
   </div>
@@ -13,6 +17,9 @@
   <div class="radio">
       <label><input type="radio" name="type" ng-click="QuestionModel.type = 'OR'">Open Response</label>
   </div>
+  </div>
+
+  <div class="newQuestionInput">
   <h5 ng-if="QuestionModel.type">Answer</h5>
   <div ng-if="QuestionModel.type === 'MC'">
 
@@ -59,4 +66,5 @@
   <div class="container-fluid" align="center">
     <button class="btn btn-success" ng-click="submitToggle()">Create</button>
   </div>
+</div>
 </div>

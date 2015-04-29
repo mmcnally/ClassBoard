@@ -37,9 +37,11 @@
 </div>
 
 
-<div ng-if="isAdmin()">
+<div ng-if="!isAdmin()">
 	<div ng-if="!activeQuestion">
-		<b>no active questions</b>
+		<div style="padding-left:15px;">
+			No active questions
+		</div>
 	</div>
 	<div ng-if="activeQuestion">
 		<div id="activeQuestionRow" class="row">

@@ -65,7 +65,7 @@
 #widgetLibraryBreak{
 	margin-top:0;
 }
-#widgetLibraryButtons{	
+#widgetLibraryButtons{
 }
 .wdgtRow{
 	color:black;
@@ -101,4 +101,9 @@
 #widgetBtn:hover{
 	border-color:#9954BB;
 	background-color:#9954BB;
+}
+
+.newQuestionInput{
+	padding-left:15px;
+	padding-right:15px;
 }
