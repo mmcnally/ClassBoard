@@ -75,11 +75,17 @@
 	margin-bottom:5px;
 }
 #widgetBtnLibrary{
+	background-color:#9954BB;
 	position:fixed;
 	right:15px;
 	bottom:15px;
 }
-#widgLibBtnOpen{
+#widgetBtnLibrary{
+	color:#9954BB;
+	background-color:#9954BB;;
+	border:none;
+}
+/*#widgLibBtnOpen{
 	color:white;
 	background-color:#9954BB;
 	border:none;
@@ -88,4 +94,4 @@
 	color:#9954BB;
 	background-color:white;
 	border:none;
-}
+}*/
