@@ -3,19 +3,20 @@
 
 		<!---- ROW 1 ---->
 		<div class="dashboard row" ng-if="user.classes[0]._id">
-			<div ng-if="showQuiz" id="quizwidg" class="col-xs-4 animated bounceIn one widg">
+			<!--<div ng-if="showQuiz" id="quizwidg" class="col-xs-4 animated bounceIn one widg">-->
+				<div ng-class="showQuiz ? 'col-xs-4 animated bounceIn one widg' :  'col-xs-4 animated bounceOut one widg'">
 				<widget title="Quiz">
 					<quiz></quiz>
 				</widget>
 			</div>
 
-			<div ng-if="showAttendance" id="attendancewidg" class="col-xs-4 animated bounceIn two widg">
+			<div ng-class="showAttendance ? 'col-xs-4 animated bounceIn two widg' :  'col-xs-4 animated bounceOut one widg'">
 				<widget title="Attendance">
 					<attendance></attendance>
 				</widget>
 			</div>
 
-			<div ng-if="showConfused" id="confusedwidg" class="col-xs-4 animated bounceIn three widg">
+			<div ng-class="showConfused ? 'col-xs-4 animated bounceIn three widg' :  'col-xs-4 animated bounceOut one widg'">
 				<widget title="I'm Confused" class="widgDefault" > <!-- ng:class="{true:'widgDefault', false:'widgSettings'}[settings == true]" -->
 					<confused></confused>
 				</widget>
@@ -24,7 +25,7 @@
 
 		<!---- ROW 2 ---->
 		<div class="dashboard row" ng-if="user.classes[0]._id">
-			<div ng-if="showWolfram" id="wolframwidg" class="col-xs-4 animated bounceIn four widg">
+			<div ng-class="showWolfram ? 'col-xs-4 animated bounceIn four widg' :  'col-xs-4 animated bounceOut one widg'">
 				<widget title="Wolfram|Alpha" class="widgDefault" >
 					<div>
 						<iframe id="wolframIframe" frameborder="0" marginwidth="0" src="http://www.wolframalpha.com/Calculate/embed/medium.jsp"></iframe>
@@ -35,7 +36,7 @@
 	</div>
 
 	<div  id="widgetLibrary" ng-class="showLibrary ? 'dashboard row libShown' : 'dashboard row libClosed'"> <!--  ng-if="showLibrary" wtf... this is breaking things -->
-		<h4 id="widgetLibraryHeader"><b>Add or Remove Widgets</b></h4>
+		<h3 id="widgetLibraryHeader">Add or Remove Widgets</h3>
 		<hr id="widgetLibraryBreak">
 		<div class="row">
 			<div class="col-md-3 col-md-offset-1">
@@ -43,10 +44,10 @@
 				<div class="row wdgtRow">
 					<div class="row" ng-click="showQuiz = !showQuiz">
 						<div class="col-md-1">
-							<span ng-class="showQuiz ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'"></span>
+							<span ng-class="showQuiz ? 'glyphicon glyphicon-check showWidgGlyph' : 'glyphicon glyphicon-unchecked showWidgGlyph'"></span>
 						</div>
-						<div class="col-md-11">
-							Quiz (this will take a while because of the animation)
+						<div class="col-md-10">
+							Quiz
 						</div>
 					</div>
 				</div>
@@ -54,9 +55,9 @@
 				<div class="row wdgtRow">
 					<div class="row" ng-click="showWolfram = !showWolfram">
 						<div class="col-md-1">
-							<span ng-class="showWolfram ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'"></span>
+							<span ng-class="showWolfram ? 'glyphicon glyphicon-check showWidgGlyph' : 'glyphicon glyphicon-unchecked showWidgGlyph'"></span>
 						</div>
-						<div class="col-md-11">
+						<div class="col-md-10">
 							Wolfram|Alpha
 						</div>
 					</div>
@@ -67,9 +68,9 @@
 				<div class="row wdgtRow">
 					<div class="row" ng-click="showAttendance = !showAttendance">
 						<div class="col-md-1">
-							<span ng-class="showAttendance ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'"></span>
+							<span ng-class="showAttendance ? 'glyphicon glyphicon-check showWidgGlyph' : 'glyphicon glyphicon-unchecked'"></span>
 						</div>
-						<div class="col-md-11">
+						<div class="col-md-10">
 							Attendance
 						</div>
 					</div>
@@ -81,9 +82,9 @@
 				<div class="row wdgtRow">
 					<div class="row" ng-click="showConfused = !showConfused">
 						<div class="col-md-1">
-							<span ng-class="showConfused ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'"></span>
+							<span ng-class="showConfused ? 'glyphicon glyphicon-check showWidgGlyph' : 'glyphicon glyphicon-unchecked'"></span>
 						</div>
-						<div class="col-md-11">
+						<div class="col-md-10">
 							I'm Confused
 						</div>
 					</div>

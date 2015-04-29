@@ -42,15 +42,16 @@
 	left:0;
 	height:125px;
 	margin:0 0 0 0;
-	color:white;
+	color:#9954BB;
 	font-size:13px;
 	padding:15px 15px 15px 15px !important;
-	background-color:#9954BB;
+	background-color:white;
+	box-shadow: 0 -5px 15px 0 rgba(0, 0, 0, 0.3);
 }
 .libClosed{
 	bottom:-125px;
-	-webkit-transition: bottom 1s; /* Safari */
-	transition: bottom 1s;
+	-webkit-transition: bottom .5s; /* Safari */
+	transition: bottom .5s;
 }
 .libShown{
 	bottom:0px;
@@ -58,40 +59,44 @@
 	transition: bottom 1s;
 }
 #widgetLibraryHeader{
-	color:white;
-	font-style:bold;
+	color:black;
 	margin-top:0;
 }
 #widgetLibraryBreak{
 	margin-top:0;
 }
 .wdgtRow{
+	color:black;
 	cursor:pointer;
 	margin-bottom:5px;
+	-webkit-transition: color 2s; /* Safari */
+	transition: color 2s;
 }
 .wdgtRow:hover{
-	color:#D98CFF;
+	color:#9954BB;
 	cursor:pointer;
-	margin-bottom:5px;
+	-webkit-transition: color .25s; /* Safari */
+	transition: color .25s;
+}
+.showWidgGlyph{
+	color:#9954BB;
 }
 #widgetBtnLibrary{
 	background-color:#9954BB;
 	position:fixed;
 	right:15px;
 	bottom:15px;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
 }
-#widgetBtnLibrary{
-	color:#9954BB;
-	background-color:#9954BB;;
+#widgetBtn{
+	border-color:#9954BB;
+}
+#widgetBtn:focus{
 	border:none;
-}
-/*#widgLibBtnOpen{
-	color:white;
 	background-color:#9954BB;
-	border:none;
+	outline:0;
 }
-.widgLibBtnClose{
-	color:#9954BB;
-	background-color:white;
-	border:none;
-}*/
+#widgetBtn:hover{
+	border-color:#9954BB;
+	background-color:#9954BB;
+}
