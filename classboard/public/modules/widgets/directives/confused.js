@@ -12,6 +12,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 		$scope.confusedCount = 0;
 		$scope.ConfusedModel = undefined;
 		$scope.isConfused = false;
+		$scope.confusedPercent = 0;
 		
 		$http.post('/widget/confused/getConfused', {courseId: $state.params._id})
 		.success(function(confused) {
@@ -23,6 +24,8 @@ function($http, $state, Authentication, Socket, $timeout) {
 			}
 			else {
 				$scope.confusedCount = confused.students.length;
+				
+				$scope.updatePercent();
 			}
 			
 			if($scope.ConfusedModel && $scope.ConfusedModel.students && $scope.ConfusedModel.students.indexOf($scope.user._id) !== -1) {
@@ -38,9 +41,6 @@ function($http, $state, Authentication, Socket, $timeout) {
 			$scope.create();
 		});
 		
-	
-		
-		
 		
 		// update confused when event received
 		Socket.on('update confused', function() {
@@ -52,9 +52,13 @@ function($http, $state, Authentication, Socket, $timeout) {
 				$scope.ConfusedModel = confused;
 				if(!confused.students) {
 					$scope.confusedCount = 0;
+					$scope.confusedPercent = 0;
 				}
 				else {
 					$scope.confusedCount = confused.students.length;
+					
+					$scope.updatePercent();
+					
 					if(confused.students.indexOf($scope.user._id) !== -1) {
 						$scope.isConfused = true;
 					}
@@ -70,9 +74,20 @@ function($http, $state, Authentication, Socket, $timeout) {
 		});
 		
 		
+		$scope.updatePercent = function () {
+			if(Authentication.course.students.length === 0) {
+				$scope.confusedPercent = 0;
+			}
+			else {
+				$scope.confusedPercent = $scope.confusedCount / Authentication.course.students.length;
+			}
+			console.log('CONFUSED PERCENT: ' + $scope.confusedPercent);
+		};
+		
+		
 		$scope.confusedCountIsOne = function () {
 			return $scope.confusedCount && $scope.confusedCount === 1;
-		}
+		};
 		
 		
 		// create new confused object
