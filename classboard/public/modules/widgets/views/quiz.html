@@ -18,14 +18,13 @@
 					</div>
 					<div ng-if="question.type === 'MC'">
 						<span ng-repeat="answer in question.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == question.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
-					</div>
-				</div>
-				<br>
-				<div class="container-fluid" align="center">
-					<label> Duration (seconds)
-						<input type="number" name="duration" placeholder="Duration" style="padding-top:2px;" ng-model="question.duration"></input>
+					<br>
+					<div class="container-fluid" align="center">
+						<label> Duration (seconds)
+						<input type="number" min="1" name="duration" placeholder="Duration" style="padding-top:2px;" ng-model="question.duration"></input>
 					</label>
-					<button class="btn btn-xs btn-success customXs" ng-click="startQuestion(question)">Start</button>
+						<button class="btn btn-xs btn-success customXs" ng-click="startQuestion(question)">Start</button>
+					</div>
 				</div>
 				<hr>
 			</div>

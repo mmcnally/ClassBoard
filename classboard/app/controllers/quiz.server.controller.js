@@ -71,14 +71,22 @@ exports.listQuestions = function(req, res) {
 };
 
 exports.getActiveQuestion = function(req, res) {
-  Question.findOne({course : req.params.courseId, startTime : {$lt : Date.now()}, completed : false}).lean().exec(function(err, question) {
+  Question.findOne({course : req.params.courseId, startTime : {$lt : Date.now()}, completed : false}).exec(function(err, question) {
     if (err) {
       console.log(err);
     }
     else {
       if (question) {
-        delete question.answer;
-        return res.status(200).send(question);
+        if (question.startTime.getTime() + question.duration * 1000 > Date.now()) {
+          question = question.toObject();
+          delete question.answer;
+          return res.status(200).send(question);
+        }
+        else {
+          question.completed = true;
+          question.save();
+          return res.status(400).send('No question currently active');
+        }
       }
       else {
         return res.status(400).send('No question currently active');
