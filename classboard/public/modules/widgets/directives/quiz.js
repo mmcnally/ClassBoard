@@ -105,7 +105,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log) {
 							var a = 'a'.charCodeAt(0);
 							return String.fromCharCode(a + num);
 						};
-						
+
 						$scope.submitToggle = function(){
 							$scope.submit();
 							$scope.QuestionModel = {mcAnswers : [''], mcAnswer : 'Correct Answer', tfAnswer : '', orAnswer: ''};

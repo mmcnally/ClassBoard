@@ -1,11 +1,11 @@
 'use strict';
 
 
-angular.module('widgets').directive('confused', ['$http', '$state', 'Authentication', 'Socket', '$timeout', 
+angular.module('widgets').directive('confused', ['$http', '$state', 'Authentication', 'Socket', '$timeout',
 function($http, $state, Authentication, Socket, $timeout) {
-	
-	
-	
+
+
+
 	function link($scope, element, attrs) {
 		//console.log(Authentication.course);
 		$scope.user = Authentication.user;
@@ -13,7 +13,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 		$scope.ConfusedModel = undefined;
 		$scope.isConfused = false;
 		$scope.confusedPercent = 0;
-		
+
 		$http.post('/widget/confused/getConfused', {courseId: $state.params._id})
 		.success(function(confused) {
 			console.log('retrieved confused object');
@@ -24,10 +24,10 @@ function($http, $state, Authentication, Socket, $timeout) {
 			}
 			else {
 				$scope.confusedCount = confused.students.length;
-				
+
 				$scope.updatePercent();
 			}
-			
+
 			if($scope.ConfusedModel && $scope.ConfusedModel.students && $scope.ConfusedModel.students.indexOf($scope.user._id) !== -1) {
 				// user already clicked confused button
 				$scope.isConfused = true;
@@ -36,12 +36,12 @@ function($http, $state, Authentication, Socket, $timeout) {
 		.error(function(err) {
 			console.log(err);
 			//$scope.ConfusedError = err;
-			
+
 			// make new confused model
 			$scope.create();
 		});
-		
-		
+
+
 		// update confused when event received
 		Socket.on('update confused', function() {
 			console.log('received update confused message');
@@ -56,9 +56,9 @@ function($http, $state, Authentication, Socket, $timeout) {
 				}
 				else {
 					$scope.confusedCount = confused.students.length;
-					
+
 					$scope.updatePercent();
-					
+
 					if(confused.students.indexOf($scope.user._id) !== -1) {
 						$scope.isConfused = true;
 					}
@@ -72,8 +72,8 @@ function($http, $state, Authentication, Socket, $timeout) {
 				//$scope.ConfusedError = err + '1';
 			});
 		});
-		
-		
+
+
 		$scope.updatePercent = function () {
 			if(Authentication.course.students.length === 0) {
 				$scope.confusedPercent = 0;
@@ -82,31 +82,51 @@ function($http, $state, Authentication, Socket, $timeout) {
 				$scope.confusedPercent = $scope.confusedCount / Authentication.course.students.length;
 			}
 			console.log('CONFUSED PERCENT: ' + $scope.confusedPercent);
+			console.log('RGB VALUE: ' + $scope.getColor());
 		};
-		
-		
+
+		$scope.getColor = function(){
+			var baseNum;
+			if($scope.confusedPercent === 0){
+				baseNum = 0;
+			}else{
+				baseNum = ($scope.confusedPercent * 100) - 1;
+			}
+			var r, g, b = 0;
+			if(baseNum < 50){
+				r = Math.floor(255 * (baseNum / 50));
+				g = 255;
+			} else{
+				r = 255
+				g = Math.floor(255 * ((50-baseNum%50) / 50));
+			}
+			b = 0;
+			console.log(r + ',' + g + ',' + b);
+			return('rgb(' + r + ',' + g + ',' + b + ')');
+		};
+
 		$scope.confusedCountIsOne = function () {
 			return $scope.confusedCount && $scope.confusedCount === 1;
 		};
-		
-		
+
+
 		// create new confused object
 		$scope.create = function () {
 			$http.post('/widget/confused/create', {course: Authentication.course._id, students: []})
 			.success(function(confused) {
 				console.log('confused object created');
 				//$scope.ConfusedModel = confused;
-				
+
 				Socket.emit('confused changed');
 			})
 			.error(function(err) {
 				console.log(err);
 				//$scope.ConfusedError = err + '2';
-			});	
+			});
 		};
-		
-		
-		
+
+
+
 		$scope.addConfused = function() {
 			if($scope.ConfusedModel.students) {
 				$scope.ConfusedModel.students.push($scope.user._id);
@@ -114,41 +134,41 @@ function($http, $state, Authentication, Socket, $timeout) {
 			else {
 				$scope.ConfusedModel.students = [$scope.user_id];
 			}
-			
+
 			console.log($scope.ConfusedModel);
 			$scope.isConfused = true;
-			$http.post('/widget/confused/update', 
+			$http.post('/widget/confused/update',
 			{course: Authentication.course._id, students: $scope.ConfusedModel.students})
 			.success(function() {
 				console.log('confused object updated');
-				
+
 				Socket.emit('confused changed');
 			})
 			.error(function(err) {
 				console.log(err);
 				//$scope.ConfusedError = err;
-			});	
+			});
 		};
-		
-		
+
+
 		$scope.reset = function () {
-			$http.post('/widget/confused/reset', 
+			$http.post('/widget/confused/reset',
 			{course: Authentication.course._id})
 			.success(function() {
 				console.log('confused objects reset');
-				
+
 				// create new confused object
 				$scope.create();
 			})
 			.error(function(err) {
 				console.log(err);
 				//$scope.ConfusedError = err;
-			});				
+			});
 		};
-		
-		
+
+
 	}
-	
+
 	return {
 		restrict: 'E',
 		link: link,
