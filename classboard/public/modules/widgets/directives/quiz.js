@@ -1,27 +1,36 @@
 'use strict';
 
-angular.module('widgets').directive('quiz', ['Authentication','$http', '$state', '$timeout', 'Socket', '$modal', '$log',
-function(Authentication, $http, $state, $timeout, Socket, $modal, $log) {
+angular.module('widgets').directive('quiz', ['Authentication','$http', '$state', '$timeout', 'Socket', '$modal', '$log', '$interval',
+function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interval) {
 
 	function link($scope, element, attrs) {
 		$scope.questions = [];
 		$scope.activeQuestion = undefined;
 		$scope.QuestionModel = {};
+		$scope.authentication = Authentication;
+		
 
 		Socket.on('question active', function() {
+			$scope.getActiveQuestion();
+		});
+		
+		$scope.updateRemainingTime = function() {
+			var endTimeMs =  (new Date($scope.activeQuestion.startTime)).getTime() + $scope.activeQuestion.duration * 1000;
+			return $scope.activeQuestion.remainingTime = Math.floor((endTimeMs - Date.now()) / 1000);
+		};
+		
+		$scope.getActiveQuestion = function () {
 			$http.get('/widget/quiz/questions/' + $state.params._id)
 			.success(function(question) {
 				$scope.activeQuestion = question;
-				console.log($scope.activeQuestion);
+				$scope.activeQuestion.timeUpdater = $interval($scope.updateRemainingTime, 1000);
 			})
 			.error(function(err) {
 				console.log(err);
 			});
-
-
-
-		});
-
+		};
+		$scope.getActiveQuestion();
+		
 		$scope.getLetter = function(num) {
 			var a = 'a'.charCodeAt(0);
 			return String.fromCharCode(a + num);
@@ -130,8 +139,15 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log) {
 
 			};
 // modal end
-
+	//get questions when element first gets loaded
 		$scope.getQuestions();
+		//need to remove update timer $interval so that it doens't mem leak
+		element.on('$destroy', function() {
+			if (activeQuestion) {
+				$interval.cancel(activeQuestion.timeUpdater);
+			}
+		});
+		
 	}
 	return {
 		restrict: 'E',
