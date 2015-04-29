@@ -15,9 +15,6 @@ angular.module('core').controller('HeaderController', ['$scope', '$http', '$loca
     	return viewLocation === $location.path();
 		};
 
-
-
-
 		/**
 		* Modal Stuff
 		*/
@@ -40,8 +37,8 @@ angular.module('core').controller('HeaderController', ['$scope', '$http', '$loca
 			          $scope.SaveAndExit.error = err;
 			      });
 					};
-					
-					
+
+
 					$scope.cancel = function () {
 						$modalInstance.dismiss('cancel');
 					};

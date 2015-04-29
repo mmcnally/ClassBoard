@@ -1,10 +1,8 @@
 <div ng-if="isAdmin()">
-  <div ng-if="!started"> 
+  <div ng-if="!started" align="center">
     <input class ="form-control" type="number" placeholder="Duration" ng-model="AttendanceModel.duration" integer/>
-    <br/>
-    <button class="btn btn-sm btn-info" ng-click="start()">Take Attendance</button>
-  </div>
-  
+    <div style="height:8px;"></div>
+    <button class="btn btn-sm btn-info" ng-click="start()">Take Attendance</button></div>
   <div ng-if="started">
     <h4>{{presentCount}} students present</h4>
   </div>
@@ -14,13 +12,13 @@
 
 <div ng-if="!isAdmin()">
   I am not admin
-  
+
   <div ng-if="started">
     <div ng-if="!clickedAttend">
       <br/>
       <button class="btn btn-lg btn-success" ng-click="attend()">Attend</button>
     </div>
-    
+
     <div ng-if="clickedAttend">
       <br/>
       <button class="btn btn-lg btn-success">In Attendance</button>
