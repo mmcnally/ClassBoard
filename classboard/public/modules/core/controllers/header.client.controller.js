@@ -32,7 +32,7 @@ angular.module('core').controller('HeaderController', ['$scope', '$http', '$loca
 					$scope.SaveAndExit = {};
 
 					$scope.ok = function () {
-						$http.put('/users', $scope.SaveAndExit).success(function(user) {
+						$http.put('/users/update', $scope.SaveAndExit).success(function(user) {
 							Authentication.user = user;
 							$modalInstance.close(user);
 			      }).error(function(err) {

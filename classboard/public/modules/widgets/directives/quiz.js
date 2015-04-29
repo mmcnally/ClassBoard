@@ -6,9 +6,9 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log) {
 	function link($scope, element, attrs) {
 		$scope.questions = [];
 		$scope.activeQuestion = undefined;
+		$scope.QuestionModel = {};
 
 		Socket.on('question active', function() {
-			//console.log('IF ADMIN IT SHOULD BE TRUE: ' + isAdmin());
 			$http.get('/widget/quiz/questions/' + $state.params._id)
 			.success(function(question) {
 				$scope.activeQuestion = question;

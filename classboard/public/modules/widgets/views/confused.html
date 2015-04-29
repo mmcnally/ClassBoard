@@ -1,0 +1,28 @@
+<div ng-if="isAdmin()">
+  <div ng-if="confusedCountIsOne()">
+    <h4>{{confusedCount}} student confused</h4>
+  </div>
+  
+  <div ng-if="!confusedCountIsOne()">
+    <h4>{{confusedCount}} students confused</h4>
+  </div>
+  
+  <br>
+  <button class="btn btn-lg btn-success" ng-click="reset()">Reset</button>
+</div>
+
+
+
+<div ng-if="!isAdmin()">
+  <div ng-if="!isConfused">
+    <!-- <br/> -->
+    <button class="btn btn-lg btn-success" ng-click="addConfused()">I'm Confused</button>
+  </div>
+  
+  <div ng-if="isConfused">
+    <!-- <br/> -->
+    Cannot click button again for a bit
+    <!-- <button class="btn btn-lg btn-success">YAY FAILURE</button> -->
+  </div>
+</div>
+<div ng-if="ConfusedError">error: {{ConfusedError}}</div>
