@@ -89,16 +89,17 @@ function($http, $state, Authentication, Socket, $timeout) {
 			var baseNum;
 			if($scope.confusedPercent === 0){
 				baseNum = 0;
+				return('rgb(' + 63 + ',' + 182 + ',' + 24 + ')');
 			}else{
 				baseNum = ($scope.confusedPercent * 100) - 1;
 			}
 			var r, g, b = 0;
 			if(baseNum < 50){
-				r = Math.floor(255 * (baseNum / 50));
-				g = 255;
+				r = Math.floor(255 * (baseNum / 35));
+				g = 200;
 			} else{
 				r = 255
-				g = Math.floor(255 * ((50-baseNum%50) / 50));
+				g = Math.floor(255 * ((40-baseNum%50) / 50));
 			}
 			b = 0;
 			console.log(r + ',' + g + ',' + b);
