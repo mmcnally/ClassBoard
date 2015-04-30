@@ -1,27 +1,47 @@
 'use strict';
 
-angular.module('widgets').directive('quiz', ['Authentication','$http', '$state', '$timeout', 'Socket', '$modal', '$log',
-function(Authentication, $http, $state, $timeout, Socket, $modal, $log) {
+angular.module('widgets').directive('quiz', ['Authentication','$http', '$state', '$timeout', 'Socket', '$modal', '$log', '$interval',
+function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interval) {
 
 	function link($scope, element, attrs) {
 		$scope.questions = [];
 		$scope.activeQuestion = undefined;
 		$scope.QuestionModel = {};
+		$scope.authentication = Authentication;
+		
+		
 
 		Socket.on('question active', function() {
+			$scope.getActiveQuestion();
+		});
+		
+		$scope.updateRemainingTime = function() {
+			var endTimeMs =  (new Date($scope.activeQuestion.startTime)).getTime() + $scope.activeQuestion.duration * 1000;
+			// if expired
+			// http post delete shit
+			// socket emit
+			$scope.activeQuestion.remainingTime = Math.floor((endTimeMs - Date.now()) / 1000);
+			if ($scope.activeQuestion.remainingTime < 1) {
+					$interval.cancel($scope.activeQuestion.timeUpdater);
+					$scope.activeQuestion = undefined;
+			}
+		};
+		
+		$scope.getActiveQuestion = function () {
 			$http.get('/widget/quiz/questions/' + $state.params._id)
 			.success(function(question) {
-				$scope.activeQuestion = question;
-				console.log($scope.activeQuestion);
+				if (question) {
+					$scope.activeQuestion = question;
+					$scope.updateRemainingTime();
+					$scope.activeQuestion.timeUpdater = $interval($scope.updateRemainingTime, 1000);
+				}
 			})
 			.error(function(err) {
 				console.log(err);
 			});
-
-
-
-		});
-
+		};
+		$scope.getActiveQuestion();
+		
 		$scope.getLetter = function(num) {
 			var a = 'a'.charCodeAt(0);
 			return String.fromCharCode(a + num);
@@ -40,6 +60,27 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log) {
 				$scope.QuestionModel.error = err.message;
 			});
 		};
+		
+		
+		
+		$scope.submitAnswer = function() {
+			$scope.activeQuestion.error = undefined;
+			$http.post('/widget/quiz/answer', 
+			{
+				text: $scope.activeQuestion.answer,
+				course: $state.params._id,
+				question: $scope.activeQuestion._id
+			})
+			.success(function(res) {
+				console.log(res);
+			})
+			.error(function(err) {
+				$scope.activeQuestion.error = err;
+			});
+			
+		};
+		
+		
 
 		$scope.startQuestion = function(question) {
 			$http.post('/widget/quiz/updateStartTime', {courseId: $state.params._id, questionId: question._id})
@@ -130,8 +171,23 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log) {
 
 			};
 // modal end
-
+	//get questions when element first gets loaded
 		$scope.getQuestions();
+		//need to remove update timer $interval so that it doens't mem leak
+		element.on('$destroy', function() {
+			if ($scope.activeQuestion) {
+				$interval.cancel($scope.activeQuestion.timeUpdater);
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 	return {
 		restrict: 'E',

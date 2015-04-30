@@ -19,6 +19,9 @@ module.exports = function(app) {
         .get(users.requiresLogin, quiz.getActiveQuestion);
     app.route('/widget/quiz/updateStartTime')
             .post(users.requiresLogin, course.requiresAuthorization, quiz.updateStartTime);
+    //-------
+    
+    app.route('/widget/quiz/answer').post(users.requiresLogin, quiz.createAnswer);
    
    
     //attendance widget routes
@@ -27,9 +30,9 @@ module.exports = function(app) {
     app.route('/widget/attendance/create').post(users.requiresLogin, attendance.create);
     app.route('/widget/attendance/getAttendance').post(users.requiresLogin, attendance.getAttendance);
     
+    // Confused widget routes
     app.route('/widget/confused/create').post(users.requiresLogin, confused.create);
     app.route('/widget/confused/update').post(users.requiresLogin, confused.update);
     app.route('/widget/confused/reset').post(users.requiresLogin, confused.reset);
     app.route('/widget/confused/getConfused').post(users.requiresLogin, confused.getConfused);
-    
 };

@@ -3,38 +3,64 @@
 	<div class="input-group" ng-if="creatingQuestion">
 		<h5>New Question</h5>
 	</div>
-
-	<div ng-if="!creatingQuestion">
+	
+	<div ng-if="!activeQuestion">
 		<h4>Questions</h4>
-
+		
 		<!--<ul id="openQuestions" class="list-group small-scroll">
-			<li class="list-group-item" ng-repeat="question in questions">-->
-			<div id="questionRow" class="row">
-				<div class="col-md-12" ng-repeat="question in questions">
-					<b>{{question.text}}</b>
-					<div style="padding-left:15px;">
-						<div ng-if="question.type !== 'MC'">
-							<span class="text-success">{{question.answer}}</span>
-						</div>
-						<div ng-if="question.type === 'MC'">
-							<span ng-repeat="answer in question.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == question.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
-						</div>
+		<li class="list-group-item" ng-repeat="question in questions">-->
+		<div id="questionRow" class="row">
+			<div class="col-md-12" ng-repeat="question in questions">
+				<b>{{question.text}}</b>
+				<div style="padding-left:15px;">
+					<div ng-if="question.type !== 'MC'">
+						<span class="text-success">{{question.answer}}</span>
 					</div>
+					<div ng-if="question.type === 'MC'">
+						<span ng-repeat="answer in question.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == question.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
 					<br>
 					<div class="container-fluid" align="center">
-						<input type="number" name="duration" placeholder="Duration" style="padding-top:2px;"></input>
+						<label> Duration (seconds)
+						<input type="number" min="1" name="duration" placeholder="Duration" style="padding-top:2px;" ng-model="question.duration"></input>
+					</label>
 						<button class="btn btn-xs btn-success customXs" ng-click="startQuestion(question)">Start</button>
 					</div>
-					<hr>
 				</div>
+				<hr>
 			</div>
-				<!--</li>
-			</ul>-->
-
-			<h4>Statistics</h4>
 		</div>
-	</div>
+		<!--</li>
+	</ul>-->
+	
+	<h4>Statistics</h4>
 </div>
+
+<div ng-if="activeQuestion">
+	<h5>Question Active:</h5>
+	<p>{{activeQuestion.text}}</p>
+	<!-- <div style="padding-left:15px;">
+	<div ng-if="activeQuestion.type !== 'MC'">
+	<span class="text-success">{{activeQuestion.answer}}</span>
+</div>
+<div ng-if="activeQuestion.type === 'MC'">
+<span ng-repeat="answer in activeQuestion.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == activeQuestion.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
+</div>
+</div> -->
+{{activeQuestion.correctCount + activeQuestion.incorrectCount}}/{{authentication.course.students.length}} Students have answered <br/>
+{{activeQuestion.remainingTime}}s remaining
+</div>	
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+
 
 
 <div ng-if="!isAdmin()">
@@ -45,35 +71,38 @@
 	</div>
 	<div ng-if="activeQuestion">
 		<div id="activeQuestionRow" class="row">
-			<div class="col-md-12" ng-repeat="question in questions">
-				<b>{{activeQuestion.text}}</b>
-				<div class="input-group" style="padding-left:15px;">
-					<div ng-if="activeQuestion.type === 'TF'">
-						<div class="radio">
-							<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'true'">True</label>
-						</div>
-						<div class="radio">
-							<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'false'">False</label>
-						</div>
+			<!-- <div class="col-md-12" ng-repeat="question in questions"> -->
+			<b>{{activeQuestion.text}}</b>
+			<div class="input-group" style="padding-left:15px;">
+				<div ng-if="activeQuestion.type === 'TF'">
+					<div class="radio">
+						<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'true'">True</label>
 					</div>
-					<div ng-if="activeQuestion.type === 'MC'">
-						<label>
-							<input type="text" name="answer" ng-model="orAnswer" placeholder="Answer">
-						</label>
-					</div>
-					<div ng-if="activeQuestion.type === 'OR'">
-						<div class="radio">
-							<label ng-repeat="mcAnswer in activeQuestion.mcAnswers track by $index">
-							<input type="radio" name="answer" ng-click="activeQuestion.answer = getLetter($index)">
-								{{getLetter($index)}}) {{mcAnswer}}
-							</label>
-						</div>
-					</div>
-					<div class="container-fluid" align="center">
-						<button class="btn btn-sm btn-success" ng-click="submitAnswer()">Submit</button>
+					<div class="radio">
+						<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'false'">False</label>
 					</div>
 				</div>
+				<div ng-if="activeQuestion.type === 'MC'">
+					<div class="radio">
+						<label ng-repeat="mcAnswer in activeQuestion.mcAnswers track by $index">
+							<input type="radio" name="answer" ng-click="activeQuestion.answer = getLetter($index)">
+							{{getLetter($index)}}) {{mcAnswer}}
+						</label>
+					</div>
+				</div>
+				<div ng-if="activeQuestion.type === 'OR'">
+					<label>
+						<input type="text" name="answer" ng-model="activeQuestion.answer" placeholder="Answer">
+					</label>
+				</div>
+				<div ng-if="activeQuestion.error">
+					{{activeQuestion.error}}
+				</div>
+				<div class="container-fluid" align="center">
+					<button class="btn btn-sm btn-success" ng-click="submitAnswer()">Submit</button>
+				</div>
 			</div>
+			<!-- </div> -->
 		</div>
 	</div>
 </div>
