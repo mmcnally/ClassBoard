@@ -34,6 +34,11 @@ var CourseSchema = new Schema({
     required: true,
     validate: [validateNonempty, 'Please fill in the teachers']
   },
+	adminName: {
+		type: String,
+		required: true,
+		validate: [validateNonempty, 'Please fill in the teacher name']
+	},
   students: {
     type: [Schema.ObjectId],
     ref: 'User',

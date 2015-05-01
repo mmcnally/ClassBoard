@@ -19,11 +19,11 @@
             </a>
             <dl id="classInfoDropDown" class="dropdown-menu navDropDown dl-horizontal" role="menu">
               <dt>Teacher</dt>
-              <dd>We may put the name of each teacher here...</dd>
+              <dd>{{authentication.course.adminName}}</dd>
               <dt>Students Enrolled</dt>
               <dd>{{authentication.course.students.length}}</dd>
-              <dt>Class Capacity</dt>
-              <dd>{{authentication.course.capacity || "no capacity set"}} </dd>
+              <!-- <dt>Class Capacity</dt> -->
+              <!-- <dd>{{authentication.course.capacity || "no capacity set"}} </dd> -->
               <dt>Class Code</dt>
               <dd>{{authentication.course.code}}</dd>
             </dl>

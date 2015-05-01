@@ -24,6 +24,7 @@ exports.createClass = function(req, res) {
 	// Init Variables
   var randCode = Math.floor(Math.random() * 100000) + 10000;
 	req.body.code = randCode || 12;
+	req.body.adminName = req.user.displayName;
 	var user = req.user;
 	
 	// create new course
@@ -179,4 +180,25 @@ exports.requiresAuthorization = function(req, res, next) {
 			}
 		}
 	});
+};
+
+
+
+
+// finds course and populates admins
+// returns populated admins
+exports.getAdmins = function(req, res) {
+	
+	Course.findOne({_id: req.body._id}).populate('admins').exec(function (err, course){
+		if(err) {
+			res.status(400).send(err);
+		}
+		else if(!course) {
+			console.log(course);
+			res.status(400).send({ message: 'NO COURSE' });
+		}
+		else {
+			res.status(200).send(course.admins);
+		}
+	});	
 };

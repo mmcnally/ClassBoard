@@ -29,6 +29,7 @@ module.exports = function(app) {
 	app.route('/course/createClass').post(users.requiresLogin, course.createClass);
 	app.route('/course/enroll').post(users.requiresLogin, course.enroll);
 	app.route('/course/courseByID').post(course.courseByID);
+	app.route('/course/getAdmins').post(course.getAdmins);
 	
 	// Finish by binding the user middleware
 	app.param('userId', users.userByID);

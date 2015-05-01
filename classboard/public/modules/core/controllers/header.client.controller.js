@@ -1,9 +1,33 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$http', '$location', 'Authentication', '$modal', '$log',
-	function($scope, $http, $location, Authentication, $modal, $log) {
+angular.module('core').controller('HeaderController', ['$scope', '$http', '$location', 'Authentication', '$modal', '$log', '$state',
+	function($scope, $http, $location, Authentication, $modal, $log, $state) {
 		$scope.authentication = Authentication;
+		//$scope.teacherName = undefined;
+		
+		
 
+
+
+
+		// $scope.getTeacherName = function() {
+		// 	console.log(Authentication);
+		// 	console.log(Authentication.course);
+		// 	console.log('ID HERE: ' + $state.params._id);
+		// 	$http.post('/users/getAdmins', { _id: 12})
+		// 	.success(function(admins) {
+		// 		console.log(admins);
+		// 		console.log('displayName: ' + admins[0].displayName);
+		// 		$scope.teacherName = admins[0].displayName;
+		// 	}).error(function(err) {
+		// 			console.log('FUCKKKKKKKKK');
+		// 			console.log(err);
+		// 	});
+		// 	return $scope.teacherName;
+		// };
+		// 
+		// $scope.getTeacherName();
+		
 		$scope.logOut = function() {
 			$http.get('/auth/signout').success(function(response){
 				$scope.authentication.user = null;
