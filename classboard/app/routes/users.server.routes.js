@@ -30,6 +30,7 @@ module.exports = function(app) {
 	app.route('/course/enroll').post(users.requiresLogin, course.enroll);
 	app.route('/course/courseByID').post(course.courseByID);
 	app.route('/course/getAdmins').post(course.getAdmins);
+	app.route('/course/updateAdminName').post(course.updateAdminName);
 	
 	// Finish by binding the user middleware
 	app.param('userId', users.userByID);

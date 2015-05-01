@@ -1,28 +1,28 @@
 'use strict';
 
 /**
- * Module dependencies.
- */
+* Module dependencies.
+*/
 var _ = require('lodash'),
-	errorHandler = require('./errors.server.controller'),
-	mongoose = require('mongoose'),
-	Course = mongoose.model('Course'),
-	User = mongoose.model('User');
+errorHandler = require('./errors.server.controller'),
+mongoose = require('mongoose'),
+Course = mongoose.model('Course'),
+User = mongoose.model('User');
 
 
 /******************************************************************************************
- * Class Stuff
- ******************************************************************************************/
+* Class Stuff
+******************************************************************************************/
 
 /* Called when user creates class
- * 1. Creates new course in database
- * 2. Adds current user as admin of new course
- * 3. Adds course to current user's list of courses
- */
+* 1. Creates new course in database
+* 2. Adds current user as admin of new course
+* 3. Adds course to current user's list of courses
+*/
 exports.createClass = function(req, res) {
-
+	
 	// Init Variables
-  var randCode = Math.floor(Math.random() * 100000) + 10000;
+	var randCode = Math.floor(Math.random() * 100000) + 10000;
 	req.body.code = randCode || 12;
 	req.body.adminName = req.user.displayName;
 	var user = req.user;
@@ -33,7 +33,7 @@ exports.createClass = function(req, res) {
 	// print course for debugging purposes
 	console.log(course);
 	var message = null;
-
+	
 	// add class to user
 	if(user.classes && user.classes.length > 0) {
 		user.classes = user.classes.push(course._id);
@@ -41,7 +41,7 @@ exports.createClass = function(req, res) {
 	else {
 		user.classes = [course._id];
 	}
-
+	
 	// save the course
 	course.save(function(err) {
 		if (err) {
@@ -51,16 +51,16 @@ exports.createClass = function(req, res) {
 			});
 		}
 	});
-
+	
 	// add course to current user
 	User.update({_id: user._id}, {
 		classes: user.classes
 	}, function(err, numberAffected, rawResponse) {
-			if(err) {
-				console.log(err);
+		if(err) {
+			console.log(err);
 		}
 	});
-
+	
 	// send user back
 	
 	res.json(course);
@@ -70,13 +70,13 @@ exports.createClass = function(req, res) {
 
 
 /* Called when user enrolls in class
- * 1. Adds current user to list of students in class 
- * 2. Adds course to current user's list of courses
- */
+* 1. Adds current user to list of students in class 
+* 2. Adds course to current user's list of courses
+*/
 exports.enroll = function(req, res) {
 	
 	var user = req.user;	
-			
+	
 	// delete user in request, since we have the real one now
 	var message = null;
 	if(!req.body.title || !req.body.code) {
@@ -96,13 +96,13 @@ exports.enroll = function(req, res) {
 					user.classes = [course._id];
 				}
 				
-			
+				
 				// save the user
 				User.update({_id: user._id}, {
 					classes: user.classes
 				}, function(err, numberAffected, rawResponse) {
-						if(err) {
-							console.log(err);
+					if(err) {
+						console.log(err);
 					}
 				});
 				
@@ -120,8 +120,8 @@ exports.enroll = function(req, res) {
 				Course.update({_id: course._id}, {
 					students: course.students
 				}, function(err, numberAffected, rawResponse) {
-						if(err) {
-							console.log(err);
+					if(err) {
+						console.log(err);
 					}
 				});
 				
@@ -151,8 +151,8 @@ exports.courseByID = function(req, res) {
 		} else {
 			res.status(400).send({
 				message: 'User is not found'
-				});
-			}
+			});
+		}
 	});
 };
 
@@ -199,6 +199,28 @@ exports.getAdmins = function(req, res) {
 		}
 		else {
 			res.status(200).send(course.admins);
+		}
+	});	
+};
+
+
+// updates admin name when user's name is changed in settings
+exports.updateAdminName = function(req, res) {
+	var user = req.user;
+	Course.findOne({_id: req.body.courseId}, function(err, course) {
+		if(err) {
+			res.status(400).send(err);
+		}
+		else if(!course) {
+			res.status(400).send({message: 'No course found'});
+		}
+		else if(course.admins[0].toString() !== user._id.toString()) {
+			res.status(400).send({message: 'user not admin of course'});
+		}
+		else {
+			course.adminName = user.displayName;
+			course.save();
+			res.status(200).send(course);
 		}
 	});	
 };
