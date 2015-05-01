@@ -2,7 +2,7 @@
 
 angular.module('widgets').directive('quiz', ['Authentication','$http', '$state', '$timeout', 'Socket', '$modal', '$log', '$interval',
 function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interval) {
-
+	
 	function link($scope, element, attrs) {
 		$scope.questions = [];
 		$scope.activeQuestion = undefined;
@@ -10,20 +10,19 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		$scope.authentication = Authentication;
 		
 		
-
+		
 		Socket.on('question active', function() {
 			$scope.getActiveQuestion();
 		});
 		
 		$scope.updateRemainingTime = function() {
-			var endTimeMs =  (new Date($scope.activeQuestion.startTime)).getTime() + $scope.activeQuestion.duration * 1000;
-			// if expired
-			// http post delete shit
-			// socket emit
-			$scope.activeQuestion.remainingTime = Math.floor((endTimeMs - Date.now()) / 1000);
 			if ($scope.activeQuestion.remainingTime < 1) {
-					$interval.cancel($scope.activeQuestion.timeUpdater);
-					$scope.activeQuestion = undefined;
+				$interval.cancel($scope.activeQuestion.timeUpdater);
+				$scope.activeQuestion = undefined;
+			}
+			else {
+				var endTimeMs =  (new Date($scope.activeQuestion.startTime)).getTime() + $scope.activeQuestion.duration * 1000;
+				$scope.activeQuestion.remainingTime = Math.floor((endTimeMs - Date.now()) / 1000);
 			}
 		};
 		
@@ -46,11 +45,11 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			var a = 'a'.charCodeAt(0);
 			return String.fromCharCode(a + num);
 		};
-
+		
 		$scope.toggle = function() {
 			$scope.creatingQuestion = !$scope.creatingQuestion;
 		};
-
+		
 		$scope.getQuestions = function() {
 			$http.post('/widget/quiz/questions', {courseId: $state.params._id})
 			.success(function(res) {
@@ -72,6 +71,10 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				question: $scope.activeQuestion._id
 			})
 			.success(function(res) {
+				// will trigger continuous time update to stop
+				$interval.cancel($scope.activeQuestion.timeUpdater);
+				$scope.activeQuestion = undefined;
+				
 				console.log(res);
 			})
 			.error(function(err) {
@@ -81,7 +84,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		};
 		
 		
-
+		
 		$scope.startQuestion = function(question) {
 			$http.post('/widget/quiz/updateStartTime', {courseId: $state.params._id, questionId: question._id})
 			.success(function(res) {
@@ -93,85 +96,85 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				$scope.QuestionModel.error = err.message;
 			});
 		};
-
-			/**
-			* Modal Stuff
-			*/
-
-			// Opens a modal window
-			$scope.open = function (size, element, attrs,currentUser) {
-				var modalInstance = $modal.open({
-					templateUrl: 'modules/widgets/views/newQuestion.client.view.html',
-					controller: function ($scope, $modalInstance, user) {
-						$scope.user = user;
-						$scope.SaveAndExit = {};
-
-						$scope.creatingQuestion = false;
-						$scope.questions = [];
-						$scope.QuestionModel = {mcAnswers : [''], mcAnswer : 'n/a', tfAnswer : '', orAnswer: ''};
-						$scope.submit = function() {
-							$scope.QuestionModel.error = '';
-							var SubmitModel = {};
-							switch ($scope.QuestionModel.type) {
-								case 'TF':
-								SubmitModel.type = 'TF';
-								SubmitModel.answer = $scope.QuestionModel.tfAnswer;
-								break;
-								case 'MC':
-								SubmitModel.answer = $scope.QuestionModel.mcAnswer;
-								SubmitModel.mcAnswers = $scope.QuestionModel.mcAnswers;
-								SubmitModel.type = 'MC';
-								break;
-								case 'OR':
-								SubmitModel.answer = $scope.QuestionModel.orAnswer;
-								SubmitModel.type = 'OR';
-								break;
-								default:
-								return $scope.QuestionModel.error = 'Must select a type';
-							}
-
-							SubmitModel.courseId = $state.params._id;
-							SubmitModel.text = $scope.QuestionModel.text;
-							SubmitModel.course = $state.params._id;
-
-							$http.post('/widget/quiz/create', SubmitModel)
-							.success(function(res) {})
-							.error(function(err) {
-								$scope.QuestionModel.error = err.message;
-							});
-
-						};
-
-						$scope.getLetter = function(num) {
-							var a = 'a'.charCodeAt(0);
-							return String.fromCharCode(a + num);
-						};
-
-						$scope.submitToggle = function(){
-							$scope.submit();
-							$scope.QuestionModel = {mcAnswers : [''], mcAnswer : 'Correct Answer', tfAnswer : '', orAnswer: ''};
-							//$scope.getQuestions();
-							//$scope.toggle();
-							$modalInstance.close(user);
-						};
-					},
-					size: size,
-					resolve: {
-						user: function () {
-							return currentUser;
+		
+		/**
+		* Modal Stuff
+		*/
+		
+		// Opens a modal window
+		$scope.open = function (size, element, attrs,currentUser) {
+			var modalInstance = $modal.open({
+				templateUrl: 'modules/widgets/views/newQuestion.client.view.html',
+				controller: function ($scope, $modalInstance, user) {
+					$scope.user = user;
+					$scope.SaveAndExit = {};
+					
+					$scope.creatingQuestion = false;
+					$scope.questions = [];
+					$scope.QuestionModel = {mcAnswers : [''], mcAnswer : 'n/a', tfAnswer : '', orAnswer: ''};
+					$scope.submit = function() {
+						$scope.QuestionModel.error = '';
+						var SubmitModel = {};
+						switch ($scope.QuestionModel.type) {
+							case 'TF':
+							SubmitModel.type = 'TF';
+							SubmitModel.answer = $scope.QuestionModel.tfAnswer;
+							break;
+							case 'MC':
+							SubmitModel.answer = $scope.QuestionModel.mcAnswer;
+							SubmitModel.mcAnswers = $scope.QuestionModel.mcAnswers;
+							SubmitModel.type = 'MC';
+							break;
+							case 'OR':
+							SubmitModel.answer = $scope.QuestionModel.orAnswer;
+							SubmitModel.type = 'OR';
+							break;
+							default:
+							return $scope.QuestionModel.error = 'Must select a type';
 						}
+						
+						SubmitModel.courseId = $state.params._id;
+						SubmitModel.text = $scope.QuestionModel.text;
+						SubmitModel.course = $state.params._id;
+						
+						$http.post('/widget/quiz/create', SubmitModel)
+						.success(function(res) {})
+						.error(function(err) {
+							$scope.QuestionModel.error = err.message;
+						});
+						
+					};
+					
+					$scope.getLetter = function(num) {
+						var a = 'a'.charCodeAt(0);
+						return String.fromCharCode(a + num);
+					};
+					
+					$scope.submitToggle = function(){
+						$scope.submit();
+						$scope.QuestionModel = {mcAnswers : [''], mcAnswer : 'Correct Answer', tfAnswer : '', orAnswer: ''};
+						//$scope.getQuestions();
+						//$scope.toggle();
+						$modalInstance.close(user);
+					};
+				},
+				size: size,
+				resolve: {
+					user: function () {
+						return currentUser;
 					}
-				});
-
-				modalInstance.result.then(function(res) {
-					$scope.getQuestions();
-				}, function() {
-					console.log('modal dismissed');
-				});
-
-			};
-// modal end
-	//get questions when element first gets loaded
+				}
+			});
+			
+			modalInstance.result.then(function(res) {
+				$scope.getQuestions();
+			}, function() {
+				console.log('modal dismissed');
+			});
+			
+		};
+		// modal end
+		//get questions when element first gets loaded
 		$scope.getQuestions();
 		//need to remove update timer $interval so that it doens't mem leak
 		element.on('$destroy', function() {
