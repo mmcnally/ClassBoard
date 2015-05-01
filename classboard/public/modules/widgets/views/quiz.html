@@ -18,32 +18,33 @@
 					</div>
 					<div ng-if="question.type === 'MC'">
 						<span ng-repeat="answer in question.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == question.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
-					<br>
+						<br>
+					</div>
 					<div class="container-fluid" align="center">
 						<label> Duration (seconds)
-						<input type="number" min="1" name="duration" placeholder="Duration" style="padding-top:2px;" ng-model="question.duration"></input>
-					</label>
+							<input type="number" min="1" name="duration" placeholder="Duration" style="padding-top:2px;" ng-model="question.duration"></input>
+						</label>
 						<button class="btn btn-xs btn-success customXs" ng-click="startQuestion(question)">Start</button>
 					</div>
+					
+					<hr>
 				</div>
-				<hr>
 			</div>
-		</div>
-		<!--</li>
-	</ul>-->
+			<!--</li>
+		</ul>-->
+		
+		<h4>Statistics</h4>
+	</div>
 	
-	<h4>Statistics</h4>
-</div>
-
-<div ng-if="activeQuestion">
-	<h5>Question Active:</h5>
-	<p>{{activeQuestion.text}}</p>
-	<!-- <div style="padding-left:15px;">
-	<div ng-if="activeQuestion.type !== 'MC'">
-	<span class="text-success">{{activeQuestion.answer}}</span>
-</div>
-<div ng-if="activeQuestion.type === 'MC'">
-<span ng-repeat="answer in activeQuestion.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == activeQuestion.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
+	<div ng-if="activeQuestion">
+		<h5>Question Active:</h5>
+		<p>{{activeQuestion.text}}</p>
+		<!-- <div style="padding-left:15px;">
+		<div ng-if="activeQuestion.type !== 'MC'">
+		<span class="text-success">{{activeQuestion.answer}}</span>
+	</div>
+	<div ng-if="activeQuestion.type === 'MC'">
+	<span ng-repeat="answer in activeQuestion.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == activeQuestion.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
 </div>
 </div> -->
 {{activeQuestion.correctCount + activeQuestion.incorrectCount}}/{{authentication.course.students.length}} Students have answered <br/>
