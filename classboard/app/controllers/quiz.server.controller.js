@@ -126,8 +126,8 @@ exports.createAnswer = function(req, res) {
 };
 
 
-// exports.getAnswers = function(req, res) {
-//   
-//   
-//   
-// }
+exports.getAnswer = function(req, res) {
+//  Answer.find
+  
+  
+}
