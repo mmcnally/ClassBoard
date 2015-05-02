@@ -14,14 +14,26 @@ Answer = mongoose.model('Answer');
 
 exports.create = function(req, res) {
   var question = new Question(req.body);
-  question.save(function(err, question) {
-    if (err) {
-      res.status(400).send(err);
-    } 
-    else {
-      res.status(200).send(question);
-    }
-  });
+  if(!req.body.text) {
+    res.status(400).send({message: 'Please fill in question text'});
+  }
+  else if(!req.body.type) {
+    res.status(400).send({message: 'Please fill in the question type'});
+  }
+  else if(!req.body.answer) {
+    res.status(400).send({message: 'Please fill in the correct answer'});
+  }
+  else {
+    question.save(function(err, question) {
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+      } 
+      else {
+        res.status(200).send(question);
+      }
+    });
+  }
 };
 
 

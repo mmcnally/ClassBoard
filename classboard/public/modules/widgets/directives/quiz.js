@@ -9,10 +9,13 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		$scope.QuestionModel = {};
 		$scope.authentication = Authentication;
 		$scope.hasAnswered = false;
+		$scope.answer = undefined;
 		
 		
 		
 		Socket.on('question active', function() {
+			$scope.hasAnswer = false;
+			$scope.answer = undefined;
 			$scope.getQuestions();
 			$scope.getActiveQuestion();
 		});
@@ -27,7 +30,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		});
 		
 		
-	
+		
 		
 		
 		
@@ -50,6 +53,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 						.success(function(answer) {
 							// console.log('GOT ANSWER');
 							$scope.hasAnswered = true;
+							$scope.answer = answer;
 						})
 						.error(function(err) {
 							console.log(err);
@@ -67,7 +71,9 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		
 		$scope.getActiveQuestion();
 		
-	
+		
+		//$scope.getAnswer();
+		
 		
 		$scope.updateRemainingTime = function() {
 			if ($scope.activeQuestion.remainingTime < 1) {
@@ -145,6 +151,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				$interval.cancel($scope.activeQuestion.timeUpdater);
 				$scope.activeQuestion = undefined;
 				$scope.hasAnswered = false;
+				$scope.answer = undefined;
 			}
 		};
 		
@@ -206,8 +213,12 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 						SubmitModel.course = $state.params._id;
 						
 						$http.post('/widget/quiz/create', SubmitModel)
-						.success(function(res) {})
+						.success(function(res) {
+							$modalInstance.close(user);
+						})
 						.error(function(err) {
+							console.log(err);
+							console.log(err.message);
 							$scope.QuestionModel.error = err.message;
 						});
 						
@@ -223,7 +234,10 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 						$scope.QuestionModel = {mcAnswers : [''], mcAnswer : 'Correct Answer', tfAnswer : '', orAnswer: ''};
 						//$scope.getQuestions();
 						//$scope.toggle();
-						$modalInstance.close(user);
+						// if(!$scope.QuestionModel.error) {
+						// 	console.log('leaving');
+						// 	$modalInstance.close(user);
+						// }
 					};
 				},
 				size: size,
