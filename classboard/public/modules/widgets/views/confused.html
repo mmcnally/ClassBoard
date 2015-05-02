@@ -18,15 +18,17 @@
 
 
 <div ng-if="!isAdmin()">
-  <div ng-if="!isConfused">
+  <div align="center">
     <!-- <br/> -->
-    <button class="btn btn-lg btn-success" ng-click="addConfused()">I'm Confused</button>
+    <button ng-class="isConfused ? 'btn btn-lg btn-success disabled' : 'btn btn-lg btn-success'" ng-click="addConfused()">
+      I'm Confused
+    </button>
   </div>
 
-  <div ng-if="isConfused">
+  <!--<div ng-if="isConfused">-->
     <!-- <br/> -->
-    Cannot click button again for a bit
+    <!--Cannot click button again for a bit-->
     <!-- <button class="btn btn-lg btn-success">YAY FAILURE</button> -->
-  </div>
+  <!--</div>-->
 </div>
 <div ng-if="ConfusedError">error: {{ConfusedError}}</div>
