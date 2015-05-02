@@ -20,7 +20,6 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		
 		Socket.on('update question', function() {
 			$scope.turnOffTimeUpdater();
-			$interval.cancel($scope.activeQuestion.timeUpdater);
 			$scope.getActiveQuestion();
 		});
 		
@@ -77,14 +76,15 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		
 		
 		$scope.closeQuestion = function() {
-			if(!activeQuestion) {
+			if(!$scope.activeQuestion) {
 				console.log('cannot close non-active question');
 			}
 			else {
-				$http.post('/widget/quiz/close',	{questionId: activeQuestion._id})
+				$http.post('/widget/quiz/close',	{questionId: $scope.activeQuestion._id})
 				.success(function(res) {
 					console.log('YAY CLOSED');
-					//Socket.emit('STUFF');
+					
+					Socket.emit('question closed');
 					
 					
 				})
