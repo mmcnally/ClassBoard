@@ -13,20 +13,18 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		
 		
 		Socket.on('question active', function() {
-			$scope.turnOffTimeUpdater();
 			$scope.getQuestions();
 			$scope.getActiveQuestion();
 		});
 		
 		Socket.on('close question', function() {
-			//$scope.turnOffTimeUpdater();
 			$scope.getQuestions();
 			$scope.getActiveQuestion();
 		});
 		
 		Socket.on('update question', function() {
 			if($scope.isAdmin()) {
-				$scope.turnOffTimeUpdater();
+				
 				$scope.getActiveQuestion();
 			}
 		});
@@ -73,6 +71,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				}
 			})
 			.error(function(err) {
+				console.log('hi');
 				$scope.turnOffTimeUpdater();
 				console.log(err);
 			});
@@ -152,6 +151,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				$scope.activeQuestion = undefined;
 				$scope.hasAnswered = false;
 			}
+			console.log('time updater called');
 		};
 		
 		$scope.startQuestion = function(question) {
