@@ -141,7 +141,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			})
 			.success(function(res) {
 				$scope.hasAnswered = true;
-				$scope.answer = res.text;
+				//$scope.answer = res.text;
 				Socket.emit('question answered');
 				console.log(res);
 			})
