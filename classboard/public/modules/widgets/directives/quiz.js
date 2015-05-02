@@ -94,7 +94,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				});
 			}
 			
-		}
+		};
 		
 		
 		$scope.getLetter = function(num) {
@@ -142,7 +142,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				$interval.cancel($scope.activeQuestion.timeUpdater);
 				// active question set to undefined here?
 			}
-		}
+		};
 		
 		$scope.startQuestion = function(question) {
 			
