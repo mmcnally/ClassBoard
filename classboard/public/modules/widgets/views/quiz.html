@@ -75,6 +75,7 @@
 	<div ng-if="!activeQuestion">
 		<div style="padding-left:15px;">
 			No active questions
+			<p ng-if='hasAnswered === true'> You answered: {{answer}}</p>
 		</div>
 	</div>
 	<div ng-if="activeQuestion">
@@ -103,7 +104,7 @@
 						<input type="text" name="answer" ng-model="activeQuestion.answer" placeholder="Answer">
 					</label>
 				</div>
-				<p> has answered: {{hasAnswered}}</p>
+				<p> Answer Received: {{hasAnswered}}</p>
 				<div ng-if="activeQuestion.error">
 					{{activeQuestion.error}}
 				</div>

@@ -47,6 +47,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 						.success(function(answer) {
 							console.log('GOT ANSWER');
 							$scope.hasAnswered = true;
+							$scope.answer = res.text;
 						})
 						.error(function(err) {
 							console.log(err);
@@ -99,7 +100,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				//$interval.cancel($scope.activeQuestion.timeUpdater);
 				//$scope.activeQuestion = undefined;
 				$scope.hasAnswered = true;
-				
+				$scope.answer = res.text;
 				console.log(res);
 			})
 			.error(function(err) {
