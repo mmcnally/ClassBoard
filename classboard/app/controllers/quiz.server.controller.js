@@ -51,8 +51,9 @@ exports.updateStartTime = function(req, res) {
       }
       else {
         question.startTime = Date.now();
+        question.duration = req.body.duration;
         question.save();
-        setTimeout(closeQuestion, question.duration * 1000, question._id); 
+        setTimeout(closeQuestion, (question.duration) * 1000, question._id); 
         res.sendStatus(200);
       }
     });
@@ -107,7 +108,7 @@ exports.createAnswer = function(req, res) {
       });
     }
     else {
-      // question exists ans not closed
+      // question exists and is not closed
       var answer = new Answer(req.body);
       answer.user = req.user._id;
       answer.isCorrect = question.answer === answer.text;

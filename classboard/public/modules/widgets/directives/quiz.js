@@ -86,7 +86,8 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		
 		
 		$scope.startQuestion = function(question) {
-			$http.post('/widget/quiz/updateStartTime', {courseId: $state.params._id, questionId: question._id})
+
+			$http.post('/widget/quiz/updateStartTime', {courseId: $state.params._id, questionId: question._id, duration: question.duration})
 			.success(function(res) {
 				console.log('CLIENT SENDS START QUESTION');
 				Socket.emit('start question');
