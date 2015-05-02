@@ -30,10 +30,14 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		});
 		
 		
+
 		
-		
-		
-		
+		// TODO: we want to use a get request for this but 
+		// regardles we're going to need a way to access
+		// the questionID without it being undefined
+		// $scope.getAnswers = function() { 
+		// 	$http.get('/widget/quiz/questions/' + $scope.activeQuestion._id)
+		// }	
 		
 		$scope.getActiveQuestion = function () {
 			$http.get('/widget/quiz/questions/' + $state.params._id)
@@ -41,12 +45,11 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				if(!$scope.isAdmin()) {
 					delete question.answer;
 				}
-				if (question) {
+				if(question) {
 					$scope.turnOffTimeUpdater();
 					$scope.activeQuestion = question;
 					$scope.activeQuestion.timeUpdater = $interval($scope.updateRemainingTime, 1000);
 					$scope.updateRemainingTime();
-					
 					if(!$scope.isAdmin()) {
 						// try to get answer if student
 						$http.post('/widget/quiz/getAnswer', question)
@@ -138,6 +141,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			})
 			.success(function(res) {
 				$scope.hasAnswered = true;
+				$scope.answer = res.text;
 				Socket.emit('question answered');
 				console.log(res);
 			})

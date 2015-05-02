@@ -74,7 +74,7 @@ exports.updateStartTime = function(req, res) {
         question.startTime = Date.now();
         question.duration = req.body.duration || question.duration;
         question.save();
-        setTimeout(closeQuestion, (question.duration) * 1000, question._id); 
+        setTimeout(closeQuestion, question.duration * 1000, question._id); 
         res.sendStatus(200);
       }
     });
@@ -107,7 +107,7 @@ exports.getActiveQuestion = function(req, res) {
         else {
           question.completed = true;
           question.save();
-          return res.status(400).send('No question currently active');
+          return res.status(400).send('Question duration has run out');
         }
       }
       else {
@@ -152,6 +152,20 @@ exports.createAnswer = function(req, res) {
   });
 };
 
+exports.getAnswers = function(req, res) {
+  Answer.find({question: req.params.questionId}, function(err, answers) {
+    if(err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
+    else if(!answers) {
+      res.status(400).send({message: 'answers not found'});
+    }
+    else {
+      res.status(200).send(answers);
+    }
+  });
+};
 
 // gets the answer for a student
 exports.getAnswer = function(req, res) {
