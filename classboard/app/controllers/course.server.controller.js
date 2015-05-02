@@ -29,13 +29,9 @@ exports.createClass = function(req, res) {
 
 	// create new course
 	var course = new Course(req.body);
-<<<<<<< HEAD
 
-	// print course for debugging purposes
-	console.log(course);
-=======
-	
->>>>>>> cb87c089943a7cd5142dadf113fd2460a131c760
+
+
 	var message = null;
 
 	// add class to user
@@ -63,12 +59,7 @@ exports.createClass = function(req, res) {
 			console.log(err);
 		}
 	});
-<<<<<<< HEAD
 
-	// send user back
-
-=======
->>>>>>> cb87c089943a7cd5142dadf113fd2460a131c760
 	res.json(course);
 };
 
@@ -101,12 +92,8 @@ exports.enroll = function(req, res) {
 				else {
 					user.classes = [course._id];
 				}
-<<<<<<< HEAD
 
 
-=======
-				
->>>>>>> cb87c089943a7cd5142dadf113fd2460a131c760
 				// save the user
 				User.update({_id: user._id}, {
 					classes: user.classes
@@ -115,12 +102,9 @@ exports.enroll = function(req, res) {
 						console.log(err);
 					}
 				});
-<<<<<<< HEAD
 
 
-=======
-				
->>>>>>> cb87c089943a7cd5142dadf113fd2460a131c760
+
 				// add student to class's list of students
 				if(course.students && course.students.length > 0) {
 					course.students = course.students.push(user._id);
@@ -128,12 +112,9 @@ exports.enroll = function(req, res) {
 				else {
 					course.students = [user._id];
 				}
-<<<<<<< HEAD
 
 
-=======
-				
->>>>>>> cb87c089943a7cd5142dadf113fd2460a131c760
+
 				// save the course
 				Course.update({_id: course._id}, {
 					students: course.students

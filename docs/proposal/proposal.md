@@ -107,31 +107,26 @@ I’m a junior computer science major. Ultimately my goal in life is to never ha
 
 ##Problem Statement
 ---
-(Last edited: 3-3-2015)
+(Last edited: 5-2-2015)
 
 As the use of computers becomes increasingly ubiquitous, computers and mobile devices are becoming an integral component of many parts of daily life. While computer use is rare and sometimes even discouraged in the classroom, it is only a matter of time before teachers and administrators realize the true potential of using computers as a supplement to the class. Our goal is to create an intuitive platform that solves many of the existing problems that plague the contemporary classroom.
 
 Our goal is to optimize the small amount of class time professors have each week to complete course material as efficiently as possible. Imagine a class where quizzes, handouts and assignments could be passed out to students instantly through the ClassBoard dashboard. These assignments could then be collected and graded automatically upon completion or after a set deadline; all without wasting paper or spending time in front of a photocopier. Using ClassBoard, attendance can be taken and reported effortlessly, and breaking up the class into small group can be done with a single click. Additionally, ClassBoard will give allow the professor to see how many students are confused about the subject matter in real time.
 
-We aren’t only aiming to make the lives of teachers easier. As students ourselves, we are all acutely aware of the problems that face students in the classroom. As students we know that sometimes it is extremely difficult to raise your hand and interrupt the class to ask a question. It’s even more difficult to admit that you are confused and to ask the teacher to explain something again. We’ve all been in situations where someone interrupts the class with a question that everyone else already knows the answer to. We plan to address these issues by allowing students to pose questions electronically, which can then be upvoted by other students, allowing the teacher to focus on questions that a large amount of students have. Furthermore, if a student is unsure about lecture material, they can simply click a button stating they are lost adding to a percentage the professor can see of how many students are confused.
-
-
-
-
-
+We aren’t only aiming to make the lives of teachers easier. As students ourselves, we are all acutely aware of the problems that face students in the classroom. As students we know that sometimes it is extremely difficult to raise your hand and interrupt the class to ask a question. It’s even more difficult to admit that you are confused and to ask the teacher to explain something again. We’ve all been in situations where someone interrupts the class with a question that everyone else already knows the answer to. Furthermore, if a student is unsure about lecture material, they can simply click a button stating they are lost adding to a percentage the professor can see of how many students are confused.
 
 ##Product Description
 ---
-(Last edited: 3-3-2015)
+(Last edited: 5-2-2015)
 
 
-ClassBoard is going to be a platform that supports a configurable set of widgets and features. Visually the application will resemble a dashboard that allows students and their teachers to interact in real time. The dashboard will display a classes set of widgets. ClassBoard itself will serve to take care of administrative tasks such as attendance and distributing assignments, handouts and in-class quizzes. One distinguishing feature of ClassBoard will be our real-time notification system. When an event occurs that requires immediate attention, such as when the teacher asks the class a question, the event will show up on everyone’s screen in real-time.
+ClassBoard is going to be a platform that supports a configurable set of widgets and features. Visually the application will resemble a dashboard that allows students and their teachers to interact in real time. The dashboard will display a classes set of widgets. ClassBoard itself will serve to take care of administrative tasks such as attendance and distributing assignments, handouts and in-class quizzes.
 
 ClassBoard will also support drag and drop configuration of
 
 
-####List of Widgets
->1. I’m Lost button
+####List of Possible Widgets
+>1. I’m Confused button
 2. Attendance
 3. Assignment handout and collection
 4. Ask questions of professor that other students can upvote
@@ -150,41 +145,45 @@ ClassBoard will also support drag and drop configuration of
 
 ##Timeline
 ---
-(Last edited: 3-3-2015)
+(Last edited: 5-2-2015)
 
 #####3/2 Research
 * Find useful Libraries and APIs
 
-#####3/16 1.0 Release
-* Basic client and server interaction
-* Basic UI working
-* Can create teacher and student users and log in
+#####4/6 Start Coding
+* Get server running and communicating with client
+* Configure MongoDB
+* Get Authentication and sessions working
+* Make a login page
+* Get AngularJS setup
 
-#####3/30 1.1 Release
-* Can add widgets to Dashboard through menu
-* Implement several widgets:
-* I’m lost button
-* Attendance
-* Question Box
+#####4/20
+* Implement basic dashboard functionality.
+* Create course database schema
+* Allow people to create new classes
+* Implement class dropdown to switch between classes
+* Provide forgot password support
+* Added theme
 
-#####4/13 1.2 Release
-* Notifications for both types of users
-* Implement several more widgets:
-* Notepad
-* Timer
-* Multiple choice questions
+###### 4/27
+* Implement widget directive
+* Start implementing specific widgets
+* Complete basic functionality for quiz widget
+* Improve css
+* Created basic dashboard routes
 
-#####4/27 1.3 Release
+###### 4/30
+* Finish attendance widget
+* Finish I’m confused widget
+* Add Wolfram Alpha widget
+* Implement widget hiding
 
-* Drag and drop widgets on dashboard
-* Additional widgets:
-* Voice Recording
-* Wolfram Alpha
-* Random group maker
+###### 5/2
+* Finish quiz widget
+* Polished css
+* Cleaned up code base
 
-#####5/3 2.0 Release
-* Fix any remaining bugs
-* Improve UI styling and presentation
+
 
 ##Budget
 ---
