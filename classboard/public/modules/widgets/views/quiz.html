@@ -13,7 +13,7 @@
 		<p>{{activeQuestion.text}}</p>
 		<div style="padding-left:15px;">
 			<div ng-if="activeQuestion.type !== 'MC'">
-				hi
+				
 				<span class="text-success">{{activeQuestion.answer}}</span>
 			</div>
 			<!-- <div ng-if="activeQuestion.type === 'MC'">
@@ -103,6 +103,7 @@
 						<input type="text" name="answer" ng-model="activeQuestion.answer" placeholder="Answer">
 					</label>
 				</div>
+				<p> has answered: {{hasAnswered}}</p>
 				<div ng-if="activeQuestion.error">
 					{{activeQuestion.error}}
 				</div>

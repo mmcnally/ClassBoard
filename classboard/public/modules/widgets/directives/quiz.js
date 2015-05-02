@@ -27,7 +27,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				$scope.activeQuestion.remainingTime = Math.floor((endTimeMs - Date.now()) / 1000);
 			}
 		};
-	
+		
 		
 		$scope.getActiveQuestion = function () {
 			$http.get('/widget/quiz/questions/' + $state.params._id)
@@ -39,6 +39,19 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 					$scope.activeQuestion = question;
 					$scope.updateRemainingTime();
 					$scope.activeQuestion.timeUpdater = $interval($scope.updateRemainingTime, 1000);
+					
+					
+					if(!$scope.isAdmin()) {
+						// try to get answer if student
+						$http.post('/widget/quiz/getAnswer', question)
+						.success(function(answer) {
+							console.log('GOT ANSWER');
+							$scope.hasAnswered = true;
+						})
+						.error(function(err) {
+							console.log(err);
+						});
+					}
 				}
 			})
 			.error(function(err) {
