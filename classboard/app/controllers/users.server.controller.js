@@ -156,7 +156,6 @@ exports.validateResetToken = function(req, res) {
 		if (!user) {
 			return res.redirect('/#/password/reset/invalid');
 		}
-
 		res.redirect('/#/password/reset/' + req.params.token);
 	});
 };
@@ -348,7 +347,6 @@ exports.signup = function(req, res) {
 
 	// Init Variables
 	var user = new User(req.body);
-	console.log(user);
 	var message = null;
 
 	// Add missing user fields
@@ -384,14 +382,12 @@ exports.signin = function(req, res, next) {
 		if (err || !user) {
 			res.status(400).send(info);
 		} else {
-			console.log(user);
 			// Remove sensitive data before login
 			user.password = undefined;
 			user.salt = undefined;
 
 			req.login(user, function(err) {
 				if (err) {
-					console.log('ERROR ' + err);
 					res.status(400).send(err);
 				} else {
 					res.json(user);

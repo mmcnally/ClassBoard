@@ -26,7 +26,6 @@ exports.create = function(req, res) {
   else {
     question.save(function(err, question) {
       if (err) {
-        console.log(err);
         res.status(400).send(err);
       } 
       else {
@@ -46,7 +45,7 @@ var closeQuestion = function(questionId) {
       console.log(err);
     }
     else {
-      console.log('closed question');
+      // closed question
     }
   });
 };
@@ -58,8 +57,6 @@ exports.close = function(req, res) {
 
 exports.updateStartTime = function(req, res) {
   //var attendance = new Attendance(req.body);
-  console.log('IN UPDATE START TIME');
-  console.log(req.body);
   if(!req.body.questionId) {
     res.status(400).send({
       message: 'questionId is undefined'
@@ -155,7 +152,6 @@ exports.createAnswer = function(req, res) {
 exports.getAnswers = function(req, res) {
   Answer.find({question: req.params.questionId}, function(err, answers) {
     if(err) {
-      console.log(err);
       res.status(500).send(err);
     }
     else if(!answers) {
@@ -171,7 +167,6 @@ exports.getAnswers = function(req, res) {
 exports.getAnswer = function(req, res) {
   Answer.findOne({user: req.user, question: req.body._id}, function(err, answer) {
     if(err) {
-      console.log(err);
       res.status(400).send(err);
     }
     else if(!answer) {
