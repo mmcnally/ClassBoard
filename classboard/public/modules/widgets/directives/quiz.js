@@ -8,12 +8,14 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		$scope.activeQuestion = undefined;
 		$scope.QuestionModel = {};
 		$scope.authentication = Authentication;
+		$scope.hasAnswered = false;
 		
 		
 		
 		Socket.on('question active', function() {
 			$scope.getActiveQuestion();
 		});
+		
 		
 		$scope.updateRemainingTime = function() {
 			if ($scope.activeQuestion.remainingTime < 1) {
@@ -26,20 +28,42 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			}
 		};
 		
+		
 		$scope.getActiveQuestion = function () {
 			$http.get('/widget/quiz/questions/' + $state.params._id)
 			.success(function(question) {
+				if(!$scope.isAdmin()) {
+					delete question.answer;
+				}
 				if (question) {
 					$scope.activeQuestion = question;
 					$scope.updateRemainingTime();
 					$scope.activeQuestion.timeUpdater = $interval($scope.updateRemainingTime, 1000);
+					
+					
+					if(!$scope.isAdmin()) {
+						// try to get answer if student
+						$http.post('/widget/quiz/getAnswer', question)
+						.success(function(answer) {
+							console.log('GOT ANSWER');
+							$scope.hasAnswered = true;
+						})
+						.error(function(err) {
+							console.log(err);
+						});
+					}
 				}
 			})
 			.error(function(err) {
 				console.log(err);
 			});
 		};
+		
+		
 		$scope.getActiveQuestion();
+		
+		
+		
 		
 		$scope.getLetter = function(num) {
 			var a = 'a'.charCodeAt(0);
@@ -72,8 +96,9 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			})
 			.success(function(res) {
 				// will trigger continuous time update to stop
-				$interval.cancel($scope.activeQuestion.timeUpdater);
-				$scope.activeQuestion = undefined;
+				//$interval.cancel($scope.activeQuestion.timeUpdater);
+				//$scope.activeQuestion = undefined;
+				$scope.hasAnswered = true;
 				
 				console.log(res);
 			})

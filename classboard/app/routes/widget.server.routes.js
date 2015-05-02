@@ -22,6 +22,7 @@ module.exports = function(app) {
     //-------
     
     app.route('/widget/quiz/answer').post(users.requiresLogin, quiz.createAnswer);
+    app.route('/widget/quiz/getAnswer').post(users.requiresLogin, quiz.getAnswer);
    
    
     //attendance widget routes

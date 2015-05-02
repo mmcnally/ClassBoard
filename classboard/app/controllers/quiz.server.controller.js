@@ -80,7 +80,7 @@ exports.getActiveQuestion = function(req, res) {
       if (question) {
         if (question.startTime.getTime() + question.duration * 1000 > Date.now()) {
           question = question.toObject();
-          delete question.answer;
+          //delete question.answer;
           return res.status(200).send(question);
         }
         else {
@@ -127,8 +127,18 @@ exports.createAnswer = function(req, res) {
 };
 
 
-// exports.getAnswers = function(req, res) {
-//   
-//   
-//   
-// }
+// gets the answer for a student
+exports.getAnswer = function(req, res) {
+  Answer.findOne({user: req.user, question: req.body._id}, function(err, answer) {
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    }
+    else if(!answer) {
+      res.status(400).send({message: 'no answer found'});
+    }
+    else {
+      res.status(200).send(answer);
+    }
+  });
+};
