@@ -48,7 +48,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 						// try to get answer if student
 						$http.post('/widget/quiz/getAnswer', question)
 						.success(function(answer) {
-							console.log('GOT ANSWER');
+							// console.log('GOT ANSWER');
 							$scope.hasAnswered = true;
 						})
 						.error(function(err) {
@@ -58,7 +58,6 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				}
 			})
 			.error(function(err) {
-				//console.log('hi');
 				$scope.turnOffTimeUpdater();
 				console.log(err);
 			});
@@ -89,11 +88,11 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			else {
 				$http.post('/widget/quiz/close',	{questionId: $scope.activeQuestion._id})
 				.success(function(res) {
-					console.log('YAY CLOSED');
+					// console.log('YAY CLOSED');
 					Socket.emit('question closed');
 				})
 				.error(function(err) {
-					console.log('close error');
+					// console.log('close error');
 					console.log(err);
 				});
 			}
