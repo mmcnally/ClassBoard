@@ -16,16 +16,12 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			$scope.getQuestions();
 			$scope.getActiveQuestion();
 		});
-		
 		Socket.on('close question', function() {
-			$scope.turnOffTimeUpdater();
 			$scope.getQuestions();
 			$scope.getActiveQuestion();
 		});
-		
 		Socket.on('update question', function() {
 			if($scope.isAdmin()) {
-				$scope.turnOffTimeUpdater();
 				$scope.getActiveQuestion();
 			}
 		});
@@ -48,8 +44,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		// the questionID without it being undefined
 		// $scope.getAnswers = function() { 
 		// 	$http.get('/widget/quiz/questions/' + $scope.activeQuestion._id)
-		// }
-		
+		// }	
 		
 		$scope.getActiveQuestion = function () {
 			$http.get('/widget/quiz/questions/' + $state.params._id)
@@ -58,16 +53,15 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 					delete question.answer;
 				}
 				if(question) {
+					$scope.turnOffTimeUpdater();
 					$scope.activeQuestion = question;
-					$scope.updateRemainingTime();
 					$scope.activeQuestion.timeUpdater = $interval($scope.updateRemainingTime, 1000);
-	
-					
+					$scope.updateRemainingTime();
 					if(!$scope.isAdmin()) {
 						// try to get answer if student
 						$http.post('/widget/quiz/getAnswer', question)
 						.success(function(answer) {
-							console.log('GOT ANSWER');
+							// console.log('GOT ANSWER');
 							$scope.hasAnswered = true;
 							$scope.answer = answer.text;
 						})
@@ -84,9 +78,21 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		};
 		
 		
+		
 		$scope.getActiveQuestion();
 		
+	
 		
+		$scope.updateRemainingTime = function() {
+			if ($scope.activeQuestion.remainingTime < 1) {
+				$interval.cancel($scope.activeQuestion.timeUpdater);
+				$scope.activeQuestion = undefined;
+			}
+			else {
+				var endTimeMs =  (new Date($scope.activeQuestion.startTime)).getTime() + $scope.activeQuestion.duration * 1000;
+				$scope.activeQuestion.remainingTime = Math.floor((endTimeMs - Date.now()) / 1000);
+			}
+		};
 		
 		
 		$scope.closeQuestion = function() {
@@ -96,13 +102,11 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			else {
 				$http.post('/widget/quiz/close',	{questionId: $scope.activeQuestion._id})
 				.success(function(res) {
-					console.log('YAY CLOSED');
-					
+					// console.log('YAY CLOSED');
 					Socket.emit('question closed');
-					
 				})
 				.error(function(err) {
-					console.log('close error');
+					// console.log('close error');
 					console.log(err);
 				});
 			}
@@ -115,9 +119,11 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			return String.fromCharCode(a + num);
 		};
 		
+		
 		$scope.toggle = function() {
 			$scope.creatingQuestion = !$scope.creatingQuestion;
 		};
+		
 		
 		$scope.getQuestions = function() {
 			$http.post('/widget/quiz/questions', {courseId: $state.params._id})
@@ -128,7 +134,6 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				$scope.QuestionModel.error = err.message;
 			});
 		};
-		
 		
 		
 		$scope.submitAnswer = function() {
@@ -143,7 +148,6 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				$scope.hasAnswered = true;
 				$scope.answer = res.text;
 				Socket.emit('question answered');
-
 				console.log(res);
 			})
 			.error(function(err) {
@@ -160,17 +164,20 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		};
 		
 		$scope.startQuestion = function(question) {
-			
 			$http.post('/widget/quiz/updateStartTime', {courseId: $state.params._id, questionId: question._id, duration: question.duration})
 			.success(function(res) {
-				console.log('CLIENT SENDS START QUESTION');
 				Socket.emit('start question');
 			})
 			.error(function(err) {
-				console.log('ERRRRRRRRROORRRRR');
 				$scope.QuestionModel.error = err.message;
 			});
 		};
+		
+		
+		
+		
+		
+		
 		
 		/**
 		* Modal Stuff
