@@ -1,39 +1,29 @@
 'use strict';
 
 
-angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentication', 'Socket', '$timeout', 
+angular.module('widgets').directive('attendance', ['$http', '$state', 'Authentication', 'Socket', '$timeout',
 function($http, $state, Authentication, Socket, $timeout) {
-	
-	
-	
+
 	function link($scope, element, attrs) {
-		//console.log(Authentication.course);
 		$scope.user = Authentication.user;
-		
-		
+
 		$scope.AttendanceModel = {
 			course: Authentication.course._id,
 			students: []
 		};
-		
-		//$scope.clickedAttend = false;
-		console.log('attendance model: ' + $scope.AttendanceModel);
-		
-		
-		//$scope.started = false;
+
 		$scope.students = Authentication.course.students;
-		
+
 		Socket.on('attendance started', function() {
 			$scope.started = true;
 		});
-		
-		
+
+
 		$scope.start = function() {
 			var defaultDuration = 30;
 			$scope.started = true;
 			Socket.emit('start attendance');
-			console.log('before starting attendance: ' + $scope.AttendanceModel);			
-			
+
 			$scope.presentCount = 0;
 			$timeout($scope.submit, ($scope.AttendanceModel.duration || defaultDuration) * 1000); // submits after duration has passed
 			Socket.on('attend', function(student) {
@@ -46,13 +36,13 @@ function($http, $state, Authentication, Socket, $timeout) {
 				});
 			});
 		};
-		
+
 		$scope.attend = function() {
 			$scope.clickedAttend = true;
 			Socket.emit('clicked attend', $scope.user._id);
 		};
-		
-		
+
+
 		$scope.submit = function() {
 			$scope.students.forEach(function(id) { // mark remaining students absent
 				$scope.AttendanceModel.students.push({user: id, present: 0});
@@ -60,7 +50,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 			$scope.AttendanceModel.current = false;
 			$scope.AttendanceModel.courseId = Authentication.course._id;
 			var SubmitModel = $scope.AttendanceModel;
-			//SubmitModel.courseId = Authentication.course._id;
+			
 			$http.post('/widget/attendance/create', SubmitModel)
 			.success(function(res) {
 				console.log(res);
@@ -73,7 +63,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 		};
 
 
-	}	
+	}
 	return {
 		restrict: 'E',
 		link: link,

@@ -4,10 +4,6 @@
 		<h5>New Question</h5>
 	</div>
 
-
-
-
-
 	<div ng-if="activeQuestion">
 		<h4>Active Question:</h4>
 		<div id="activeQuestionRow" class="row">
@@ -18,11 +14,7 @@
 						<span ng-class="activeQuestion.answer === 'true' ? 'text-success' : ''">true</span>
 						<br>
 						<span ng-class="activeQuestion.answer === 'false' ? 'text-success' : ''">false</span>
-						<!--<span class="text-success">{{activeQuestion.answer}}</span>-->
 					</div>
-					<!-- <div ng-if="activeQuestion.type === 'MC'">
-					<span ng-repeat="answer in activeQuestion.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == activeQuestion.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
-				</div> -->
 				</div>
 			</div>
 		</row>
@@ -53,13 +45,8 @@
 	<hr>
 </div>
 
-
-
-<!-- <div ng-if="!activeQuestion"> -->
 <h4>Questions</h4>
 
-<!--<ul id="openQuestions" class="list-group small-scroll">
-<li class="list-group-item" ng-repeat="question in questions">-->
 <div id="questionRow" class="row">
 	<div class="col-md-12" ng-repeat="question in questions">
 		<b>{{question.text}}</b>
@@ -82,21 +69,10 @@
 		</div>
 		<hr>
 	</div>
-	<!--</li>
-</ul>-->
-<hr>
+	<hr>
 </div>
-<!-- </div> -->
 <h4>Statistics</h4>
-
-
 </div>
-
-
-
-
-
-
 
 <div ng-if="!isAdmin()">
 	<div ng-if="!activeQuestion">
@@ -107,7 +83,6 @@
 	</div>
 	<div ng-if="activeQuestion">
 		<div id="activeQuestionRow" class="row">
-			<!-- <div class="col-md-12" ng-repeat="question in questions"> -->
 			<b>{{activeQuestion.text}}</b>
 			<div class="input-group" style="padding-left:15px;">
 				<div ng-if="activeQuestion.type === 'TF'">
@@ -122,12 +97,8 @@
 						</div>
 					</div>
 
-					<!-- <div ng-if="answer !== undefined">
-						<p>anwer</p> -->
-
 						<div ng-if="answer.text === 'true'">
 							<div class="radio">
-								<!-- true --{{answer.text === 'true'}}-- -->
 								<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'true'" checked="checked">True</label>
 							</div>
 							<div class="radio">
@@ -136,7 +107,6 @@
 						</div>
 
 						<div ng-if="answer.text === 'false'">
-							<!-- false -->
 							<div class="radio">
 								<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'true'">True</label>
 							</div>
@@ -144,16 +114,11 @@
 								<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'false'" checked="checked">False</label>
 							</div>
 						</div>
-
-					<!-- </div> -->
-
-
 				</div>
 				<div ng-if="activeQuestion.type === 'MC'">
 					<div class="radio">
 						<label ng-repeat="mcAnswer in activeQuestion.mcAnswers track by $index">
-							<input type="radio" name="answer" ng-click="activeQuestion.answer = getLetter($index)">
-							{{getLetter($index)}}) {{mcAnswer}}
+							<input type="radio" name="answer" ng-click="activeQuestion.answer = getLetter($index)">{{getLetter($index)}}) {{mcAnswer}}
 						</label>
 					</div>
 				</div>
@@ -167,7 +132,6 @@
 						<b>Time Remaining</b> {{activeQuestion.tR.getMinutes()}}:<span ng-if="activeQuestion.tR.getSeconds() < 10">0</span>{{activeQuestion.tR.getSeconds()}}
 					</div>
 				</div>
-				<!--<p> Answer Received: {{hasAnswered}}</p>-->
 				<div ng-if="activeQuestion.error">
 					{{activeQuestion.error}}
 				</div>
@@ -176,11 +140,9 @@
 						<button class="btn btn-sm btn-success" ng-click="submitAnswer()">Submit</button>
 					</div>
 					<div ng-if="hasAnswered">
-						<!-- <button class="btn btn-sm btn-success" ng-click="">naw son</button> -->
 					</div>
 				</div>
 			</div>
-			<!-- </div> -->
 		</div>
 	</div>
 </div>

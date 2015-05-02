@@ -1,6 +1,7 @@
 <div class="modal-header">
   <h3 class="modal-title">New Question</h3>
 </div>
+
 <div class="modal-body">
   <h4>Question</h4>
   <div class="newQuestionInput">
@@ -19,62 +20,52 @@
     </div>
   </div>
 
-
   <h4 ng-if="QuestionModel.type">Answer</h4>
   <div class="newQuestionInput">
     <div ng-if="QuestionModel.type === 'MC'">
       <div class="row">
         <div class="col-md-6" ng-repeat="answer in QuestionModel.mcAnswers track by $index">
-            <label>
-                {{getLetter($index)}})&nbsp;
-                <input type="text" name="answer" ng-model="QuestionModel.mcAnswers[$index]">
-                <button class="btn btn-xs btn-primary customXs" ng-click="QuestionModel.mcAnswers.splice($index, 1)"><span class="glyphicon glyphicon-minus"></span></button>
-            </label>
+          <label>
+              {{getLetter($index)}})&nbsp;
+              <input type="text" name="answer" ng-model="QuestionModel.mcAnswers[$index]">
+              <button class="btn btn-xs btn-primary customXs" ng-click="QuestionModel.mcAnswers.splice($index, 1)"><span class="glyphicon glyphicon-minus"></span></button>
+          </label>
         </div>
       </div>
-        <br/>
-
+        <br>
         <div class="row" align="center">
-            <label>
-                <button class="btn btn-sm btn-warning" ng-click="QuestionModel.mcAnswers.push('')">Add Answer</button>
-            </label>
-
-            <div class="btn-group" dropdown>
-                  <button type="button" class="btn btn-warning btn-sm dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                       Correct Answer ({{QuestionModel.mcAnswer}}) <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li id="questionAnswerDropDown" ng-repeat="answer in QuestionModel.mcAnswers track by $index" ng-click="QuestionModel.mcAnswer = getLetter($index)">
-                      <a>{{getLetter($index)}}</a>
-                    </li>
-                  </ul>
-                </div>
+          <label>
+            <button class="btn btn-sm btn-warning" ng-click="QuestionModel.mcAnswers.push('')">Add Answer</button>
+          </label>
+          <div class="btn-group" dropdown>
+            <button type="button" class="btn btn-warning btn-sm dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+              Correct Answer ({{QuestionModel.mcAnswer}}) <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li id="questionAnswerDropDown" ng-repeat="answer in QuestionModel.mcAnswers track by $index" ng-click="QuestionModel.mcAnswer = getLetter($index)">
+                <a>{{getLetter($index)}}</a>
+              </li>
+            </ul>
+          </div>
         </div>
-
-
-    </div>
+      </div>
     <div ng-if="QuestionModel.type === 'TF'">
-        <div class="radio">
-            <label><input type="radio" name="answer" ng-click="QuestionModel.tfAnswer = 'true'">True</label>
-        </div>
-        <div class="radio">
-            <label><input type="radio" name="answer" ng-click="QuestionModel.tfAnswer = 'false'">False</label>
-        </div>
+      <div class="radio">
+        <label><input type="radio" name="answer" ng-click="QuestionModel.tfAnswer = 'true'">True</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="answer" ng-click="QuestionModel.tfAnswer = 'false'">False</label>
+      </div>
     </div>
     <div ng-if="QuestionModel.type === 'OR'">
-        <label>
-            <input type="text" name="answer" ng-model="QuestionModel.orAnswer" placeholder="Answer">
-        </label>
+      <label><input type="text" name="answer" ng-model="QuestionModel.orAnswer" placeholder="Answer"></label>
     </div>
-
     <hr>
-
   </div>
+
   <div class="container-fluid" align="center">
     <button class="btn btn-primary" ng-click="submitToggle()">Create</button>
-    <br>
-    <br>
+    <br><br>
     <div ng-if="QuestionModel.error" class="text-danger">{{QuestionModel.error}}</QuestionModel></div>
   </div>
-
 </div>
