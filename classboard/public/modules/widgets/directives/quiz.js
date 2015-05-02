@@ -65,6 +65,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				}
 			})
 			.error(function(err) {
+				$scope.turnOffTimeUpdater();
 				console.log(err);
 			});
 		};
@@ -141,7 +142,8 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		$scope.turnOffTimeUpdater = function() {
 			if($scope.activeQuestion && $scope.activeQuestion.timeUpdater) {
 				$interval.cancel($scope.activeQuestion.timeUpdater);
-				// active question set to undefined here?
+				$scope.activeQuestion = undefined;
+				$scope.hasAnswered = false;
 			}
 		};
 		
