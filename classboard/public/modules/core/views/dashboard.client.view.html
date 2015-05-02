@@ -3,7 +3,6 @@
 
 		<!---- ROW 1 ---->
 		<div class="dashboard row" ng-if="user.classes[0]._id">
-			<!--<div ng-if="showQuiz" id="quizwidg" class="col-xs-4 animated bounceIn one widg">-->
 			<div ng-class="showQuiz ? 'col-xs-4 animated bounceIn one widg' :  'col-xs-4 animated bounceOut one widg'">
 				<widget title="Quiz">
 					<quiz></quiz>
@@ -17,7 +16,7 @@
 			</div>
 
 			<div ng-class="showConfused ? 'col-xs-4 animated bounceIn three widg' :  'col-xs-4 animated bounceOut one widg'">
-				<widget title="I'm Confused" class="widgDefault" > <!-- ng:class="{true:'widgDefault', false:'widgSettings'}[settings == true]" -->
+				<widget title="I'm Confused" class="widgDefault" >
 					<confused></confused>
 				</widget>
 			</div>

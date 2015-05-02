@@ -11,7 +11,7 @@ angular.module('widgets').directive('widget', ['Authentication', '$state', 'Sock
 			Authentication.course.admins.forEach(function(adminId) {
 				if (adminId === Authentication.user._id) {
 					ret = true;
-				}	
+				}
 			});
 			return ret;
 		};

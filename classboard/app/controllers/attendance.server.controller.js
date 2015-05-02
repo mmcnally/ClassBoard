@@ -18,7 +18,7 @@ exports.create = function(req, res) {
   attendance.save(function(err, attendance) {
     if (err) {
       res.status(400).send(err);
-    } 
+    }
     else {
       console.log('ATTENDANCE WAS SAVED!!! REJOICE');
       res.status(200).send(attendance);
@@ -26,7 +26,7 @@ exports.create = function(req, res) {
   });
 };
 
-// 
+//
 // exports.submit = function(req, res) {
 //   console.log(req.body);
 //   req.body.current = true;
@@ -34,7 +34,7 @@ exports.create = function(req, res) {
 //   attendance.save(function(err, attendance) {
 //     if (err) {
 //       res.status(400).send(err);
-//     } 
+//     }
 //     else {
 //       res.status(200).send(attendance);
 //     }
@@ -48,12 +48,12 @@ exports.getAttendance = function(req, res) {
       console.log('FOUND THE COURSE YAY');
       console.log(attendance);
       res.json(attendance);
-      
+
     }
     else if(err) {
       console.log('O NOES');
       res.status(400).send(err);
-      
+
     }
     else {
       console.log('ATTENDANCE TOTALLY NOT HERE :(');
@@ -76,24 +76,24 @@ exports.update = function(req, res) {
       res.status(400).send(err);
     }
   });
-  
+
   // Attendance.findOne({current : true}).exec(function(err, attendance) {
   //   if (!err && attendance) {
-  //     
-  //     
+  //
+  //
   //     if(req.body.students.length > 0) {
   //       // make students array if it doesn't exist yet
   //       if(!attendance.students) {
   //         attendance.students = [];
   //       }
-  //       // add new students to list of students  
+  //       // add new students to list of students
   //       for(var s in req.body.students) {
   //         if(attendance.students.indexOf(s) === -1)  {
   //           attendance.students.push(s);
   //         }
   //       }
-  //       
-  //       
+  //
+  //
   //       // update attendance
   //       Attendance.update({current: true}, {
   //         students: attendance.students
@@ -102,11 +102,11 @@ exports.update = function(req, res) {
   //           res.status(400).send(err);
   //         }
   //       });
-  //       
+  //
   //       res.json(attendance);
   //     }
-  //     
-  //     
+  //
+  //
   //   }
   //   else {
   //     return res.status(400).send({
