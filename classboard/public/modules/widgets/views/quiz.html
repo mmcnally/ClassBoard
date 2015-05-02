@@ -162,7 +162,12 @@
 						<input type="text" name="answer" ng-model="activeQuestion.answer" placeholder="Answer">
 					</label>
 				</div>
-				<p> Answer Received: {{hasAnswered}}</p>
+				<div class="row">
+					<div class="col-md-12" align="center">
+						<b>Time Remaining</b> {{activeQuestion.tR.getMinutes()}}:<span ng-if="activeQuestion.tR.getSeconds() < 10">0</span>{{activeQuestion.tR.getSeconds()}}
+					</div>
+				</div>
+				<!--<p> Answer Received: {{hasAnswered}}</p>-->
 				<div ng-if="activeQuestion.error">
 					{{activeQuestion.error}}
 				</div>
