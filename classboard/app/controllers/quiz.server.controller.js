@@ -51,7 +51,7 @@ exports.updateStartTime = function(req, res) {
       }
       else {
         question.startTime = Date.now();
-        question.duration = req.body.duration;
+        question.duration = req.body.duration || question.duration;
         question.save();
         setTimeout(closeQuestion, (question.duration) * 1000, question._id); 
         res.sendStatus(200);
