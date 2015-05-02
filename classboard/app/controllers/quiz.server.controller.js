@@ -112,7 +112,12 @@ exports.createAnswer = function(req, res) {
       var answer = new Answer(req.body);
       answer.user = req.user._id;
       answer.isCorrect = question.answer === answer.text;
-      answer.isCorrect ? question.correctCount++ : question.incorrectCount++;
+      if(answer.isCorrect) {
+        question.correctCount++;
+      }
+      else {
+        question.incorrectCount++;
+      }
       question.save();
       answer.save(function(err, answer) {
         if(err) {

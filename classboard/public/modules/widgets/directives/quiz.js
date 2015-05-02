@@ -14,6 +14,11 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		
 		Socket.on('question active', function() {
 			$scope.getActiveQuestion();
+			$scope.getQuestions();
+		});
+		
+		Socket.on('update question', function() {
+			$scope.getActiveQuestion();
 		});
 		
 		
@@ -101,6 +106,8 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				//$scope.activeQuestion = undefined;
 				$scope.hasAnswered = true;
 				$scope.answer = res.text;
+				Socket.emit('question answered');
+
 				console.log(res);
 			})
 			.error(function(err) {
@@ -157,7 +164,8 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 							SubmitModel.type = 'OR';
 							break;
 							default:
-							return $scope.QuestionModel.error = 'Must select a type';
+							$scope.QuestionModel.error = 'Must select a type';
+							return;
 						}
 						
 						SubmitModel.courseId = $state.params._id;

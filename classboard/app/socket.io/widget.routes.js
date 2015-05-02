@@ -30,6 +30,11 @@ module.exports = function(io) {
         io.emit('question active');
       });
       
+      socket.on('question answered', function () {
+        console.log('server received, emitted update question');
+        io.emit('update question');
+      });
+      
       
       // Confused Routes ---------------------------------------------
       socket.on('confused changed', function () {
