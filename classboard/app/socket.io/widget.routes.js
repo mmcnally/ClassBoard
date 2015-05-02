@@ -37,7 +37,7 @@ module.exports = function(io) {
       
       socket.on('question closed', function () {
         console.log('server received question closed, emitted update question');
-        io.emit('update question');        
+        io.emit('close question');        
       });
       
       
