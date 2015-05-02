@@ -31,13 +31,13 @@ var UserSchema = new Schema({
 	firstName: {
 		type: String,
 		trim: true,
-		required: [true, 'Please enter First Name, preferably yours'],
+		required: [true, 'Please enter First Name'],
 		validate: [validateNonempty, 'Please fill in your first name']
 	},
 	lastName: {
 		type: String,
 		trim: true,
-		required: [true, 'Please enter Last Name, preferably yours'],
+		required: [true, 'Please enter Last Name'],
 		validate: [validateNonempty, 'Please fill in your last name']
 	},
 	displayName: {
