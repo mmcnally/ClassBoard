@@ -39,9 +39,11 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 					delete question.answer;
 				}
 				if (question) {
+					$scope.turnOffTimeUpdater();
 					$scope.activeQuestion = question;
-					$scope.updateRemainingTime();
 					$scope.activeQuestion.timeUpdater = $interval($scope.updateRemainingTime, 1000);
+					$scope.updateRemainingTime();
+					
 					if(!$scope.isAdmin()) {
 						// try to get answer if student
 						$http.post('/widget/quiz/getAnswer', question)
