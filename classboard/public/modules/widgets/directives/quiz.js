@@ -13,7 +13,6 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		
 		
 		Socket.on('question active', function() {
-			$scope.turnOffTimeUpdater();
 			$scope.getQuestions();
 			$scope.getActiveQuestion();
 		});

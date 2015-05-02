@@ -95,7 +95,7 @@ exports.getActiveQuestion = function(req, res) {
         else {
           question.completed = true;
           question.save();
-          return res.status(400).send('No question currently active');
+          return res.status(400).send('Question duration has run out');
         }
       }
       else {
