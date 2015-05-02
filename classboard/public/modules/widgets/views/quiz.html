@@ -113,7 +113,7 @@
 				<div ng-if="activeQuestion.type === 'TF'">
 
 					<div ng-if="!answer">
-						NONE
+						<!-- NONE -->
 						<div class="radio">
 							<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'true'">True</label>
 						</div>
@@ -127,7 +127,7 @@
 
 						<div ng-if="answer.text === 'true'">
 							<div class="radio">
-								true --{{answer.text === 'true'}}--
+								<!-- true --{{answer.text === 'true'}}-- -->
 								<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'true'" checked="checked">True</label>
 							</div>
 							<div class="radio">
@@ -136,7 +136,7 @@
 						</div>
 
 						<div ng-if="answer.text === 'false'">
-							false
+							<!-- false -->
 							<div class="radio">
 								<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'true'">True</label>
 							</div>
