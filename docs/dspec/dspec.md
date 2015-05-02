@@ -82,7 +82,7 @@ The authentication module handles creating accounts, authenticating users, stori
 <br>
 -<b>Author(s):</b> Matt, Michael, Andrew, Carter
 <br>
--<b>Developer(s):</b> Carter, Michael: <i>UI, drag-and-drop</i>; Andrew, Matt, Austin: <i>backend and database functionality</i>
+-<b>Developer(s):</b> Carter, Michael: <i>UI</i>; Andrew, Matt, Austin: <i>backend and database functionality</i>
 </small>
 
 
