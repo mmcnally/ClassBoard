@@ -95,7 +95,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				});
 			}
 			
-		}
+		};
 		
 		
 		$scope.getLetter = function(num) {
