@@ -13,11 +13,14 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		
 		
 		Socket.on('question active', function() {
-			$scope.getActiveQuestion();
+			$scope.turnOffTimeUpdater();
 			$scope.getQuestions();
+			$scope.getActiveQuestion();
 		});
 		
 		Socket.on('update question', function() {
+			$scope.turnOffTimeUpdater();
+			$interval.cancel($scope.activeQuestion.timeUpdater);
 			$scope.getActiveQuestion();
 		});
 		
@@ -32,6 +35,9 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				$scope.activeQuestion.remainingTime = Math.floor((endTimeMs - Date.now()) / 1000);
 			}
 		};
+		
+		
+		
 		
 		
 		$scope.getActiveQuestion = function () {
@@ -71,6 +77,27 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		
 		
 		
+		$scope.closeQuestion = function() {
+			if(!activeQuestion) {
+				console.log('cannot close non-active question');
+			}
+			else {
+				$http.post('/widget/quiz/close',	{questionId: activeQuestion._id})
+				.success(function(res) {
+					console.log('YAY CLOSED');
+					//Socket.emit('STUFF');
+					
+					
+				})
+				.error(function(err) {
+					console.log('close error');
+					console.log(err);
+				});
+			}
+			
+		}
+		
+		
 		$scope.getLetter = function(num) {
 			var a = 'a'.charCodeAt(0);
 			return String.fromCharCode(a + num);
@@ -101,9 +128,6 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				question: $scope.activeQuestion._id
 			})
 			.success(function(res) {
-				// will trigger continuous time update to stop
-				//$interval.cancel($scope.activeQuestion.timeUpdater);
-				//$scope.activeQuestion = undefined;
 				$scope.hasAnswered = true;
 				$scope.answer = res.text;
 				Socket.emit('question answered');
@@ -113,13 +137,17 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			.error(function(err) {
 				$scope.activeQuestion.error = err;
 			});
-			
 		};
 		
-		
+		$scope.turnOffTimeUpdater = function() {
+			if($scope.activeQuestion && $scope.activeQuestion.timeUpdater) {
+				$interval.cancel($scope.activeQuestion.timeUpdater);
+				// active question set to undefined here?
+			}
+		}
 		
 		$scope.startQuestion = function(question) {
-
+			
 			$http.post('/widget/quiz/updateStartTime', {courseId: $state.params._id, questionId: question._id, duration: question.duration})
 			.success(function(res) {
 				console.log('CLIENT SENDS START QUESTION');
