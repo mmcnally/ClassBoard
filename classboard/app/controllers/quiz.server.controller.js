@@ -141,7 +141,7 @@ exports.createAnswer = function(req, res) {
 };
 
 exports.getAnswers = function(req, res) {
-  Answer.find({question: req.body.question}, function(err, answers) {
+  Answer.find({question: req.params.questionId}, function(err, answers) {
     if(err) {
       console.log(err);
       res.status(500).send(err);

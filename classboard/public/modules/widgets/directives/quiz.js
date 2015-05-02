@@ -34,6 +34,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		$scope.updateRemainingTime = function() {
 			if ($scope.activeQuestion.remainingTime < 1) {
 				$interval.cancel($scope.activeQuestion.timeUpdater);
+				$scope.getAnswers()
 				$scope.activeQuestion = undefined;
 			}
 			else {
@@ -42,8 +43,12 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			}
 		};
 		
-		
-		
+		// TODO: we want to use a get request for this but 
+		// regardles we're going to need a way to access
+		// the questionID without it being undefined
+		// $scope.getAnswers = function() { 
+		// 	$http.get('/widget/quiz/questions/' + $scope.activeQuestion._id)
+		// }
 		
 		
 		$scope.getActiveQuestion = function () {
