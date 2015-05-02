@@ -79,7 +79,7 @@ exports.getActiveQuestion = function(req, res) {
       if (question) {
         if (question.startTime.getTime() + question.duration * 1000 > Date.now()) {
           question = question.toObject();
-          delete question.answer;
+          //delete question.answer;
           return res.status(200).send(question);
         }
         else {
