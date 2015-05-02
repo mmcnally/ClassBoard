@@ -85,6 +85,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			if ($scope.activeQuestion.remainingTime < 1) {
 				$interval.cancel($scope.activeQuestion.timeUpdater);
 				$scope.activeQuestion = undefined;
+				$scope.hasAnswered = false;
 			}
 			else {
 				var endTimeMs =  (new Date($scope.activeQuestion.startTime)).getTime() + $scope.activeQuestion.duration * 1000;
