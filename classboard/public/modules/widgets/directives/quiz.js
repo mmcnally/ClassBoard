@@ -95,7 +95,6 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 					
 					Socket.emit('question closed');
 					
-					
 				})
 				.error(function(err) {
 					console.log('close error');

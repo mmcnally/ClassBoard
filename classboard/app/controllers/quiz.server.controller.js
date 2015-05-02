@@ -140,6 +140,20 @@ exports.createAnswer = function(req, res) {
   });
 };
 
+exports.getAnswers = function(req, res) {
+  Answer.find({question: req.body.question}, function(err, answers) {
+    if(err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
+    else if(!answers) {
+      res.status(400).send({message: 'answers not found'});
+    }
+    else {
+      res.status(200).send(answers);
+    }
+  });
+};
 
 // gets the answer for a student
 exports.getAnswer = function(req, res) {
