@@ -30,8 +30,6 @@ exports.createClass = function(req, res) {
 	// create new course
 	var course = new Course(req.body);
 	
-	// print course for debugging purposes
-	console.log(course);
 	var message = null;
 	
 	// add class to user
@@ -45,7 +43,6 @@ exports.createClass = function(req, res) {
 	// save the course
 	course.save(function(err) {
 		if (err) {
-			console.log(err);
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
@@ -60,9 +57,6 @@ exports.createClass = function(req, res) {
 			console.log(err);
 		}
 	});
-	
-	// send user back
-	
 	res.json(course);
 };
 
@@ -96,7 +90,6 @@ exports.enroll = function(req, res) {
 					user.classes = [course._id];
 				}
 				
-				
 				// save the user
 				User.update({_id: user._id}, {
 					classes: user.classes
@@ -106,7 +99,6 @@ exports.enroll = function(req, res) {
 					}
 				});
 				
-				
 				// add student to class's list of students
 				if(course.students && course.students.length > 0) {
 					course.students = course.students.push(user._id);
@@ -114,7 +106,6 @@ exports.enroll = function(req, res) {
 				else {
 					course.students = [user._id];
 				}
-				
 				
 				// save the course
 				Course.update({_id: course._id}, {
@@ -194,8 +185,7 @@ exports.getAdmins = function(req, res) {
 			res.status(400).send(err);
 		}
 		else if(!course) {
-			console.log(course);
-			res.status(400).send({ message: 'NO COURSE' });
+			res.status(400).send({ message: 'no course' });
 		}
 		else {
 			res.status(200).send(course.admins);
