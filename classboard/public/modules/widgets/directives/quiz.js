@@ -84,7 +84,8 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				$http.post('/widget/quiz/close',	{questionId: $scope.activeQuestion._id})
 				.success(function(res) {
 					console.log('YAY CLOSED');
-					//Socket.emit('STUFF');
+					
+					Socket.emit('question closed');
 					
 					
 				})

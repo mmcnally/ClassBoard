@@ -31,8 +31,13 @@ module.exports = function(io) {
       });
       
       socket.on('question answered', function () {
-        console.log('server received, emitted update question');
+        console.log('server received question answered, emitted update question');
         io.emit('update question');
+      });
+      
+      socket.on('question closed', function () {
+        console.log('server received question closed, emitted update question');
+        io.emit('update question');        
       });
       
       
