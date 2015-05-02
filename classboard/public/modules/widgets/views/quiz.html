@@ -27,7 +27,7 @@
 			</div>
 		</row>
 		<div id="activeQuestionStatsRow" class="row">
-			<div class="col-md-12 dl-horizontal">
+			<div class="col-md-12 dl-horizontal" align="center">
 				<dl>
 					<small>
 						<dt class="text-success">Correct Answers</dt>
@@ -41,9 +41,13 @@
 			</div>
 		</div>
 			<div class="row" align="center">
-				<b>Time Remaining</b> {{activeQuestion.tR.getMinutes()}}:<span ng-if="activeQuestion.tR.getSeconds() < 10">0</span>{{activeQuestion.tR.getSeconds()}}
+				<div class="col-md-6 col-md-offset-1">
+					<b>Time Remaining</b> {{activeQuestion.tR.getMinutes()}}:<span ng-if="activeQuestion.tR.getSeconds() < 10">0</span>{{activeQuestion.tR.getSeconds()}}
+				</div>
 
-				<button class="btn btn-xs btn-danger customXs" ng-click="closeQuestion()">Stop</button>
+				<div class="col-md-2 col-md-offset-1">
+					<button class="btn btn-xs btn-danger" ng-click="closeQuestion()">Stop</button>
+				</div>
 			</div>
 		</div>
 	<hr>
@@ -107,7 +111,7 @@
 			<b>{{activeQuestion.text}}</b>
 			<div class="input-group" style="padding-left:15px;">
 				<div ng-if="activeQuestion.type === 'TF'">
-					
+
 					<div ng-if="!answer">
 						NONE
 						<div class="radio">
@@ -117,10 +121,10 @@
 							<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'false'">False</label>
 						</div>
 					</div>
-					
+
 					<!-- <div ng-if="answer !== undefined">
 						<p>anwer</p> -->
-						
+
 						<div ng-if="answer.text === 'true'">
 							<div class="radio">
 								true --{{answer.text === 'true'}}--
@@ -130,7 +134,7 @@
 								<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'false'">False</label>
 							</div>
 						</div>
-						
+
 						<div ng-if="answer.text === 'false'">
 							false
 							<div class="radio">
@@ -140,10 +144,10 @@
 								<label><input type="radio" name="answer" ng-click="activeQuestion.answer = 'false'" checked="checked">False</label>
 							</div>
 						</div>
-						
+
 					<!-- </div> -->
-					
-					
+
+
 				</div>
 				<div ng-if="activeQuestion.type === 'MC'">
 					<div class="radio">
