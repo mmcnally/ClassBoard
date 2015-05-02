@@ -17,9 +17,17 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			$scope.getActiveQuestion();
 		});
 		
-		Socket.on('update question', function() {
+		Socket.on('close question', function() {
 			$scope.turnOffTimeUpdater();
+			$scope.getQuestions();
 			$scope.getActiveQuestion();
+		});
+		
+		Socket.on('update question', function() {
+			if($scope.isAdmin()) {
+				$scope.turnOffTimeUpdater();
+				$scope.getActiveQuestion();
+			}
 		});
 		
 		
