@@ -87,7 +87,6 @@ function($http, $state, Authentication, Socket, $timeout) {
 		
 		
 		$scope.submit = function() {
-			console.log(Authentication.course);
 			$scope.students.forEach(function(id) { // mark remaining students absent
 				$scope.AttendanceModel.students.push({user: id, present: 0});
 			});
@@ -97,7 +96,8 @@ function($http, $state, Authentication, Socket, $timeout) {
 			//SubmitModel.courseId = Authentication.course._id;
 			$http.post('/widget/attendance/create', SubmitModel)
 			.success(function(res) {
-				console.log('success');
+				console.log(res);
+				$scope.results = res.students;
 			})
 			.error(function(err) {
 				$scope.AttendanceError = err;

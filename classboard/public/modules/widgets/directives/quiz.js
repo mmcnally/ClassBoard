@@ -40,11 +40,11 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				if(!$scope.isAdmin()) {
 					delete question.answer;
 				}
-				if (question) {
+				if(question) {
 					$scope.activeQuestion = question;
 					$scope.updateRemainingTime();
 					$scope.activeQuestion.timeUpdater = $interval($scope.updateRemainingTime, 1000);
-					
+	
 					
 					if(!$scope.isAdmin()) {
 						// try to get answer if student
@@ -52,7 +52,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 						.success(function(answer) {
 							console.log('GOT ANSWER');
 							$scope.hasAnswered = true;
-							$scope.answer = res.text;
+							$scope.answer = answer.text;
 						})
 						.error(function(err) {
 							console.log(err);
