@@ -19,7 +19,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		});
 		
 		Socket.on('close question', function() {
-			$scope.turnOffTimeUpdater();
+			//$scope.turnOffTimeUpdater();
 			$scope.getQuestions();
 			$scope.getActiveQuestion();
 		});
