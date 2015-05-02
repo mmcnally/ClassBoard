@@ -25,10 +25,7 @@ exports.create = function(req, res) {
 };
 
 
-exports.close = function(req, res) {
-  closeQuestion(req.body.questionId);
-  res.sendStatus(200);
-};
+
 
 
 var closeQuestion = function(questionId) {
@@ -40,6 +37,11 @@ var closeQuestion = function(questionId) {
       console.log('closed question');
     }
   });
+};
+
+exports.close = function(req, res) {
+  closeQuestion(req.body.questionId);
+  res.sendStatus(200);
 };
 
 exports.updateStartTime = function(req, res) {
