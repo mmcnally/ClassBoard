@@ -3,29 +3,51 @@
 	<div class="input-group" ng-if="creatingQuestion">
 		<h5>New Question</h5>
 	</div>
-	
-	
-	
-	
-	
+
+
+
+
+
 	<div ng-if="activeQuestion">
-		<h4>Question Active:</h4>
-		<p>{{activeQuestion.text}}</p>
-		<div style="padding-left:15px;">
-			<div ng-if="activeQuestion.type !== 'MC'">
-				
-				<span class="text-success">{{activeQuestion.answer}}</span>
+		<h4>Active Question:</h4>
+		<div id="activeQuestionRow" class="row">
+			<div class="col-md-12">
+				<b>{{activeQuestion.text}}</b>
+				<div style="padding-left:15px;">
+					<div ng-if="activeQuestion.type !== 'MC'">
+						<span ng-class="activeQuestion.answer === 'true' ? 'text-success' : ''">true</span>
+						<br>
+						<span ng-class="activeQuestion.answer === 'false' ? 'text-success' : ''">false</span>
+						<!--<span class="text-success">{{activeQuestion.answer}}</span>-->
+					</div>
+					<!-- <div ng-if="activeQuestion.type === 'MC'">
+					<span ng-repeat="answer in activeQuestion.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == activeQuestion.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
+				</div> -->
+				</div>
 			</div>
-			<!-- <div ng-if="activeQuestion.type === 'MC'">
-			<span ng-repeat="answer in activeQuestion.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == activeQuestion.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
-		</div> -->
-	</div>
-	
-	{{activeQuestion.correctCount + activeQuestion.incorrectCount}}/{{authentication.course.students.length}} Students have answered <br/>
-	{{activeQuestion.remainingTime}}s remaining
-	
-	<button class="btn btn-xs btn-success customXs" ng-click="closeQuestion()">Stop</button>
-</div>	
+		</row>
+		<div id="activeQuestionStatsRow" class="row">
+			<div class="col-md-12 dl-horizontal">
+				<dl>
+					<small>
+						<dt class="text-success">Correct Answers</dt>
+						<dd class="text-success">{{activeQuestion.correctCount}}</dd>
+						<dt class="text-danger">Incorrect Answers</dt>
+						<dd class="text-danger">{{activeQuestion.incorrectCount}}</dd>
+						<dt class="text-info">Haven't Answered</dt>
+						<dd class="text-info">{{authentication.course.students.length - activeQuestion.correctCount - activeQuestion.incorrectCount}}</dd>
+					</small>
+				</dl>
+			</div>
+		</div>
+			<div class="row" align="center">
+				<b>Time Remaining</b> {{activeQuestion.tR.getMinutes()}}:<span ng-if="activeQuestion.tR.getSeconds() < 10">0</span>{{activeQuestion.tR.getSeconds()}}
+
+				<button class="btn btn-xs btn-danger customXs" ng-click="closeQuestion()">Stop</button>
+			</div>
+		</div>
+	<hr>
+</div>
 
 
 
@@ -39,7 +61,9 @@
 		<b>{{question.text}}</b>
 		<div style="padding-left:15px;">
 			<div ng-if="question.type !== 'MC'">
-				<span class="text-success">{{question.answer}}</span>
+				<span ng-class="question.answer === 'true' ? 'text-success' : ''">true</span>
+				<br>
+				<span ng-class="question.answer === 'false' ? 'text-success' : ''">false</span>
 			</div>
 			<div ng-if="question.type === 'MC'">
 				<span ng-repeat="answer in question.mcAnswers track by $index" ng-class="{'text-success' : getLetter($index) == question.answer}">{{getLetter($index)}})&nbsp;{{answer}}<br/></span>
@@ -51,16 +75,15 @@
 				</label>
 				<button class="btn btn-xs btn-success customXs" ng-click="startQuestion(question)">Start</button>
 			</div>
-			
-			<hr>
 		</div>
+		<hr>
 	</div>
 	<!--</li>
 </ul>-->
-
-<h4>Statistics</h4>
+<hr>
 </div>
 <!-- </div> -->
+<h4>Statistics</h4>
 
 
 </div>
