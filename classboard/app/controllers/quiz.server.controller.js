@@ -44,9 +44,6 @@ var closeQuestion = function(questionId) {
     if (err) {
       console.log(err);
     }
-    else {
-      // closed question
-    }
   });
 };
 
