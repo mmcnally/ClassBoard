@@ -24,13 +24,20 @@ exports.create = function(req, res) {
   });
 };
 
+
+exports.close = function(req, res) {
+  closeQuestion(req.body.questionId);
+  res.sendStatus(200);
+};
+
+
 var closeQuestion = function(questionId) {
   Question.update({_id : questionId}, {completed : true}, function(err, raw) {
     if (err) {
       console.log(err);
     }
     else {
-      console.log('worked');
+      console.log('closed question');
     }
   });
 };
