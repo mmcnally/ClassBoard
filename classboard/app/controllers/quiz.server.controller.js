@@ -14,14 +14,26 @@ Answer = mongoose.model('Answer');
 
 exports.create = function(req, res) {
   var question = new Question(req.body);
-  question.save(function(err, question) {
-    if (err) {
-      res.status(400).send(err);
-    } 
-    else {
-      res.status(200).send(question);
-    }
-  });
+  if(!req.body.text) {
+    res.status(400).send({message: 'Please fill in question text'});
+  }
+  else if(!req.body.type) {
+    res.status(400).send({message: 'Please fill in the question type'});
+  }
+  else if(!req.body.answer) {
+    res.status(400).send({message: 'Please fill in the correct answer'});
+  }
+  else {
+    question.save(function(err, question) {
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+      } 
+      else {
+        res.status(200).send(question);
+      }
+    });
+  }
 };
 
 
@@ -62,7 +74,7 @@ exports.updateStartTime = function(req, res) {
         question.startTime = Date.now();
         question.duration = req.body.duration || question.duration;
         question.save();
-        setTimeout(closeQuestion, (question.duration) * 1000, question._id); 
+        setTimeout(closeQuestion, question.duration * 1000, question._id); 
         res.sendStatus(200);
       }
     });
@@ -95,7 +107,7 @@ exports.getActiveQuestion = function(req, res) {
         else {
           question.completed = true;
           question.save();
-          return res.status(400).send('No question currently active');
+          return res.status(400).send('Question duration has run out');
         }
       }
       else {
@@ -140,6 +152,20 @@ exports.createAnswer = function(req, res) {
   });
 };
 
+exports.getAnswers = function(req, res) {
+  Answer.find({question: req.params.questionId}, function(err, answers) {
+    if(err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
+    else if(!answers) {
+      res.status(400).send({message: 'answers not found'});
+    }
+    else {
+      res.status(200).send(answers);
+    }
+  });
+};
 
 // gets the answer for a student
 exports.getAnswer = function(req, res) {

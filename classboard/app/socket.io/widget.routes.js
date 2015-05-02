@@ -8,20 +8,22 @@ module.exports = function(io) {
 
       // Attendance Routes -------------------------------------------
     	socket.on('start attendance', function() {
-        console.log('Attendance started');
-        // MAKE OBJECT
+        // console.log('Attendance started');
     		io.emit('attendance started');
     	});
 
     	socket.on('clicked attend', function(student) {
-        // ADD STUDENT
-    		console.log('attend event: ' + student);
+    		// console.log('attend event: ' + student);
     		io.emit('attend', student);
     	});
-      socket.on('disconnect', function(stuff) {
-        console.log('PLEASE PRINT THINGS');
-        //console.log(stuff);
+
+      socket.on('attendance finished', function() {
+        io.emit('attendance results');
       });
+
+      // socket.on('disconnect', function(stuff) {
+      //   console.log('PLEASE PRINT THINGS');
+      // });
       
       
       // Quiz Routes -------------------------------------------------

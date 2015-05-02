@@ -10,23 +10,6 @@ function($http, $state, Authentication, Socket, $timeout) {
 		//console.log(Authentication.course);
 		$scope.user = Authentication.user;
 		
-		// $http.post('/widget/attendance/getAttendance', undefined)
-		// .success(function(attendance) {
-		// 	console.log('got dat data');
-		// 	$scope.AttendanceModel = attendance;
-		// 	$scope.started = true;
-		// 	$scope.presentCount = attendance.students.length;
-		// })
-		// .error(function(err) {
-		// 	console.log('no attendance or things done broke');
-		// 	$scope.AttendanceError = err;
-		// 	// make new attendance model
-		// 	$scope.AttendanceModel = {
-		// 		course: Authentication.course._id,
-		// 		students: []
-		// 	};
-		// 	$scope.presentCount = 0;
-		// });
 		
 		$scope.AttendanceModel = {
 			course: Authentication.course._id,
@@ -49,14 +32,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 			var defaultDuration = 30;
 			$scope.started = true;
 			Socket.emit('start attendance');
-			console.log('before starting attendance: ' + $scope.AttendanceModel);
-			
-			// var StartModel = $scope.AttendanceModel;
-			// StartModel.courseId = Authentication.course._id;
-			// $http.post('/widget/attendance/create', StartModel)
-			// .success(function(res) {
-			// 	console.log('start success');
-			// });
+			console.log('before starting attendance: ' + $scope.AttendanceModel);			
 			
 			$scope.presentCount = 0;
 			$timeout($scope.submit, ($scope.AttendanceModel.duration || defaultDuration) * 1000); // submits after duration has passed
@@ -74,20 +50,10 @@ function($http, $state, Authentication, Socket, $timeout) {
 		$scope.attend = function() {
 			$scope.clickedAttend = true;
 			Socket.emit('clicked attend', $scope.user._id);
-			
-			// $http.post('/widget/attendance/update', SubmitModel)
-			// .success(function(res) {
-			// 	console.log('success');
-			// })
-			// .error(function(err) {
-			// 	$scope.AttendanceError = err;
-			// });
-			
 		};
 		
 		
 		$scope.submit = function() {
-			console.log(Authentication.course);
 			$scope.students.forEach(function(id) { // mark remaining students absent
 				$scope.AttendanceModel.students.push({user: id, present: 0});
 			});
@@ -97,14 +63,17 @@ function($http, $state, Authentication, Socket, $timeout) {
 			//SubmitModel.courseId = Authentication.course._id;
 			$http.post('/widget/attendance/create', SubmitModel)
 			.success(function(res) {
-				console.log('success');
+				console.log(res);
+				$scope.results = res.students;
+				Socket.emit('attendance finished');
 			})
 			.error(function(err) {
 				$scope.AttendanceError = err;
 			});
 		};
-	}
-	
+
+
+	}	
 	return {
 		restrict: 'E',
 		link: link,

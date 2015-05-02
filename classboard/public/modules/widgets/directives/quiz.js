@@ -9,10 +9,19 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 		$scope.QuestionModel = {};
 		$scope.authentication = Authentication;
 		$scope.hasAnswered = false;
+<<<<<<< HEAD
 
 
 
+=======
+		$scope.answer = undefined;
+		
+		
+		
+>>>>>>> 14fcdcb599e37ed2b0201fb211308152e9724f27
 		Socket.on('question active', function() {
+			$scope.hasAnswer = false;
+			$scope.answer = undefined;
 			$scope.getQuestions();
 			$scope.getActiveQuestion();
 		});
@@ -25,6 +34,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				$scope.getActiveQuestion();
 			}
 		});
+<<<<<<< HEAD
 
 
 
@@ -32,24 +42,41 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 
 
 
+=======
+		
+		
+
+		
+		// TODO: we want to use a get request for this but 
+		// regardles we're going to need a way to access
+		// the questionID without it being undefined
+		// $scope.getAnswers = function() { 
+		// 	$http.get('/widget/quiz/questions/' + $scope.activeQuestion._id)
+		// }	
+		
+>>>>>>> 14fcdcb599e37ed2b0201fb211308152e9724f27
 		$scope.getActiveQuestion = function () {
 			$http.get('/widget/quiz/questions/' + $state.params._id)
 			.success(function(question) {
 				if(!$scope.isAdmin()) {
 					delete question.answer;
 				}
-				if (question) {
+				if(question) {
 					$scope.turnOffTimeUpdater();
 					$scope.activeQuestion = question;
 					$scope.activeQuestion.timeUpdater = $interval($scope.updateRemainingTime, 1000);
 					$scope.updateRemainingTime();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14fcdcb599e37ed2b0201fb211308152e9724f27
 					if(!$scope.isAdmin()) {
 						// try to get answer if student
 						$http.post('/widget/quiz/getAnswer', question)
 						.success(function(answer) {
 							// console.log('GOT ANSWER');
 							$scope.hasAnswered = true;
+							$scope.answer = answer;
 						})
 						.error(function(err) {
 							console.log(err);
@@ -66,8 +93,16 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 
 
 		$scope.getActiveQuestion();
+<<<<<<< HEAD
 
 
+=======
+		
+		
+		//$scope.getAnswer();
+		
+		
+>>>>>>> 14fcdcb599e37ed2b0201fb211308152e9724f27
 		$scope.updateRemainingTime = function() {
 			if ($scope.activeQuestion.remainingTime < 1) {
 				$interval.cancel($scope.activeQuestion.timeUpdater);
@@ -133,6 +168,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 			})
 			.success(function(res) {
 				$scope.hasAnswered = true;
+				$scope.answer = res.text;
 				Socket.emit('question answered');
 				console.log(res);
 			})
@@ -146,6 +182,7 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 				$interval.cancel($scope.activeQuestion.timeUpdater);
 				$scope.activeQuestion = undefined;
 				$scope.hasAnswered = false;
+				$scope.answer = undefined;
 			}
 		};
 
@@ -207,8 +244,12 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 						SubmitModel.course = $state.params._id;
 
 						$http.post('/widget/quiz/create', SubmitModel)
-						.success(function(res) {})
+						.success(function(res) {
+							$modalInstance.close(user);
+						})
 						.error(function(err) {
+							console.log(err);
+							console.log(err.message);
 							$scope.QuestionModel.error = err.message;
 						});
 
@@ -224,7 +265,10 @@ function(Authentication, $http, $state, $timeout, Socket, $modal, $log, $interva
 						$scope.QuestionModel = {mcAnswers : [''], mcAnswer : 'Correct Answer', tfAnswer : '', orAnswer: ''};
 						//$scope.getQuestions();
 						//$scope.toggle();
-						$modalInstance.close(user);
+						// if(!$scope.QuestionModel.error) {
+						// 	console.log('leaving');
+						// 	$modalInstance.close(user);
+						// }
 					};
 				},
 				size: size,

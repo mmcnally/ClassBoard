@@ -66,13 +66,15 @@
             <input type="text" name="answer" ng-model="QuestionModel.orAnswer" placeholder="Answer">
         </label>
     </div>
-    <br/>
-    <div ng-if="QuestionModel.error">{{QuestionModel.error}}</QuestionModel></div>
+
     <hr>
     <div class="container-fluid" align="center">
       <button class="btn btn-primary" ng-click="submitToggle()">Create</button>
-      <button class="btn btn-warning" ng-click="cancel();" disabled>Cancel (broken)</button>
+      <br>
+      <br>
+      <div ng-if="QuestionModel.error" class="text-danger">{{QuestionModel.error}}</QuestionModel></div>
     </div>
+
   </div>
 
 </div>
