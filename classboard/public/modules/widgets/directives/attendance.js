@@ -61,8 +61,8 @@ function($http, $state, Authentication, Socket, $timeout) {
 				$http.post('/widget/attendance/getAttendance', {courseId: res.course})
 				.success(function(res) {
 					$scope.finished = true;
-					$scope.results = res.students;
-					console.log(res);
+					$scope.results = res[0].students;
+					console.log($scope.results);
 				})
 				.error(function(err) {
 					console.log(err);
