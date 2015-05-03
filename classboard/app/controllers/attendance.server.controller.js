@@ -27,11 +27,23 @@ exports.create = function(req, res) {
 
 // retrieves attendance object
 exports.getAttendance = function(req, res) {
-  Attendance.findOne({course : req.body.courseId}).populate('students.user').exec(function(err, attendance) {
+  var dayStart = new Date();
+  dayStart.setHours(0,0,0,0);
+
+  var dayEnd = new Date();
+  dayEnd.setHours(23,59,59,999);
+
+  console.log(dayStart);
+  console.log(dayEnd);
+  // find attendance objects created today for a course, sort them by recency,
+  // then select the most recent one and return it with users field populated
+  Attendance.find({course : req.body.courseId, courseTime: {$gte: dayStart, $lt: dayEnd}})
+  .sort({courseTime: -1}).limit(1).populate('students.user').exec(function(err, attendance) {
     if (err) {
       res.status(500).send(err);
     }
     else {
+      console.log(attendance);
       res.status(200).send(attendance);
     }
   });

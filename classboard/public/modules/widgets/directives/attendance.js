@@ -62,7 +62,7 @@ function($http, $state, Authentication, Socket, $timeout) {
 				.success(function(res) {
 					$scope.finished = true;
 					$scope.results = res.students;
-					console.log($scope.results);
+					console.log(res);
 				})
 				.error(function(err) {
 					console.log(err);
