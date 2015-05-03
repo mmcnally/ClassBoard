@@ -23,14 +23,8 @@ var AttendanceSchema = new Schema({
 		type: Date
 	},
 	duration: { // How long students have to mark themselves present
-		type: Number,
-		default: 300
-	},
-	current: {
-		type: Boolean,
-		default: true
+		type: Number
 	}
-
 });
 
 mongoose.model('Attendance', AttendanceSchema);
