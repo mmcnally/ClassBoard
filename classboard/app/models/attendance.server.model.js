@@ -20,17 +20,12 @@ var AttendanceSchema = new Schema({
 		present: {type: Number, enum: [0, 1]}
 	}],
 	courseTime: { // The time the course starts at
-		type: Date
+		type: Date,
+		default: Date.now
 	},
 	duration: { // How long students have to mark themselves present
-		type: Number,
-		default: 300
-	},
-	current: {
-		type: Boolean,
-		default: true
+		type: Number
 	}
-
 });
 
 mongoose.model('Attendance', AttendanceSchema);

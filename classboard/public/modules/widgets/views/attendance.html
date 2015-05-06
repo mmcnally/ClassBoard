@@ -5,27 +5,35 @@
       </div>
       <div class="col-md-2 col-md-offset-1">
         <button class="btn btn-sm btn-info" ng-click="start()">Take Attendance</button></div>
-      </div>
+  </div>
   <div ng-if="started">
-    <h4>{{presentCount}} students present</h4>
+    <h4>{{presentCount}}/{{studentCount}} students present</h4>
+    <ul ng-if="finished">
+      <li ng-repeat="student in results">
+        {{student.user.displayName}}: {{student.present === 1 ? "Present" : "Absent"}}
+      </li>
+    </ul>
   </div>
 </div>
-</div>
-
-
 
 <div ng-if="!isAdmin()" align="center">
   <div ng-if="started">
-    <div ng-if="!clickedAttend">
-      <button class="btn btn-lg btn-info" ng-click="attend()">Attend</button>
+    <div ng-if="!finished">
+      <div ng-if="!clickedAttend">
+        <button class="btn btn-lg btn-info" ng-click="attend()">Attend</button>
+      </div>
+      <div ng-if="clickedAttend">
+        <button class="btn btn-lg btn-success" disabled>Present</button>
+      </div>
     </div>
-
-    <div ng-if="clickedAttend">
-      <button class="btn btn-lg btn-success" disabled>Present</button>
+    <div ng-if="finished">
+      <h4>{{clickedAttend === true ? "Present" : "Absent"}}</h4>
     </div>
   </div>
   <div ng-if="!started">
-    <button class="btn btn-lg btn-info" disabled>Not Yet Taken</button>
+      <button class="btn btn-lg btn-info" disabled>Not Yet Taken</button>
   </div>
 </div>
-<div ng-if="AttendanceError">{{AttendanceError}}</div>
+<div ng-if="AttendanceError">
+  {{AttendanceError}}
+</div>
