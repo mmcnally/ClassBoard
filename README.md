@@ -21,6 +21,8 @@ Here are the files that we've added on the subject of functional specifications:
 ---
 We've included in our fspec folder a pdf version of our functional specification document with the required fixes.
 
+We've also included a link to the videos for Project 5 at the bottom of this document.
+
 (OLD)
 We decided to change out idea after the first project, so the app the we will work on is ClassBoard, not out previous TeamUp.
 
@@ -44,3 +46,4 @@ As the use of computers becomes increasingly ubiquitous, computers and mobile de
 Original proposal document: docs/proposal/proposal.md
 Slides: docs/proposal/proposal.pdf
 Logo: docs/proposal/logo.png
+Videos: https://drive.google.com/a/umass.edu/folderview?id=0B719Dg3Yg5_afm9jLU52VzZteVJKWlY2WUVYN0ZVblJBaTFDbG5JMEctblpPRV8tU0pneWc&usp=sharing
