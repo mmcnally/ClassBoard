@@ -46,4 +46,4 @@ As the use of computers becomes increasingly ubiquitous, computers and mobile de
 Original proposal document: docs/proposal/proposal.md
 Slides: docs/proposal/proposal.pdf
 Logo: docs/proposal/logo.png
-Videos: https://drive.google.com/a/umass.edu/folderview?id=0B719Dg3Yg5_afm9jLU52VzZteVJKWlY2WUVYN0ZVblJBaTFDbG5JMEctblpPRV8tU0pneWc&usp=sharing
+Video Google Drive Link: https://drive.google.com/a/umass.edu/folderview?id=0B719Dg3Yg5_afm9jLU52VzZteVJKWlY2WUVYN0ZVblJBaTFDbG5JMEctblpPRV8tU0pneWc&usp=sharing
