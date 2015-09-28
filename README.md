@@ -39,7 +39,7 @@ Front-End Developer
 $ sudo npm install
 $ npm start
 ```
-To stop, hit control c, then
+To stop, hit control + c, then
 
 ```
 $ npm stop
