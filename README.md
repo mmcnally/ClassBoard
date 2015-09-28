@@ -32,3 +32,15 @@ Back-End Developer
 ### Michael Lankenau
 
 Front-End Developer
+
+#How to Run
+
+```
+$ sudo npm install
+$ npm start
+```
+To stop, hit control c, then
+
+```
+$ npm stop
+```
