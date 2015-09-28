@@ -34,7 +34,7 @@ As the use of computers becomes increasingly ubiquitous, computers and mobile de
 $ sudo npm install
 $ npm start
 ```
-Then go to 'localhost:3000' in browser.
+Then go to localhost:3000 in browser.
 
 To stop, hit control + c, then
 
