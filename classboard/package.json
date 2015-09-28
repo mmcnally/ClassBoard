@@ -42,5 +42,9 @@
     "grunt-nodemon": "~0.3.0",
     "grunt-concurrent": "~1.0.0",
     "load-grunt-tasks": "~1.0.0"
+  },
+  "scripts": {
+    "prestart": "mongod --fork --logpath /dev/null",
+    "poststop": "mongo admin --eval 'db.shutdownServer()' > /dev/null"
   }
 }
