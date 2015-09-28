@@ -2,7 +2,7 @@
   "name": "ClassBoard",
   "description": "",
   "version": "1.0.0",
-  "private": true,
+  "private": "true",
   "author": "",
   "dependencies": {
     "async": "~0.9.0",
