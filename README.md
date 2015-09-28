@@ -14,24 +14,19 @@ As the use of computers becomes increasingly ubiquitous, computers and mobile de
 #Team Members
 
 ###Carter Tiernan
-
-Front-End Developer
+#####Front-End Developer
 
 ###Matt McNally
-
-Full-Stack Developer
+#####Full-Stack Developer
 
 ###Austin Sheppard
-
-Jack of All Trades
+#####Jack of All Trades
 
 ### Andrew Gora
-
-Back-End Developer
+#####Back-End Developer
 
 ### Michael Lankenau
-
-Front-End Developer
+#####Front-End Developer
 
 #How to Run
 
