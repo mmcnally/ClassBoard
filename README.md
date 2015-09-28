@@ -12,3 +12,23 @@ An attendance widget will perform the task of taking attendance, allowing the pr
 As the use of computers becomes increasingly ubiquitous, computers and mobile devices are becoming an integral component of many parts of daily life. While computer use is rare and sometimes even discouraged in the classroom, it is only a matter of time before teachers and administrators realize the true potential of using computers as a supplement to the class.
 
 #Team Members
+
+###Carter Tiernan
+
+Front-End Developer
+
+###Matt McNally
+
+Full-Stack Developer
+
+###Austin Sheppard
+
+Jack of All Trades
+
+### Andrew Gora
+
+Back-End Developer
+
+### Michael Lankenau
+
+Front-End Developer
