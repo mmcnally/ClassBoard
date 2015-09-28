@@ -1,4 +1,4 @@
-![Team Logo](/docs/proposal/logo.png)
+![Team Logo](logo.png)
 
 # Project Overview
 
