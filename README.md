@@ -31,7 +31,7 @@ As the use of computers becomes increasingly ubiquitous, computers and mobile de
 #How to Run
 
 ```
-$ sudo npm install
+$ npm install
 $ npm start
 ```
 Then go to localhost:3000 in browser.
